@@ -1,0 +1,80 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                                            
+    12                                      ; Se dau cuvintele A si B. Se cere cuvantul C format astfel:
+    13                                  ;- bitii 0-2 ai lui C coincid cu bitii 10-12 ai lui B
+    14                                  ;- bitii 3-6 ai lui C au valoarea 1
+    15                                  ;- bitii 7-10 ai lui C coincid cu bitii 1-4 ai lui A
+    16                                  ;- bitii 11-12 ai valoarea 0
+    17                                  ;- bitii 13-15 ai lui C concid cu inverul bitilor 9-11 ai lui B
+    18                                  
+    19                                  ; Vom obtine cuvantul C prin operatii succesive de "izolare". Numim operatia
+    20                                  ; de izolare a bitilor 10-12 ai lui B, pastrarea intacta a valorii acestor
+    21                                  ; biti, si initializarea cu 0 a celorlalti biti. Operatiunea de izolare se
+    22                                  ; realizeaza cu ajutorul operatorului and intre cuvantul B si masca
+    23                                  ; 0001110000000000. Odata bitii izolati, printr-o operatie de rotire se
+    24                                  ; deplaseaza grupul de biti doriti in pozitia dorita. Cuvantul final se
+    25                                  ; obtine prin aplicarea operatorului or intre rezultatele intermediare
+    26                                  ; obtinute in urma izolarii si rotirii.
+    27                                  ; Observatie: rangul bitilor se numara de la dreapta la stanga
+    28                                  
+    29                                  
+    30                                  ; our data is declared here (the variables needed by our program)
+    31                                  segment data use32 class=data
+    32                                      ; ...
+    33 00000000 5777                        a dw 0111011101010111b
+    34 00000002 BE9B                        b dw 1001101110111110b
+    35 00000004 0000                        c dw 0
+    36 00000006 52657A756C74617475-         format db "Rezultatul este: %d",0
+    36 0000000F 6C20657374653A2025-
+    36 00000018 6400               
+    37                                  
+    38                                  ; our code starts here
+    39                                  segment code use32 class=code
+    40                                      start:
+    41                                          ; ...
+    42 00000000 66BB0000                        mov bx,0
+    43                                          
+    44 00000004 66A1[02000000]                  mov ax,[b]
+    45 0000000A 6625001C                        and ax,0001110000000000b
+    46 0000000E B10A                            mov cl,10
+    47 00000010 66D3C8                          ror ax,cl
+    48 00000013 6609C3                          or bx,ax
+    49                                          
+    50 00000016 6683CB78                        or bx,0000000001111000b
+    51                                          
+    52 0000001A 66A1[00000000]                  mov ax,[a]
+    53 00000020 6683E01E                        and ax, 0000000000011110b
+    54 00000024 66C1C006                        rol ax,6
+    55                                          
+    56 00000028 6609C3                          or bx,ax ;0000010111111110
+    57                                          
+    58 0000002B 6681E3C779                      and bx,1110011111111111
+    58          ******************       warning: word data exceeds bounds [-w+number-overflow]
+    59                                          
+    60 00000030 66A1[02000000]                  mov ax,[b]
+    61 00000036 66F7D0                          not ax
+    62 00000039 66250096                        and ax,0000111000000000
+    62          ******************       warning: word data exceeds bounds [-w+number-overflow]
+    63 0000003D 66C1C004                        rol ax,4
+    64                                          
+    65 00000041 6609C3                          or bx,ax
+    66                                          
+    67 00000044 66891D[04000000]                mov [c],bx
+    68                                          
+    69 0000004B 68[04000000]                    push c
+    70 00000050 68[06000000]                    push format
+    71 00000055 FF15[00000000]                  call [printf]
+    72 0000005B 83C408                          add esp,4*2
+    73                                          
+    74                                          ; exit(0)
+    75 0000005E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    76 00000060 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

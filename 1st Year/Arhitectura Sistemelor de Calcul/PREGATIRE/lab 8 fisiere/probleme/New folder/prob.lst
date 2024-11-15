@@ -1,0 +1,112 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit, scanf, printf, fopen, fread, fclose, fprintf
+     6                                  
+     7                                  import exit msvcrt.dll
+     8                                  import scanf msvcrt.dll
+     9                                  import printf msvcrt.dll
+    10                                  import fopen msvcrt.dll
+    11                                  import fread msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 00000000                    n dd 0
+    17 00000004 256400                      format_scan_numar db "%d",0
+    18                                      
+    19 00000007 <res 00000064>              nume_fisier resb 100
+    20 0000006B 257300                      format_scan_fisier db "%s",0
+    21                                      
+    22 0000006E 7200                        mod_acces db "r",0
+    23 00000070 FFFFFFFF                    descriptor_fisier dd -1
+    24                                      len equ 100
+    25 00000074 00000000<rept>              text times len dd 0
+    26                                      
+    27 00000204 256420637576696E74-         format_rez db "%d cuvinte au %d vocale",0
+    27 0000020D 652061752025642076-
+    27 00000216 6F63616C6500       
+    28                                      
+    29                                  segment code use32 class=code
+    30                                  start:
+    31                                      ; ...
+    32 00000000 68[00000000]                push dword n
+    33 00000005 68[04000000]                push dword format_scan_numar
+    34 0000000A FF15[00000000]              call dword [scanf]
+    35 00000010 83C408                      add esp, 4 * 2
+    36                                      
+    37 00000013 68[07000000]                push dword nume_fisier
+    38 00000018 68[6B000000]                push dword format_scan_fisier
+    39 0000001D FF15[00000000]              call dword [scanf]
+    40 00000023 83C408                      add esp, 4 * 2
+    41                                      
+    42 00000026 68[6E000000]                push dword mod_acces
+    43 0000002B 68[07000000]                push dword nume_fisier
+    44 00000030 FF15[00000000]              call dword [fopen]
+    45 00000036 83C408                      add esp, 4 * 2 ; Ajustează stiva pentru a face loc parametrului "mod_acces"
+    46                                      
+    47 00000039 A3[70000000]                mov [descriptor_fisier], eax
+    48 0000003E 83F800                      cmp eax, 0
+    49 00000041 746C                        je final
+    50                                      
+    51 00000043 FF35[70000000]              push dword [descriptor_fisier]
+    52 00000049 6A64                        push dword len
+    53 0000004B 6A01                        push dword 1
+    54 0000004D 68[74000000]                push dword text
+    55 00000052 FF15[00000000]              call dword [fread]
+    56 00000058 83C410                      add esp, 4 * 4
+    57                                      
+    58 0000005B 89C1                        mov ecx, eax
+    59 0000005D BE[74000000]                mov esi, text
+    60                                      
+    61                                  repeta:
+    62 00000062 8A06                        mov al, [esi]
+    63 00000064 3C2F                        cmp al, '/'
+    64 00000066 741F                        je urm_cuvant
+    65                                      
+    66 00000068 3C61                        cmp al, 'a'
+    67 0000006A 7416                        je plus
+    68                                      
+    69 0000006C 3C65                        cmp al, 'e'
+    70 0000006E 7412                        je plus
+    71                                      
+    72 00000070 3C69                        cmp al, 'i'
+    73 00000072 740E                        je plus
+    74                                      
+    75 00000074 3C6F                        cmp al, 'o'
+    76 00000076 740A                        je plus
+    77                                      
+    78 00000078 3C75                        cmp al, 'u'
+    79 0000007A 7406                        je plus
+    80                                      
+    81 0000007C 46                          inc esi
+    82 0000007D 83F900                      cmp ecx, 0 ; Verifică dacă mai sunt caractere de citit
+    83 00000080 7FE0                        jg repeta
+    84                                      
+    85                                  plus:
+    86 00000082 80C301                      add bl, 1
+    87 00000085 EBDB                        jmp repeta
+    88                                      
+    89                                  urm_cuvant:
+    90 00000087 3A1D[00000000]              cmp bl, [n]
+    91 0000008D 7403                        je afisare
+    92 0000008F B300                        mov bl, 0
+    93 00000091 46                          inc esi
+    94                                      
+    95                                  afisare:
+    96 00000092 80C201                      add dl, 1
+    97                                      
+    98 00000095 88D0                        mov al, dl
+    99 00000097 6698                        cbw
+   100 00000099 98                          cwde
+   101 0000009A 50                          push dword eax
+   102 0000009B FF35[00000000]              push dword [n]
+   103 000000A1 68[04020000]                push dword format_rez
+   104 000000A6 FF15[00000000]              call dword [printf]
+   105 000000AC 83C40C                      add esp, 4 * 3
+   106                                      
+   107                                  final:
+   108                                      ; exit(0)
+   109 000000AF 6A00                        push dword 0 ; push the parameter for exit onto the stack
+   110 000000B1 FF15[00000000]              call dword [exit]
