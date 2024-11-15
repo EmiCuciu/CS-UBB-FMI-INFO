@@ -1,0 +1,95 @@
+     1                                  bits 32 ; Asamblează pentru arhitectura pe 32 de biți
+     2                                  
+     3                                  ; Declarația punctului de intrare (o etichetă care definește prima instrucțiune a programului)
+     4                                  global start        
+     5                                  
+     6                                  ; Declarația funcțiilor externe necesare programului nostru
+     7                                  extern exit, fopen, fread, fclose, printf
+     8                                  import exit msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import printf msvcrt.dll
+    13                                  
+    14                                  ; Declarația datelor noastre (variabilele necesare programului)
+    15                                  section data use32 class=data
+    16 00000000 696E7075742E747874-         nume_fisier db "input.txt", 0  ; numele fisierului care va fi deschis
+    16 00000009 00                 
+    17 0000000A 7200                        mod_acces db "r", 0            ; modul de deschidere a fisierului - r - pentru citire
+    18 0000000C FFFFFFFF                    descriptor_fis dd -1           ; variabila in care vom salva descriptorul fisierului
+    19                                      len equ 100                    ; numarul maxim de elemente citite din fisier
+    20 00000010 00<rept>                    text times len db 0            ; sirul in care se va citi textul din fisier
+    21 00000074 4E756D6172756C2064-         format_cuvinte db "Numarul de cuvinte: %d", 0  ; Formatul pentru printf
+    21 0000007D 6520637576696E7465-
+    21 00000086 3A20256400         
+    22                                  
+    23                                  ; Codul nostru începe aici
+    24                                  section code use32 class=code
+    25                                  start:
+    26                                      ; Apelăm fopen pentru a deschide fisierul
+    27                                      ; eax = fopen(nume_fisier, mod_acces)
+    28 00000000 68[0A000000]                push dword mod_acces     
+    29 00000005 68[00000000]                push dword nume_fisier
+    30 0000000A FF15[00000000]              call [fopen]
+    31 00000010 83C408                      add esp, 4*2                ; eliberam parametrii de pe stiva
+    32                                  
+    33 00000013 A3[0C000000]                mov [descriptor_fis], eax   ; salvam valoarea returnata de fopen
+    34                                      
+    35                                      ; Verificam daca functia fopen a creat cu succes fisierul (daca EAX != 0)
+    36 00000018 83F800                      cmp eax, 0
+    37 0000001B 7457                        je final
+    38                                  
+    39                                      ; Citim textul din fisierul deschis folosind functia fread
+    40                                      ; eax = fread(text, 1, len, descriptor_fis)
+    41 0000001D FF35[0C000000]              push dword [descriptor_fis]
+    42 00000023 6A64                        push dword len
+    43 00000025 6A01                        push dword 1
+    44 00000027 68[10000000]                push dword text        
+    45 0000002C FF15[00000000]              call [fread]
+    46 00000032 83C410                      add esp, 4*4                 ; dupa apelul functiei fread, EAX contine numarul de caractere citite din fisier
+    47                                  
+    48                                      ; Apelăm functia fclose pentru a închide fisierul
+    49                                      ; fclose(descriptor_fis)
+    50 00000035 FF35[0C000000]              push dword [descriptor_fis]
+    51 0000003B FF15[00000000]              call [fclose]
+    52 00000041 83C404                      add esp, 4
+    53                                  
+    54                                      ; Determinarea numărului de cuvinte în șirul text
+    55 00000044 B900000000                  mov ecx, 0             ; Inițializam numarul de cuvinte cu 0
+    56 00000049 BE[10000000]                mov esi, text           ; ESI pointeaza la începutul șirului text
+    57                                      
+    58 0000004E EB00                        jmp verifica_cuvant     ; Incepem bucla verificarii direct cu un jump
+    59                                  
+    60                                  verifica_cuvant:
+    61                                      ; Cautam primul caracter care nu este spațiu sau punct
+    62 00000050 8A06                        mov al, [esi]
+    63 00000052 3C00                        cmp al, 0
+    64 00000054 740F                        je  afisare_numar_cuvinte  ; Daca am ajuns la sfârșitul șirului, afișam rezultatul
+    65                                      
+    66 00000056 3C20                        cmp al, ' '             ; Comparam cu spațiu
+    67 00000058 7407                        je  incrementare_cuvant  ; Daca caracterul este spațiu, trecem la urmatorul caracter
+    68                                      
+    69 0000005A 3C2E                        cmp al, '.'             ; Comparam cu punct
+    70 0000005C 7403                        je  incrementare_cuvant  ; Daca caracterul este punct, trecem la urmatorul caracter
+    71                                      
+    72 0000005E 46                          inc esi                 ; Incrementam registrul ESI pentru a trece la urmatorul caracter
+    73 0000005F EBEF                        jmp verifica_cuvant     ; Daca caracterul nu este spațiu sau punct, continuam verificarea
+    74                                  
+    75                                  incrementare_cuvant:
+    76                                      ; Am gasit un cuvant, incrementam numarul de cuvinte
+    77 00000061 41                          inc ecx
+    78 00000062 46                          inc esi                 ; Incrementam registrul ESI pentru a trece la urmatorul caracter
+    79 00000063 EBEB                        jmp verifica_cuvant     ; Continuam verificarea cuvantului
+    80                                  
+    81                                  afisare_numar_cuvinte:
+    82                                      ; Afisam numarul de cuvinte pe ecran
+    83 00000065 51                          push    ecx             ; Push numarul de cuvinte pe stiva
+    84 00000066 68[74000000]                push    dword format_cuvinte ; Push formatul pentru printf
+    85 0000006B FF15[00000000]              call    [printf]        ; Apelam functia printf
+    86 00000071 83C408                      add     esp, 4*2         ; Eliberam parametrii de pe stiva
+    87                                  
+    88                                  final:
+    89                                      ; exit(0)
+    90 00000074 6A00                        push dword 0      ; push parametrul pentru exit pe stiva
+    91 00000076 FF15[00000000]              call [exit]       ; apelam exit pentru a termina programul
+    92                                      
