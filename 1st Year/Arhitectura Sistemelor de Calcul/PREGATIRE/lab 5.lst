@@ -1,0 +1,156 @@
+     1                                  ; bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  ; global start        
+     5                                  
+     6                                  ; ; declare external functions needed by our program
+     7                                  ; extern exit,printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  ; import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  ; import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; ; our data is declared here (the variables needed by our program)
+    12                                  ; segment data use32 class=data
+    13                                      ; ; ...
+    14                                      ; sir db 'a','b','c','m','n' ;declararea sirului initial
+    15                                      ; lungime equ $-sir ;stabilirea lungimii sirului
+    16                                      ; destinatie times lungime db 0 ;rezervarea unui spatiu de dimensiune l pentru sirul destinatie si initializarea acestuia
+    17                                      
+    18                                      
+    19                                      ; ;Se da un sir de caractere format din litere mici.
+    20                                  ; ;Sa se transforme acest sir in sirul literelor mari corespunzator.
+    21                                  
+    22                                  ; ; our code starts here
+    23                                  ; segment code use32 class=code
+    24                                      ; start:
+    25                                          ; ; ...
+    26                                          ; mov ecx,lungime
+    27                                          ; mov esi,0
+    28                                          ; jecxz final
+    29                                          ; mov bl,'a'-'A'
+    30                                          ; repeta:
+    31                                              ; mov al,[sir+esi]
+    32                                              ; sub al,bl
+    33                                              ; mov [destinatie+esi],al
+    34                                              ; inc esi
+    35                                              ; loop repeta
+    36                                              
+    37                                          ; final:
+    38                                              ; push destinatie
+    39                                              ; call [printf]
+    40                                              ; add esp,4*1
+    41                                              
+    42                                          ; ; exit(0)
+    43                                          ; push    dword 0      ; push the parameter for exit onto the stack
+    44                                          ; call    [exit]       ; call exit to terminate the program
+    45                                  
+    46                                          
+    47                                  ; bits 32
+    48                                  ; global start        
+    49                                  
+    50                                  ; extern exit, printf             
+    51                                  ; import exit msvcrt.dll    
+    52                                  ; import printf msvcrt.dll                          
+    53                                  
+    54                                  ; section data use32 class=data
+    55                                      ; S db 1,2,3,4
+    56                                      ; len equ $-S
+    57                                      ; D times len-1 db 0
+    58                                      ; format db "%d",13,10,0
+    59                                  
+    60                                  ; section code use32 class=code
+    61                                  ; start:
+    62                                      ; mov eax,len
+    63                                      ; dec eax
+    64                                      ; mov ecx,eax
+    65                                      ; jecxz final
+    66                                      ; mov esi,0
+    67                                      ; mov edi,0
+    68                                      ; repeta:
+    69                                          ; jecxz afisare
+    70                                          ; mov al,[S+esi]
+    71                                          ; inc esi
+    72                                          ; mov bl,[S+esi]
+    73                                          ; dec esi
+    74                                          ; mul bl
+    75                                                  
+    76                                          ; mov [D+edi],al  
+    77                                          
+    78                                          ; inc edi
+    79                                          ; inc esi
+    80                                          ; loop repeta
+    81                                              
+    82                                      ; mov ecx,edi
+    83                                      ; afisare:
+    84                                          ; mov ebx,ecx
+    85                                          ; jecxz final
+    86                                          ; mov esi,0
+    87                                          ; mov eax,[D+esi]
+    88                                          ; inc esi
+    89                                          ; push eax
+    90                                          ; push format
+    91                                          ; call [printf]
+    92                                          ; add esp,4*2
+    93                                          ; mov ecx,ebx
+    94                                          ; loop afisare
+    95                                      
+    96                                      ; final:  
+    97                                          
+    98                                      ; ; exit(0)
+    99                                      ; push    dword 0
+   100                                      ; call    [exit]
+   101                                  
+   102                                  
+   103                                  bits 32
+   104                                  global start        
+   105                                  
+   106                                  extern exit               
+   107                                  import exit msvcrt.dll    
+   108                                  
+   109                                  section data use32 class=data
+   110 00000000 020103FD                    A db 2,1,3,-3
+   111                                      lenA equ $-A
+   112 00000004 0405FB07                    B db 4,5,-5,7
+   113                                      lenB equ $-B
+   114                                      lenRez equ lenA+lenB
+   115 00000008 00<rept>                    R times lenRez db 0
+   116                                  
+   117                                  section code use32 class=code
+   118                                  start:
+   119                                      ; Initializăm registrele și variabilele
+   120 00000000 BE00000000                  mov esi, 0
+   121 00000005 BF00000000                  mov edi, 0
+   122                                  
+   123                                      ; Procesăm șirul A
+   124 0000000A B904000000                  mov ecx, lenA
+   125                                      repetaA:
+   126 0000000F 8A86[00000000]                  mov al, [A + esi]
+   127 00000015 A801                            test al, 1
+   128 00000017 740B                            jz nextA  ; Saltă la nextA dacă al nu este impar
+   129 00000019 3C00                            cmp al, 0
+   130 0000001B 7E07                            jle nextA  ; Saltă la nextA dacă al nu este pozitiv
+   131 0000001D 8887[08000000]                  mov [R + edi], al
+   132 00000023 47                              inc edi
+   133                                      nextA:
+   134 00000024 46                              inc esi
+   135 00000025 E2E8                            loop repetaA
+   136                                  
+   137                                      ; Procesăm șirul B
+   138 00000027 B904000000                  mov ecx, lenB
+   139 0000002C BE00000000                  mov esi, 0
+   140                                      repetaB:
+   141 00000031 8A86[04000000]                  mov al, [B + esi]
+   142 00000037 A801                            test al, 1
+   143 00000039 740B                            jz nextB  ; Saltă la nextB dacă al nu este impar
+   144 0000003B 3C00                            cmp al, 0
+   145 0000003D 7E07                            jle nextB  ; Saltă la nextB dacă al nu este pozitiv
+   146 0000003F 8887[08000000]                  mov [R + edi], al
+   147 00000045 47                              inc edi
+   148                                      nextB:
+   149 00000046 46                              inc esi
+   150 00000047 E2E8                            loop repetaB
+   151                                  
+   152                                      ; exit(0)
+   153 00000049 6A00                        push    dword 0      
+   154 0000004B FF15[00000000]              call    [exit]
+   155                                  
+   156                                  
