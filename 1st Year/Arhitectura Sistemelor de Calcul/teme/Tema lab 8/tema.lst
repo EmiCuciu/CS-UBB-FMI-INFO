@@ -1,0 +1,67 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit,scanf,printf  ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import scanf msvcrt.dll   ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import printf msvcrt.dll
+    11                                  
+    12                                  ; Sa se citeasca de la tastatura un numar in baza 10 si un numar in baza 16. Sa se afiseze in baza 10 numarul de biti 1 ai sumei celor ;doua numere citite. Exemplu:
+    13                                  ; a = 32 = 0010 0000b
+    14                                  ; b = 1Ah = 0001 1010b
+    15                                  ; 32 + 1Ah = 0011 1010b
+    16                                  ; Se va afisa pe ecran valoarea 4.
+    17                                  
+    18                                  ; our data is declared here (the variables needed by our program)
+    19                                  segment data use32 class=data
+    20 00000000 00000000                    a dd 0
+    21 00000004 00000000                    b dd 0
+    22 00000008 00000000                    cont dd 0
+    23 0000000C 2564000000000000            format_dec dd "%d",0
+    24 00000014 2578000000000000            format_hex dd "%x",0
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          
+    30                                          ;scanf("%d",&a)
+    31                                          
+    32 00000000 68[00000000]                    push dword a
+    33 00000005 68[0C000000]                    push dword format_dec
+    34 0000000A FF15[00000000]                  call [scanf]
+    35 00000010 83C408                          add ESP,4*2
+    36                                          
+    37                                          ;scanf("%x",&b)
+    38                                          
+    39 00000013 68[04000000]                    push dword b
+    40 00000018 68[14000000]                    push dword format_hex
+    41 0000001D FF15[00000000]                  call [scanf]
+    42 00000023 83C408                          add ESP,4*2
+    43                                          
+    44 00000026 A1[00000000]                    mov EAX,[a]
+    45 0000002B 0305[04000000]                  add EAX,[b]
+    46                                          
+    47 00000031 B900000000                      mov ECX,0 ;in ECX se numara bitii de 1
+    48                                          ;numaram biti de 1 ai rezultatului 
+    49                                          cnt:
+    50 00000036 C705[00000000]0100-                 mov dword[a],1  ;Se încarcă valoarea 1 în variabila a ca un dword
+    50 0000003E 0000               
+    51 00000040 2105[00000000]                      and [a],EAX     ;Păstrează doar biții care sunt setați la 1 în EAX
+    52 00000046 030D[00000000]                      add ECX,[a]     ;ECX acumulează numărul total de biți setați la 1 în registrul EAX
+    53 0000004C D1E8                                shr EAX,1       ;Este utilizată pentru a trece la următorul bit în cadrul ciclului
+    54 0000004E 75E6                            jnz cnt
+    55                                          
+    56 00000050 890D[08000000]                  mov [cont],ECX ;punem in cont ce vrem sa afisam
+    57                                          ;printf("%d",cont)
+    58                                          
+    59 00000056 FF35[08000000]                  push dword [cont]
+    60 0000005C 68[0C000000]                    push dword format_dec
+    61 00000061 FF15[00000000]                  call [printf]
+    62 00000067 83C408                          add ESP,4*2
+    63                                          
+    64 0000006A 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    65 0000006C FF15[00000000]                  call    [exit]       ; call exit to terminate the program
+    66                                  
