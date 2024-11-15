@@ -8,6 +8,8 @@
 
 #conditie solutie: x=(x1,x2,...,xk) este o soluție dacă este consistent si rezultatul expresiei este pozitiv, unde n este lungimea listei de numere
 
+# conditie
+
 
 def solutie(x, l):
     suma_totala = 0
