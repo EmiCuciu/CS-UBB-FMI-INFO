@@ -4,7 +4,7 @@ Scrieți o aplicație care gestionează cheltuielile de familie efectuate într-
 Pentru o cheltuială se vor retine ziua (din luna), suma, tipul cheltuielii (5 categorii:
 mâncare, întreținere, îmbrăcăminte, telefon, altele). Aplicația să permită
 efectuarea repetată a următoarelor operații:
-1. Adaugă cheltuială
+1. Adaugă cheltuiala
 • adaugă o nouă cheltuială (se specifică ziua, suma, tipul)
 • actualizează cheltuială (se specifică ziua, suma, tipul)
 2. Ștergere.
