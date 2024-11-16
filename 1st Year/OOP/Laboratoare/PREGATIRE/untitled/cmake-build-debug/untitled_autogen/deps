@@ -1,0 +1,190 @@
+untitled_autogen/timestamp: \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeRCInformation.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckIncludeFile.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckLibraryExists.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-C.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindPackageMessage.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindThreads.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/FindVulkan.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/GNUInstallDirs.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Internal/CheckFlagCommonConfig.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C-ABI.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-windres.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/CMakeLists.txt \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Domain.cpp \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Domain.h \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/GUI.cpp \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/GUI.h \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Repository.cpp \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Repository.h \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Service.cpp \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Service.h \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Validari.cpp \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/Validari.h \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/3.28.1/CMakeCCompiler.cmake \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/3.28.1/CMakeRCCompiler.cmake \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/3.28.1/CMakeSystem.cmake \
+	W:/Facultate\ S2/Programare\ orientata\ obiect/pregatire_simulare/untitled/main.cpp \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6Config.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6Targets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/Qt6VersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtFeature.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtFeatureCommon.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicTestHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Core/QtInstallPaths.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateAdditionalTargetInfo.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
+	W:/zchestii/qt/6.7.0/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessTargets.cmake \
+	C:/Program\ Files/JetBrains/CLion\ 2023.3.4/bin/cmake/win/x64/bin/cmake.exe
