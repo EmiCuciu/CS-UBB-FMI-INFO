@@ -1,9 +1,0 @@
-1, Ted, ursulet vorbitor, Comedie
-3, Anabel, Aventura romantica, Romantic
-4, Notebook, Aventura, Romantic
-5, Veronica, Desen, Poveste
-6, Casablanca, razboi, Drama
-8, Titanic, fain, Romantic
-9, Nasul ,mafia siciliana, Actiune
-10, Cainele, animale, Animale
-11, Mr. Bean, om, Comedie

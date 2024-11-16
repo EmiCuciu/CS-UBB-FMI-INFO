@@ -1,3 +1,0 @@
-W:/Facultate S2/Algoritmica grafurilor/teme/sapt1 ex 2/cmake-build-debug/CMakeFiles/sapt1_ex_2.dir
-W:/Facultate S2/Algoritmica grafurilor/teme/sapt1 ex 2/cmake-build-debug/CMakeFiles/edit_cache.dir
-W:/Facultate S2/Algoritmica grafurilor/teme/sapt1 ex 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
