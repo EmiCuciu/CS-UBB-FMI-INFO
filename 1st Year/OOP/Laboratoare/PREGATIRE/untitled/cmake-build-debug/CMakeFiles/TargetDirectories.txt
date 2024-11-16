@@ -1,0 +1,5 @@
+W:/Facultate S2/Programare orientata obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+W:/Facultate S2/Programare orientata obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+W:/Facultate S2/Programare orientata obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+W:/Facultate S2/Programare orientata obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/untitled_autogen_timestamp_deps.dir
+W:/Facultate S2/Programare orientata obiect/pregatire_simulare/untitled/cmake-build-debug/CMakeFiles/untitled_autogen.dir
