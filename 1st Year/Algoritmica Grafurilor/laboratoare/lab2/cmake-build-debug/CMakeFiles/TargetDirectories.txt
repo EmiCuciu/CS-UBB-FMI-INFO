@@ -1,0 +1,3 @@
+W:/Facultate S2/Algoritmica grafurilor/teme/lab2/cmake-build-debug/CMakeFiles/lab2.dir
+W:/Facultate S2/Algoritmica grafurilor/teme/lab2/cmake-build-debug/CMakeFiles/edit_cache.dir
+W:/Facultate S2/Algoritmica grafurilor/teme/lab2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
