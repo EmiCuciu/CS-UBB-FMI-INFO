@@ -1,0 +1,39 @@
+1.Găsiți toate numele de utilizator care s-au autentificat de la „economica” într-o duminică
+grep 'economica' last.fake | grep 'Sun' | awk '{print $1}' |sort | uniq
+
+
+2.Găsiți toți utilizatorii care s-au conectat la sistem după ora 23:00
+cat last.fake | awk '{if($7 >= 23 && $9 >= 23) print $1}'
+
+
+3.Afișați numele complete ale utilizatorilor care au un nume de utilizator care începe cu „m” și cu un ID de utilizator divizibil cu 7.
+grep "^m" passwd.fake | awk -F ":" '{if($3%7==0)print $5}'
+
+
+
+4.Afișează toate TTY-urile distincte utilizate de utilizatorul root.
+grep root ps.fake | awk '{print $6}' | grep '[^?]' | sort |uniq
+
+
+5.Găsiți numele complete ale tuturor utilizatorilor al căror nume de utilizator se termină cu 88
+grep -E 88 passwd.fake | awk -F ":" '{print $5}'
+
+#MAI BUNA
+awk -F : '$1 ~ /88$/ {print $5}' passwd.fake
+
+# CAND VREAU SA VAD DACA SUNT EGALE 2 CHESTII FOLOSESC ~
+
+6.Găsiți toți utilizatorii al căror ID de utilizator are trei cifre și începe cu 23
+ grep ':23[0-9]:' passwd.fake | awk -F : '{print $5}'
+
+7.Găsiți toate numele de utilizatori care încep cu „t” care s-au conectat la „pts/9”
+grep '^t.*pts/9' last.fake | awk '{print $1}'  |sort | uniq
+grep 'pts/9' last.fake | grep '^t' | awk '{print $1}' |sort
+
+8.grep '^r' ps.fake | awk '{print $1}' | sed 's/[aeiou]/&&/g' |sort|uniq 
+
+9. Display all the distinct lines left in /etc/passwd after deleting all letter and digits and spaces.
+sed 's/[[:alpha:][:digit:] ]//g' passwd.fake
+
+10.Display all the distinct lines left in /etc/passwd after deleting all characters except "r".
+sed 's/[^r]//g' passwd.fake | sort |uniq

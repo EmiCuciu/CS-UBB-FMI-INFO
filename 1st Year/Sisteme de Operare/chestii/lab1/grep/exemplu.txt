@@ -1,0 +1,4 @@
+Acesta este un exemplu, de text pentru a exersa utilizarea comenzii grep.
+În acest text există mai multe cuvinte, cum ar fi grep, exemplu, text, și altele.
+Voi folosi grep pentru a căuta cuvinte specifice în acest text.
+
