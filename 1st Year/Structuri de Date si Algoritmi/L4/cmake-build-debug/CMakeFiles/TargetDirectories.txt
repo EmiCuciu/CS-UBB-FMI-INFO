@@ -1,0 +1,3 @@
+W:/Facultate S2/Structuri de date si Algoritmi/L4/cmake-build-debug/CMakeFiles/L4.dir
+W:/Facultate S2/Structuri de date si Algoritmi/L4/cmake-build-debug/CMakeFiles/edit_cache.dir
+W:/Facultate S2/Structuri de date si Algoritmi/L4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
