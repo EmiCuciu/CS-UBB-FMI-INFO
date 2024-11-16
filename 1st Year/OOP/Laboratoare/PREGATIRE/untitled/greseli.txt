@@ -1,0 +1,7 @@
+1,e oo masa,e o masa,typo,minor
+2,e o casi,e o casa,typo,major
+3,e oo raas,e o rasa,typo,medium
+4,e oo garaaa,e o gara,typo,minor
+5,fraier,eu,grammar,minor
+11,lala,lalalla,incorrect tense,medium
+234234,dsfdfdf,dfgdfgf,grammar,medium

@@ -1,0 +1,1 @@
+lungime drum ---> -1

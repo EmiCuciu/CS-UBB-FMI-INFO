@@ -1,0 +1,4 @@
+scrie env in terminal ca sa aflii detalii de orice fel, si numele pc tau
+
+scrie echo $PATH
+

@@ -1,0 +1,11 @@
+BEGIN{
+print "incepem"
+}
+
+{
+for (i=1;i<=NF;i++)	print $i
+}
+
+END{
+print "sfarsit"
+}
