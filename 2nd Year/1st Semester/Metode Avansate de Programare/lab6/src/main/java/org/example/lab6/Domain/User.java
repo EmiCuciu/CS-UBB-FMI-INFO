@@ -1,29 +1,18 @@
 package org.example.lab6.Domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User extends Entity<Long> {
-    private Long id;
     private String firstName;
     private String lastName;
+    private List<User> friends;
+
+    public User(){}
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public User(long id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -42,31 +31,29 @@ public class User extends Entity<Long> {
         this.lastName = lastName;
     }
 
+    public List<User> getFriends() {
+        return friends;
+    }
 
     @Override
     public String toString() {
-        return "User{" +
-                "firstname='" + firstName + '\'' +
-                ", lastname='" + lastName + '\'' +
-                ", id=" + id +
+        return "Utilizator{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", friends=" + friends +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        User user = (User) o;
-        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+        if (!(o instanceof User)) return false;
+        User that = (User) o;
+        return getId().equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, getLastName());
-    }
-
-    public String getFullName() {
-        return firstName + " " + lastName;
+        return Objects.hash(getFirstName(), getLastName(), getFriends());
     }
 }
