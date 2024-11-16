@@ -1,0 +1,82 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, printf, scanf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import printf msvcrt.dll
+    11                                  import scanf msvcrt.dll
+    12                                                            
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  section data use32 class=data
+    15 00000000 00000000                    a dd 0
+    16 00000004 4E756D6172756C2068-         format db "Numarul hexa este a=", 0
+    16 0000000D 657861206573746520-
+    16 00000016 613D00             
+    17 00000019 257800                      format_scanf db "%x", 0
+    18 0000001C 4E756D6172756C2069-         format_print db "Numarul in baza 10 este %d", 13, 10, 0
+    18 00000025 6E2062617A61203130-
+    18 0000002E 20657374652025640D-
+    18 00000037 0A00               
+    19 00000039 4E756D6172756C2062-         format_binar_unsigned db "Numarul binar fara semn este: %d", 13, 10, 0
+    19 00000042 696E61722066617261-
+    19 0000004B 2073656D6E20657374-
+    19 00000054 653A2025640D0A00   
+    20 0000005C 4E756D6172756C2062-         format_binar_signed db "Numarul binar cu semn este: %d", 13, 10, 0
+    20 00000065 696E61722063752073-
+    20 0000006E 656D6E20657374653A-
+    20 00000077 2025640D0A00       
+    21                                          
+    22                                  ; our code starts here
+    23                                  section code use32 class=code
+    24                                      start:
+    25                                          ; Print prompt
+    26 00000000 68[04000000]                    push format
+    27 00000005 FF15[00000000]                  call [printf]
+    28 0000000B 83C404                          add esp, 4
+    29                                          
+    30                                          ; Read hex number from user
+    31 0000000E 68[00000000]                    push a
+    32 00000013 68[19000000]                    push format_scanf
+    33 00000018 FF15[00000000]                  call [scanf]
+    34 0000001E 83C408                          add esp, 4 * 2
+    35                                          
+    36                                          ; Display decimal number
+    37 00000021 FF35[00000000]                  push dword [a]
+    38 00000027 68[1C000000]                    push format_print
+    39 0000002C FF15[00000000]                  call [printf]
+    40 00000032 83C408                          add esp, 4 * 2
+    41                                          
+    42                                          ; Convert hex to unsigned decimal
+    43 00000035 B800000000                      mov eax, 0
+    44 0000003A 0FB61D[00000000]                movzx ebx, byte [a]
+    45 00000041 83EB30                          sub ebx, '0'
+    46 00000044 83FB09                          cmp ebx, 9
+    47 00000047 7603                            jbe is_digit
+    48 00000049 83EB07                          sub ebx, 'A' - '9' - 1
+    49                                  is_digit:
+    50 0000004C C1E004                          shl eax, 4 
+    51 0000004F 01D8                            add eax, ebx
+    52                                          
+    53                                          ; Display unsigned binary number
+    54 00000051 50                              push eax
+    55 00000052 68[39000000]                    push format_binar_unsigned
+    56 00000057 FF15[00000000]                  call [printf]
+    57 0000005D 83C408                          add esp, 4 * 2
+    58                                          
+    59                                          ; Convert hex to signed decimal (8-bit)
+    60 00000060 0FBE0D[00000000]                movsx ecx, byte [a]
+    61 00000067 83E930                          sub ecx, '0'
+    62                                          
+    63                                          ; Display signed binary number
+    64 0000006A 51                              push ecx
+    65 0000006B 68[5C000000]                    push format_binar_signed
+    66 00000070 FF15[00000000]                  call [printf]
+    67 00000076 83C408                          add esp, 4 * 2
+    68                                      
+    69                                          ; Exit program
+    70 00000079 6A00                            push dword 0      ; push the parameter for exit onto the stack
+    71 0000007B FF15[00000000]                  call [exit]       ; call exit to terminate the program

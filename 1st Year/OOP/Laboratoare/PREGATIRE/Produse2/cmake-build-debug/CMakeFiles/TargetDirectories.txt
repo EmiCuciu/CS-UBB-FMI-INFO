@@ -1,0 +1,5 @@
+W:/Facultate S2/Programare orientata obiect/pregatire examen/Produse2/cmake-build-debug/CMakeFiles/Produse2.dir
+W:/Facultate S2/Programare orientata obiect/pregatire examen/Produse2/cmake-build-debug/CMakeFiles/edit_cache.dir
+W:/Facultate S2/Programare orientata obiect/pregatire examen/Produse2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+W:/Facultate S2/Programare orientata obiect/pregatire examen/Produse2/cmake-build-debug/CMakeFiles/Produse2_autogen_timestamp_deps.dir
+W:/Facultate S2/Programare orientata obiect/pregatire examen/Produse2/cmake-build-debug/CMakeFiles/Produse2_autogen.dir
