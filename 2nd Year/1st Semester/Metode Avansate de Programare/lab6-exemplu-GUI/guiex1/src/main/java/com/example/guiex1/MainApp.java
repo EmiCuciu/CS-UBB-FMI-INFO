@@ -1,11 +1,11 @@
 package com.example.guiex1;
 
-import com.example.guiex1.controller.UtilizatorController;
+import com.example.guiex1.controller.Controller;
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.UtilizatorDbRepository;
-import com.example.guiex1.services.UtilizatorService;
+import com.example.guiex1.repository.dbrepo.Repository;
+import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class MainApp extends Application {
-    private UtilizatorService service;
-    private UtilizatorController controller;
+    private Service service;
+    private Controller controller;
     private Utilizator loggedInUser;
     private ObservableList<Utilizator> friendsObservableList;
     private Consumer<Void> refreshCallback;
@@ -33,9 +33,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        UtilizatorDbRepository repo = new UtilizatorDbRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
-        service = new UtilizatorService(repo);
-        controller = new UtilizatorController();
+        Repository repo = new Repository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
+        service = new Service(repo);
+        controller = new Controller();
         controller.setUtilizatorService(service);
 
         Label userIdLabel = new Label(loggedInUser.getId() + " " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName());

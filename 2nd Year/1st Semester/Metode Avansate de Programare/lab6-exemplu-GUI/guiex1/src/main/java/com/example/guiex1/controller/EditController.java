@@ -2,15 +2,13 @@ package com.example.guiex1.controller;
 
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.ValidationException;
-import com.example.guiex1.services.UtilizatorService;
+import com.example.guiex1.services.Service;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.time.LocalDateTime;
-
-public class EditUserController {
+public class EditController {
     @FXML
     private TextField textFieldId;
     @FXML
@@ -19,7 +17,7 @@ public class EditUserController {
     private TextField textFieldLastName;
 
 
-    private UtilizatorService service;
+    private Service service;
     Stage dialogStage;
     Utilizator utilizator;
 
@@ -27,7 +25,7 @@ public class EditUserController {
     private void initialize() {
     }
 
-    public void setService(UtilizatorService service,  Stage stage, Utilizator u) {
+    public void setService(Service service, Stage stage, Utilizator u) {
         this.service = service;
         this.dialogStage=stage;
         this.utilizator =u;
