@@ -2,14 +2,14 @@ package com.example.guiex1.controller;
 
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
-import com.example.guiex1.services.UtilizatorService;
+import com.example.guiex1.services.Service;
 
 import java.util.Set;
 
-public class UtilizatorController {
-    private UtilizatorService service;
+public class Controller {
+    private Service service;
 
-    public void setUtilizatorService(UtilizatorService service) {
+    public void setUtilizatorService(Service service) {
         this.service = service;
     }
 
