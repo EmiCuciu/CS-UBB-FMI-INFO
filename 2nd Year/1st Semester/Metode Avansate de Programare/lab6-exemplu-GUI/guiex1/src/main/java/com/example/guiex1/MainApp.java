@@ -4,7 +4,7 @@ import com.example.guiex1.controller.Controller;
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.Repository;
+import com.example.guiex1.repository.dbrepo.DBRepository;
 import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -33,7 +33,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Repository repo = new Repository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
+        DBRepository repo = new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
         service = new Service(repo);
         controller = new Controller();
         controller.setUtilizatorService(service);
