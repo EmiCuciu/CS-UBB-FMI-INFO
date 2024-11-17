@@ -1,10 +1,10 @@
 package com.example.guiex1;
 
-import com.example.guiex1.controller.UtilizatorController;
+import com.example.guiex1.controller.Controller;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.UtilizatorDbRepository;
-import com.example.guiex1.services.UtilizatorService;
+import com.example.guiex1.repository.dbrepo.Repository;
+import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,13 +12,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LoginApp extends Application {
-    private UtilizatorService service;
-    private UtilizatorController controller;
+    private Service service;
+    private Controller controller;
 
     @Override
     public void start(Stage primaryStage) {
-        service = new UtilizatorService(new UtilizatorDbRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
-        controller = new UtilizatorController();
+        service = new Service(new Repository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
+        controller = new Controller();
         controller.setUtilizatorService(service);
 
         Label usernameLabel = new Label("Username:");
