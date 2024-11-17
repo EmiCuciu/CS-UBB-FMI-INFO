@@ -4,6 +4,7 @@ import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Tuple;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
+import com.example.guiex1.repository.Repository;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -11,13 +12,13 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class Repository implements com.example.guiex1.repository.Repository<Long, Utilizator> {
+public class DBRepository implements Repository<Long, Utilizator> {
     private String url;
     private String username;
     private String password;
     private UtilizatorValidator validator;
 
-    public Repository(String url, String username, String password, UtilizatorValidator validator) {
+    public DBRepository(String url, String username, String password, UtilizatorValidator validator) {
         this.url = url;
         this.username = username;
         this.password = password;
