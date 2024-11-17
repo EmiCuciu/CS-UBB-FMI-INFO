@@ -2,7 +2,7 @@ package com.example.guiex1.services;
 
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
-import com.example.guiex1.repository.dbrepo.Repository;
+import com.example.guiex1.repository.dbrepo.DBRepository;
 import com.example.guiex1.utils.events.ChangeEventType;
 import com.example.guiex1.utils.events.UtilizatorEntityChangeEvent;
 import com.example.guiex1.utils.observer.Observable;
@@ -70,34 +70,34 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
     }
 
     public void addFriend(Long userId, Long friendId) {
-        ((Repository) repo).addFriendRequest(userId, friendId);
+        ((DBRepository) repo).addFriendRequest(userId, friendId);
     }
 
     public Set<Utilizator> findFriends(Long userId) {
-        return ((Repository) repo).findFriends(userId);
+        return ((DBRepository) repo).findFriends(userId);
     }
 
     public void addFriendRequest(Long userId, Long friendId) {
-        ((Repository) repo).addFriendRequest(userId, friendId);
+        ((DBRepository) repo).addFriendRequest(userId, friendId);
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {
-        ((Repository) repo).acceptFriendRequest(userId, friendId);
+        ((DBRepository) repo).acceptFriendRequest(userId, friendId);
     }
 
     public void removeFriend(Long userId, Long friendId) {
-        ((Repository) repo).removeFriend(userId, friendId);
+        ((DBRepository) repo).removeFriend(userId, friendId);
     }
 
     public Set<Prietenie> findFriendRequests(Long userId) {
-        return ((Repository) repo).findFriendRequests(userId);
+        return ((DBRepository) repo).findFriendRequests(userId);
     }
 
     public Optional<Utilizator> findByUsernameAndPassword(String username, String password) {
-        return ((Repository) repo).findByUsernameAndPassword(username, password);
+        return ((DBRepository) repo).findByUsernameAndPassword(username, password);
     }
 
     public void saveUser(Utilizator user) {
-        ((Repository) repo).saveUser(user);
+        ((DBRepository) repo).saveUser(user);
     }
 }
