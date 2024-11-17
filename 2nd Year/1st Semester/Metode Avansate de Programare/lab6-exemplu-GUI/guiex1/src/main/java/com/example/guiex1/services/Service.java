@@ -2,8 +2,7 @@ package com.example.guiex1.services;
 
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
-import com.example.guiex1.repository.Repository;
-import com.example.guiex1.repository.dbrepo.UtilizatorDbRepository;
+import com.example.guiex1.repository.dbrepo.Repository;
 import com.example.guiex1.utils.events.ChangeEventType;
 import com.example.guiex1.utils.events.UtilizatorEntityChangeEvent;
 import com.example.guiex1.utils.observer.Observable;
@@ -14,11 +13,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class UtilizatorService implements Observable<UtilizatorEntityChangeEvent> {
-    private Repository<Long, Utilizator> repo;
+public class Service implements Observable<UtilizatorEntityChangeEvent> {
+    private com.example.guiex1.repository.Repository<Long, Utilizator> repo;
     private List<Observer<UtilizatorEntityChangeEvent>> observers = new ArrayList<>();
 
-    public UtilizatorService(Repository<Long, Utilizator> repo) {
+    public Service(com.example.guiex1.repository.Repository<Long, Utilizator> repo) {
         this.repo = repo;
     }
 
@@ -71,34 +70,34 @@ public class UtilizatorService implements Observable<UtilizatorEntityChangeEvent
     }
 
     public void addFriend(Long userId, Long friendId) {
-        ((UtilizatorDbRepository) repo).addFriendRequest(userId, friendId);
+        ((Repository) repo).addFriendRequest(userId, friendId);
     }
 
     public Set<Utilizator> findFriends(Long userId) {
-        return ((UtilizatorDbRepository) repo).findFriends(userId);
+        return ((Repository) repo).findFriends(userId);
     }
 
     public void addFriendRequest(Long userId, Long friendId) {
-        ((UtilizatorDbRepository) repo).addFriendRequest(userId, friendId);
+        ((Repository) repo).addFriendRequest(userId, friendId);
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {
-        ((UtilizatorDbRepository) repo).acceptFriendRequest(userId, friendId);
+        ((Repository) repo).acceptFriendRequest(userId, friendId);
     }
 
     public void removeFriend(Long userId, Long friendId) {
-        ((UtilizatorDbRepository) repo).removeFriend(userId, friendId);
+        ((Repository) repo).removeFriend(userId, friendId);
     }
 
     public Set<Prietenie> findFriendRequests(Long userId) {
-        return ((UtilizatorDbRepository) repo).findFriendRequests(userId);
+        return ((Repository) repo).findFriendRequests(userId);
     }
 
     public Optional<Utilizator> findByUsernameAndPassword(String username, String password) {
-        return ((UtilizatorDbRepository) repo).findByUsernameAndPassword(username, password);
+        return ((Repository) repo).findByUsernameAndPassword(username, password);
     }
 
     public void saveUser(Utilizator user) {
-        ((UtilizatorDbRepository) repo).saveUser(user);
+        ((Repository) repo).saveUser(user);
     }
 }
