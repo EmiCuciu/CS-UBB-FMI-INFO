@@ -3,7 +3,7 @@ package com.example.guiex1;
 import com.example.guiex1.controller.Controller;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.Repository;
+import com.example.guiex1.repository.dbrepo.DBRepository;
 import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ public class LoginApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        service = new Service(new Repository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
+        service = new Service(new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
         controller = new Controller();
         controller.setUtilizatorService(service);
 
