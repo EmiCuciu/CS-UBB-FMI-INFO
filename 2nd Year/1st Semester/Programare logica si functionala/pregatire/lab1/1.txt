@@ -1,0 +1,26 @@
+a. Sa se scrie un predicat care intoarce diferenta a doua multimi.
+b. Sa se scrie un predicat care adauga intr-o lista dupa fiecare element par
+        valoarea 1.
+
+
+a.  member(e:element, l:lista)
+(i,i) model de flux
+
+member(e, l1 l2 .. ln) = (False , n=0)
+                         (True, e = l1)
+                         (member(e, l2 .. ln), altfel)  
+
+diferenta(A:lista,B:lista,Rez:lista rezultat)
+(i,i,o) model de flux
+
+diferenta([a1 a2 .. an],[b1 b2 .. bm]) =    ([], daca n = 0)
+                                            (a1(+)diferenta([a2..an],[b1..bm]), daca a1|>B)
+                                            (diferenta([a2..an],[b1..bm]), altfel)
+
+
+b. adauga_1(l:lista,rez:lista)
+(i,o) model de flux
+
+adauga_1([l1 l2 .. ln]) =   ([], daca n=0)
+                            (l1 (+) 1 (+) adauga_1(l2..ln), daca l1%2==0)
+                            (l1 (+) adauga_1(l2..ln), altfel)
