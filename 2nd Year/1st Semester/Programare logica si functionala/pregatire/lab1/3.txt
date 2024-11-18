@@ -1,0 +1,30 @@
+a.Sa se scrie un predicat care transforma o lista intr-o multime, in
+ ordinea primei aparitii. Exemplu: [1,2,3,1,2] e transformat in [1,2,3].
+
+b. Sa se scrie o functie care descompune o lista de numere intr-o lista de
+ forma [ lista-de-numere-pare lista-de-numere-impare] (deci lista cu doua
+ elemente care sunt liste de intregi), si va intoarce si numarul
+ elementelor pare si impare.
+
+
+Model matematic:
+     transform_to_set(l1...ln) = [], daca n = 0
+                               = l1 + transform_to_set(l2...ln), daca l1 nu apartine lui l2...ln
+                               = transform_to_set(l2...ln), daca l1 apartine lui l2...ln
+
+Example 
+transform_to_set([1, 2, 2, 3, 4, 4, 5], Set).
+Set = [1, 2, 3, 4, 5].
+
+
+Example for decompose_list
+decompose_list([1, 2, 3, 4, 5, 6], Result, EvenCount, OddCount).
+Result = [[6, 4, 2], [5, 3, 1]],
+EvenCount = 3,
+OddCount = 3.
+
+   % decompose_list(l1...ln) = ([even_numbers_list], [odd_numbers_list], even_count, odd_count)
+    % unde even_numbers_list este lista numerelor pare din l1...ln
+    % odd_numbers_list este lista numerelor impare din l1...ln
+    % even_count este numarul de elemente pare din l1...ln
+    % odd_count este numarul de elemente impare din l1...ln

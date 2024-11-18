@@ -1,0 +1,11 @@
+a. Sa se scrie un predicat care determina cel mai mic multiplu comun al
+ elementelor unei liste formate din numere intregi.
+
+b. Sa se scrie un predicat care adauga dupa 1-ul, al 2-lea, al 4-lea, al
+ 8-lea ...element al unei liste o valoare v data.
+
+
+ a.
+    cmmdc(A,B) =    (A, B=0)
+                    (cmmdc(B,A%B),altfel)
+(i,i,o)
