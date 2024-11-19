@@ -1,0 +1,19 @@
+Sa se scrie un predicat care transforma o lista intr-o multime,in ordinea primei aparitii,
+considerand doar elementele care sunt mai mari decat o valoare X trnsmisa ca parametru.
+
+
+transforma_multime(L:lista, E:integer, Rez:lista rezultat)
+(i,i,o)
+
+Model matematic
+transforma_multime([l1 l2 .. ln],X) =   ((([], n=0)
+                                        (l1 (+) transforma_multime([l2..ln],X), l1>X)
+                                        (transforma_multime([l2..ln],X), altfel)
+))
+
+Exemple:
+transforma_multime([11,2,13,11,7],10,Rez).
+Rez=[11, 13]
+
+transforma_multime([1,2,3,1,2,3,4,5],2,Rez).
+Rez=[3, 4, 5]
