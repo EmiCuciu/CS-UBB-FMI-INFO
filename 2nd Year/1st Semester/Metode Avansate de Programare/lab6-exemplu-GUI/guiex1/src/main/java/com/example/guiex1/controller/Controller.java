@@ -9,7 +9,7 @@ import java.util.Set;
 public class Controller {
     private Service service;
 
-    public void setUtilizatorService(Service service) {
+    public void setService(Service service) {
         this.service = service;
     }
 
