@@ -19,7 +19,7 @@ public class LoginApp extends Application {
     public void start(Stage primaryStage) {
         service = new Service(new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
         controller = new Controller();
-        controller.setUtilizatorService(service);
+        controller.setService(service);
 
         Label usernameLabel = new Label("Username:");
         TextField usernameField = new TextField();
