@@ -36,7 +36,7 @@ public class MainApp extends Application {
         DBRepository repo = new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
         service = new Service(repo);
         controller = new Controller();
-        controller.setUtilizatorService(service);
+        controller.setService(service);
 
         Label userIdLabel = new Label(loggedInUser.getId() + " " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
 
@@ -170,6 +170,7 @@ public class MainApp extends Application {
         Label passwordLabel = new Label("Password:");
         PasswordField passwordField = new PasswordField();
         Button loginButton = new Button("Login");
+        Button signupButton = new Button("Sign Up");
 
         loginButton.setOnAction(e -> {
             String username = usernameField.getText();
@@ -184,7 +185,41 @@ public class MainApp extends Application {
             }
         });
 
-        vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton);
+        signupButton.setOnAction(e -> showSignupDialog());
+
+        vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton, signupButton);
+        Scene scene = new Scene(vbox);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void showSignupDialog() {
+        Stage stage = new Stage();
+        VBox vbox = new VBox();
+
+        Label usernameLabel = new Label("Username:");
+        TextField usernameField = new TextField();
+        Label passwordLabel = new Label("Password:");
+        PasswordField passwordField = new PasswordField();
+        Label firstNameLabel = new Label("First Name:");
+        TextField firstNameField = new TextField();
+        Label lastNameLabel = new Label("Last Name:");
+        TextField lastNameField = new TextField();
+        Button signupButton = new Button("Sign Up");
+
+        signupButton.setOnAction(e -> {
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            String firstName = firstNameField.getText();
+            String lastName = lastNameField.getText();
+            Utilizator newUser = new Utilizator(firstName, lastName);
+            newUser.setUsername(username);
+            newUser.setPassword(password);
+            service.saveUser(newUser);
+            stage.close();
+        });
+
+        vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, firstNameLabel, firstNameField, lastNameLabel, lastNameField, signupButton);
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         stage.show();
