@@ -1,10 +1,8 @@
 package com.example.guiex1;
 
 import com.example.guiex1.domain.Utilizator;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,8 +25,8 @@ public class HelloController {
     public void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
         btnHello.setText("alt text");
-        List<Utilizator> list = Arrays.asList(new Utilizator("dan","ana"));
-        ObservableList<Utilizator> observableList= FXCollections.observableList(list);
+        List<Utilizator> list = Arrays.asList(new Utilizator("dan", "ana"));
+        ObservableList<Utilizator> observableList = FXCollections.observableList(list);
         listView.setItems(observableList);
     }
 }

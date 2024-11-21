@@ -2,9 +2,11 @@ package com.example.guiex1;
 
 import com.example.guiex1.controller.Controller;
 import com.example.guiex1.domain.Prietenie;
+import com.example.guiex1.domain.PrietenieValidator;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.DBRepository;
+import com.example.guiex1.repository.dbrepo.PrietenieDBRepository;
+import com.example.guiex1.repository.dbrepo.UserDBRepository;
 import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -18,14 +20,12 @@ import javafx.stage.Stage;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class MainApp extends Application {
     private Service service;
     private Controller controller;
     private Utilizator loggedInUser;
     private ObservableList<Utilizator> friendsObservableList;
-    private Consumer<Void> refreshCallback;
 
     public void setUser(Utilizator user) {
         this.loggedInUser = user;
@@ -33,8 +33,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        DBRepository repo = new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator());
-        service = new Service(repo);
+        UtilizatorValidator utilizatorValidator = new UtilizatorValidator();
+        PrietenieValidator prietenieValidator = new PrietenieValidator();
+        service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator));
         controller = new Controller();
         controller.setService(service);
 
@@ -45,7 +46,11 @@ public class MainApp extends Application {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         TableColumn<Utilizator, String> lastNameCol = new TableColumn<>("Last Name");
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+
         userTable.getColumns().addAll(firstNameCol, lastNameCol);
+
+
 
         friendsObservableList = FXCollections.observableArrayList();
         userTable.setItems(friendsObservableList);
@@ -60,9 +65,6 @@ public class MainApp extends Application {
             if (selectedUser != null) {
                 controller.removeFriend(loggedInUser.getId(), selectedUser.getId());
                 refreshFriendsList();
-                if (refreshCallback != null) {
-                    refreshCallback.accept(null);
-                }
             }
         });
 
@@ -149,9 +151,6 @@ public class MainApp extends Application {
                 controller.acceptFriendRequest(user.getId(), selectedRequest.getId().getE1());
                 requestsTable.getItems().remove(selectedRequest);
                 refreshFriendsList();
-                if (refreshCallback != null) {
-                    refreshCallback.accept(null);
-                }
             }
         });
 
@@ -253,9 +252,6 @@ public class MainApp extends Application {
             if (selectedUser != null) {
                 controller.removeFriend(user.getId(), selectedUser.getId());
                 refreshFriendsListForUser(user, friendsObservableList);
-                if (refreshCallback != null) {
-                    refreshCallback.accept(null);
-                }
             }
         });
 
@@ -273,16 +269,10 @@ public class MainApp extends Application {
         newStage.setScene(scene);
         newStage.show();
 
-        // Register the refresh callback
-        this.refreshCallback = v -> refreshFriendsListForUser(user, friendsObservableList);
     }
 
     private void refreshFriendsListForUser(Utilizator user, ObservableList<Utilizator> friendsObservableList) {
         List<Utilizator> friendsList = new ArrayList<>(controller.findFriends(user.getId()));
         friendsObservableList.setAll(friendsList);
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
