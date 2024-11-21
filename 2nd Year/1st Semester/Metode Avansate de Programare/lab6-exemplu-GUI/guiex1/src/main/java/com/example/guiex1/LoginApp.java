@@ -1,13 +1,18 @@
 package com.example.guiex1;
 
 import com.example.guiex1.controller.Controller;
+import com.example.guiex1.domain.PrietenieValidator;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.domain.UtilizatorValidator;
-import com.example.guiex1.repository.dbrepo.DBRepository;
+import com.example.guiex1.repository.dbrepo.PrietenieDBRepository;
+import com.example.guiex1.repository.dbrepo.UserDBRepository;
 import com.example.guiex1.services.Service;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -17,7 +22,9 @@ public class LoginApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        service = new Service(new DBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", new UtilizatorValidator()));
+        UtilizatorValidator utilizatorValidator = new UtilizatorValidator();
+        PrietenieValidator prietenieValidator = new PrietenieValidator();
+        service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator));
         controller = new Controller();
         controller.setService(service);
 

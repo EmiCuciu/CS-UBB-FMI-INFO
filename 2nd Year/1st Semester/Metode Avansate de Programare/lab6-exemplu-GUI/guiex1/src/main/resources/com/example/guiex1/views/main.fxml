@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.guiex1.controller.MainController">
-    <Label fx:id="userIdLabel"/>
-    <TableView fx:id="userTable">
-        <columns>
-            <TableColumn text="First Name" fx:id="firstNameCol"/>
-            <TableColumn text="Last Name" fx:id="lastNameCol"/>
-        </columns>
-    </TableView>
-    <Button text="Add Friend" onAction="#handleAddFriend"/>
-    <Button text="Remove Friend" onAction="#handleRemoveFriend"/>
-    <Button text="Friend Requests" onAction="#handleFriendRequests"/>
-    <Button text="Refresh" onAction="#handleRefresh"/>
-    <Button text="Login as Another User" onAction="#handleLoginAsAnotherUser"/>
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guiex1.controller.MainController">
+    <children>
+        <Label fx:id="userIdLabel" text="User ID" />
+        <TableView fx:id="userTable">
+            <columns>
+                <TableColumn fx:id="firstNameCol" text="First Name" />
+                <TableColumn fx:id="lastNameCol" text="Last Name" />
+            </columns>
+        </TableView>
+        <Button text="Add Friend" onAction="#handleAddFriend" />
+        <Button text="Remove Friend" onAction="#handleRemoveFriend" />
+        <Button text="Friend Requests" onAction="#handleFriendRequests" />
+        <Button text="Refresh" onAction="#handleRefresh" />
+        <Button text="Login as Another User" onAction="#handleLoginAsAnotherUser" />
+    </children>
 </VBox>

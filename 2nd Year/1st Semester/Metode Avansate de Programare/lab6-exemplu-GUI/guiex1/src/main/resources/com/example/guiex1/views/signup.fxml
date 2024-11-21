@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guiex1.controller.SignupController">
+   <children>
+      <Label text="Username:" />
+      <TextField fx:id="usernameField" />
+      <Label text="Password:" />
+      <PasswordField fx:id="passwordField" />
+      <Label text="First Name:" />
+      <TextField fx:id="firstnameField" />
+      <Label text="Last Name:" />
+      <TextField fx:id="lastnameField" />
+      <Button text="Sign Up" onAction="#handleSignUpSubmit" />
+   </children>
+</VBox>
