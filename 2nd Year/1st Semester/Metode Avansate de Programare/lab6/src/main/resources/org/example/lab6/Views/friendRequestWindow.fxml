@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/mainWindow.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab6.Controllers.FriendRequestsController">
+    <!-- Horizontally Centered VBox -->
+    <VBox fx:id="vBox" spacing="15" styleClass="login_param"
+          AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0"
+          AnchorPane.topAnchor="50.0">
+        <children>
+            <Label text="Requests" styleClass="header" />
+            <ListView fx:id="listViewRequests" styleClass="styled-table" />
+            <ButtonBar styleClass="action-section">
+                <buttons>
+                    <Button fx:id="buttonAcceptRequest" onAction="#handleButtonAcceptRequestClicked" styleClass="login-button" text="Accept" />
+                    <Button fx:id="buttonDeleteRequest" onAction="#handleButtonDeleteRequestClicked" styleClass="logout-button" text="Delete" />
+                    <Button onAction="#backToMain" mnemonicParsing="false" styleClass="login-button" text="Back" />
+                </buttons>
+            </ButtonBar>
+        </children>
+    </VBox>
+</AnchorPane>
