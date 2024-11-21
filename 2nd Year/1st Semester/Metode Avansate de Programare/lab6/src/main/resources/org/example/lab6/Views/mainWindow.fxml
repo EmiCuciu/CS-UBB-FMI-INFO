@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/mainWindow.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab6.Controllers.MainWindowController">
+    <!-- Logout Button -->
+    <Button onAction="#logout" styleClass="logout-button" text="Logout" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+
+    <!-- Horizontally Centered SplitPane -->
+    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="800.0" prefWidth="850.0"
+               AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="50.0"
+               AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+
+        <!-- Top Pane -->
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0" styleClass="table-section">
+            <!-- Title Label -->
+            <Label styleClass="header" text="Friends:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+
+            <!-- TableView -->
+            <TableView fx:id="tableView" styleClass="styled-table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="60.0">
+                <columns>
+                    <TableColumn fx:id="tableColumnName" prefWidth="350.0" styleClass="table-column" text="Name" />
+                </columns>
+            </TableView>
+        </AnchorPane>
+
+        <!-- Bottom Pane -->
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="850.0" styleClass="action-section">
+            <VBox spacing="10">
+                <children>
+                    <HBox spacing="10" alignment="CENTER">
+                        <children>
+                            <!-- Search Bar -->
+                            <TextField prefWidth="100.0" fx:id="searchBar" promptText="Search..." styleClass="input-field" />
+
+                            <!-- Add Button -->
+                            <Button onAction="#addFriend" prefWidth="100.0" styleClass="login-button" text="Add" />
+
+                            <!-- Delete Button -->
+                            <Button onAction="#removeFriend" prefWidth="100.0" styleClass="login-button" text="Delete" />
+                            <Button prefWidth="100.0" onAction="#toRequests" mnemonicParsing="false" text="Requests" styleClass="login-button" />
+                        </children>
+                    </HBox>
+                </children>
+
+            </VBox>
+
+        </AnchorPane>
+
+    </SplitPane>
+</AnchorPane>

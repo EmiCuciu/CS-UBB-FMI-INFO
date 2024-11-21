@@ -1,0 +1,106 @@
+/* Table Section */
+.table-section {
+    -fx-background-color: #f7f7f7;
+}
+
+/* Styled Table */
+.styled-table {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-background-color: #ffffff;
+}
+
+/* Table Column */
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* Action Section */
+.action-section {
+    -fx-background-color: #f7f7f7;
+    -fx-padding: 10px;
+}
+
+/* Logout Button */
+.logout-button {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #d43f3a;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c9302c;
+}
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+/* Center the VBox vertically and horizontally */
+.login_param {
+    -fx-background-color: #f7f7f7;
+
+    -fx-alignment: center;
+    -fx-pref-width: 100%;
+    -fx-max-width: 250px;  /* Set max width for responsiveness */
+    -fx-spacing: 20px;
+}
+
+/* Header */
+.header {
+    -fx-font-size: 24px;
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+/* Label for the input fields */
+.input-label {
+    -fx-font-size: 13;
+    -fx-text-fill: #555;
+}
+
+/* Input fields styling */
+.input-field {
+    -fx-max-width: 250px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-font-size: 12px;
+}
+
+/* Focused state for input fields */
+.input-field:focused {
+    -fx-border-color: #4CAF50;
+}
+
+/* Login button styling */
+.login-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-pref-width: 100%;
+    -fx-font-size: 13px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #4CAF50;
+    -fx-min-width: 250px;
+
+}
+
+/* Hover state for the button */
+.login-button:hover {
+    -fx-background-color: #45a049;
+}
