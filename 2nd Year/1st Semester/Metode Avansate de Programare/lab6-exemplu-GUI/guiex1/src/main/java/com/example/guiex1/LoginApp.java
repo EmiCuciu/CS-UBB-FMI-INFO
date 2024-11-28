@@ -24,7 +24,8 @@ public class LoginApp extends Application {
     public void start(Stage primaryStage) {
         UtilizatorValidator utilizatorValidator = new UtilizatorValidator();
         PrietenieValidator prietenieValidator = new PrietenieValidator();
-        service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator));
+        service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator),
+                new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator));
         controller = new Controller();
         controller.setService(service);
 

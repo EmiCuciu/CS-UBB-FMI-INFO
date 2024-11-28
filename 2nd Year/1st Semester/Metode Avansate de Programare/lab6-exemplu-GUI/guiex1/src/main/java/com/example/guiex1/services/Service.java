@@ -108,4 +108,14 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
     public void saveUser(Utilizator user) {
         userDBRepository.save(user);
     }
+
+    public List<Utilizator> findAllUsers() {
+        return (List<Utilizator>) userDBRepository.findAll();
+    }
+
+    public Optional<Utilizator> findUserById(Long id) {
+        return userDBRepository.findOne(id);
+    }
+
+
 }

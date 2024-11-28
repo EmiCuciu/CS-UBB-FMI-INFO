@@ -68,6 +68,21 @@ public class PrietenieDBRepository extends AbstractDBRepository<Prietenie> {
     }
 
     public void addFriendRequest(Long userId, Long friendId) {
+        String checkSql = "SELECT COUNT(*) FROM friendships WHERE user_id = ? AND friend_id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement checkPs = connection.prepareStatement(checkSql)) {
+            checkPs.setLong(1, userId);
+            checkPs.setLong(2, friendId);
+            try (ResultSet resultSet = checkPs.executeQuery()) {
+                if (resultSet.next() && resultSet.getInt(1) > 0) {
+                    System.out.println("Friend request already exists.");
+                    return;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         String sql = "INSERT INTO friendships (user_id, friend_id, status, date) VALUES (?, ?, 'pending', ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {

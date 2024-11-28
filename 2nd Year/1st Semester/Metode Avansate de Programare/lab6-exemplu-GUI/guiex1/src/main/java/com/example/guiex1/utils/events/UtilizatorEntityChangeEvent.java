@@ -10,6 +10,7 @@ public class UtilizatorEntityChangeEvent implements Event {
     public UtilizatorEntityChangeEvent(ChangeEventType type, Utilizator data) {
         this.type = type;
         this.data = data;
+        
     }
     public UtilizatorEntityChangeEvent(ChangeEventType type, Utilizator data, Utilizator oldData) {
         this.type = type;
