@@ -26,7 +26,9 @@ public class LoginController {
     private Service service;
     private Stage primaryStage;
 
+
     public void setService(Service service) {
+        System.out.println("Setting service in LoginController");
         this.service = service;
     }
 
@@ -64,8 +66,9 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setScene(new Scene(loader.load()));
             MainController mainController = loader.getController();
-            mainController.setUser(user);
             mainController.setService(service);
+            mainController.setLoggedinUser(user);
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
