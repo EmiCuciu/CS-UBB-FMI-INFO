@@ -3,6 +3,7 @@ package com.example.guiex1.controller;
 import com.example.guiex1.domain.Prietenie;
 import com.example.guiex1.domain.Utilizator;
 import com.example.guiex1.services.Service;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,21 +41,21 @@ public class MainController {
     private Button loginAsAnotherUserButton;
 
     private Service service;
-    private Utilizator user;
+    private Utilizator loggedinUser;
     private ObservableList<Utilizator> friendsObservableList;
 
     public void setService(Service service) {
         this.service = service;
     }
 
-    public void setUser(Utilizator user) {
-        this.user = user;
-        userIdLabel.setText("User ID: " + user.getId());
+    public void setLoggedinUser(Utilizator loggedinUser) {
+        this.loggedinUser = loggedinUser;
+        userIdLabel.setText("User ID: " + loggedinUser.getId());
         loadUserData();
     }
 
     private void loadUserData() {
-        friendsObservableList = FXCollections.observableArrayList(service.findFriends(user.getId()));
+        friendsObservableList = FXCollections.observableArrayList(service.findFriends(loggedinUser.getId()));
         userTable.setItems(friendsObservableList);
     }
 
@@ -67,7 +68,7 @@ public class MainController {
     private void handleRemoveFriend() {
         Utilizator selectedUser = userTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            service.removeFriend(user.getId(), selectedUser.getId());
+            service.removeFriend(loggedinUser.getId(), selectedUser.getId());
             refreshFriendsList();
         }
     }
@@ -88,7 +89,7 @@ public class MainController {
     }
 
     private void refreshFriendsList() {
-        friendsObservableList.setAll(service.findFriends(user.getId()));
+        friendsObservableList.setAll(service.findFriends(loggedinUser.getId()));
     }
 
     private void showAddFriendDialog() {
@@ -105,8 +106,8 @@ public class MainController {
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         allUsersTable.getColumns().addAll(firstNameCol, lastNameCol);
 
-        List<Utilizator> allUsersList = new ArrayList<>(service.findFriends(user.getId()));
-        allUsersList.removeAll(service.findFriends(user.getId()));
+        List<Utilizator> allUsersList = new ArrayList<>(service.findAllUsers());
+        allUsersList.removeAll(service.findFriends(loggedinUser.getId()));
         ObservableList<Utilizator> allUsersObservableList = FXCollections.observableArrayList(allUsersList);
         allUsersTable.setItems(allUsersObservableList);
 
@@ -122,12 +123,12 @@ public class MainController {
         addButton.setOnAction(e -> {
             Utilizator selectedUser = allUsersTable.getSelectionModel().getSelectedItem();
             if (selectedUser != null) {
-                service.addFriendRequest(user.getId(), selectedUser.getId());
+                service.addFriendRequest(loggedinUser.getId(), selectedUser.getId());
                 allUsersTable.getItems().remove(selectedUser);
             }
         });
 
-        vbox.getChildren().addAll(allUsersTable, searchField, addButton);
+        vbox.getChildren().addAll(searchField, allUsersTable, addButton);
         stage.setScene(new Scene(vbox));
         stage.show();
     }
@@ -135,13 +136,24 @@ public class MainController {
     private void showFriendRequests() {
         Stage stage = new Stage();
         TableView<Prietenie> requestsTable = new TableView<>();
+
+        TableColumn<Prietenie, String> userCol = new TableColumn<>("User");
+        userCol.setCellValueFactory(cellData -> new SimpleStringProperty(
+                service.findUserById(cellData.getValue().getId().getE1()).toString()));
+
+        TableColumn<Prietenie, String> friendCol = new TableColumn<>("Friend");
+        friendCol.setCellValueFactory(cellData -> new SimpleStringProperty(
+                service.findUserById(cellData.getValue().getId().getE2()).toString()));
+
         TableColumn<Prietenie, String> statusCol = new TableColumn<>("Status");
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+
         TableColumn<Prietenie, LocalDateTime> dateCol = new TableColumn<>("Date");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        requestsTable.getColumns().addAll(statusCol, dateCol);
 
-        List<Prietenie> requestsList = new ArrayList<>(service.findFriendRequests(user.getId()));
+        requestsTable.getColumns().addAll(userCol, friendCol, statusCol, dateCol);
+
+        List<Prietenie> requestsList = new ArrayList<>(service.findFriendRequests(loggedinUser.getId()));
         ObservableList<Prietenie> requestsObservableList = FXCollections.observableArrayList(requestsList);
         requestsTable.setItems(requestsObservableList);
 
@@ -149,7 +161,7 @@ public class MainController {
         acceptButton.setOnAction(e -> {
             Prietenie selectedRequest = requestsTable.getSelectionModel().getSelectedItem();
             if (selectedRequest != null) {
-                service.acceptFriendRequest(user.getId(), selectedRequest.getId().getE1());
+                service.acceptFriendRequest(loggedinUser.getId(), selectedRequest.getId().getE1());
                 requestsTable.getItems().remove(selectedRequest);
                 refreshFriendsList();
             }
@@ -175,7 +187,7 @@ public class MainController {
             String password = passwordField.getText();
             Utilizator user = service.findByUsernameAndPassword(username, password).orElse(null);
             if (user != null) {
-                setUser(user);
+                setLoggedinUser(user);
                 stage.close();
             } else {
                 System.out.println("Invalid username or password");
@@ -183,9 +195,7 @@ public class MainController {
         });
 
         Button signupButton = new Button("Sign Up");
-        signupButton.setOnAction(e -> {
-            showSignupDialog();
-        });
+        signupButton.setOnAction(e -> showSignupDialog());
 
         vbox.getChildren().addAll(usernameField, passwordField, loginButton, signupButton);
         stage.setScene(new Scene(vbox));
@@ -208,5 +218,10 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void refreshFriendsListForUser(Utilizator user, ObservableList<Utilizator> friendsObservableList) {
+        List<Utilizator> friendsList = new ArrayList<>(service.findFriends(user.getId()));
+        friendsObservableList.setAll(friendsList);
     }
 }
