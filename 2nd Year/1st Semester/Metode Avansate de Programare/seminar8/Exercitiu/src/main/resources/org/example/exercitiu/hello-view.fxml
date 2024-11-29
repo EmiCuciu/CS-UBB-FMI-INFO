@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.exercitiu.Controller">
+    <children>
+        <TableView fx:id="tableView" prefHeight="400.0" prefWidth="313.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="109.20001375675201" text="Student" />
+                <TableColumn fx:id="temaColumn" prefWidth="97.79998016357422" text="Tema" />
+                <TableColumn fx:id="gradeColumn" minWidth="4.20001220703125" prefWidth="107.0" text="Nota" />
+            </columns>
+        </TableView>
+        <Label layoutX="314.0" layoutY="29.0" prefHeight="26.0" prefWidth="165.0" text="Filtreaza notele dupa:">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="319.0" layoutY="85.0" text="Nume: Student" />
+        <Label layoutX="319.0" layoutY="125.0" text="Nota &gt; decat" />
+        <Label layoutX="319.0" layoutY="165.0" text="Tema" />
+        <TextField fx:id="nameField" layoutX="424.0" layoutY="81.0" promptText="nume" />
+        <TextField fx:id="gradeField" layoutX="425.0" layoutY="121.0" promptText="nota" />
+        <TextField fx:id="temaField" layoutX="425.0" layoutY="161.0" promptText="id" />
+        <ComboBox fx:id="comboBox" layoutX="389.0" layoutY="232.0" onAction="#handleFilter" prefWidth="150.0" promptText="Selecteaza tema" />
+    </children>
+</AnchorPane>
