@@ -4,18 +4,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReplyMessage extends Message {
-    private Message replyMessage;
+    private Message originalMessage;
 
-    public ReplyMessage(Long id, Utilizator from, List<Utilizator> to, String message, LocalDateTime data, Message reply, Message replyMessage) {
-        super(id, from, to, message, data, reply);
-        this.replyMessage = replyMessage;
+    public ReplyMessage(Long id, Utilizator from, List<Utilizator> to, String message, LocalDateTime data, Message originalMessage) {
+        super(id, from, to, message, data);
+        this.originalMessage = originalMessage;
     }
 
-    public Message getReplyMessage() {
-        return replyMessage;
+    public Message getOriginalMessage() {
+        return originalMessage;
     }
 
-    public void setReplyMessage(Message replyMessage) {
-        this.replyMessage = replyMessage;
+    public void setOriginalMessage(Message originalMessage) {
+        this.originalMessage = originalMessage;
     }
 }

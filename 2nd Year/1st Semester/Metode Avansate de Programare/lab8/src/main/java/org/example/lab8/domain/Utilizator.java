@@ -12,6 +12,8 @@ public class Utilizator {
         this.lastName = lastName;
     }
 
+    public Utilizator() {}
+
     public Long getId() {
         return id;
     }

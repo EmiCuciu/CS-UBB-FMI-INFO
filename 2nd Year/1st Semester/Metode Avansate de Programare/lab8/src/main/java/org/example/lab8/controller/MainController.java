@@ -8,13 +8,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
+import org.example.lab8.utils.events.ChangeEventType;
+
+import org.example.lab8.utils.events.UtilizatorEntityChangeEvent;
+import org.example.lab8.utils.observer.Observer;
 
 import java.util.List;
 
 
-public class MainController {
+public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     private Controller controller = ApplicationContext.getController();
     private Utilizator loggedInUser = LoginController.logedInUser;
 
@@ -58,6 +63,26 @@ public class MainController {
     public TableColumn<Prietenie, String> dateColumnFriendRequest;
     @FXML
     public Button AcceptFriendRequest;
+
+
+    // Message
+    @FXML
+    private TextField MessageTextField;
+    @FXML
+    private Button SendMessageButton;
+    @FXML
+    private TableView<Utilizator> messageTableView;
+    @FXML
+    private TableColumn<Utilizator, String> messageTableColumn;
+    @FXML
+    private TextArea messageTextArea;
+
+
+
+    // Notificari
+    @FXML
+    private Label notificationLabel;
+
 
 
     private ObservableList<Utilizator> allUsersList;
@@ -166,6 +191,48 @@ public class MainController {
                 }
             }
         });
+
+
+        // MESSAGE
+        messageTableColumn.setCellValueFactory(cellData -> {
+            Utilizator user = cellData.getValue();
+            return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
+        });
+        messageTableView.setItems(friendsList);
+
+        messageTextArea.setEditable(false);
+        messageTextArea.setText("Select a friend to see messages.");
+
+        messageTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                Utilizator friend = messageTableView.getSelectionModel().getSelectedItem();
+                List<Message> messages = controller.getMessages(loggedInUser.getId(), friend.getId());
+                messageTextArea.clear();
+                for (Message message : messages) {
+                    String sender = message.getFrom().getId().equals(loggedInUser.getId()) ? loggedInUser.getFirstName() + " " + loggedInUser.getLastName() : friend.getFirstName() + " " + friend.getLastName();
+                    messageTextArea.appendText(sender + ": " + message.getMessage() + "\n");}
+            }
+        });
+
+        SendMessageButton.setOnAction(e -> {
+            List<Utilizator> friends = messageTableView.getSelectionModel().getSelectedItems();
+            if (!friends.isEmpty()) {
+                String message = MessageTextField.getText();
+                if (!message.isBlank()) {
+                    controller.sendMessage(new Message(loggedInUser, friends, message));
+                    MessageTextField.clear();
+                    messageTextArea.appendText(loggedInUser.getFirstName() + ": " + message + "\n");
+                }
+            }
+        });
+
+
+
+        // Notificari
+        controller.getService().addObserver(this);
+
+
+
     }
 
     private ObservableList<Utilizator> getAllFriends() {
@@ -192,11 +259,11 @@ public class MainController {
         SceneManager.switchScene("/org/example/lab8/login.fxml");
     }
 
-    public Utilizator getLoggedInUser() {
-        return loggedInUser;
+    @Override
+    public void update(UtilizatorEntityChangeEvent event) {
+        if (event.getType() == ChangeEventType.ADD) {
+            notificationLabel.setText("You have a new friend request!");
+        }
     }
 
-    public void setLoggedInUser(Utilizator loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
 }
