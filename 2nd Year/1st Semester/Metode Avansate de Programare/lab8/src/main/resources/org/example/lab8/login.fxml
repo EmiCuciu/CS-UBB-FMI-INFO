@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab8.controller.LoginController">
+   <Label layoutX="215.0" layoutY="65.0" text="Mafia Login" textFill="#ffc300">
+      <font>
+         <Font name="System Bold Italic" size="36.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="151.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/silueta-mafiotă-emblema-vectorială-magazinului-masculin-un-club-de-frizerie-gangster-cu-pălărie-și-cravată-roșie-194644386.jpg" />
+      </image>
+   </ImageView>
+   <TextField fx:id="username" layoutX="242.0" layoutY="144.0" promptText="Username" />
+   <PasswordField fx:id="password" layoutX="243.0" layoutY="187.0" promptText="Password" />
+   <Label layoutX="221.0" layoutY="333.0" text="Nu ai cont? Autentifica-te!" />
+   <Button fx:id="loginButton" layoutX="291.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleLogin" text="Login">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Button>
+   <Button fx:id="signUpButton" layoutX="374.0" layoutY="329.0" mnemonicParsing="false" text="Sign Up" />
+</AnchorPane>

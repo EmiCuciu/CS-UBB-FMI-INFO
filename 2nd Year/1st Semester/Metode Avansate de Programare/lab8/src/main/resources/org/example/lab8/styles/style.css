@@ -1,0 +1,12 @@
+.tab-pane .tab-header-background {
+    -fx-background-color: #FFA500; /* Portocaliu deschis */
+}
+
+.tab-pane .tab {
+    -fx-text-fill: black; /* Text negru */
+    -fx-font-size: 14px;  /* Dimensiune text */
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #FFD580; /* Portocaliu mai deschis pentru tab-ul selectat */
+}
