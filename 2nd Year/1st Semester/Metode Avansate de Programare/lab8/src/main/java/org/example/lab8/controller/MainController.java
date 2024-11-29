@@ -5,9 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
@@ -84,6 +87,8 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     // Notificari
     @FXML
     private Label notificationLabel;
+    @FXML
+    private Button ShowNotificationButton;
 
 
 
@@ -231,9 +236,39 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
 
         // Notificari
-        controller.getService().addObserver(this);
-        System.out.println("Observer registered.");
+//        controller.getService().addObserver(this);
+//        System.out.println("Observer registered.");
 
+        ShowNotificationButton.setOnAction(e -> {
+            Stage stage = new Stage();
+            stage.setTitle("Friend Requests");
+            stage.setWidth(400);
+            stage.setHeight(400);
+
+            TableView<Prietenie> friendRequestTable = new TableView<>();
+            TableColumn<Prietenie, String> fullNameColumn = new TableColumn<>("From");
+            TableColumn<Prietenie, String> statusColumn = new TableColumn<>("Status");
+            TableColumn<Prietenie, String> dateColumn = new TableColumn<>("Date");
+
+            fullNameColumn.setCellValueFactory(cellData -> {
+                Long senderID = cellData.getValue().getId().getE1();
+                Utilizator sender = controller.getService().findUserById(senderID).orElse(null);
+                if (sender == null) {
+                    return new SimpleStringProperty("Unknown User");
+                }
+                return new SimpleStringProperty(sender.getFirstName() + " " + sender.getLastName());
+            });
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+            friendRequestTable.getColumns().addAll(fullNameColumn, statusColumn, dateColumn);
+            friendRequestTable.setItems(FXCollections.observableArrayList(controller.findFriendRequests(loggedInUser.getId())));
+
+            VBox vbox = new VBox(friendRequestTable);
+            Scene scene = new Scene(vbox);
+            stage.setScene(scene);
+            stage.show();
+        });
 
 
     }
