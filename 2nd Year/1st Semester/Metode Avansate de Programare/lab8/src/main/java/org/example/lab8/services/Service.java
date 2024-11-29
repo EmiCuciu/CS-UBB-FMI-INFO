@@ -2,6 +2,7 @@ package org.example.lab8.services;
 
 
 import org.example.lab8.domain.*;
+import org.example.lab8.repository.dbrepo.MessageDBRepository;
 import org.example.lab8.repository.dbrepo.PrietenieDBRepository;
 import org.example.lab8.repository.dbrepo.UserDBRepository;
 import org.example.lab8.utils.events.ChangeEventType;
@@ -16,13 +17,16 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
     PrietenieValidator prietenieValidator = new PrietenieValidator();
     private final UserDBRepository userDBRepository;
     private final PrietenieDBRepository prietenieDBRepository;
+    private final MessageDBRepository messageDBRepository;
 
     private final List<Observer<UtilizatorEntityChangeEvent>> observers = new ArrayList<>();
 
-    public Service(UserDBRepository userDBRepository, PrietenieDBRepository prietenieDBRepository) {
+    public Service(UserDBRepository userDBRepository, PrietenieDBRepository prietenieDBRepository, MessageDBRepository messageDBRepository) {
         this.userDBRepository = userDBRepository;
         this.prietenieDBRepository = prietenieDBRepository;
+        this.messageDBRepository = messageDBRepository;
     }
+
 
     public Utilizator addUtilizator(Utilizator user) {
         if (userDBRepository.save(user).isPresent()) {
@@ -54,8 +58,9 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
 
     @Override
     public void notifyObservers(UtilizatorEntityChangeEvent t) {
-        observers.forEach(x -> x.update(t));
-    }
+        for (Observer<UtilizatorEntityChangeEvent> observer : observers) {
+            observer.update(t);
+        }    }
 
     public Utilizator updateUtilizator(Utilizator u) {
         Optional<Utilizator> oldUser = userDBRepository.findOne(u.getId());
@@ -75,6 +80,7 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
 
     public void addFriendRequest(Long userId, Long friendId) {
         prietenieDBRepository.addFriendRequest(userId, friendId);
+        notifyObservers(new UtilizatorEntityChangeEvent(ChangeEventType.ADD, userDBRepository.findById(friendId).orElse(null)));
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {
@@ -111,4 +117,14 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
     public Utilizator findUtilizatorByUsername(String logedInUsername) {
         return userDBRepository.findUtilizatorByUsername(logedInUsername);
     }
+
+    public void sendMessage(Message message) {
+        messageDBRepository.save(message);
+    }
+
+    public List<Message> getMessages(Long userId1, Long userId2) {
+        return messageDBRepository.getMessages(userId1, userId2);
+    }
+
+
 }
