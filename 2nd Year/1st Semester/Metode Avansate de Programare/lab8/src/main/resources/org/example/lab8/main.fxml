@@ -39,7 +39,7 @@
                                  </stops>
                               </LinearGradient>
                            </fill></Text>
-                        <Label fx:id="notificationLabel" layoutX="24.0" layoutY="56.0" text="_">
+                        <Label fx:id="notificationLabel" layoutX="24.0" layoutY="56.0" text="">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font></Label>
