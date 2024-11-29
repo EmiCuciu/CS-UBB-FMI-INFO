@@ -12,6 +12,8 @@ import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
 import org.example.lab8.utils.events.ChangeEventType;
+import javafx.application.Platform;
+
 
 import org.example.lab8.utils.events.UtilizatorEntityChangeEvent;
 import org.example.lab8.utils.observer.Observer;
@@ -230,6 +232,7 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
         // Notificari
         controller.getService().addObserver(this);
+        System.out.println("Observer registered.");
 
 
 
@@ -261,8 +264,12 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
     @Override
     public void update(UtilizatorEntityChangeEvent event) {
+        System.out.println("Update method called with event: " + event);
         if (event.getType() == ChangeEventType.ADD) {
-            notificationLabel.setText("You have a new friend request!");
+            Platform.runLater(() -> {
+                notificationLabel.setText("You have a new friend request!");
+                System.out.println("New friend request notification triggered.");
+            });
         }
     }
 
