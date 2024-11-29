@@ -10,6 +10,7 @@ import org.example.lab8.utils.events.UtilizatorEntityChangeEvent;
 import org.example.lab8.utils.observer.Observable;
 import org.example.lab8.utils.observer.Observer;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Service implements Observable<UtilizatorEntityChangeEvent> {
@@ -80,7 +81,9 @@ public class Service implements Observable<UtilizatorEntityChangeEvent> {
 
     public void addFriendRequest(Long userId, Long friendId) {
         prietenieDBRepository.addFriendRequest(userId, friendId);
-        notifyObservers(new UtilizatorEntityChangeEvent(ChangeEventType.ADD, userDBRepository.findById(friendId).orElse(null)));
+        UtilizatorEntityChangeEvent event = new UtilizatorEntityChangeEvent(ChangeEventType.ADD, new Prietenie(userId, friendId));
+        System.out.println("Friend request added, notifying observers with event: " + event);
+        notifyObservers(event);
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {

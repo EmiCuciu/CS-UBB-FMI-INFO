@@ -12,6 +12,10 @@ public class Prietenie {
         this.status = status;
     }
 
+    public Prietenie(Long userId, Long friendId) {
+        this.id = new Tuple<>(userId, friendId);
+    }
+
     public Tuple<Long, Long> getId() {
         return id;
     }
