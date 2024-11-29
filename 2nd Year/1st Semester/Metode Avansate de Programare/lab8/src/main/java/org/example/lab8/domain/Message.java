@@ -3,20 +3,39 @@ package org.example.lab8.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Message extends Entity<Long> {
+public class Message {
+    private Long id;
     private Utilizator from;
     private List<Utilizator> to;
     private String message;
     private LocalDateTime data;
     private Message reply;
 
-    public Message(Long id, Utilizator from, List<Utilizator> to, String message, LocalDateTime data, Message reply) {
-        this.setId(id);
+    public Message(Long id, Utilizator from, List<Utilizator> to, String message, LocalDateTime data) {
+        this.id = id;
         this.from = from;
         this.to = to;
         this.message = message;
         this.data = data;
-        this.reply = reply;
+        this.reply = null;
+    }
+
+    public Message(Utilizator loggedInUser, List<Utilizator> friends, String message) {
+        this.from = loggedInUser;
+        this.to = friends;
+        this.message = message;
+        this.data = LocalDateTime.now();
+        this.reply = null;
+    }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Utilizator getFrom() {
@@ -57,5 +76,9 @@ public class Message extends Entity<Long> {
 
     public void setReply(Message reply) {
         this.reply = reply;
+    }
+
+    public Utilizator getFromUser() {
+        return from;
     }
 }

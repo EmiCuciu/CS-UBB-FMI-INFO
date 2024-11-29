@@ -1,20 +1,20 @@
 package org.example.lab8.controller;
 
 
-import org.example.lab8.domain.Prietenie;
-import org.example.lab8.domain.PrietenieValidator;
-import org.example.lab8.domain.Utilizator;
-import org.example.lab8.domain.UtilizatorValidator;
+import org.example.lab8.domain.*;
+import org.example.lab8.repository.dbrepo.MessageDBRepository;
 import org.example.lab8.repository.dbrepo.PrietenieDBRepository;
 import org.example.lab8.repository.dbrepo.UserDBRepository;
 import org.example.lab8.services.Service;
 
+import java.util.List;
 import java.util.Set;
 
 public class Controller {
     UtilizatorValidator utilizatorValidator = new UtilizatorValidator();
     PrietenieValidator prietenieValidator = new PrietenieValidator();
-    private Service service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator));
+    MessageDBRepository messageDBRepository = new MessageDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345");
+    private Service service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator), messageDBRepository);
 
     public UtilizatorValidator getUtilizatorValidator() {
         return utilizatorValidator;
@@ -59,4 +59,13 @@ public class Controller {
     public Set<Prietenie> findFriendRequests(Long userId) {
         return service.findFriendRequests(userId);
     }
+
+    public List<Message> getMessages(Long id, Long id1) {
+        return service.getMessages(id, id1);
+    }
+
+    public void sendMessage(Message message) {
+        messageDBRepository.save(message);
+    }
+
 }

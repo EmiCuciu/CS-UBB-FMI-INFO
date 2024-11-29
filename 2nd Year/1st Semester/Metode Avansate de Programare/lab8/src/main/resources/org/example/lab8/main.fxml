@@ -39,6 +39,10 @@
                                  </stops>
                               </LinearGradient>
                            </fill></Text>
+                        <Label fx:id="notificationLabel" layoutX="24.0" layoutY="56.0" text="_">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font></Label>
                             </children>
                         </AnchorPane>
                     </content>
@@ -57,12 +61,18 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextField layoutX="210.0" layoutY="350.0" prefHeight="56.0" prefWidth="503.0" promptText="Write a message" />
-                                <TableView prefHeight="414.0" prefWidth="210.0">
+                                <TextField fx:id="MessageTextField" layoutX="210.0" layoutY="350.0" prefHeight="56.0" prefWidth="503.0" promptText="Write a message" />
+                                <Button fx:id="SendMessageButton" layoutX="597.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="SEND" textFill="#00d6f7">
+                                    <font>
+                                        <Font name="System Bold" size="22.0" />
+                                    </font>
+                                </Button>
+                                <TableView fx:id="messageTableView" prefHeight="414.0" prefWidth="210.0">
                                     <columns>
-                                        <TableColumn prefWidth="208.79999998807907" text="Cu cine ai vorbit afaceri" />
+                                        <TableColumn fx:id="messageTableColumn" prefWidth="208.79999998807907" text="Cu cine ai vorbit afaceri" />
                                     </columns>
                                 </TableView>
+                        <TextArea fx:id="messageTextArea" layoutX="210.0" layoutY="7.0" prefHeight="346.0" prefWidth="503.0" />
                             </children>
                         </AnchorPane>
                     </content>
