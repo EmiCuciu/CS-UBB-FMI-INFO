@@ -1,10 +1,16 @@
 package org.example.lab8.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import org.example.lab8.domain.Utilizator;
+
+import java.io.IOException;
 
 public class LoginController {
     private Controller controller = ApplicationContext.getController();
@@ -31,13 +37,27 @@ public class LoginController {
         String user = username.getText();
         String pass = password.getText();
 
-        logedInUsername = user;
-        logedInUser = controller.getService().findUtilizatorByUsername(logedInUsername);
 
         Utilizator utilizator = authenticate(user, pass);
         if (utilizator != null) {
             System.out.println("Username: " + user + ", Password: " + pass + " - Logged in!");
-            SceneManager.switchScene("/org/example/lab8/main.fxml");
+
+            logedInUsername = user;
+            logedInUser = utilizator;
+
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/lab8/main.fxml"));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Mafia Network");
+                stage.setScene(new Scene(root));
+                stage.getIcons().add(new javafx.scene.image.Image(String.valueOf(getClass().getResource("/org/example/lab8/images/money.png"))));
+                stage.show();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+
         } else {
             System.out.println("Invalid username or password.");
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -49,6 +69,6 @@ public class LoginController {
     }
 
     private Utilizator authenticate(String username, String password) {
-        return controller.getService().findByUsernameAndPassword(username, password).orElse(null);
+        return controller.getService().getUserService().findByUsernameAndPassword(username, password).orElse(null);
     }
 }
