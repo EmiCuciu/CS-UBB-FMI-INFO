@@ -2,7 +2,7 @@ package org.example.lab8.repository.dbrepo;
 
 
 import org.example.lab8.domain.Utilizator;
-import org.example.lab8.domain.UtilizatorValidator;
+import org.example.lab8.domain.validators.UtilizatorValidator;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

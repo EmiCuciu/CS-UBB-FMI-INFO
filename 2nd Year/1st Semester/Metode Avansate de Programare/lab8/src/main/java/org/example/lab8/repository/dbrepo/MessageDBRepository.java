@@ -2,6 +2,7 @@ package org.example.lab8.repository.dbrepo;
 
 import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Utilizator;
+import org.example.lab8.domain.validators.MessageValidator;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -10,9 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class MessageDBRepository extends AbstractDBRepository<Message> {
+    MessageValidator messageValidator;
 
-    public MessageDBRepository(String url, String username, String password) {
+    public MessageDBRepository(String url, String username, String password, MessageValidator messageValidator) {
         super(url, username, password);
+        this.messageValidator = messageValidator;
     }
 
 

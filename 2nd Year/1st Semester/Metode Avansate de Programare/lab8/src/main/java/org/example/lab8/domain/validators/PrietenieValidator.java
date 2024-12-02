@@ -1,4 +1,6 @@
-package org.example.lab8.domain;
+package org.example.lab8.domain.validators;
+
+import org.example.lab8.domain.Prietenie;
 
 import java.util.Objects;
 

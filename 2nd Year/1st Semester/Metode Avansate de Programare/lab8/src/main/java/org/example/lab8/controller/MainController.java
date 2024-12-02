@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,26 +14,25 @@ import javafx.stage.Stage;
 import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
-import org.example.lab8.utils.events.Event;
-import org.example.lab8.utils.observer.Observer;
-import org.example.lab8.services.Service;
-import org.example.lab8.services.UserService;
 import org.example.lab8.services.FriendshipService;
 import org.example.lab8.services.MessageService;
+import org.example.lab8.services.Service;
+import org.example.lab8.services.UserService;
+import org.example.lab8.utils.events.Event;
+import org.example.lab8.utils.observer.Observer;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class MainController implements Observer {
-    private Service mainService = ApplicationContext.getService();
-    private UserService userService = mainService.getUserService();
-    private FriendshipService friendshipService = mainService.getFriendshipService();
-    private MessageService messageService = mainService.getMessageService();
-    private Utilizator loggedInUser = LoginController.logedInUser;
+    private final Service mainService = ApplicationContext.getService();
+    private final UserService userService = mainService.getUserService();
+    private final FriendshipService friendshipService = mainService.getFriendshipService();
+    private final MessageService messageService = mainService.getMessageService();
+    private final Utilizator loggedInUser = LoginController.logedInUser;
 
-    @FXML
-    private TabPane tabPane;
 
     @FXML
     private Text username;
@@ -82,8 +82,6 @@ public class MainController implements Observer {
     private TextArea messageTextArea;
 
     // Notificari
-    @FXML
-    private Label notificationLabel;
     @FXML
     private Button ShowNotificationButton;
 
@@ -171,6 +169,7 @@ public class MainController implements Observer {
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
         });
         messageTableView.setItems(friendsList);
+
     }
 
     private void addListeners() {
@@ -240,12 +239,10 @@ public class MainController implements Observer {
             }
         });
 
-        // Show Notification Listener
         ShowNotificationButton.setOnAction(e -> {
             Stage stage = new Stage();
             stage.setTitle("Friend Requests");
-            stage.setWidth(400);
-            stage.setHeight(400);
+            stage.setResizable(false);
 
             TableView<Prietenie> friendRequestTable = new TableView<>();
             TableColumn<Prietenie, String> fullNameColumn = new TableColumn<>("From");
@@ -268,22 +265,11 @@ public class MainController implements Observer {
 
             VBox vbox = new VBox(friendRequestTable);
             Scene scene = new Scene(vbox);
+            scene.getStylesheets().add(getClass().getResource("/org/example/lab8/styles/notifications.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         });
-    }
 
-
-    @FXML
-    private void handleLogOut() {
-        SceneManager.switchScene("/org/example/lab8/login.fxml");
-    }
-
-    @FXML
-    private void handleDeleteAccount() {
-        Utilizator utilizator = userService.findUtilizatorByUsername(LoginController.logedInUsername);
-        userService.deleteUtilizator(utilizator.getId());
-        SceneManager.switchScene("/org/example/lab8/login.fxml");
     }
 
     @Override

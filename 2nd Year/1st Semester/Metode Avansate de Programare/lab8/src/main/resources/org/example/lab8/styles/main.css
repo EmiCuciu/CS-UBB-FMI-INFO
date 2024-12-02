@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #000000, #918c8c);
+}
+
+.button {
+    -fx-background-color: #ff6e00;
+    -fx-text-fill: black;
+    -fx-font-family: "Jaro";
+    -fx-pref-width: 120px;
+    -fx-pref-height: 40px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+
+.table-view {
+    -fx-background-color: linear-gradient(to bottom, #000000, #333333);
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ff6e00;
+    -fx-border-radius: 3px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Jaro";
+    -fx-background-color: black;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #040301;
+    -fx-font-family: "Jaro";
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #834426;
+    -fx-font-family: "Jaro";
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #040301;
+    -fx-font-family: "Jaro";
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-background-color: black; /* Unselected tabs are green */
+    -fx-text-fill: white;
+    -fx-font-family: "Jaro";
+}
+
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #ff6e00; /* Selected tab is orange */
+    -fx-text-fill: black;
+    -fx-font-family: "Jaro";
+}

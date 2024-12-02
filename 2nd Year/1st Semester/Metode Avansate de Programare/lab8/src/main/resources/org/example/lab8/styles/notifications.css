@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
+
+.table-view {
+    -fx-background-color: linear-gradient(to bottom, #000000, #333333);
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ff6e00;
+    -fx-border-radius: 3px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #040301;
+    -fx-font-family: "Jaro";
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Jaro";
+    -fx-background-color: black;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #834426;
+    -fx-font-family: "Jaro";
+}
