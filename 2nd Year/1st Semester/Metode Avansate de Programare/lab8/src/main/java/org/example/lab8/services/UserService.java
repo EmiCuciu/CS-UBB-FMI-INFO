@@ -1,6 +1,7 @@
 package org.example.lab8.services;
 
 import org.example.lab8.domain.Utilizator;
+import org.example.lab8.domain.validators.UtilizatorValidator;
 import org.example.lab8.repository.dbrepo.UserDBRepository;
 import org.example.lab8.utils.events.ChangeEventType;
 import org.example.lab8.utils.events.UserEvent;
@@ -15,12 +16,16 @@ import java.util.Optional;
 public class UserService implements Observable<UserEvent> {
     private final UserDBRepository userDBRepository;
     private final List<Observer<UserEvent>> observers = new ArrayList<>();
+    private final UtilizatorValidator validator;
 
-    public UserService(UserDBRepository userDBRepository) {
+
+    public UserService(UserDBRepository userDBRepository, UtilizatorValidator validator) {
         this.userDBRepository = userDBRepository;
+        this.validator = validator;
     }
 
     public Utilizator addUtilizator(Utilizator u) {
+        validator.validate(u);
         Optional<Utilizator> user = userDBRepository.save(u);
         user.ifPresent(u1 -> notifyObservers(new UserEvent(ChangeEventType.ADD, u1)));
         return user.orElse(null);
@@ -53,6 +58,7 @@ public class UserService implements Observable<UserEvent> {
 
 
     public Utilizator updateUtilizator(Utilizator u) {
+        validator.validate(u);
         Optional<Utilizator> oldUser = userDBRepository.findOne(u.getId());
         if (oldUser.isPresent()) {
             Optional<Utilizator> newUser = userDBRepository.update(u);

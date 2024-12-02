@@ -2,7 +2,7 @@ package org.example.lab8.repository.dbrepo;
 
 
 import org.example.lab8.domain.Prietenie;
-import org.example.lab8.domain.PrietenieValidator;
+import org.example.lab8.domain.validators.PrietenieValidator;
 import org.example.lab8.domain.Tuple;
 import org.example.lab8.domain.Utilizator;
 
@@ -97,7 +97,7 @@ public class PrietenieDBRepository extends AbstractDBRepository<Prietenie> {
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {
-        String sql = "UPDATE friendships SET status = 'accepted' WHERE user_id = ? AND friend_id = ?";
+        String sql = "UPDATE    friendships SET status = 'accepted' WHERE user_id = ? AND friend_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, friendId);

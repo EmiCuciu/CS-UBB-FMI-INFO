@@ -1,7 +1,6 @@
 module org.example.lab {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.web;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -15,5 +14,10 @@ module org.example.lab {
     opens org.example.lab8 to javafx.fxml;
     exports org.example.lab8;
     exports org.example.lab8.controller;
+    exports org.example.lab8.domain;
+    exports org.example.lab8.repository;
+    exports org.example.lab8.services;
+    exports org.example.lab8.utils.events;
+    exports org.example.lab8.utils.observer;
     opens org.example.lab8.controller to javafx.fxml;
 }
