@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class is used to switch between scenes.
+ */
 public class SceneManager {
     private static Stage primaryStage;
 

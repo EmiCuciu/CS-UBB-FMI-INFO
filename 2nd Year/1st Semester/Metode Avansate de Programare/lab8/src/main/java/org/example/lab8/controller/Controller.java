@@ -16,21 +16,6 @@ public class Controller {
     MessageDBRepository messageDBRepository = new MessageDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345");
     private Service service = new Service(new UserDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", utilizatorValidator), new PrietenieDBRepository("jdbc:postgresql://localhost:5432/ExempluLab6DB", "postgres", "emi12345", prietenieValidator), messageDBRepository);
 
-    public UtilizatorValidator getUtilizatorValidator() {
-        return utilizatorValidator;
-    }
-
-    public void setUtilizatorValidator(UtilizatorValidator utilizatorValidator) {
-        this.utilizatorValidator = utilizatorValidator;
-    }
-
-    public PrietenieValidator getPrietenieValidator() {
-        return prietenieValidator;
-    }
-
-    public void setPrietenieValidator(PrietenieValidator prietenieValidator) {
-        this.prietenieValidator = prietenieValidator;
-    }
 
     public Service getService() {
         return service;
@@ -41,27 +26,27 @@ public class Controller {
     }
 
     public void addFriendRequest(Long userId, Long friendId) {
-        service.addFriendRequest(userId, friendId);
+        service.getFriendshipService().addFriendRequest(userId, friendId);
     }
 
     public void acceptFriendRequest(Long userId, Long friendId) {
-        service.acceptFriendRequest(userId, friendId);
+        service.getFriendshipService().acceptFriendRequest(userId, friendId);
     }
 
     public void removeFriend(Long userId, Long friendId) {
-        service.removeFriend(userId, friendId);
+        service.getFriendshipService().removeFriend(userId, friendId);
     }
 
     public Set<Utilizator> findFriends(Long userId) {
-        return service.findFriends(userId);
+        return service.getFriendshipService().findFriends(userId);
     }
 
     public Set<Prietenie> findFriendRequests(Long userId) {
-        return service.findFriendRequests(userId);
+        return service.getFriendshipService().findFriendRequests(userId);
     }
 
     public List<Message> getMessages(Long id, Long id1) {
-        return service.getMessages(id, id1);
+        return service.getMessageService().getMessages(id, id1);
     }
 
     public void sendMessage(Message message) {

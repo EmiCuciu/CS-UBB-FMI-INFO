@@ -34,7 +34,7 @@ public class SignUpController {
         utilizator.setUsername(user);
         utilizator.setPassword(pass);
 
-        controller.getService().saveUser(utilizator);
+        controller.getService().getUserService().addUtilizator(utilizator);
 
         System.out.println("User saved: " + utilizator);
         SceneManager.switchScene("/org/example/lab8/login.fxml");
