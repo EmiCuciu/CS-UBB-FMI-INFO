@@ -2,7 +2,6 @@ package org.example.lab8.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,18 +13,22 @@ import javafx.stage.Stage;
 import org.example.lab8.domain.Message;
 import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
-import org.example.lab8.utils.events.ChangeEventType;
-import javafx.application.Platform;
-
-
-import org.example.lab8.utils.events.UtilizatorEntityChangeEvent;
+import org.example.lab8.utils.events.Event;
 import org.example.lab8.utils.observer.Observer;
+import org.example.lab8.services.Service;
+import org.example.lab8.services.UserService;
+import org.example.lab8.services.FriendshipService;
+import org.example.lab8.services.MessageService;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-
-public class MainController implements Observer<UtilizatorEntityChangeEvent>{
-    private Controller controller = ApplicationContext.getController();
+public class MainController implements Observer {
+    private Service mainService = ApplicationContext.getService();
+    private UserService userService = mainService.getUserService();
+    private FriendshipService friendshipService = mainService.getFriendshipService();
+    private MessageService messageService = mainService.getMessageService();
     private Utilizator loggedInUser = LoginController.logedInUser;
 
     @FXML
@@ -33,7 +36,6 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
     @FXML
     private Text username;
-
 
     // ALL USERS
     @FXML
@@ -47,7 +49,6 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     @FXML
     public Button SendFriendRequest;
 
-
     // FRIENDS
     @FXML
     private TableView<Utilizator> usersTableFriends;
@@ -55,7 +56,6 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     private TableColumn<Utilizator, String> fullNameColumnFriends;
     @FXML
     private Button DeleteFriend;
-
 
     // FRIEND REQUEST
     @FXML
@@ -69,7 +69,6 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     @FXML
     public Button AcceptFriendRequest;
 
-
     // Message
     @FXML
     private TextField MessageTextField;
@@ -82,15 +81,11 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     @FXML
     private TextArea messageTextArea;
 
-
-
     // Notificari
     @FXML
     private Label notificationLabel;
     @FXML
     private Button ShowNotificationButton;
-
-
 
     private ObservableList<Utilizator> allUsersList;
     private ObservableList<Utilizator> friendsList;
@@ -99,57 +94,68 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
     @FXML
     public void initialize() {
         // Set the username text
-        username.setText(LoginController.logedInUser.getFirstName() + " " + LoginController.logedInUser.getLastName());
-
+        username.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
 
         // Initialize lists
-        allUsersList = getAllUsers();
-        friendsList = getAllFriends();
-        friendRequestsList = getAllFriendRequest();
+        allUsersList = FXCollections.observableArrayList();
+        friendsList = FXCollections.observableArrayList();
+        friendRequestsList = FXCollections.observableArrayList();
 
+        // Load initial data
+        loadAllUsers();
+        loadFriends();
+        loadFriendRequests();
 
-        // Filter out friends from allUsersList
+        // Set up table columns
+        setupTableColumns();
+
+        // Add listeners
+        addListeners();
+
+        // Register observer
+        mainService.getUserService().addObserver(this);
+        mainService.getFriendshipService().addObserver(this);
+        mainService.getMessageService().addObserver(this);
+    }
+
+    private void loadAllUsers() {
+        HashSet<Utilizator> users = userService.findAllUsers();
+        allUsersList.setAll(users);
+        filterAllUsers();
+    }
+
+    private void loadFriends() {
+        Set<Utilizator> friends = friendshipService.findFriends(loggedInUser.getId());
+        friendsList.setAll(friends);
+    }
+
+    private void loadFriendRequests() {
+        Set<Prietenie> requests = friendshipService.findFriendRequests(loggedInUser.getId());
+        friendRequestsList.setAll(requests);
+    }
+
+    private void filterAllUsers() {
         List<Long> friendIds = friendsList.stream().map(Utilizator::getId).toList();
         allUsersList.removeIf(user -> user.getId().equals(loggedInUser.getId()) || friendIds.contains(user.getId()));
+    }
 
-
-        // Tabela cu toti Userii
+    private void setupTableColumns() {
+        // All Users Table
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         usersTableAll.setItems(allUsersList);
 
-
-        // Tabela cu toti Prietenii
+        // Friends Table
         fullNameColumnFriends.setCellValueFactory(cellData -> {
             Utilizator user = cellData.getValue();
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
         });
         usersTableFriends.setItems(friendsList);
 
-
-        // Add listener for SearchUser Field & SEND FRIEND REQUEST
-        SearchUserAll.textProperty().addListener((observable, oldValue, newValue) -> {
-            List<Utilizator> filteredList = allUsersList.stream()
-                    .filter(u -> u.getFirstName().toLowerCase().contains(newValue.toLowerCase()) ||
-                            u.getLastName().toLowerCase().contains(newValue.toLowerCase()))
-                    .toList();
-            usersTableAll.setItems(FXCollections.observableArrayList(filteredList));
-        });
-        SendFriendRequest.setOnAction(e -> {
-            Utilizator selectedUser = usersTableAll.getSelectionModel().getSelectedItem();
-            if (selectedUser != null) {
-                controller.addFriendRequest(loggedInUser.getId(), selectedUser.getId());
-                allUsersList.remove(selectedUser);
-            } else {
-                System.out.println("No user selected.");
-            }
-        });
-
-
-        // FriendRequests
+        // Friend Requests Table
         fullNameColumnFriendRequest.setCellValueFactory(cellData -> {
             Long senderID = cellData.getValue().getId().getE1();
-            Utilizator sender = controller.getService().findUserById(senderID).orElse(null);
+            Utilizator sender = userService.findUserById(senderID).orElse(null);
             if (sender == null) {
                 return new SimpleStringProperty("Unknown User");
             }
@@ -159,86 +165,82 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
         dateColumnFriendRequest.setCellValueFactory(new PropertyValueFactory<>("date"));
         FriendRequestTable.setItems(friendRequestsList);
 
-        AcceptFriendRequest.setOnAction(e -> {
-            Prietenie selectedFriendRequest = FriendRequestTable.getSelectionModel().getSelectedItem();
-            if (selectedFriendRequest != null) {
-                controller.acceptFriendRequest(loggedInUser.getId(), selectedFriendRequest.getId().getE1());
-                friendRequestsList.remove(selectedFriendRequest);
-                friendsList.setAll(getAllFriends());
-            }
-        });
-
-        DeleteFriend.setOnAction(e -> {
-            Utilizator selectedFriend = usersTableFriends.getSelectionModel().getSelectedItem();
-            if (selectedFriend != null) {
-                controller.removeFriend(loggedInUser.getId(), selectedFriend.getId());
-                friendsList.remove(selectedFriend);
-            }
-        });
-
-
-        // Add listeners to update tables
-        friendRequestsList.addListener((ListChangeListener<Prietenie>) change -> {
-            while (change.next()) {
-                if (change.wasRemoved() || change.wasAdded()) {
-                    friendsList.setAll(getAllFriends());
-                    List<Long> updatedFriendIds = friendsList.stream().map(Utilizator::getId).toList();
-                    allUsersList.setAll(getAllUsers());
-                    allUsersList.removeIf(user -> user.getId().equals(loggedInUser.getId()) || updatedFriendIds.contains(user.getId()));
-                }
-            }
-        });
-
-        friendsList.addListener((ListChangeListener<Utilizator>) change -> {
-            while (change.next()) {
-                if (change.wasRemoved() || change.wasAdded()) {
-                    List<Long> updatedFriendIds = friendsList.stream().map(Utilizator::getId).toList();
-                    allUsersList.setAll(getAllUsers());
-                    allUsersList.removeIf(user -> user.getId().equals(loggedInUser.getId()) || updatedFriendIds.contains(user.getId()));
-                }
-            }
-        });
-
-
-        // MESSAGE
+        // Message Table
         messageTableColumn.setCellValueFactory(cellData -> {
             Utilizator user = cellData.getValue();
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
         });
         messageTableView.setItems(friendsList);
+    }
 
-        messageTextArea.setEditable(false);
-        messageTextArea.setText("Select a friend to see messages.");
+    private void addListeners() {
+        // Search User Listener
+        SearchUserAll.textProperty().addListener((observable, oldValue, newValue) -> {
+            List<Utilizator> filteredList = allUsersList.stream()
+                    .filter(u -> u.getFirstName().toLowerCase().contains(newValue.toLowerCase()) ||
+                            u.getLastName().toLowerCase().contains(newValue.toLowerCase()))
+                    .toList();
+            usersTableAll.setItems(FXCollections.observableArrayList(filteredList));
+        });
 
-        messageTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                Utilizator friend = messageTableView.getSelectionModel().getSelectedItem();
-                List<Message> messages = controller.getMessages(loggedInUser.getId(), friend.getId());
-                messageTextArea.clear();
-                for (Message message : messages) {
-                    String sender = message.getFrom().getId().equals(loggedInUser.getId()) ? loggedInUser.getFirstName() + " " + loggedInUser.getLastName() : friend.getFirstName() + " " + friend.getLastName();
-                    messageTextArea.appendText(sender + ": " + message.getMessage() + "\n");}
+        // Send Friend Request Listener
+        SendFriendRequest.setOnAction(e -> {
+            Utilizator selectedUser = usersTableAll.getSelectionModel().getSelectedItem();
+            if (selectedUser != null) {
+                friendshipService.addFriendRequest(loggedInUser.getId(), selectedUser.getId());
+                allUsersList.remove(selectedUser);
+            } else {
+                System.out.println("No user selected.");
             }
         });
 
+        // Accept Friend Request Listener
+        AcceptFriendRequest.setOnAction(e -> {
+            Prietenie selectedFriendRequest = FriendRequestTable.getSelectionModel().getSelectedItem();
+            if (selectedFriendRequest != null) {
+                friendshipService.acceptFriendRequest(loggedInUser.getId(), selectedFriendRequest.getId().getE1());
+                friendRequestsList.remove(selectedFriendRequest);
+                loadFriends();
+            }
+        });
+
+        // Delete Friend Listener
+        DeleteFriend.setOnAction(e -> {
+            Utilizator selectedFriend = usersTableFriends.getSelectionModel().getSelectedItem();
+            if (selectedFriend != null) {
+                friendshipService.removeFriend(loggedInUser.getId(), selectedFriend.getId());
+                friendsList.remove(selectedFriend);
+                loadAllUsers();
+            }
+        });
+
+        // Message Table Listener
+        messageTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                Utilizator friend = messageTableView.getSelectionModel().getSelectedItem();
+                List<Message> messages = messageService.getMessages(loggedInUser.getId(), friend.getId());
+                messageTextArea.clear();
+                for (Message message : messages) {
+                    String sender = message.getFrom().getId().equals(loggedInUser.getId()) ? loggedInUser.getFirstName() + " " + loggedInUser.getLastName() : friend.getFirstName() + " " + friend.getLastName();
+                    messageTextArea.appendText(sender + ": " + message.getMessage() + "\n");
+                }
+            }
+        });
+
+        // Send Message Listener
         SendMessageButton.setOnAction(e -> {
             List<Utilizator> friends = messageTableView.getSelectionModel().getSelectedItems();
             if (!friends.isEmpty()) {
                 String message = MessageTextField.getText();
                 if (!message.isBlank()) {
-                    controller.sendMessage(new Message(loggedInUser, friends, message));
+                    messageService.sendMessage(new Message(loggedInUser, friends, message));
                     MessageTextField.clear();
                     messageTextArea.appendText(loggedInUser.getFirstName() + ": " + message + "\n");
                 }
             }
         });
 
-
-
-        // Notificari
-//        controller.getService().addObserver(this);
-//        System.out.println("Observer registered.");
-
+        // Show Notification Listener
         ShowNotificationButton.setOnAction(e -> {
             Stage stage = new Stage();
             stage.setTitle("Friend Requests");
@@ -252,7 +254,7 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
             fullNameColumn.setCellValueFactory(cellData -> {
                 Long senderID = cellData.getValue().getId().getE1();
-                Utilizator sender = controller.getService().findUserById(senderID).orElse(null);
+                Utilizator sender = userService.findUserById(senderID).orElse(null);
                 if (sender == null) {
                     return new SimpleStringProperty("Unknown User");
                 }
@@ -262,28 +264,15 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
             dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
             friendRequestTable.getColumns().addAll(fullNameColumn, statusColumn, dateColumn);
-            friendRequestTable.setItems(FXCollections.observableArrayList(controller.findFriendRequests(loggedInUser.getId())));
+            friendRequestTable.setItems(FXCollections.observableArrayList(friendshipService.findFriendRequests(loggedInUser.getId())));
 
             VBox vbox = new VBox(friendRequestTable);
             Scene scene = new Scene(vbox);
             stage.setScene(scene);
             stage.show();
         });
-
-
     }
 
-    private ObservableList<Utilizator> getAllFriends() {
-        return FXCollections.observableArrayList(controller.getService().findFriends(loggedInUser.getId()));
-    }
-
-    private ObservableList<Utilizator> getAllUsers() {
-        return FXCollections.observableArrayList(controller.getService().findAllUsers());
-    }
-
-    private ObservableList<Prietenie> getAllFriendRequest() {
-        return FXCollections.observableArrayList(controller.findFriendRequests(loggedInUser.getId()));
-    }
 
     @FXML
     private void handleLogOut() {
@@ -292,20 +281,15 @@ public class MainController implements Observer<UtilizatorEntityChangeEvent>{
 
     @FXML
     private void handleDeleteAccount() {
-        Utilizator utilizator = controller.getService().findUtilizatorByUsername(LoginController.logedInUsername);
-        controller.getService().deleteUtilizator(utilizator.getId());
+        Utilizator utilizator = userService.findUtilizatorByUsername(LoginController.logedInUsername);
+        userService.deleteUtilizator(utilizator.getId());
         SceneManager.switchScene("/org/example/lab8/login.fxml");
     }
 
     @Override
-    public void update(UtilizatorEntityChangeEvent event) {
-        System.out.println("Update method called with event: " + event);
-        if (event.getType() == ChangeEventType.ADD) {
-            Platform.runLater(() -> {
-                notificationLabel.setText("You have a new friend request!");
-                System.out.println("New friend request notification triggered.");
-            });
-        }
+    public void update(Event event) {
+        loadAllUsers();
+        loadFriends();
+        loadFriendRequests();
     }
-
 }
