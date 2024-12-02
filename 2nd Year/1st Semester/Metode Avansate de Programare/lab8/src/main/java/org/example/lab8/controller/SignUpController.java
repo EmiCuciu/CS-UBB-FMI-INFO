@@ -36,7 +36,7 @@ public class SignUpController {
 
         controller.getService().getUserService().addUtilizator(utilizator);
 
-        System.out.println("User saved: " + utilizator);
+        System.out.println("User saved: " + utilizator.toString());
         SceneManager.switchScene("/org/example/lab8/login.fxml");
     }
 }

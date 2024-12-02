@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #000000, #333333);
+    -fx-font-family: "Jaro", sans-serif;
+}
+
+.button {
+    -fx-background-color: #ff6e00;
+    -fx-text-fill: black;
+    -fx-font-family: "Jaro";
+    -fx-pref-width: 100px;
+    -fx-pref-height: 30px;
+}
+
+.small {
+    -fx-pref-width: 60px;
+    -fx-pref-height: 20px;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #1C1C1C;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: gray;
+    -fx-border-color: #ff6e00;
+    -fx-border-radius: 3px;
+
+}
+
+.label {
+    -fx-text-fill: #ff6e00;
+    -fx-font-family: "Jaro", sans-serif;
+}
