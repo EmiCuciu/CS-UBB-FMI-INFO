@@ -1,0 +1,15 @@
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\bin\Debug\net9.0\seminar10.exe
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\bin\Debug\net9.0\seminar10.deps.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\bin\Debug\net9.0\seminar10.runtimeconfig.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\bin\Debug\net9.0\seminar10.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\bin\Debug\net9.0\seminar10.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.GeneratedMSBuildEditorConfig.editorconfig
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.AssemblyInfoInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.AssemblyInfo.cs
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.csproj.CoreCompileInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.sourcelink.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\refint\seminar10.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\seminar10.genruntimeconfig.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\seminar10 C#\seminar10\seminar10\obj\Debug\net9.0\ref\seminar10.dll
