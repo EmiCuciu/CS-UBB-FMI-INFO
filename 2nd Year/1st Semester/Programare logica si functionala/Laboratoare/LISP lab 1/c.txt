@@ -1,13 +1,11 @@
-superficializeaza(l : lista eterogena, Rez: lista liniara)
-(i,o) Model de flux
+
 
 superficializeaza(l1 l2 .. ln) =    {NIL, n=0}
                                     {l1 (+) superficializeaza(l2 .. ln), l1=atom}
                                     {superficializeaza(l1) (+) superficializeaza(l2 .. ln), altfel}
 
 
-elimina-duplicatele(l : lista, Rez: lista fara duplicate)
-(i,o) Model de flux
+
 
 elimina-duplicatele(l1 l2 .. ln) =  {NIL, n=0}
                                     {elimina-duplicatele(l2 .. ln), l1 ∈ (l2 .. ln)}
