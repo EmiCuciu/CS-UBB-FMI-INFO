@@ -13,6 +13,8 @@
         ((equal elem (car lst)) t)           ; Dacă elementul este egal cu primul element din listă, returnează t
         (t (my-member elem (cdr lst)))))     ; Altfel, verifică restul listei
 
+; (my-member 3 '(1 2 3 4 5))  => t
+; (my-member 6 '(1 2 3 4 5))  => nil
 
 (defun superficializeaza (lst)
   (cond ((null lst) nil)  ; Lista goală devine nil
