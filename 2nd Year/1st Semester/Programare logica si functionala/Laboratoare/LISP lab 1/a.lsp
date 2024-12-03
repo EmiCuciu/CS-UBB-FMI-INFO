@@ -17,5 +17,6 @@
           (cdr lst)  ; Dacă n este 1, returnează restul listei fără primul element
           (cons (car lst) (remove-nth (1- n) (cdr lst))))))  ; Altfel, construiește lista fără elementul de pe poziția n
 
-;(remove-nth 2 '(a b c d e))  ; => (a c d e)
+;(remove-nth 2 '(a b c d e))   => (a c d e)
 
+;(remove-nth 5 '(a b c d e f g h))

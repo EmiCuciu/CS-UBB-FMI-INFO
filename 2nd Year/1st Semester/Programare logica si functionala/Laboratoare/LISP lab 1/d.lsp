@@ -9,10 +9,19 @@
 ;d) Sa se scrie o functie care testeaza daca o lista liniara este o multime.
 
 ; d) 
+(defun my-member (elem lst)
+  (cond ((null lst) nil)                     ; Dacă lista este goală, returnează nil
+        ((equal elem (car lst)) t)           ; Dacă elementul este egal cu primul element din listă, returnează t
+        (t (my-member elem (cdr lst)))))     ; Altfel, verifică restul listei
+
+; (my-member 3 '(1 2 3 4 5))  => t
+; (my-member 6 '(1 2 3 4 5))  => nil
+
+
 (defun is-set (lst)
   (cond ((null lst) t)                      ; Dacă lista este goală, este mulțime
-        ((member (car lst) (cdr lst)) nil)  ; Dacă primul element este în restul listei, nu este mulțime
+        ((my-member (car lst) (cdr lst)) nil)  ; Dacă primul element este în restul listei, nu este mulțime
         (t (is-set (cdr lst)))))            ; Altfel, verifică restul listei
 
-; (is-set '(1 2 3 4 5))  ; => t
-; (is-set '(1 2 3 4 1))  ; => nil
+; (is-set '(1 2 3 4 5))   => t
+; (is-set '(1 2 3 4 1))   => nil
