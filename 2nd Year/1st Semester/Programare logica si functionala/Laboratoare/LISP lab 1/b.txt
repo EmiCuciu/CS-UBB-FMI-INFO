@@ -3,8 +3,17 @@ succesor(l:Lista, Rez: lista rezultat)
 
 Model matematic
 
-succesor(l1 l2 .. ln) = reverse(add_one(reverse(l1 l2 .. ln)))
+succesor(l1 l2 .. ln) = my-reverse(add_one(my-reverse(l1 l2 .. ln)))
 
 add_one(l1 l2 .. ln) =  { (1), n=0}
                         { (sum (+) add_one(l2 l3 .. ln)) , unde sum = l1+1 si sum<10}
                         { (0 (+) add_one(l2 l3 .. ln), altfel, adica sum>=10)}
+
+my-reverse(l:lista)
+
+my-reverse(l1 l2 ... ln) = reverse-helper(l1 l2 ... ln, [])
+
+reverse-helper(l : lista, acc : lista acumulatoare)
+
+reverse-helper((l1 l2 .. ln), []) = {acc, n=0}
+                                    {reverse-helper((l2 .. ln),l1(+)(acc)), altfel}
