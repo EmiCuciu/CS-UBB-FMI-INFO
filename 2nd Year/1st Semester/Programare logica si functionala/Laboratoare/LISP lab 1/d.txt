@@ -1,0 +1,9 @@
+is_set(l : lista, R:boolean)
+(i,o) Model de flux
+
+Model matematic
+
+is_set(l1 l2 .. ln) =   {True , n=0}
+                        {NIL, l1 ∈ [l2 .. ln]}
+                        {is_set(l2 l3 .. ln), altfel}
+                    
