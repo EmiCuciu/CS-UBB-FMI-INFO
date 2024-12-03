@@ -1,12 +1,9 @@
-succesor(l:Lista, Rez: lista rezultat)
-(i,o) model de flux
-
 Model matematic
 
 succesor(l1 l2 .. ln) = my-reverse(add_one(my-reverse(l1 l2 .. ln)))
 
 add_one(l1 l2 .. ln) =  { (1), n=0}
-                        { (sum (+) add_one(l2 l3 .. ln)) , unde sum = l1+1 si sum<10}
+                        { (sum (+) (l2 l3 .. ln)) , unde sum = l1+1 si sum<10}
                         { (0 (+) add_one(l2 l3 .. ln), altfel, adica sum>=10)}
 
 my-reverse(l:lista)

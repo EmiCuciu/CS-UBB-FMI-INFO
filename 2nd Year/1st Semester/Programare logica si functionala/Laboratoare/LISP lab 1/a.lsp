@@ -19,4 +19,8 @@
 
 ;(remove-nth 2 '(a b c d e))   => (a c d e)
 
-;(remove-nth 5 '(a b c d e f g h))
+;(remove-nth 5 '(a b c d e f g h))  => (a b c d f g h)
+
+;(remove-nth 0 '(1 2 3))    => (1 2 3)
+
+;(remove-nth 5 '())   => nil
