@@ -6,4 +6,13 @@ Model matematic
 is_set(l1 l2 .. ln) =   {True , n=0}
                         {NIL, l1 ∈ [l2 .. ln]}
                         {is_set(l2 l3 .. ln), altfel}
-                    
+
+
+my_member(elem : TElem, l:lista, rez:boolean)
+(i,i,o) Model de flux
+
+Model matematic
+
+my_member(elem, l1 l2 .. ln) = { NIL, n=0 }
+                               { True, elem = l1 }
+                               { my_member(elem, l2 .. ln), altfel }

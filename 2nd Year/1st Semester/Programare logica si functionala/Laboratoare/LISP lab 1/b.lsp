@@ -8,6 +8,14 @@
 ;
 ;d) Sa se scrie o functie care testeaza daca o lista liniara este o multime.
 
+(defun my-reverse (lst)
+  (labels ((reverse-helper (lst acc)  ; Functie locala auxiliara care foloseste un acumulator
+             (if (null lst)           ; Daca lista este goala
+                 acc                  ; Returneaza acumulatorul (lista inversata)
+                 (reverse-helper (cdr lst) (cons (car lst) acc))))) ; Altfel, adauga primul element la acumulator si continua cu restul listei
+    (reverse-helper lst nil)))        ; Apeleaza reverse-helper cu lista initiala si un acumulator gol
+
+;(my-reverse '(1 2 3)) => (3 2 1)
 
 (defun succesor (num-list)      ; b)
   (labels ((add-one (lst)           ; Adaugă 1 la ultimul element
@@ -17,7 +25,7 @@
                    (if (< sum 10)               ; Dacă suma este mai mică decât 10
                        (cons sum (cdr lst))     ; Returnează suma și restul listei
                        (cons 0 (add-one (cdr lst))))))))    ; Altfel, adaugă 0 și continuă cu restul listei
-    (reverse (add-one (reverse num-list)))))    ; Returnează lista inversată pentru a avea cifrele în ordinea corectă
+    (my-reverse (add-one (my-reverse num-list)))))    ; Returnează lista inversată pentru a avea cifrele în ordinea corectă
 
 ; (succesor '(1 2 3)) => (1 2 4)
 ; (succesor '(9 9 9)) => (1 0 0 0) 
