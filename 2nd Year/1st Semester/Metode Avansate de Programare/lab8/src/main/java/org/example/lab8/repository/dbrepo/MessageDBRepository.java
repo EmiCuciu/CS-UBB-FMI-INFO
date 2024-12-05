@@ -55,22 +55,36 @@ public class MessageDBRepository extends AbstractDBRepository<Message> {
 
     @Override
     public Optional<Message> save(Message entity) {
-        String sql = "INSERT INTO messages (from_user_id, to_user_id, message, data, reply_to_id) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO messages (from_user_id, message, data, reply_to_id) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setLong(1, entity.getFrom().getId());
-            ps.setLong(2, entity.getTo().get(0).getId()); // Assuming single recipient for simplicity
-            ps.setString(3, entity.getMessage());
-            ps.setTimestamp(4, Timestamp.valueOf(entity.getData()));
+            ps.setString(2, entity.getMessage());
+            ps.setTimestamp(3, Timestamp.valueOf(entity.getData()));
             if (entity.getReply() != null) {
-                ps.setLong(5, entity.getReply().getId());
+                ps.setLong(4, entity.getReply().getId());
             } else {
-                ps.setNull(5, Types.BIGINT);
+                ps.setNull(4, Types.BIGINT);
             }
             ps.executeUpdate();
+
+            Long messageId;
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    entity.setId(generatedKeys.getLong(1));
+                    messageId = generatedKeys.getLong(1);
+                    entity.setId(messageId);
+                } else {
+                    return Optional.of(entity);
+                }
+            }
+
+            // Save recipients
+            String recipientSql = "INSERT INTO messages_recipients (message_id, recipient_id) VALUES (?, ?)";
+            try (PreparedStatement recipientPs = connection.prepareStatement(recipientSql)) {
+                for (Utilizator recipient : entity.getTo()) {
+                    recipientPs.setLong(1, messageId);
+                    recipientPs.setLong(2, recipient.getId());
+                    recipientPs.executeUpdate();
                 }
             }
         } catch (SQLException e) {
@@ -98,11 +112,10 @@ public class MessageDBRepository extends AbstractDBRepository<Message> {
 
     @Override
     public Optional<Message> update(Message entity) {
-        String sql = "UPDATE messages SET from_user_id = ?, to_user_id = ?, message = ?, data = ?, reply_to_id = ? WHERE id = ?";
+        String sql = "UPDATE messages SET from_user_id  = ?, message = ?, data = ?, reply_to_id = ? WHERE id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, entity.getFrom().getId());
-            ps.setLong(2, entity.getTo().get(0).getId()); // Assuming single recipient for simplicity
             ps.setString(3, entity.getMessage());
             ps.setTimestamp(4, Timestamp.valueOf(entity.getData()));
             if (entity.getReply() != null) {
@@ -119,29 +132,59 @@ public class MessageDBRepository extends AbstractDBRepository<Message> {
         return Optional.empty();
     }
 
+
     private Message mapResultSetToMessage(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("id");
         Long fromUserId = resultSet.getLong("from_user_id");
-        Long toUserId = resultSet.getLong("to_user_id");
         String messageText = resultSet.getString("message");
         LocalDateTime data = resultSet.getTimestamp("data").toLocalDateTime();
         Long replyToId = resultSet.getLong("reply_to_id");
 
-        Utilizator from = new Utilizator(); // Assuming Utilizator class has a default constructor
+        // Get the sender
+        Utilizator from = new Utilizator();
         from.setId(fromUserId);
-        Utilizator to = new Utilizator(); // Assuming Utilizator class has a default constructor
-        to.setId(toUserId);
 
-        Message message = new Message(id, from, List.of(to), messageText, data);
-        if (replyToId != 0) {
-            message.setReply(findOne(replyToId).orElse(null));
+        // Get all recipients for this message
+        List<Utilizator> recipients = new ArrayList<>();
+        String recipientsSql = "SELECT u.* FROM users u " +
+                "JOIN messages_recipients mr ON u.id = mr.recipient_id " +
+                "WHERE mr.message_id = ?";
+
+        try (Connection recipientsConnection = getConnection();
+             PreparedStatement recipientsPs = recipientsConnection.prepareStatement(recipientsSql)) {
+            recipientsPs.setLong(1, id);
+            try (ResultSet recipientsRs = recipientsPs.executeQuery()) {
+                while (recipientsRs.next()) {
+                    Utilizator recipient = new Utilizator();
+                    recipient.setId(recipientsRs.getLong("id"));
+                    recipient.setFirstName(recipientsRs.getString("first_name"));
+                    recipient.setLastName(recipientsRs.getString("last_name"));
+                    recipients.add(recipient);
+                }
+            }
         }
+
+        Message message = new Message(id, from, recipients, messageText, data);
+
+        // Set reply message if exists
+        if (replyToId != 0) {
+            // Avoid infinite recursion by only setting the ID of the reply message
+            Message replyMessage = findOne(replyToId).orElse(null);
+            message.setReply(replyMessage);
+        }
+
         return message;
     }
 
     public List<Message> getMessages(Long userId1, Long userId2) {
         List<Message> messages = new ArrayList<>();
-        String sql = "SELECT * FROM messages WHERE (from_user_id = ? AND to_user_id = ?) OR (from_user_id = ? AND to_user_id = ?)";
+        String sql = """
+        SELECT DISTINCT m.* FROM messages m 
+        JOIN messages_recipients mr ON m.id = mr.message_id 
+        WHERE (m.from_user_id = ? AND mr.recipient_id = ?) 
+           OR (m.from_user_id = ? AND mr.recipient_id = ?)
+        ORDER BY m.data
+    """;
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, userId1);
@@ -158,6 +201,7 @@ public class MessageDBRepository extends AbstractDBRepository<Message> {
         }
         return messages;
     }
+
 
 
 

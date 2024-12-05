@@ -81,4 +81,16 @@ public class Message {
     public Utilizator getFromUser() {
         return from;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", from=" + from +
+                ", to=" + to +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                ", reply=" + reply +
+                '}';
+    }
 }
