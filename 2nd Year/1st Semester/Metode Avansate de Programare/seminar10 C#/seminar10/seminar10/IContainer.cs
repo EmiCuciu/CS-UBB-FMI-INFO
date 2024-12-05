@@ -1,16 +1,22 @@
 ﻿namespace seminar10;
 
-public interface Container
+public interface IContainer
 {
-    // Elimină și returnează un element din colecție
+    public IContainer CreateContainer(Strategy strategy)
+    {
+        switch (strategy)
+        {
+            case Strategy.LIFO:
+                return new StackContainer(10); 
+            case Strategy.FIFO:
+                return new QueueContainer(10); 
+            default:
+                throw new ArgumentException("Strategia specificată nu este validă.");
+        }
+    }
+    
     Task Remove();
- 
-    // Adaugă un element în colecție
     void Add(Task task);
- 
-    // Returnează numărul de elemente din colecție
     int Size();
- 
-    // Verifică dacă colecția este goală
     bool IsEmpty();
 }
