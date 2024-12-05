@@ -1,6 +1,7 @@
 ﻿namespace seminar10;
 
-public class Strategy
+public enum Strategy
 {
-    
+    FIFO,
+    LIFO
 }

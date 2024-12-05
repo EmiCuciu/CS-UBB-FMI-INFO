@@ -1,6 +1,6 @@
 ﻿namespace seminar10;
 
-public class Dactory
+public class Factory
 {
     
 }
