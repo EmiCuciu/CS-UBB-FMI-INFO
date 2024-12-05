@@ -79,7 +79,13 @@ public class MainController implements Observer {
     @FXML
     private TableColumn<Utilizator, String> messageTableColumn;
     @FXML
-    private TextArea messageTextArea;
+    private TableView<Message> message_messageTableView;
+    @FXML
+    private TableColumn<Message, String> message_messageTableColumn;
+    @FXML
+    private Button ReplyButton;
+    @FXML
+    private Button SendToMore_Button;
 
     // Notificari
     @FXML
@@ -168,8 +174,22 @@ public class MainController implements Observer {
             Utilizator user = cellData.getValue();
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
         });
+        messageTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         messageTableView.setItems(friendsList);
 
+        message_messageTableColumn.setCellValueFactory(cellData -> {
+            Message message = cellData.getValue();
+            Utilizator sender = message.getFrom();
+            Utilizator recipient = messageTableView.getSelectionModel().getSelectedItem();
+
+            if (sender != null && recipient != null) {
+                String senderName = sender.getId().equals(loggedInUser.getId()) ?
+                        loggedInUser.getFirstName() + " " + loggedInUser.getLastName() :
+                        recipient.getFirstName() + " " + recipient.getLastName();
+                return new SimpleStringProperty(senderName + ": " + message.getMessage());
+            }
+            return new SimpleStringProperty("");
+        });
     }
 
     private void addListeners() {
@@ -216,25 +236,84 @@ public class MainController implements Observer {
         // Message Table Listener
         messageTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                Utilizator friend = messageTableView.getSelectionModel().getSelectedItem();
-                List<Message> messages = messageService.getMessages(loggedInUser.getId(), friend.getId());
-                messageTextArea.clear();
-                for (Message message : messages) {
-                    String sender = message.getFrom().getId().equals(loggedInUser.getId()) ? loggedInUser.getFirstName() + " " + loggedInUser.getLastName() : friend.getFirstName() + " " + friend.getLastName();
-                    messageTextArea.appendText(sender + ": " + message.getMessage() + "\n");
+                List<Message> messages = messageService.getMessages(loggedInUser.getId(), newSelection.getId());
+                if (messages != null) {
+                    message_messageTableView.setItems(FXCollections.observableArrayList(messages));
+                } else {
+                    message_messageTableView.setItems(FXCollections.observableArrayList());
                 }
             }
         });
 
-        // Send Message Listener
+
+        //SendMessage listener:
         SendMessageButton.setOnAction(e -> {
-            List<Utilizator> friends = messageTableView.getSelectionModel().getSelectedItems();
-            if (!friends.isEmpty()) {
-                String message = MessageTextField.getText();
-                if (!message.isBlank()) {
-                    messageService.sendMessage(new Message(loggedInUser, friends, message));
+            Utilizator selectedFriend = messageTableView.getSelectionModel().getSelectedItem();
+            if (selectedFriend != null) {
+                String messageText = MessageTextField.getText();
+                if (!messageText.isBlank()) {
+                    Message newMessage = new Message(loggedInUser, List.of(selectedFriend), messageText);
+                    messageService.sendMessage(newMessage);
                     MessageTextField.clear();
-                    messageTextArea.appendText(loggedInUser.getFirstName() + ": " + message + "\n");
+
+                    // Instead of reloading all messages, just add the new one to the existing list
+                    ObservableList<Message> currentMessages = message_messageTableView.getItems();
+                    if (currentMessages == null) {
+                        currentMessages = FXCollections.observableArrayList();
+                    }
+                    currentMessages.add(newMessage);
+                    message_messageTableView.setItems(currentMessages);
+                    message_messageTableView.scrollTo(currentMessages.size() - 1); // Auto-scroll to the latest message
+                }
+            }
+        });
+
+        // Reply Button Listener
+        ReplyButton.setOnAction(e -> {
+            Message selectedMessage = message_messageTableView.getSelectionModel().getSelectedItem();
+            Utilizator selectedFriend = messageTableView.getSelectionModel().getSelectedItem();
+            if (selectedMessage != null && selectedFriend != null) {
+                String replyText = MessageTextField.getText();
+                if (!replyText.isBlank()) {
+                    String formattedReplyText = "(Replied to: " + selectedMessage.getMessage() + ") " + replyText;
+                    Message replyMessage = new Message(loggedInUser, List.of(selectedFriend), formattedReplyText);
+                    replyMessage.setReply(selectedMessage);
+                    messageService.sendMessage(replyMessage);
+                    MessageTextField.clear();
+
+                    // Update the message view
+                    ObservableList<Message> currentMessages = message_messageTableView.getItems();
+                    if (currentMessages == null) {
+                        currentMessages = FXCollections.observableArrayList();
+                    }
+                    currentMessages.add(replyMessage);
+                    message_messageTableView.setItems(currentMessages);
+                    message_messageTableView.scrollTo(currentMessages.size() - 1);
+                }
+            }
+        });
+
+        // Multiple Recipients Send Button Listener
+        SendToMore_Button.setOnAction(e -> {
+            List<Utilizator> selectedFriends = messageTableView.getSelectionModel().getSelectedItems();
+            if (!selectedFriends.isEmpty()) {
+                String messageText = MessageTextField.getText();
+                if (!messageText.isBlank()) {
+                    Message newMessage = new Message(loggedInUser, selectedFriends, messageText);
+                    messageService.sendMessage(newMessage);
+                    MessageTextField.clear();
+
+                    // If the current view shows one of the recipients, update it
+                    Utilizator currentlyViewedFriend = messageTableView.getSelectionModel().getSelectedItem();
+                    if (currentlyViewedFriend != null && selectedFriends.contains(currentlyViewedFriend)) {
+                        ObservableList<Message> currentMessages = message_messageTableView.getItems();
+                        if (currentMessages == null) {
+                            currentMessages = FXCollections.observableArrayList();
+                        }
+                        currentMessages.add(newMessage);
+                        message_messageTableView.setItems(currentMessages);
+                        message_messageTableView.scrollTo(currentMessages.size() - 1);
+                    }
                 }
             }
         });

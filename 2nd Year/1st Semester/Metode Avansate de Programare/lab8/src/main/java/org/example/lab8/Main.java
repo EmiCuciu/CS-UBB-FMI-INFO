@@ -22,14 +22,8 @@ public class Main extends Application {
 }
 
 /**
- * TODO: 1. Sa pot da reply la un mesaj, adica sa schimb areatext din messages in ceva tabela
- *          , unde sa pot da click pe un mesaj si sa am un buton reply
- *          care sa refere acel mesaj, de exemplu replyed to: "mesajul la care se raspunde"
- *          , si sa pot scrie un mesaj nou care sa fie reply la acel mesaj
  *
    TODO:     4. Sa fac un sistem de notificari pentru cand cineva iti trimite un mesaj, sa iti apara un badge(un sclipitor ceva) pe butonul de messages
-
-    TODO:   6. Sa am posibilitatea de a trimite de o data acelasi mesaj la mai multe persoane
 
     TODO:   7. Sa rezolv cu repo paginat (LAB 10)
  */
