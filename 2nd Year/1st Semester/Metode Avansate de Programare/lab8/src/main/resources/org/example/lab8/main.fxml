@@ -67,7 +67,6 @@
                   </TableView>
                   <Button fx:id="previousPageButton" layoutX="160.0" layoutY="355.0" mnemonicParsing="false" text="Previous" />
                   <Button fx:id="nextPageButton" layoutX="434.0" layoutY="355.0" mnemonicParsing="false" text="Next" />
-                  <Button fx:id="deletePaginatedFriendButton" layoutX="580.0" layoutY="187.0" mnemonicParsing="false" text="Delete Friend" />
                </children></AnchorPane>
         </content>
       </Tab>
