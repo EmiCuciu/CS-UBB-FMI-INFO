@@ -1,8 +1,11 @@
 package org.example.lab8.repository.dbrepo;
 
 import org.example.lab8.domain.Message;
+import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
 import org.example.lab8.domain.validators.MessageValidator;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -35,6 +38,16 @@ public class MessageDBRepository extends AbstractDBRepository<Message> {
             e.printStackTrace();
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Page<Message> findAllOnPage(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<Prietenie> findAllOnPage(Pageable pageable, Long userId) {
+        return null;
     }
 
     @Override

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="442.0" prefWidth="714.0" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab8.controller.MainController">
+<AnchorPane prefHeight="442.0" prefWidth="714.0" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab8.controller.MainController">
     <TabPane layoutX="4.0" prefHeight="442.0" prefWidth="707.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Profile">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="584.0">
@@ -56,6 +56,21 @@
                 <Button fx:id="DeleteFriend" layoutX="544.0" layoutY="194.0" mnemonicParsing="false" text="Delete Mafia Friend" />
             </AnchorPane>
         </Tab>
+      <Tab text="Paginated Friends">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="friendsPaginationTableView" layoutX="160.0" layoutY="14.0" prefHeight="333.0" prefWidth="394.0">
+                    <columns>
+                      <TableColumn fx:id="fullNameColumnPagination" prefWidth="392.00002136230466" text="Nasii tai" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="previousPageButton" layoutX="160.0" layoutY="355.0" mnemonicParsing="false" text="Previous" />
+                  <Button fx:id="nextPageButton" layoutX="434.0" layoutY="355.0" mnemonicParsing="false" text="Next" />
+                  <Button fx:id="deletePaginatedFriendButton" layoutX="580.0" layoutY="187.0" mnemonicParsing="false" text="Delete Friend" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
         <Tab text="Messages">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                 <TextField fx:id="MessageTextField" layoutX="210.0" layoutY="297.0" prefHeight="56.0" prefWidth="507.0" promptText="Write a message" />

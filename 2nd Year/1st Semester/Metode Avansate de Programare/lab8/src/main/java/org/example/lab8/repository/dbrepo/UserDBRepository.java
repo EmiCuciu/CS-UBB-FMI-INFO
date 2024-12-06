@@ -1,8 +1,11 @@
 package org.example.lab8.repository.dbrepo;
 
 
+import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.Utilizator;
 import org.example.lab8.domain.validators.UtilizatorValidator;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +27,16 @@ public class UserDBRepository extends AbstractDBRepository<Utilizator> {
     public Optional<Utilizator> findOne(Long id) {
         // Implementation here
         return Optional.empty();
+    }
+
+    @Override
+    public Page<Utilizator> findAllOnPage(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<Prietenie> findAllOnPage(Pageable pageable, Long userId) {
+        return null;
     }
 
     @Override
