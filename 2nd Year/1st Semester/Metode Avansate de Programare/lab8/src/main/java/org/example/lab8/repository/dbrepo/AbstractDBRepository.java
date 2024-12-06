@@ -1,7 +1,10 @@
 package org.example.lab8.repository.dbrepo;
 
 
+import org.example.lab8.domain.Prietenie;
 import org.example.lab8.repository.Repository;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,4 +31,8 @@ public abstract class AbstractDBRepository<T> implements Repository<Long, T> {
     public abstract Optional<T> update(T entity);
     public abstract Iterable<T> findAll();
     public abstract Optional<T> findOne(Long id);
+
+    public abstract Page<T> findAllOnPage(Pageable pageable);
+
+    public abstract Page<Prietenie> findAllOnPage(Pageable pageable, Long userId);
 }

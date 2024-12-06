@@ -20,11 +20,12 @@ import org.example.lab8.services.Service;
 import org.example.lab8.services.UserService;
 import org.example.lab8.utils.events.Event;
 import org.example.lab8.utils.observer.Observer;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MainController implements Observer {
     private final Service mainService = ApplicationContext.getService();
@@ -95,6 +96,27 @@ public class MainController implements Observer {
     private ObservableList<Utilizator> friendsList;
     private ObservableList<Prietenie> friendRequestsList;
 
+
+    // Paging
+    private int currentPage = 0;
+    private int pageSize = 5;
+    private Pageable currentPageable;
+
+    @FXML
+    private Button previousPageButton;
+    @FXML
+    private Button nextPageButton;
+    @FXML
+    private TableView<Utilizator> friendsPaginationTableView;
+    @FXML
+    private TableColumn<Utilizator, String> fullNameColumnPagination;
+    @FXML
+    private Button deletePaginatedFriendButton;
+
+
+
+
+
     @FXML
     public void initialize() {
         // Set the username text
@@ -104,6 +126,8 @@ public class MainController implements Observer {
         allUsersList = FXCollections.observableArrayList();
         friendsList = FXCollections.observableArrayList();
         friendRequestsList = FXCollections.observableArrayList();
+
+        setupPaginationTableView();
 
         // Load initial data
         loadAllUsers();
@@ -115,6 +139,7 @@ public class MainController implements Observer {
 
         // Add listeners
         addListeners();
+        setupPaginationListeners();
 
         // Register observer
         mainService.getUserService().addObserver(this);
@@ -131,6 +156,34 @@ public class MainController implements Observer {
     private void loadFriends() {
         Set<Utilizator> friends = friendshipService.findFriends(loggedInUser.getId());
         friendsList.setAll(friends);
+
+
+        // Paging
+        Set<Utilizator> allFriends = friendshipService.findFriends(loggedInUser.getId());
+
+        // Setăm toți prietenii în tabelul nepaginat
+        friendsList.setAll(allFriends);
+        usersTableFriends.setItems(friendsList);
+
+        // Sortăm prietenii alfabetic
+        List<Utilizator> sortedFriends = allFriends.stream()
+                .sorted(Comparator.comparing(u -> u.getFirstName() + " " + u.getLastName()))
+                .collect(Collectors.toList());
+
+        // Calculăm offset-ul pentru paginare
+        int offset = currentPage * pageSize;
+
+        // Preluăm prietenii pentru pagina curentă
+        List<Utilizator> pagedFriends = sortedFriends.stream()
+                .skip(offset)
+                .limit(pageSize)
+                .collect(Collectors.toList());
+
+        // Setăm prietenii în tabelul paginat
+        friendsPaginationTableView.setItems(FXCollections.observableArrayList(pagedFriends));
+
+        // Actualizăm controalele de paginare
+        updatePaginationControls(sortedFriends.size());
     }
 
     private void loadFriendRequests() {
@@ -356,5 +409,51 @@ public class MainController implements Observer {
         loadAllUsers();
         loadFriends();
         loadFriendRequests();
+
+    }
+
+
+    // Paging
+    private void setupPaginationTableView() {
+        // Configure pagination table view columns
+        fullNameColumnPagination.setCellValueFactory(cellData -> {
+            Utilizator user = cellData.getValue();
+            return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
+        });
+
+        // Add listener for delete button state
+        friendsPaginationTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            deletePaginatedFriendButton.setDisable(newSelection == null);
+        });
+
+        // Initially disable delete button
+        deletePaginatedFriendButton.setDisable(true);
+    }
+
+
+    private void updatePaginationControls(int totalElements) {
+        int totalPages = (int) Math.ceil((double) totalElements / pageSize);
+
+        previousPageButton.setDisable(currentPage == 0);
+        nextPageButton.setDisable(currentPage >= totalPages - 1);
+    }
+
+    private void setupPaginationListeners() {
+        previousPageButton.setOnAction(e -> {
+            if (currentPage > 0) {
+                currentPage--;
+                loadFriends();
+            }
+        });
+
+        nextPageButton.setOnAction(e -> {
+            int totalFriends = friendshipService.findFriends(loggedInUser.getId()).size();
+            int totalPages = (int) Math.ceil((double) totalFriends / pageSize);
+
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                loadFriends();
+            }
+        });
     }
 }
