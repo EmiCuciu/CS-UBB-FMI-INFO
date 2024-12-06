@@ -5,12 +5,12 @@ import org.example.lab8.domain.Prietenie;
 import org.example.lab8.domain.validators.PrietenieValidator;
 import org.example.lab8.domain.Tuple;
 import org.example.lab8.domain.Utilizator;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class PrietenieDBRepository extends AbstractDBRepository<Prietenie> {
     PrietenieValidator validator;
@@ -177,5 +177,118 @@ public class PrietenieDBRepository extends AbstractDBRepository<Prietenie> {
             e.printStackTrace();
         }
         return friends;
+    }
+    @Override
+    public Page<Prietenie> findAllOnPage(Pageable pageable) {
+        try (Connection connection = getConnection()) {
+            int totalNumberOfFriendships = count(connection);
+            List<Prietenie> friendshipsOnPage = new ArrayList<>();
+
+            if (totalNumberOfFriendships > 0) {
+                friendshipsOnPage = findAllOnPageInternal(connection, pageable);
+            }
+
+            return new Page<>(friendshipsOnPage, totalNumberOfFriendships);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Page<Prietenie> findAllOnPage(Pageable pageable, Long userId) {
+        try (Connection connection = getConnection()) {
+            int totalNumberOfFriendships = countFriendshipsOfUser(connection, userId);
+            List<Prietenie> friendshipsOnPage = new ArrayList<>();
+
+            if (totalNumberOfFriendships > 0) {
+                friendshipsOnPage = findAllOnPageForUser(connection, pageable, userId);
+            }
+
+            return new Page<>(friendshipsOnPage, totalNumberOfFriendships);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int count(Connection connection) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM friendships WHERE status = 'accepted'";
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return 0;
+        }
+    }
+
+    private int countFriendshipsOfUser(Connection connection, Long userId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM friendships WHERE (user_id = ? OR friend_id = ?) AND status = 'accepted'";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, userId);
+            statement.setLong(2, userId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+                return 0;
+            }
+        }
+    }
+
+    private List<Prietenie> findAllOnPageInternal(Connection connection, Pageable pageable) throws SQLException {
+        List<Prietenie> friendships = new ArrayList<>();
+        String sql = "SELECT * FROM friendships WHERE status = 'accepted' " +
+                "ORDER BY date " + // Add an ORDER BY clause
+                "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, pageable.getPageSize() * pageable.getPageNumber());
+            statement.setInt(2, pageable.getPageSize());
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Long userId1 = resultSet.getLong("user_id");
+                    Long userId2 = resultSet.getLong("friend_id");
+                    LocalDateTime date = resultSet.getTimestamp("date").toLocalDateTime();
+                    String status = resultSet.getString("status");
+
+                    Prietenie prietenie = new Prietenie(date, status);
+                    prietenie.setId(new Tuple<>(userId1, userId2));
+                    friendships.add(prietenie);
+                }
+            }
+        }
+
+        return friendships;
+    }
+
+    private List<Prietenie> findAllOnPageForUser(Connection connection, Pageable pageable, Long userId) throws SQLException {
+        List<Prietenie> friendships = new ArrayList<>();
+        String sql = "SELECT * FROM friendships " +
+                "WHERE (user_id = ? OR friend_id = ?) AND status = 'accepted' " +
+                "ORDER BY date " + // Add an ORDER BY clause
+                "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, userId);
+            statement.setLong(2, userId);
+            statement.setInt(3, pageable.getPageSize() * pageable.getPageNumber());
+            statement.setInt(4, pageable.getPageSize());
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Long userId1 = resultSet.getLong("user_id");
+                    Long userId2 = resultSet.getLong("friend_id");
+                    LocalDateTime date = resultSet.getTimestamp("date").toLocalDateTime();
+                    String status = resultSet.getString("status");
+
+                    Prietenie prietenie = new Prietenie(date, status);
+                    prietenie.setId(new Tuple<>(userId1, userId2));
+                    friendships.add(prietenie);
+                }
+            }
+        }
+
+        return friendships;
     }
 }

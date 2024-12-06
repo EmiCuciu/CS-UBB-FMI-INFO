@@ -7,6 +7,8 @@ import org.example.lab8.utils.events.ChangeEventType;
 import org.example.lab8.utils.events.FriendshipEvent;
 import org.example.lab8.utils.observer.Observable;
 import org.example.lab8.utils.observer.Observer;
+import org.example.lab8.utils.paging.Page;
+import org.example.lab8.utils.paging.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,5 +61,11 @@ public class FriendshipService implements Observable<FriendshipEvent> {
     @Override
     public void notifyObservers(FriendshipEvent t) {
         observers.forEach(o -> o.update(t));
+    }
+
+
+    // paging
+    public Page<Prietenie> findAllOnPage(Pageable pageable) {
+        return prietenieDBRepository.findAllOnPage(pageable);
     }
 }
