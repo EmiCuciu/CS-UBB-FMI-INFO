@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,11 +19,12 @@ import org.example.lab8.services.Service;
 import org.example.lab8.services.UserService;
 import org.example.lab8.utils.events.Event;
 import org.example.lab8.utils.observer.Observer;
-import org.example.lab8.utils.paging.Page;
 import org.example.lab8.utils.paging.Pageable;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MainController implements Observer {
@@ -110,11 +110,6 @@ public class MainController implements Observer {
     private TableView<Utilizator> friendsPaginationTableView;
     @FXML
     private TableColumn<Utilizator, String> fullNameColumnPagination;
-    @FXML
-    private Button deletePaginatedFriendButton;
-
-
-
 
 
     @FXML
@@ -161,28 +156,28 @@ public class MainController implements Observer {
         // Paging
         Set<Utilizator> allFriends = friendshipService.findFriends(loggedInUser.getId());
 
-        // Setăm toți prietenii în tabelul nepaginat
+
         friendsList.setAll(allFriends);
         usersTableFriends.setItems(friendsList);
 
-        // Sortăm prietenii alfabetic
+
         List<Utilizator> sortedFriends = allFriends.stream()
                 .sorted(Comparator.comparing(u -> u.getFirstName() + " " + u.getLastName()))
                 .collect(Collectors.toList());
 
-        // Calculăm offset-ul pentru paginare
+
         int offset = currentPage * pageSize;
 
-        // Preluăm prietenii pentru pagina curentă
+
         List<Utilizator> pagedFriends = sortedFriends.stream()
                 .skip(offset)
                 .limit(pageSize)
                 .collect(Collectors.toList());
 
-        // Setăm prietenii în tabelul paginat
+
         friendsPaginationTableView.setItems(FXCollections.observableArrayList(pagedFriends));
 
-        // Actualizăm controalele de paginare
+
         updatePaginationControls(sortedFriends.size());
     }
 
@@ -420,14 +415,6 @@ public class MainController implements Observer {
             Utilizator user = cellData.getValue();
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
         });
-
-        // Add listener for delete button state
-        friendsPaginationTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            deletePaginatedFriendButton.setDisable(newSelection == null);
-        });
-
-        // Initially disable delete button
-        deletePaginatedFriendButton.setDisable(true);
     }
 
 
