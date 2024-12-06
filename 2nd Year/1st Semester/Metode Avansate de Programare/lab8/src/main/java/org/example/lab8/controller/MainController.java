@@ -19,12 +19,10 @@ import org.example.lab8.services.Service;
 import org.example.lab8.services.UserService;
 import org.example.lab8.utils.events.Event;
 import org.example.lab8.utils.observer.Observer;
+import org.example.lab8.utils.paging.Page;
 import org.example.lab8.utils.paging.Pageable;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainController implements Observer {
@@ -149,34 +147,15 @@ public class MainController implements Observer {
     }
 
     private void loadFriends() {
-        Set<Utilizator> friends = friendshipService.findFriends(loggedInUser.getId());
-        friendsList.setAll(friends);
-
-
-        // Paging
         Set<Utilizator> allFriends = friendshipService.findFriends(loggedInUser.getId());
-
-
         friendsList.setAll(allFriends);
-        usersTableFriends.setItems(friendsList);
 
+        List<Utilizator> sortedFriends = new ArrayList<>(allFriends);
+        sortedFriends.sort(Comparator.comparing(Utilizator::getFirstName).thenComparing(Utilizator::getLastName));
 
-        List<Utilizator> sortedFriends = allFriends.stream()
-                .sorted(Comparator.comparing(u -> u.getFirstName() + " " + u.getLastName()))
-                .collect(Collectors.toList());
-
-
-        int offset = currentPage * pageSize;
-
-
-        List<Utilizator> pagedFriends = sortedFriends.stream()
-                .skip(offset)
-                .limit(pageSize)
-                .collect(Collectors.toList());
-
-
-        friendsPaginationTableView.setItems(FXCollections.observableArrayList(pagedFriends));
-
+        int fromIndex = currentPage * pageSize;
+        int toIndex = Math.min(fromIndex + pageSize, sortedFriends.size());
+        List<Utilizator> paginatedFriends = sortedFriends.subList(fromIndex, toIndex);
 
         updatePaginationControls(sortedFriends.size());
     }
@@ -410,7 +389,6 @@ public class MainController implements Observer {
 
     // Paging
     private void setupPaginationTableView() {
-        // Configure pagination table view columns
         fullNameColumnPagination.setCellValueFactory(cellData -> {
             Utilizator user = cellData.getValue();
             return new SimpleStringProperty(user.getFirstName() + " " + user.getLastName());
@@ -434,13 +412,13 @@ public class MainController implements Observer {
         });
 
         nextPageButton.setOnAction(e -> {
-            int totalFriends = friendshipService.findFriends(loggedInUser.getId()).size();
-            int totalPages = (int) Math.ceil((double) totalFriends / pageSize);
-
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                loadFriends();
+            Pageable pageable = new Pageable(currentPage + 1, pageSize);
+            Page<Prietenie> nextPage = friendshipService.findAllOnPage(pageable);
+            if (!nextPage.getElementsOnPage().iterator().hasNext()) {
+                return;
             }
+            currentPage++;
+            loadFriends();
         });
     }
 }
