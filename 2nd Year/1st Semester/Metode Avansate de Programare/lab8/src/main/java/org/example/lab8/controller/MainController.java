@@ -23,7 +23,6 @@ import org.example.lab8.utils.paging.Page;
 import org.example.lab8.utils.paging.Pageable;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MainController implements Observer {
     private final Service mainService = ApplicationContext.getService();
@@ -98,7 +97,6 @@ public class MainController implements Observer {
     // Paging
     private int currentPage = 0;
     private int pageSize = 5;
-    private Pageable currentPageable;
 
     @FXML
     private Button previousPageButton;
@@ -157,6 +155,8 @@ public class MainController implements Observer {
         int toIndex = Math.min(fromIndex + pageSize, sortedFriends.size());
         List<Utilizator> paginatedFriends = sortedFriends.subList(fromIndex, toIndex);
 
+        // Set items to friendsPaginationTableView
+        friendsPaginationTableView.setItems(FXCollections.observableArrayList(paginatedFriends));
         updatePaginationControls(sortedFriends.size());
     }
 
