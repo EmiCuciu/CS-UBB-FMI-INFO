@@ -1,7 +1,7 @@
 remove-nth(n:Integer, lst: lista)
 (i,i,o) Model de flux
 
-                            
+Model matematic:                   
 remove-nth(n,l1 l2 .. lm) = {NIL, m = 0}
                             {[l1 l2 .. lm], n<=0}
                             {[l2 l3 .. lm], daca n = 1}

@@ -1,0 +1,41 @@
+Pasul 1: (find-path '(A 2 B 0 C 2 D 0 E 0) 'D)
+- Nodul curent = A
+- Nu este D, continuăm cu copiii
+- nr-children = 2
+- children = (B 0 C 2 D 0 E 0)
+
+Pasul 2: (find-path-in-children '(B 0 C 2 D 0 E 0) 2 'D 'A)
+- Verifică primul copil B
+- Apelează (find-path '(B 0 C 2 D 0 E 0) 'D)
+
+Pasul 3: (find-path '(B 0 C 2 D 0 E 0) 'D)
+- Nodul curent = B
+- Nu este D
+- nr-children = 0
+- Returnează nil (nu s-a găsit)
+
+Pasul 4: Se întoarce la find-path-in-children
+- Obține următorul copil folosind get-next-child
+- get-next-child sare peste subarborele lui B
+- Ajunge la (C 2 D 0 E 0)
+
+Pasul 5: (find-path '(C 2 D 0 E 0) 'D)
+- Nodul curent = C
+- Nu este D
+- nr-children = 2
+- children = (D 0 E 0)
+
+Pasul 6: (find-path-in-children '(D 0 E 0) 2 'D 'C)
+- Verifică primul copil D
+- Apelează (find-path '(D 0 E 0) 'D)
+
+Pasul 7: (find-path '(D 0 E 0) 'D)
+- Nodul curent = D
+- Este nodul căutat!
+- Returnează (D)
+
+Pasul 8: Construiește calea completă
+- Adaugă C: (C D)
+- Adaugă A: (A C D)
+
+Rezultat final: (A C D)
