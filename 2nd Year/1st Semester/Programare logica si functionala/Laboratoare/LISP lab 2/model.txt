@@ -1,3 +1,24 @@
+Pentru urmatoarele probleme se cer functii Lisp programate in mod recursiv
+(eventual folosind functii MAP):
+Un arbore binar se memoreaza in urmatoarele doua moduri
+(nod nr-subarbori lista-subarbore-1 lista-subarbore-2 ...) (1)
+(nod (lista-subarbore-1) (lista-subarbore-2)) (2)
+De exemplu arborele
+  A
+ / \
+ B C
+  / \
+  D  E
+se poate reprezenta astfel in cele doua moduri:
+(A 2 B 0 C 2 D 0 E 0) (1)
+(A (B) (C (D) (E))) (2)
+
+
+1. Se da un arbore de tipul (1). Sa se afiseze calea de la radacina pana la un
+ nod x dat.
+
+
+
 find-path(l1 l2 .. ln,x) =  {NIL    , n=0}
                             {x    , l1 = x}
                             {find-path-in-children(children,nr_children,x,parent)}
