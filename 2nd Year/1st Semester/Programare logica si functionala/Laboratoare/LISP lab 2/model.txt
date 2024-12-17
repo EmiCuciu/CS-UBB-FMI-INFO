@@ -21,14 +21,14 @@ se poate reprezenta astfel in cele doua moduri:
 
 find-path(l1 l2 .. ln,x) =  {NIL    , n=0}
                             {x    , l1 = x}
-                            {find-path-in-children(children,nr_children,x,parent)}
+                            {find-path-in-children([l3 .. ln],l2,x,l1)}
 
 
 find-path-in-children(c1 c2 .. cm, nr_children, x, parent)= 
     {NIL, nr_children=0}
     {NIL, m=0} 
-    {parent (+) child-path, child-path nu e vida, unde child-path = find-path(c1,x)}
-    {find-path-in-children(get-next-child(children),nr_children-1,x,parent), altfel}
+    {parent (+) (find-path(c1 .. cm, x)), find-path(c1 .. cm, x) nu e vida}
+    {find-path-in-children(get-next-child(children), nr_children-1,x , parent), altfel}
 
 
 get-next-child(l1 l2 .. ln) =   {NIL, n=0}

@@ -3,28 +3,23 @@
     (cond 
         ((null tree) nil)                   ; verificăm dacă arborele este vid
         ((equal (car tree) x) (list x))     ; verifică dacă primul element (nodul curent) este cel căutat
-        (t (let ((nr-children (cadr tree))  ; nr-children = numărul de copii ai nodului curent
-                 (children (cddr tree)))    ; children = lista de copii ai nodului curent
-            (find-path-in-children children nr-children x (car tree))))))
-
+        (t (find-path-in-children (cddr tree) (cadr tree) x (car tree)))))
+                    
 ; Functia pentru cautarea in copiii nodului curent
 (defun find-path-in-children (children nr-children x parent)
     (cond 
         ((= nr-children 0) nil)                             ; nu mai sunt copii de verificat
         ((null children) nil)                               ; lista de copii e vidă
-        (t (let ((child-path (find-path children x)))       ; căutăm în copilul curent
-            (if child-path                               ; daca este diferit de nil
-                (cons parent child-path)                    ; dacă am găsit, construim calea
-                (let ((next-child (get-next-child children))) ; altfel, trecem la următorul copil
-                    (find-path-in-children next-child (- nr-children 1) x parent)))))))
+        (t (if (find-path children x)                               ; daca este diferit de nil
+                (cons parent (find-path children x))                    ; dacă am găsit, construim calea
+                (find-path-in-children (get-next-child children) (- nr-children 1) x parent)))))
 
 ; Functie pentru a obtine urmatorul copil din lista
 (defun get-next-child (tree)
     (cond 
         ((null tree) nil)                          ; arbore vid
         ((null (cdr tree)) nil)                    ; nu mai sunt elemente
-        (t (let ((nr-subchildren (cadr tree)))     ; numărul de subcopii
-            (skip-subtree (cddr tree) nr-subchildren))))) ; sare peste subarbore
+        (t (skip-subtree (cddr tree) (cadr tree))))) ; sare peste subarbore
 
 ; Functie pentru a sari peste un subarbore
 (defun skip-subtree (tree count)
