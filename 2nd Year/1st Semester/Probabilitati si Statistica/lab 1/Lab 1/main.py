@@ -1,47 +1,59 @@
-from itertools import permutations, combinations
 from random import sample
+from math import factorial
+from itertools import permutations
+
+# 2
+# a
+cuvant = 'word'
+permutari = [''.join(p) for p in permutations(cuvant)]
+print(permutari)
+print(list(permutations(cuvant)))
+print(list(permutations([1, 3, 4])))
+
+# b
+print(len(permutari))
+print(factorial(len('word')))
+
+# c
+print(sample(permutari, 1))
+print('\n\n')
+
+# 3
+from math import perm, comb
+from itertools import combinations
 
 
-# print(list(permutations('word', 4)))
-
-# print(factorial(len('word')))
-
-# print(sample(list('word'), 4))
-
-def aranjamente(cuvant, lungime, numar_total=False, aleator=False):
+# a
+def aranjamente(lista, k, numar_total=False, aleator=False):
+    """Aranjamentele listei, numarul lor total si generare de un aranjament aleator."""
     if numar_total:
-        return list(permutations(cuvant, lungime))
+        print(perm(len(lista), k))
     elif aleator:
-        b = sample(list(cuvant), lungime)
-        return b
+        print(sample(lista, k))
     else:
-        a = permutations(cuvant, lungime)
-        return len(list(a))
+        print(list(permutations(lista, k)))
 
 
-cuv = 'word'
-lung = 2
+aranjamente('word', 2)
+aranjamente('word', 2, numar_total=True)
+aranjamente('word', 2, aleator=True)
 
+print('\n')
 
-# print(arangamente(cuvant, lungime, True, False))
-# print(arangamente(cuvant, lungime, False, False))
-# print(arangamente(cuvant, lungime, False, True))
-
-def combinari(cuvant, lungime, numar_total=False, aleator=False):
+def combinari(lista, k, numar_total=False, aleator=False):
+    """Combinarile listei, numar lor totalu si generare de o combinare aleatoare."""
     if numar_total:
-        return list(combinations(cuvant, lungime))
+        print(comb(len(lista), k))
     elif aleator:
-        b = sample(list(cuvant), lungime)
-        return b
+        indici_aleatori = sample(list(range(len(lista))), k)
+        print([lista[i] for i in sorted(indici_aleatori)])
     else:
-        a = combinations(cuvant, lungime)
-        return len(list(a))
+        print(list(combinations(lista, k)))
 
 
-# print(combinari(cuv, lung, True, False))
-# print(combinari(cuv, lung, False, False))
-# print(combinari(cuv, lung, False, True))
-
-print(len(list(aranjamente('1' * 8, 5, True, False))))
+combinari('word', 2)
+combinari('word', 2, numar_total=True)
+combinari('word', 2, aleator=True)
 
 
+# 4
