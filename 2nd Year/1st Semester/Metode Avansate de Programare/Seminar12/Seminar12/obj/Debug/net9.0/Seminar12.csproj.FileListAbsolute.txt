@@ -1,0 +1,15 @@
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\bin\Debug\net9.0\Seminar12.exe
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\bin\Debug\net9.0\Seminar12.deps.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\bin\Debug\net9.0\Seminar12.runtimeconfig.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\bin\Debug\net9.0\Seminar12.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\bin\Debug\net9.0\Seminar12.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.GeneratedMSBuildEditorConfig.editorconfig
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.AssemblyInfoInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.AssemblyInfo.cs
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.csproj.CoreCompileInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.sourcelink.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\refint\Seminar12.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\Seminar12.genruntimeconfig.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\Seminar12\Seminar12\obj\Debug\net9.0\ref\Seminar12.dll

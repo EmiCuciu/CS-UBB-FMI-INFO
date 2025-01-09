@@ -13,7 +13,6 @@
         "packagesPath": "C:\\Users\\Emi\\.nuget\\packages\\",
         "outputPath": "Z:\\GitHubRepos\\CS-UBB-FMI-INFO\\2nd Year\\1st Semester\\Metode Avansate de Programare\\seminar10 C#\\seminar11\\seminar11\\obj\\",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "C:\\Users\\Emi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
@@ -38,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "all"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
