@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/login.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab8.controller.LoginController" userData="login">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/login.css" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab8.controller.LoginController" userData="login">
    <Label layoutX="215.0" layoutY="65.0" text="Mafia Login">
       <font>
          <Font size="36.0" />
@@ -17,7 +17,7 @@
    </Label>
    <ImageView fitHeight="151.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@images/silueta-mafiotă-emblema-vectorială-magazinului-masculin-un-club-de-frizerie-gangster-cu-pălărie-și-cravată-roșie-194644386.jpg" />
+         <Image url="@images/img.jpg" />
       </image>
    </ImageView>
    <TextField fx:id="username" layoutX="242.0" layoutY="144.0" promptText="Username" />
