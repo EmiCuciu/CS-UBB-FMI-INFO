@@ -24,3 +24,8 @@ comb(K, [_|T], Comb) :-
 aranjamente(L, K, Rez) :-
     comb(K, L, Comb),
     perm(Comb, Rez).
+
+% MEMBER
+mem_11(E,[E|_]).
+
+mem_11(E,[_|T]):-mem_11(E,T).

@@ -1,0 +1,5 @@
+inlocuieste(arb:lista,e:integer,k:integer,nivel:integer)
+
+inlocuieste(l1..ln,e,k,nivel) = {e,     l1=atom si nivel=k}
+                                {l, l1=atom}
+                                {inlocuieste(l1,e,k,nivel+1)U...U inlocuieste(ln,e,k,nivel+1)}
