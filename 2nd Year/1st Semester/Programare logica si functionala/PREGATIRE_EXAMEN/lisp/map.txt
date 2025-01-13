@@ -1,0 +1,15 @@
+MAPCAR
+-aplicata car,cadr,caddr .. listelor
+-o lista cu fiecare rez in alta lista separata inclusa in lista mare, ex: ((A 2)(3))
+
+MAPCAR
+-aplicata car,cadr,caddr .. listelor
+-o lista cu fiecare rez concatenata in una mare, ex: (A 2 3)
+
+MAPLIST
+-aplicata listelor, cdr,cddr ..listelor
+-o lista cu fiecare rez in alta lista separata inclusa in lista mare
+
+MAPCON
+-aplicata listelor, cdr,cddr ..listelor
+-o lista cu fiecare rez concatenata in una mare, ex: (A 2 3)
