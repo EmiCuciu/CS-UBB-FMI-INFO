@@ -1,0 +1,16 @@
+produs(l:lista, x:integer)
+
+produs(l1..ln x) =  {[],   n=0}
+                    {(0),   x=0}
+                    {l1*x, l1 este atom}
+                    {n}
+                    {U produs(li x) ,altfel (echivalent cu :
+                    {i=1}            produs(l1 x) U produs(l2 x) U .. U produs(ln x))}
+
+specificatii:
+
+(l1 l2 ..ln) : lista care are ca elemente cifrele unui numar
+
+x : numarul cu care se inmulteste numarul reprezentat prin lista de cifre
+
+(+ (car l) 1) (cdr)
