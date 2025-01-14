@@ -1,0 +1,16 @@
+extrage(l:lista,n:integer,poz:integer)
+
+extrage(l1..ln m) = {nil    ,m=0}
+                    {l1     ,n=1}
+                    {extrage(l2..ln n-1)}
+
+
+apartine(l1..ln e) =    {false, n=0}
+                        {t,    l1==e}
+                        {(apartine(l1 e) or (apartine(l2..ln e)), daca l1=lista)}
+                        {apartine(l2..ln e), altfel}
+
+
+lista-multime(l1..ln) = {false, n=0}
+                        {lista-multime(l2..ln) ,apartine(l1 l2..ln)}
+                        {[l1 (+) lista-multime(l2..ln)]}

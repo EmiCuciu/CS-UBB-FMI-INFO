@@ -1,0 +1,4 @@
+
+inordine(l1..ln) =  {false,  n=0}
+                    {l1,    l=atom}
+                    {(inordine(l2)) (+) (inordine(l1)) (+) inordine(l3)}
