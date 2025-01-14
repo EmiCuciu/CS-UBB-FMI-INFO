@@ -10,7 +10,7 @@ apare(l1 l2 .. ln, e) = {False, n=0}
                         {True,  l1=e}
                         {     n }
                         {sau( U apare(li, e)) ,altfel (echivalent cu)}
-                        {     i=1}               (sau(apare(l1,e),apare(l2,e),...,apare(ln,e)))
+                        {     i=2}               (sau(apare(l2,e),...,apare(ln,e)))
                         
 -face sau(lista de rezultate din mapcar #'(lambda (x)))
 
