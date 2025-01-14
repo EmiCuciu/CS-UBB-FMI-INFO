@@ -1,0 +1,19 @@
+sau(l: list)
+
+sau(l1 l2 .. ln) =  {False,  n=0}
+                    {(l1 OR (sau( l2 .. ln))), altfel}
+
+
+apare(l:arbore, e:nod)
+
+apare(l1 l2 .. ln, e) = {False, n=0}
+                        {True,  l1=e}
+                        {     n }
+                        {sau( U apare(li, e)) ,altfel (echivalent cu)}
+                        {     i=1}               (sau(apare(l1,e),apare(l2,e),...,apare(ln,e)))
+                        
+-face sau(lista de rezultate din mapcar #'(lambda (x)))
+
+-exemplu de rulare: 
+(apare '(a (b (c)) (d) (e (f))) 'c) => T
+(apare '(a (b (c)) (d) (e (f))) 'v) => NIL

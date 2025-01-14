@@ -1,0 +1,13 @@
+a)
+insert(l:lista , a:atom, poz:integer)
+
+insert(l1..ln a poz) =  {[],  n=0}
+                        {[l1(+) a(+) insert(l2..ln a poz+1)]   , poz%2==0}
+                        {[l1(+) insert(l2..ln a poz+1)]}
+
+b)
+invers(l:lista)
+
+invers(l1..ln) =    {[], n=0}
+                    {[invers(l2..ln)](+)[l1], l1=atom}
+                    {[invers(l2..ln)](+)[lista(l1)], altfel (daca l1 e paranteza)}

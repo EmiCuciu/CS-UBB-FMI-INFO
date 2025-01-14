@@ -1,0 +1,3 @@
+nivel(l x niv) = ([]    ,n=0)
+                 (niv   ,l1 = x)
+                 ()
