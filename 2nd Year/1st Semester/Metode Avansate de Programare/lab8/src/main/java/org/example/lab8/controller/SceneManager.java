@@ -2,6 +2,7 @@ package org.example.lab8.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class SceneManager {
             Scene scene = new Scene(loader.load());
             Stage newStage = new Stage();
             newStage.setScene(scene);
+            newStage.setTitle("Mafia Social Network");
+            newStage.getIcons().add(new Image(SceneManager.class.getResourceAsStream("/org/example/lab8/images/money.png")));
             newStage.show();
         } catch (IOException e) {
             e.printStackTrace();
