@@ -161,4 +161,20 @@ public class UserDBRepository extends AbstractDBRepository<Utilizator> {
         }
         return Optional.empty();
     }
+
+    public String getProfilePicturePath(Long userId) {
+        String sql = "SELECT profile_picture FROM users WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setLong(1, userId);
+            try (ResultSet resultSet = ps.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("profile_picture");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

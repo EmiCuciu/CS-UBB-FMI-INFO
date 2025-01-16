@@ -20,10 +20,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
-/**
- *
-   TODO:     4. Sa fac un sistem de notificari pentru cand cineva iti trimite un mesaj, sa iti apara un badge(un sclipitor ceva) pe butonul de messages
-
-    TODO:   7. Sa rezolv cu repo paginat (LAB 10)
- */
