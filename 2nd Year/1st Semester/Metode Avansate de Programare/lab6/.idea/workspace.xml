@@ -5,65 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89c1ca51-b071-498d-9e89-fc0f416fb7f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Controllers/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Controllers/ControllerSuperclass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Controllers/FriendRequestsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Controllers/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Controllers/MainWindowController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/events/ChangeEventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/events/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/events/FriendshipEntityChangeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/events/FriendshipRequestEntityChangeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/events/UserEntityChangeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/observer/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/Utils/observer/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/Friendship.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/FriendshipRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/Tuple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/UserInstance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/validation/FriendshipRequestValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/validation/FriendshipValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/validation/UserValidation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/validation/ValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/domain/validation/Validator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/repository/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/repository/database/AbstractDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/repository/database/FriendshipDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/repository/database/FriendshipRequestDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/repository/database/UserDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/Configs/ApplicationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/Configs/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/EntityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/FriendshipRequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/FriendshipService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/ScreenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/ServiceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/lab6/Views/friendRequestWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/lab6/Views/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/lab6/Views/login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/lab6/Views/mainWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/lab6/css/mainWindow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/Echipa.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/Elev.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/Jucator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/JucatorActiv.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/Meci.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Domain/TipJucator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LAB10-NBA/LAB10-NBA/Repository/IRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab6/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab6/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/lab6/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/ChangeEventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/ChangeEventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Observable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar8/Exercitiu/src/main/java/org/example/exercitiu/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Programare logica si functionala/Laboratoare/lab 3/11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Programare logica si functionala/Laboratoare/lab 3/11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,29 +89,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.lab6 [:org.example.lab6.HelloApplication.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "Z:/GitHubRepos/CS-UBB-FMI-INFO/2nd Year/1st Semester/Metode Avansate de Programare/lab6/src/main/resources/org/example/lab6",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.lab6 [:org.example.lab6.HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/GitHubRepos/CS-UBB-FMI-INFO/2nd Year/1st Semester/Metode Avansate de Programare/lab6/src/main/resources/org/example/lab6&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\lab6\src\main\resources\org\example\lab6" />
@@ -181,8 +144,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -200,6 +163,8 @@
       <workItem from="1732202232665" duration="1316000" />
       <workItem from="1732206758278" duration="3119000" />
       <workItem from="1732210890932" duration="3290000" />
+      <workItem from="1737016655345" duration="18000" />
+      <workItem from="1737016688273" duration="5000" />
     </task>
     <servers />
   </component>
