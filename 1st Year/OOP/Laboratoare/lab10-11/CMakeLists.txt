@@ -31,7 +31,10 @@ add_executable(lab10_11 main.cpp
         GUI/Observer.h
         GUI/ShoppingCartDrawing.h
         GUI/TableModel.cpp
-        GUI/TableModel.h)
+        GUI/TableModel.h
+        main.cpp
+        main.cpp
+        main.cpp)
 target_link_libraries(lab10_11
         Qt::Core
         Qt::Gui

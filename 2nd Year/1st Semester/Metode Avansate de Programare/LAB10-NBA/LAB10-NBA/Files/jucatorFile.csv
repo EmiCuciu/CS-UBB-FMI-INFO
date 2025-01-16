@@ -1,0 +1,163 @@
+student_id,nume,school,id_echipa
+2,student2,Scoala Gimnaziala “Horea”,1
+1,student1,Scoala Gimnaziala “Horea”,1
+5,student5,Scoala Gimnaziala “Horea”,1
+14,student14,Scoala Gimnaziala “Horea”,1
+12,student12,Scoala Gimnaziala “Horea”,1
+15,student15,Scoala Gimnaziala “Horea”,1
+30,student30,"Scoala Gimnaziala ""Octavian Goga""",2
+27,student27,"Scoala Gimnaziala ""Octavian Goga""",2
+21,student21,"Scoala Gimnaziala ""Octavian Goga""",2
+26,student26,"Scoala Gimnaziala ""Octavian Goga""",2
+24,student24,"Scoala Gimnaziala ""Octavian Goga""",2
+28,student28,"Scoala Gimnaziala ""Octavian Goga""",2
+36,student36,"Liceul Teoretic ""Lucian Blaga""",3
+31,student31,"Liceul Teoretic ""Lucian Blaga""",3
+45,student45,"Liceul Teoretic ""Lucian Blaga""",3
+32,student32,"Liceul Teoretic ""Lucian Blaga""",3
+34,student34,"Liceul Teoretic ""Lucian Blaga""",3
+33,student33,"Liceul Teoretic ""Lucian Blaga""",3
+60,student60,"Scoala Gimnaziala ""Ioan Bob""",4
+47,student47,"Scoala Gimnaziala ""Ioan Bob""",4
+52,student52,"Scoala Gimnaziala ""Ioan Bob""",4
+49,student49,"Scoala Gimnaziala ""Ioan Bob""",4
+53,student53,"Scoala Gimnaziala ""Ioan Bob""",4
+50,student50,"Scoala Gimnaziala ""Ioan Bob""",4
+65,student65,"Scoala Gimnaziala ""Ion Creanga""",5
+72,student72,"Scoala Gimnaziala ""Ion Creanga""",5
+62,student62,"Scoala Gimnaziala ""Ion Creanga""",5
+64,student64,"Scoala Gimnaziala ""Ion Creanga""",5
+61,student61,"Scoala Gimnaziala ""Ion Creanga""",5
+70,student70,"Scoala Gimnaziala ""Ion Creanga""",5
+81,student81,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+86,student86,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+80,student80,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+85,student85,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+79,student79,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+83,student83,"Colegiul National Pedagogic ""Gheorghe Lazar""",6
+101,student101,Scoala Gimnaziala Internationala SPECTRUM,7
+92,student92,Scoala Gimnaziala Internationala SPECTRUM,7
+99,student99,Scoala Gimnaziala Internationala SPECTRUM,7
+94,student94,Scoala Gimnaziala Internationala SPECTRUM,7
+104,student104,Scoala Gimnaziala Internationala SPECTRUM,7
+98,student98,Scoala Gimnaziala Internationala SPECTRUM,7
+108,student108,"Colegiul National „Emil Racovita""",8
+112,student112,"Colegiul National „Emil Racovita""",8
+106,student106,"Colegiul National „Emil Racovita""",8
+120,student120,"Colegiul National „Emil Racovita""",8
+114,student114,"Colegiul National „Emil Racovita""",8
+110,student110,"Colegiul National „Emil Racovita""",8
+132,student132,"Colegiul National ""George Cosbuc""",9
+123,student123,"Colegiul National ""George Cosbuc""",9
+127,student127,"Colegiul National ""George Cosbuc""",9
+131,student131,"Colegiul National ""George Cosbuc""",9
+129,student129,"Colegiul National ""George Cosbuc""",9
+125,student125,"Colegiul National ""George Cosbuc""",9
+150,student150,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+136,student136,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+138,student138,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+147,student147,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+145,student145,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+146,student146,"Scoala Gimnaziala ""Ion Agarbiceanu""",10
+157,student157,"Liceul Teoretic ""Avram Iancu""",11
+156,student156,"Liceul Teoretic ""Avram Iancu""",11
+161,student161,"Liceul Teoretic ""Avram Iancu""",11
+160,student160,"Liceul Teoretic ""Avram Iancu""",11
+163,student163,"Liceul Teoretic ""Avram Iancu""",11
+154,student154,"Liceul Teoretic ""Avram Iancu""",11
+170,student170,"Scoala Gimnaziala ""Constantin Brancusi""",12
+168,student168,"Scoala Gimnaziala ""Constantin Brancusi""",12
+176,student176,"Scoala Gimnaziala ""Constantin Brancusi""",12
+172,student172,"Scoala Gimnaziala ""Constantin Brancusi""",12
+173,student173,"Scoala Gimnaziala ""Constantin Brancusi""",12
+178,student178,"Scoala Gimnaziala ""Constantin Brancusi""",12
+186,student186,"Liceul Teoretic ""Onisifor Ghibu""",13
+183,student183,"Liceul Teoretic ""Onisifor Ghibu""",13
+187,student187,"Liceul Teoretic ""Onisifor Ghibu""",13
+181,student181,"Liceul Teoretic ""Onisifor Ghibu""",13
+189,student189,"Liceul Teoretic ""Onisifor Ghibu""",13
+182,student182,"Liceul Teoretic ""Onisifor Ghibu""",13
+206,student206,Liceul cu Program Sportiv Cluj-Napoca,14
+210,student210,Liceul cu Program Sportiv Cluj-Napoca,14
+204,student204,Liceul cu Program Sportiv Cluj-Napoca,14
+201,student201,Liceul cu Program Sportiv Cluj-Napoca,14
+198,student198,Liceul cu Program Sportiv Cluj-Napoca,14
+203,student203,Liceul cu Program Sportiv Cluj-Napoca,14
+224,student224,"Liceul Teoretic ""Nicolae Balcescu""",15
+219,student219,"Liceul Teoretic ""Nicolae Balcescu""",15
+215,student215,"Liceul Teoretic ""Nicolae Balcescu""",15
+211,student211,"Liceul Teoretic ""Nicolae Balcescu""",15
+216,student216,"Liceul Teoretic ""Nicolae Balcescu""",15
+214,student214,"Liceul Teoretic ""Nicolae Balcescu""",15
+236,student236,"Liceul Teoretic ""Gheorghe Sincai""",16
+237,student237,"Liceul Teoretic ""Gheorghe Sincai""",16
+229,student229,"Liceul Teoretic ""Gheorghe Sincai""",16
+239,student239,"Liceul Teoretic ""Gheorghe Sincai""",16
+240,student240,"Liceul Teoretic ""Gheorghe Sincai""",16
+228,student228,"Liceul Teoretic ""Gheorghe Sincai""",16
+244,student244,"Scoala ""Nicolae Titulescu""",17
+254,student254,"Scoala ""Nicolae Titulescu""",17
+250,student250,"Scoala ""Nicolae Titulescu""",17
+248,student248,"Scoala ""Nicolae Titulescu""",17
+245,student245,"Scoala ""Nicolae Titulescu""",17
+247,student247,"Scoala ""Nicolae Titulescu""",17
+270,student270,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+266,student266,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+262,student262,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+260,student260,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+263,student263,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+267,student267,"Scoala Gimnaziala ""Liviu Rebreanu""",18
+285,student285,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+277,student277,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+280,student280,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+281,student281,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+282,student282,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+283,student283,"Scoala Gimnaziala ""Iuliu Hatieganu""",19
+293,student293,"Liceul Teoretic ""Bathory Istvan""",20
+292,student292,"Liceul Teoretic ""Bathory Istvan""",20
+288,student288,"Liceul Teoretic ""Bathory Istvan""",20
+290,student290,"Liceul Teoretic ""Bathory Istvan""",20
+287,student287,"Liceul Teoretic ""Bathory Istvan""",20
+296,student296,"Liceul Teoretic ""Bathory Istvan""",20
+302,student302,"Colegiul National ""George Baritiu""",21
+307,student307,"Colegiul National ""George Baritiu""",21
+303,student303,"Colegiul National ""George Baritiu""",21
+314,student314,"Colegiul National ""George Baritiu""",21
+313,student313,"Colegiul National ""George Baritiu""",21
+315,student315,"Colegiul National ""George Baritiu""",21
+318,student318,"Liceul Teoretic ""Apaczai Csere Janos""",22
+324,student324,"Liceul Teoretic ""Apaczai Csere Janos""",22
+316,student316,"Liceul Teoretic ""Apaczai Csere Janos""",22
+323,student323,"Liceul Teoretic ""Apaczai Csere Janos""",22
+317,student317,"Liceul Teoretic ""Apaczai Csere Janos""",22
+329,student329,"Liceul Teoretic ""Apaczai Csere Janos""",22
+336,student336,Seminarul Teologic Ortodox,23
+340,student340,Seminarul Teologic Ortodox,23
+344,student344,Seminarul Teologic Ortodox,23
+337,student337,Seminarul Teologic Ortodox,23
+343,student343,Seminarul Teologic Ortodox,23
+345,student345,Seminarul Teologic Ortodox,23
+346,student346,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+348,student348,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+359,student359,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+350,student350,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+360,student360,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+352,student352,"Liceul de Informatica ""Tiberiu Popoviciu""",24
+372,student372,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+374,student374,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+363,student363,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+371,student371,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+369,student369,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+368,student368,"Scoala Gimnaziala „Alexandru Vaida – Voevod""",25
+378,student378,Liceul Teoretic ELF,26
+384,student384,Liceul Teoretic ELF,26
+390,student390,Liceul Teoretic ELF,26
+381,student381,Liceul Teoretic ELF,26
+376,student376,Liceul Teoretic ELF,26
+382,student382,Liceul Teoretic ELF,26
+394,student394,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
+399,student399,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
+402,student402,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
+404,student404,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
+405,student405,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
+393,student393,"Scoala Gimnaziala ""Gheorghe Sincai"" Floresti",27
