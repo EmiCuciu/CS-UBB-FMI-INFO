@@ -10,7 +10,7 @@
     <TabPane layoutX="4.0" prefHeight="442.0" prefWidth="707.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Profile">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="584.0">
-                <ImageView fitHeight="196.0" fitWidth="253.0" layoutX="231.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="230.39999999999998">
+                <ImageView fitHeight="185.0" fitWidth="371.0" layoutX="258.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="258.0" AnchorPane.rightAnchor="85.0">
                     <Image url="@images/wallpaperflare.com_wallpaper.jpg" />
                 </ImageView>
                 <Text fx:id="username" layoutX="180.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="354.7150592803955" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="179.68494071960447">
@@ -35,7 +35,7 @@
                     </fill>
                 </Text>
                 <Button fx:id="ShowNotificationButton" layoutX="61.0" layoutY="57.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="129.0" text="ShowNotifications" />
-            <ImageView fx:id="ProfilePicture" fitHeight="233.0" fitWidth="348.0" layoutX="242.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ProfilePicture" fitHeight="147.0" fitWidth="176.0" layoutX="33.0" layoutY="114.0" pickOnBounds="true" />
             </AnchorPane>
         </Tab>
         <Tab text="Friends">

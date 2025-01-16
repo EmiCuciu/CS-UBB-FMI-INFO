@@ -13,6 +13,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         SceneManager.setStage(primaryStage);
         SceneManager.switchScene("/org/example/lab8/login.fxml");
+        primaryStage.setTitle("Mafia Social Network");
+        primaryStage.getIcons().add(new Image(SceneManager.class.getResourceAsStream("/org/example/lab8/images/money.png")));
         primaryStage.show();
     }
 
