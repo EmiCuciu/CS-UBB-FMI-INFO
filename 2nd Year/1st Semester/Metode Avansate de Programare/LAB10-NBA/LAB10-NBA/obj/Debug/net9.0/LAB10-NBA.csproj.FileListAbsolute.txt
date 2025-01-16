@@ -1,0 +1,15 @@
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\bin\Debug\net9.0\LAB10-NBA.exe
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\bin\Debug\net9.0\LAB10-NBA.deps.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\bin\Debug\net9.0\LAB10-NBA.runtimeconfig.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\bin\Debug\net9.0\LAB10-NBA.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\bin\Debug\net9.0\LAB10-NBA.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.GeneratedMSBuildEditorConfig.editorconfig
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.AssemblyInfoInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.AssemblyInfo.cs
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.csproj.CoreCompileInputs.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.sourcelink.json
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\refint\LAB10-NBA.dll
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.pdb
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\LAB10-NBA.genruntimeconfig.cache
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\1st Semester\Metode Avansate de Programare\LAB10-NBA\LAB10-NBA\obj\Debug\net9.0\ref\LAB10-NBA.dll

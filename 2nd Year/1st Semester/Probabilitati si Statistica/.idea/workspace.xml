@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3ba0ab1-9190-4e1f-a7c6-398a07782bbc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EmiCuciu&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EmiCuciu/CS-UBB-FMI-INFO.git&quot;,
+    &quot;accountId&quot;: &quot;c144d0b0-b5be-44e5-be25-9227e91c064d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2rh41fPpymDAWgwahg54mezTeJL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3ba0ab1-9190-4e1f-a7c6-398a07782bbc" name="Changes" comment="" />
+      <created>1736997764629</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736997764629</updated>
+    </task>
+    <servers />
+  </component>
+</project>
