@@ -88,4 +88,6 @@ public class UserService implements Observable<UserEvent> {
     public String getProfilePicturePath(Long userId) {
         return userDBRepository.getProfilePicturePath(userId);
     }
+
+
 }

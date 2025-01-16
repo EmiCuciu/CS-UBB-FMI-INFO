@@ -13,12 +13,12 @@
                 <ImageView fitHeight="196.0" fitWidth="253.0" layoutX="231.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="230.39999999999998">
                     <Image url="@images/wallpaperflare.com_wallpaper.jpg" />
                 </ImageView>
-                <Text fx:id="username" layoutX="180.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="354.7150592803955" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="179.68494071960447">
+                <Text fx:id="username" layoutX="180.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="354.7150592803955" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="179.68494071960447">
                     <font>
                         <Font size="30.0" />
                     </font>
                     <fill>
-                        <LinearGradient endX="0.5454545815785725" startX="0.27651515873995697" startY="0.909090872966882">
+                        <LinearGradient endX="0.5454545815785725" endY="1.0" startX="0.27651515873995697" startY="0.909090872966882">
                             <stops>
                                 <Stop>
                                     <color>
@@ -27,7 +27,7 @@
                                 </Stop>
                                 <Stop offset="1.0">
                                     <color>
-                                        <Color red="1.0" blue="0.8666666746139526" />
+                                        <Color green="1.0" blue="0.21120689809322357" />
                                     </color>
                                 </Stop>
                             </stops>
@@ -35,7 +35,7 @@
                     </fill>
                 </Text>
                 <Button fx:id="ShowNotificationButton" layoutX="61.0" layoutY="57.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="129.0" text="ShowNotifications" />
-            <ImageView fx:id="ProfilePicture" fitHeight="176.0" fitWidth="231.0" layoutX="242.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ProfilePicture" fitHeight="233.0" fitWidth="348.0" layoutX="242.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
             </AnchorPane>
         </Tab>
         <Tab text="Friends">
