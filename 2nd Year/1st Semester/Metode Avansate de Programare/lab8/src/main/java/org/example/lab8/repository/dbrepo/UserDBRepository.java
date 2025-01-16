@@ -6,6 +6,7 @@ import org.example.lab8.domain.Utilizator;
 import org.example.lab8.domain.validators.UtilizatorValidator;
 import org.example.lab8.utils.paging.Page;
 import org.example.lab8.utils.paging.Pageable;
+import org.example.lab8.utils.PasswordHasher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,7 +67,7 @@ public class UserDBRepository extends AbstractDBRepository<Utilizator> {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, entity.getUsername());
-            ps.setString(2, entity.getPassword());
+            ps.setString(2, PasswordHasher.hashPassword(entity.getPassword()));
             ps.setString(3, entity.getFirstName());
             ps.setString(4, entity.getLastName());
             ps.executeUpdate();
@@ -96,11 +97,12 @@ public class UserDBRepository extends AbstractDBRepository<Utilizator> {
     }
 
     public Optional<Utilizator> findByUsernameAndPassword(String username, String password) {
+        String hashedPassword = PasswordHasher.hashPassword(password);
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, hashedPassword);
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
                     Long id = resultSet.getLong("id");
@@ -109,7 +111,7 @@ public class UserDBRepository extends AbstractDBRepository<Utilizator> {
                     Utilizator user = new Utilizator(firstName, lastName);
                     user.setId(id);
                     user.setUsername(username);
-                    user.setPassword(password);
+                    user.setPassword(hashedPassword);
                     return Optional.of(user);
                 }
             }
