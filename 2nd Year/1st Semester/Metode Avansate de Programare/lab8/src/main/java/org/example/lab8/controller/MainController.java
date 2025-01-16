@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,6 +32,7 @@ public class MainController implements Observer {
     private final FriendshipService friendshipService = mainService.getFriendshipService();
     private final MessageService messageService = mainService.getMessageService();
     private final Utilizator loggedInUser = LoginController.logedInUser;
+    public ImageView ProfilePicture;
 
 
     @FXML
@@ -112,6 +115,8 @@ public class MainController implements Observer {
     public void initialize() {
         // Set the username text
         username.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
+
+        loadProfilePicture();
 
         // Initialize lists
         allUsersList = FXCollections.observableArrayList();
@@ -420,5 +425,17 @@ public class MainController implements Observer {
             currentPage++;
             loadFriends();
         });
+    }
+
+    private void loadProfilePicture() {
+        String profilePicturePath = userService.getProfilePicturePath(loggedInUser.getId());
+        if (profilePicturePath != null && !profilePicturePath.isEmpty()) {
+            try {
+                Image profileImage = new Image("file:" + profilePicturePath);
+                ProfilePicture.setImage(profileImage);
+            } catch (Exception e) {
+                System.out.println("Error loading profile picture: " + e.getMessage());
+            }
+        }
     }
 }

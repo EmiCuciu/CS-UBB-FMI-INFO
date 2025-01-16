@@ -6,6 +6,7 @@ public class Utilizator {
     private String lastName;
     private String username;
     private String password;
+    private String path_to_profile_picture;
 
     public Utilizator(String firstName, String lastName) {
         this.firstName = firstName;
@@ -52,6 +53,14 @@ public class Utilizator {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPath_to_profile_picture() {
+        return path_to_profile_picture;
+    }
+
+    public void setPath_to_profile_picture(String path_to_profile_picture) {
+        this.path_to_profile_picture = path_to_profile_picture;
     }
 
     @Override

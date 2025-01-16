@@ -84,4 +84,8 @@ public class UserService implements Observable<UserEvent> {
     public Utilizator findUtilizatorByUsername(String logedInUsername) {
         return userDBRepository.findUtilizatorByUsername(logedInUsername);
     }
+
+    public String getProfilePicturePath(Long userId) {
+        return userDBRepository.getProfilePicturePath(userId);
+    }
 }
