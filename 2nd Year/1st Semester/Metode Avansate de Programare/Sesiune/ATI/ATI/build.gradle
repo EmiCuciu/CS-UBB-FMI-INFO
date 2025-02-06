@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'org.example.grile'
-    mainClass = 'org.example.grile.HelloApplication'
+    mainModule = 'org.example.ati'
+    mainClass = 'org.example.ati.HelloApplication'
 }
 
 javafx {
@@ -35,9 +35,7 @@ javafx {
 }
 
 dependencies {
-    implementation 'org.postgresql:postgresql:42.6.0'
-    implementation 'org.openjfx:javafx-controls:21.0.5'
-    implementation 'org.openjfx:javafx-fxml:21.0.5'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

@@ -1,4 +1,4 @@
-package org.example.grile;
+package org.example.ati;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,15 +21,3 @@ public class HelloApplication extends Application {
         launch();
     }
 }
-
-
-/** TODO:
- 1: O fereastra pentru angajatii restaurantului , NUMELE "Staff"
- 2: Cate o fereastra pentru fiecare masa citita din fisierul/tabelul Tables
- 3: FEREASTRA ASOCIATA MESEI VA AVEA NUMELE  ex: "Table 3"
- 4: Fiecare fereastra a meselor va afisa meniul restaurantului grupat pe categorii,
-    acesta fiind citit din fisierul/tabelul Menu
-
-
-
- */
