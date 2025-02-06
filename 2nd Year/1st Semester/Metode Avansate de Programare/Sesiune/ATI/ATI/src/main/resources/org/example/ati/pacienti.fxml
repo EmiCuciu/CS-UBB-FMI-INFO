@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ati.GUI.PacientiController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <TableView fx:id="tablePacienti" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colCNP" text="CNP" minWidth="150"/>
+                <TableColumn fx:id="colGravitate" text="Gravitate" minWidth="100"/>
+                <TableColumn fx:id="colDiagnostic" text="Diagnostic" minWidth="200"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Tip Pat:"/>
+            <ComboBox fx:id="comboTipPat"/>
+            <Label text="Ventilație:"/>
+            <CheckBox fx:id="checkVentilatie"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="ID Pat:"/>
+            <ComboBox fx:id="comboIdPat"/>
+            <Button text="Asignează Pat" onAction="#handleAsigneazaPat"/>
+        </HBox>
+    </VBox>
+
+</AnchorPane>
