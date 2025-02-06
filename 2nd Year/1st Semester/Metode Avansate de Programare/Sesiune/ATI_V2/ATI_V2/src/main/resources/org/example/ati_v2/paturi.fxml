@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ati_v2.GUI.PaturiController">
+    <VBox layoutX="11.0" prefHeight="71.0" prefWidth="578.0">
+        <HBox prefHeight="71.0" prefWidth="561.0">
+            <Label fx:id="label_LOCURI_Libere" prefHeight="71.0" prefWidth="130.0" style="-fx-font-weight: bold" text="PatLiber" />
+            <Label fx:id="labelTICLibere" prefHeight="71.0" prefWidth="136.0" style="-fx-font-weight: bold" text="TIC" />
+            <Label fx:id="labelTIMLibere" prefHeight="81.0" prefWidth="163.0" style="-fx-font-weight: bold" text="TIM" />
+            <Label fx:id="labelTIIPLibere" prefHeight="84.0" prefWidth="148.0" style="-fx-font-weight: bold" text="TIIP" />
+        </HBox>
+    </VBox>
+    <TableView fx:id="tablePaturi" layoutX="11.0" layoutY="79.0" prefHeight="243.0" prefWidth="578.0">
+      <columns>
+          <TableColumn fx:id="colID" prefWidth="75.0" text="ID_Pat" />
+          <TableColumn fx:id="colTip" prefWidth="151.0" text="Tip" />
+          <TableColumn fx:id="colVentilatie" prefWidth="135.5999755859375" text="Ventilatie" />
+          <TableColumn fx:id="colPacient" prefWidth="219.60003662109375" text="Pacient CNP" />
+      </columns>
+    </TableView>
+    <HBox layoutX="11.0" layoutY="334.0" prefHeight="41.0" prefWidth="578.0">
+        <children>
+          <TextField fx:id="txtCNPEliberare" prefHeight="42.0" prefWidth="148.0" promptText="CNP Pacient de eliberat" />
+          <Button mnemonicParsing="false" onAction="#handleElibereazaPat" prefHeight="42.0" prefWidth="96.0" text="Elibereaza Pat" />
+        </children>
+    </HBox>
+</AnchorPane>
