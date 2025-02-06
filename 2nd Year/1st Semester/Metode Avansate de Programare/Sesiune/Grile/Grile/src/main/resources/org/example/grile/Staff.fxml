@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.grile.GUI.Staff">
+    <TableView fx:id="staffTableView" layoutX="81.0" layoutY="9.0" prefHeight="382.0" prefWidth="437.0">
+      <columns>
+          <TableColumn fx:id="TableColumn" prefWidth="120.80001831054688" text="Table"/>
+          <TableColumn fx:id="DateColumn" prefWidth="152.00001525878906" text="Date"/>
+          <TableColumn fx:id="ItemColumn" prefWidth="162.39998779296877" text="Item"/>
+      </columns>
+    </TableView>
+</AnchorPane>
