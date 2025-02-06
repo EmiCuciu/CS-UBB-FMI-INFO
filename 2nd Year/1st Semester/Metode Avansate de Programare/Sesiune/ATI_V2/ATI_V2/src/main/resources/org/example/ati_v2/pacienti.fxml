@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ati_v2.GUI.PacientiController">
+    <TableView fx:id="TabelPacienti" layoutX="15.0" layoutY="14.0" prefHeight="299.0" prefWidth="570.0">
+      <columns>
+          <TableColumn fx:id="colCNP" prefWidth="185.20000648498535" text="CNP"/>
+          <TableColumn fx:id="colGravitate" prefWidth="136.39999389648438" text="Gravitate"/>
+          <TableColumn fx:id="colDiagnostic" prefWidth="248.20004272460938" text="Diagnostic"/>
+      </columns>
+    </TableView>
+    <HBox layoutX="14.0" layoutY="313.0" prefHeight="42.0" prefWidth="570.0">
+        <Label prefHeight="45.0" prefWidth="55.0" text="Tip Pat:"/>
+        <ComboBox fx:id="comboTipPat" prefHeight="42.0" prefWidth="71.0"/>
+        <Label prefHeight="42.0" prefWidth="63.0" text="Ventilatie:"/>
+        <CheckBox fx:id="checkVentilatie" mnemonicParsing="false" prefHeight="42.0" prefWidth="11.0"/>
+    </HBox>
+    <HBox layoutX="14.0" layoutY="365.0" prefHeight="42.0" prefWidth="348.0">
+        <Label prefHeight="46.0" prefWidth="47.0" text="ID Pat:"/>
+        <ComboBox fx:id="comboIDPat" prefHeight="42.0" prefWidth="58.0"/>
+        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="127.0" text="Asigneaza Pat" onAction="#handleAsigneazaPat"/>
+    </HBox>
+</AnchorPane>

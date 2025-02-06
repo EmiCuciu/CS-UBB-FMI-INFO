@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ati.GUI.PaturiController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label fx:id="labelTICLibere" style="-fx-font-weight: bold"/>
+            <Label fx:id="labelTIMLibere" style="-fx-font-weight: bold"/>
+            <Label fx:id="labelTIIPLibere" style="-fx-font-weight: bold"/>
+        </HBox>
+
+        <TableView fx:id="tablePaturi" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" minWidth="50"/>
+                <TableColumn fx:id="colTip" text="Tip" minWidth="100"/>
+                <TableColumn fx:id="colVentilatie" text="Ventilație" minWidth="100"/>
+                <TableColumn fx:id="colPacient" text="Pacient CNP" minWidth="150"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="txtCNPEliberare" promptText="CNP Pacient"/>
+            <Button text="Eliberează Pat" onAction="#handleElibereazaPat"/>
+        </HBox>
+    </VBox>
+
+</AnchorPane>
