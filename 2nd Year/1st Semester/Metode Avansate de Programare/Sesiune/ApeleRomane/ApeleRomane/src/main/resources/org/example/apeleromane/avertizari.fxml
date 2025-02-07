@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apeleromane.GUI.AvertizariController">
+   <children>
+      <HBox layoutX="40.0" layoutY="286.0" prefHeight="100.0" prefWidth="545.0">
+         <children>
+            <CheckBox fx:id="riscRedusCheckBox" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="RISC REDUS" />
+            <CheckBox fx:id="riscMediuCheckBox" mnemonicParsing="false" prefHeight="100.0" prefWidth="158.0" text="RISC MEDIU" />
+            <CheckBox fx:id="riscMajorCheckBox" mnemonicParsing="false" prefHeight="108.0" prefWidth="160.0" text="RISC MAJOR" />
+         </children>
+      </HBox>
+      <ListView fx:id="localitatiListView" layoutX="14.0" layoutY="14.0" prefHeight="266.0" prefWidth="204.0" />
+      <TableView fx:id="RaulTranzitTableView" layoutX="283.0" layoutY="14.0" prefHeight="64.0" prefWidth="302.0">
+        <columns>
+          <TableColumn fx:id="NumeRauTranzitTableColumn" prefWidth="75.0" text="NumeRau" />
+          <TableColumn fx:id="CotaRauTranzitTableColumn" prefWidth="75.0" text="Cota" />
+            <TableColumn fx:id="CMDRauTranzitTableColumn" prefWidth="75.0" text="CMDR" />
+            <TableColumn fx:id="CMARauTranzitTableColumn" prefWidth="75.0" text="CMA" />
+        </columns>
+      </TableView>
+      <TextField fx:id="NumeTextField" layoutX="286.0" layoutY="200.0" prefHeight="26.0" prefWidth="53.0" promptText="NUME" />
+      <TextField fx:id="CMDRTextField" layoutX="340.0" layoutY="200.0" prefHeight="26.0" prefWidth="54.0" promptText="CMDR" />
+      <TextField fx:id="CMATextField" layoutX="394.0" layoutY="200.0" prefHeight="26.0" prefWidth="54.0" promptText="CMA" />
+      <TextField fx:id="REZULTATTextField" layoutX="359.0" layoutY="237.0" prefHeight="26.0" prefWidth="179.0" />
+      <Label layoutX="234.0" layoutY="181.0" prefHeight="18.0" prefWidth="353.0" text="INTRODUCETI DATELE PENTRU A CALCULA GRUPA DE RISC">
+         <font>
+            <Font name="BellGothicStd-Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="CalculateRiskButton" layoutX="286.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleCalculateRisk" text="Calculeaza" />
+   </children>
+</AnchorPane>
