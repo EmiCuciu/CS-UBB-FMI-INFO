@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apeleromane.GUI.RauController">
+    <TableView fx:id="RauriTableView" layoutX="40.0" layoutY="31.0" prefHeight="200.0" prefWidth="520.0">
+      <columns>
+          <TableColumn fx:id="NumeRauTableColumn" prefWidth="249.80001068115234" text="Nume Rau"/>
+          <TableColumn fx:id="CotaMedieTableColumn" prefWidth="270.2000427246094" text="Cota MEDIE"/>
+      </columns>
+    </TableView>
+    <TextField fx:id="NouaCotaTextField" layoutX="40.0" layoutY="318.0" prefHeight="26.0" prefWidth="177.0" promptText="INTRODUCETI NOUA COTA "/>
+    <Button fx:id="ApplyButton" layoutX="218.0" layoutY="318.0" mnemonicParsing="false" text="APPLY" onAction="#handleApplyNouaCota"/>
+</AnchorPane>
