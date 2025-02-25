@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Rezervare Cameră Hotel</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        tr.header {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="header">
+            <th colspan="2">Formular de Rezervare Hotel</th>
+        </tr>
+        <tr>
+            <td>Nume:</td>
+            <td><input type="text" name="nume" required></td>
+        </tr>
+        <tr>
+            <td>Data check-in:</td>
+            <td><input type="text" name="checkin" placeholder="YYYY-MM-DD" required></td>
+        </tr>
+        <tr>
+            <td>Data check-out:</td>
+            <td><input type="text" name="checkout" placeholder="YYYY-MM-DD" required></td>
+        </tr>
+        <tr>
+            <td>Tipul camerei:</td>
+            <td>
+                <select name="tip_camera">
+                    <option value="single">Single</option>
+                    <option value="double">Dublă</option>
+                    <option value="suite">Suită</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Facilități extra:</td>
+            <td>
+                <input type="checkbox" name="wifi"> WiFi<br>
+                <input type="checkbox" name="mic_dejun"> Mic dejun<br>
+                <input type="checkbox" name="parcare"> Parcare gratuită
+            </td>
+        </tr>
+        <tr>
+            <td>Gen:</td>
+            <td>
+                <input type="radio" name="gen" value="M"> M
+                <input type="radio" name="gen" value="F"> F
+            </td>
+        </tr>
+        <tr>
+            <td>Oraș:</td>
+            <td>
+                <select name="oras">
+                    <option>Cluj-Napoca</option>
+                    <option>București</option>
+                    <option>Timișoara</option>
+                    <option>Iași</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Observații:</td>
+            <td><textarea name="observatii" rows="4" cols="30"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Trimite Rezervarea"></td>
+        </tr>
+    </table>
+</body>
+</html>
