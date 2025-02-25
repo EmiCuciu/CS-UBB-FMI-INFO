@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.practic.Domain.Driver;
-import org.example.practic.Repository.*;
+import org.example.practic.GUI.DispatcherWindowController;
+import org.example.practic.GUI.DriverWindowController;
+import org.example.practic.Repository.DriverRepository;
+import org.example.practic.Repository.OrderRepository;
 import org.example.practic.Service.TaxiService;
-import org.example.practic.GUI.*;
 
 public class Main extends Application {
     private TaxiService service;
