@@ -1,9 +1,13 @@
 package org.example.practic.Service;
 
-import org.example.practic.Domain.*;
-import org.example.practic.Repository.*;
-import org.example.practic.Utils.Events.*;
-import org.example.practic.Utils.Obs.*;
+import org.example.practic.Domain.Driver;
+import org.example.practic.Domain.Order;
+import org.example.practic.Domain.Status;
+import org.example.practic.Repository.DriverRepository;
+import org.example.practic.Repository.OrderRepository;
+import org.example.practic.Utils.Events.ChangeEventType;
+import org.example.practic.Utils.Events.CursaChangeEvent;
+import org.example.practic.Utils.Events.Event;
 import org.example.practic.Utils.Obs.Observable;
 import org.example.practic.Utils.Obs.Observer;
 
@@ -162,28 +166,6 @@ public class TaxiService implements Observable {
     public void notifyObservers(Event event) {
         for (Observer observer : observers) {
             observer.update(event);
-        }
-    }
-
-    // Additional helper methods
-    public Driver getDriverById(Integer driverId) {
-        return driverRepository.findOne(driverId);
-    }
-
-    public Order getOrderById(Integer orderId) {
-        return orderRepository.findOne(orderId);
-    }
-
-    // Cleanup method to be called when shutting down the application
-    public void shutdown() {
-        scheduler.shutdown();
-        try {
-            if (!scheduler.awaitTermination(60, TimeUnit.SECONDS)) {
-                scheduler.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            scheduler.shutdownNow();
-            Thread.currentThread().interrupt();
         }
     }
 }

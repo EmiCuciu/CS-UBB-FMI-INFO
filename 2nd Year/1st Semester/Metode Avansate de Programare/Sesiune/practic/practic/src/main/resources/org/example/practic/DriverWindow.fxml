@@ -18,9 +18,5 @@
 
     <Label fx:id="driverNameLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         <ListView fx:id="activeOrdersListView" VBox.vgrow="ALWAYS"/>
-
-        <HBox spacing="10" alignment="CENTER_RIGHT">
-            <Button text="Refresh" onAction="#handleRefresh"/>
-        </HBox>
     </VBox>
 </AnchorPane>

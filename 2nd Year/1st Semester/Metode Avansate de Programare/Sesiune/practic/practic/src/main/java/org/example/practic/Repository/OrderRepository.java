@@ -152,18 +152,18 @@ public class OrderRepository implements IRepository<Integer, Order> {
     public List<Driver> findAvailableDriversSortedByLastOrder() {
         try {
             PreparedStatement statement = connection.prepareStatement("""
-                SELECT d.*, MAX(o.end_date) as last_order_date
-                FROM drivers d
-                LEFT JOIN orders o ON d.id = o.driver_id
-                WHERE d.id NOT IN (
-                    SELECT DISTINCT driver_id 
-                    FROM orders 
-                    WHERE status = 'IN_PROGRESS'
-                    AND driver_id IS NOT NULL
-                )
-                GROUP BY d.id, d.name
-                ORDER BY last_order_date DESC NULLS LAST
-            """);
+            SELECT d.*, MAX(o.end_date) as last_order_date
+            FROM drivers d
+            LEFT JOIN orders o ON d.id = o.driver_id
+            WHERE d.id NOT IN (
+                SELECT DISTINCT driver_id
+                FROM orders
+                WHERE status = 'IN_PROGRESS'
+                AND driver_id IS NOT NULL
+            )
+            GROUP BY d.id, d.name
+            ORDER BY COALESCE(MAX(o.end_date), '1970-01-01') DESC
+        """);
             ResultSet resultSet = statement.executeQuery();
             List<Driver> drivers = new ArrayList<>();
             while (resultSet.next()) {

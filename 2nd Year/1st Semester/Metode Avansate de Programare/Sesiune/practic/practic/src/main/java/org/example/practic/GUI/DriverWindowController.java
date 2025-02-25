@@ -1,9 +1,11 @@
 package org.example.practic.GUI;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import org.example.practic.Domain.*;
 import org.example.practic.Service.TaxiService;
 import org.example.practic.Utils.Events.*;
@@ -48,11 +50,6 @@ public class DriverWindowController implements Observer {
         });
     }
 
-    @FXML
-    private void handleRefresh() {
-        refreshOrders();
-    }
-
     private void refreshOrders() {
         activeOrdersListView.getItems().clear();
         activeOrdersListView.getItems().addAll(service.getActiveOrdersForDriver(driver.getId()));
@@ -73,12 +70,18 @@ public class DriverWindowController implements Observer {
                     Order order = (Order) data.get("order");
 
                     if (notifiedDriver.getId().equals(driver.getId())) {
-                        Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION,
-                                String.format("New order: %s -> %s\nAccept?",
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                                String.format("New order: %s -> %s\nDriver: %s\nAccept?",
                                         order.getPickupAddress(),
-                                        order.getDestinationAddress()),
-                                ButtonType.YES, ButtonType.NO)
-                                .showAndWait();
+                                        order.getDestinationAddress(),
+                                        notifiedDriver.getName()),
+                                ButtonType.YES, ButtonType.NO);
+
+                        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+                        delay.setOnFinished(e -> alert.close());
+                        delay.play();
+
+                        Optional<ButtonType> result = alert.showAndWait();
 
                         if (result.isPresent() && result.get() == ButtonType.YES) {
                             service.acceptOrder(driver.getId(), order);
