@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3ba0ab1-9190-4e1f-a7c6-398a07782bbc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1st Year/OOP/Laboratoare/lab10-11/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/bin/Debug/net9.0/seminar11.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/ref/seminar11.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/refint/seminar11.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/seminar10 C#/seminar11/seminar11/obj/Debug/net9.0/seminar11.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Metode Avansate de Programare/Sesiune/practic/practic/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Metode Avansate de Programare/Sesiune/practic/practic/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +40,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "Z:/GitHubRepos/CS-UBB-FMI-INFO/2nd Year/2nd Semester/Inteligenta Artificiala",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
