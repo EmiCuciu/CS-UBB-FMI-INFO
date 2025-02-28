@@ -1,11 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="https://www.w3schools.com">This is a link</a>
-</body>
+    <title>HTML5 - Rezervare Hotel</title>
+  </head>
+
+  <body>
+    <form action="RezervareHotel.php" method="post">
+      <table>
+        <tr>
+          <th colspan="2">
+            <a href="https://github.com/EmiCuciu" target="_blank">Formular Rezervare Hotel</a>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="2">
+            <div>Rezervare hotel <img src="hotel.png" alt="poza hotel" width="160" height="130"></div>
+          </th>
+        </tr>
+        <tr>
+          <th>Nume:</th>
+          <td><input type="text" name="nume" id="nume"></td>
+        </tr>
+        <tr>
+          <th>Prenume:</th>
+          <td><input type="text" name="prenume" id="prenume"></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><input type="email" name="email" id="email"></td>
+        </tr>
+        <tr>
+          <th>Perioada Șederii:</th>
+          <td>
+            de la <input type="date" name="de_la"> pana la <input type="date" name="pana_la">
+          </td>
+        </tr>
+        <tr>
+          <th>Număr camere:</th>
+          <td>
+            <input type="number" name="nr_camere" id="nr_camere" min="1">
+            <b>Tip camera: </b>
+            <select name="tip_camera" id="tip_camera">
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+              <option value="triple">Triple</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>Numar Persoane:</th>
+          <td><input type="number" name="numar_persoane" id="numar_persoane" min="1"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div>
+              <h2>Facilități</h2>
+              <hr>
+              <h5>Mese:</h5>
+              <ul>
+                <li>Mic dejun <input type="checkbox" name="mese[]" value="mic_dejun"></li>
+                <li>Prânz <input type="checkbox" name="mese[]" value="pranz"></li>
+                <li>Cină <input type="checkbox" name="mese[]" value="cina"></li>
+              </ul>
+              <hr>
+              <h5>Relaxare:</h5>
+              <ul>
+                <li>Spa <input type="radio" name="relaxare" value="spa"></li>
+                <li>Piscina <input type="radio" name="relaxare" value="piscina"></li>
+                <li>Masaj <input type="radio" name="relaxare" value="masaj"></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <fieldset>
+              <legend>Informații suplimentare</legend>
+              <label>Nume agenție:</label>
+              <ul>
+                <li>Booking <input type="checkbox" name="agentie[]" value="Booking"></li>
+                <li>OLX <input type="checkbox" name="agentie[]" value="OLX"></li>
+                <li>Christian Tour <input type="checkbox" name="agentie[]" value="ChristianTour"></li>
+              </ul>
+              <table>
+                <tr>
+                  <th>Servicii</th>
+                  <th>Preț</th>
+                </tr>
+                <tr>
+                  <td>Mic dejun</td>
+                  <td>50 RON</td>
+                </tr>
+                <tr>
+                  <td>Prânz</td>
+                  <td>100 RON</td>
+                </tr>
+                <tr>
+                  <td>Cină</td>
+                  <td>80 RON</td>
+                </tr>
+              </table>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div>
+              <b>Observații</b>
+              <textarea name="observatii" id="observatii" cols="30" rows="10"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div>
+              <button type="submit">Tipărește și trimite</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div>Va Multumim!!!!!!</div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>
