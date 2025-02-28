@@ -1,83 +1,125 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Rezervare Cameră Hotel</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid black;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-        tr.header {
-            background-color: yellow;
-        }
-    </style>
-</head>
-<body>
-    <table>
-        <tr class="header">
-            <th colspan="2">Formular de Rezervare Hotel</th>
+    <title>HTML 4.01 Transitional - Rezervare Hotel</title>
+  </head>
+
+  <body>
+    <form action="RezervareHotel.php" method="post">
+      <table border="1" align="center">
+        <tr>
+          <th colspan="2" bgcolor="brown">
+            <a href="https://github.com/EmiCuciu" target="_blank">Formular Rezervare Hotel</a>
+          </th>
         </tr>
         <tr>
-            <td>Nume:</td>
-            <td><input type="text" name="nume" required></td>
+          <th colspan="2" align="center" bgcolor="green">
+            <h1>Rezervare hotel <img src="hotel.png" alt="poza hotel" width="160" height="130"></h1>
+          </th>
         </tr>
         <tr>
-            <td>Data check-in:</td>
-            <td><input type="text" name="checkin" placeholder="YYYY-MM-DD" required></td>
+          <th valign="top">Nume:</th>
+          <td><input type="text" name="nume" id="nume"></td>
         </tr>
         <tr>
-            <td>Data check-out:</td>
-            <td><input type="text" name="checkout" placeholder="YYYY-MM-DD" required></td>
+          <th>Prenume:</th>
+          <td><input type="text" name="prenume" id="prenume"></td>
         </tr>
         <tr>
-            <td>Tipul camerei:</td>
-            <td>
-                <select name="tip_camera">
-                    <option value="single">Single</option>
-                    <option value="double">Dublă</option>
-                    <option value="suite">Suită</option>
-                </select>
-            </td>
+          <th>Email:</th>
+          <td><input type="text" name="email" id="email"></td>
         </tr>
         <tr>
-            <td>Facilități extra:</td>
-            <td>
-                <input type="checkbox" name="wifi"> WiFi<br>
-                <input type="checkbox" name="mic_dejun"> Mic dejun<br>
-                <input type="checkbox" name="parcare"> Parcare gratuită
-            </td>
+          <th>Perioada Șederii:</th>
+          <td>
+            de la <input type="text" name="de_la"> pana la <input type="text" name="pana_la">
+          </td>
         </tr>
         <tr>
-            <td>Gen:</td>
-            <td>
-                <input type="radio" name="gen" value="M"> M
-                <input type="radio" name="gen" value="F"> F
-            </td>
+          <th>Număr camere:</th>
+          <td>
+            <input type="text" name="nr_camere" id="nr_camere">
+            <b>Tip camera: </b>
+            <select name="tip_camera" id="tip_camera">
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+              <option value="triple">Triple</option>
+            </select>
+          </td>
         </tr>
         <tr>
-            <td>Oraș:</td>
-            <td>
-                <select name="oras">
-                    <option>Cluj-Napoca</option>
-                    <option>București</option>
-                    <option>Timișoara</option>
-                    <option>Iași</option>
-                </select>
-            </td>
+          <th>Numar Persoane:</th>
+          <td><input type="text" name="numar_persoane" id="numar_persoane"></td>
         </tr>
         <tr>
-            <td>Observații:</td>
-            <td><textarea name="observatii" rows="4" cols="30"></textarea></td>
+          <td colspan="2" align="center">
+            <h2>Facilități</h2>
+            <hr>
+            <h5>Mese:</h5>
+            <ul>
+              <li>Mic dejun <input type="checkbox" name="mese" value="mic_dejun"></li>
+              <li>Prânz <input type="checkbox" name="mese" value="pranz"></li>
+              <li>Cină <input type="checkbox" name="mese" value="cina"></li>
+            </ul>
+            <hr>
+            <h5>Relaxare:</h5>
+            <ul>
+              <li>Spa <input type="radio" name="relaxare" value="spa"></li>
+              <li>Piscina <input type="radio" name="relaxare" value="piscina"></li>
+              <li>Masaj <input type="radio" name="relaxare" value="masaj"></li>
+            </ul>
+          </td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Trimite Rezervarea"></td>
+          <td colspan="2">
+            <fieldset>
+              <legend>Informații suplimentare</legend>
+              <label>Nume agenție:</label>
+              <ul>
+                <li>Booking <input type="checkbox" name="agentie" value="Booking"></li>
+                <li>OLX <input type="checkbox" name="agentie" value="OLX"></li>
+                <li>Christian Tour <input type="checkbox" name="agentie" value="ChristianTour"></li>
+              </ul>
+              <table border="1">
+                <tr>
+                  <th>Servicii</th>
+                  <th>Preț</th>
+                </tr>
+                <tr>
+                  <td>Mic dejun</td>
+                  <td>50 RON</td>
+                </tr>
+                <tr>
+                  <td>Prânz</td>
+                  <td>100 RON</td>
+                </tr>
+                <tr>
+                  <td>Cină</td>
+                  <td>80 RON</td>
+                </tr>
+              </table>
+            </fieldset>
+          </td>
         </tr>
-    </table>
-</body>
+        <tr>
+          <td colspan="2" align="center" bgcolor="brown">
+            <b>Observații</b>
+            <textarea name="observatii" id="observatii" cols="30" rows="10"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="submit">Tipărește și trimite</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="blue" align="center">
+            Va Multumim!!!!!!
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>
