@@ -2,7 +2,6 @@ Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Labor
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Laborator1.exe
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Laborator1.pdb
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.AssemblyReference.cache
-Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.Form1.resources
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.Properties.Resources.resources
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.GenerateResource.cache
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.CoreCompileInputs.cache
@@ -96,3 +95,4 @@ Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Labor
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.SuggestedBindingRedirects.cache
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.exe.config
 Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.Up2Date
+Z:\GitHubRepos\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.MagazinTelefoane.resources
