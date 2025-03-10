@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Semniar1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6bb710b92ad91bcc9cfb771a281efcc35e75e46")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82f2573f0abbe602e77e67be663bc4b6aa71b9d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Semniar1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Semniar1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
