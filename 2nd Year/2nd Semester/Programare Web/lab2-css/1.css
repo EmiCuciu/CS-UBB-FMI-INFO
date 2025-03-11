@@ -1,9 +1,24 @@
-body {
-    background-color: powderblue;
-  }
-  h1 {
-    color: yellow;
-  }
-  p {
-    color: red;
-  }
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.intern_div {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.imagine {
+  max-width: 100%;
+  max-height: 100%;
+}
