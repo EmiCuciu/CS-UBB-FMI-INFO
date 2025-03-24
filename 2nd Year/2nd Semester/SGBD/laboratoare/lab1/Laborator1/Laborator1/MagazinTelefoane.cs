@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Laborator1 {
     public partial class MagazinTelefoane : Form {
-        private SqlConnection cs = new SqlConnection("Data Source = DESKTOP-LI67DLG\\SQLEXPRESS;Initial Catalog=MagazinTelefoane;Integrated Security=true;TrustServerCertificate=true");
+        private SqlConnection cs = new SqlConnection("Data Source = EMI\\SQLEXPRESS;Initial Catalog=MagazinTelefoane;Integrated Security=true;TrustServerCertificate=true");
         private SqlDataAdapter clientiAdapter;
         private SqlDataAdapter comenziAdapter;
         private DataSet dataset;
