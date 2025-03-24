@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.SignUpController">
+    <TextField fx:id="usernameField" alignment="CENTER" layoutX="227.0" layoutY="70.0" promptText="username"/>
+    <TextField fx:id="numeField" alignment="CENTER" layoutX="227.0" layoutY="148.0" promptText="Nume"/>
+    <TextField fx:id="prenumeField" alignment="CENTER" layoutX="228.0" layoutY="174.0" promptText="Prenume"/>
+    <ComboBox fx:id="userTypeComboBox" layoutX="228.0" layoutY="200.0" prefWidth="150.0" promptText="User Type"/>
+    <TextField fx:id="sectieField" alignment="CENTER" layoutX="229.0" layoutY="226.0" promptText="sectie"/>
+    <Button fx:id="signUpButton" layoutX="245.0" layoutY="259.0" mnemonicParsing="false" prefHeight="38.0"
+            prefWidth="109.0" text="Sign Up"/>
+    <Button fx:id="cancelButton" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" text="Cancel"/>
+    <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="228.0" layoutY="96.0" promptText="password"/>
+    <PasswordField fx:id="confirmPasswordField" alignment="CENTER" layoutX="228.0" layoutY="122.0"
+                   promptText="confirm password"/>
+</AnchorPane>

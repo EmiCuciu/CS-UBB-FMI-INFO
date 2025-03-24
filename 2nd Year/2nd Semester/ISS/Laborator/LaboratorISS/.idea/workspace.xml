@@ -5,39 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8702507-7539-4549-9bf9-5a641f986b8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_blame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Descrierea cazurilor de utilizare.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UML-uri/test.mdj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Programare Web/lab2-css/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Programare Web/lab2-css/1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/71e84d00-4e4b-409c-8a9a-75601b82a023.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/a0a30d6d-f876-455c-bd7e-ab38d89aff3d.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/a0d3d400-bb80-4e4b-bec9-e4154ebcf7f8.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/e6494cf1-26e5-46f7-98cb-f0bab1f7a8b5.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.backup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/ResourceExplorer/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/ResourceExplorer/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Laborator1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Laborator1.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/MagazinTelefoane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/MagazinTelefoane.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/telephone.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,18 +47,20 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="LaboratorISS" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
@@ -106,6 +82,9 @@
   "associatedIndex": 8
 }]]></component>
   <component name="ProjectId" id="2ulRGlsugXEQrlr56AbJR8Q55J2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -122,15 +101,16 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/important/openjfx-17.0.14_windows-x64_bin-sdk/javafx-sdk-17.0.14/lib/javafx.web.jar",
+    "last_opened_file_path": "D:/GithubRepositories/Social-Network",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.20689656",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -142,9 +122,9 @@
       <command value="gradlew clean " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.laboratoriss.HelloApplication" />
+  <component name="RunManager" selected="Gradle.LaboratorISS [run]">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.laboratoriss.Main" />
       <module name="LaboratorISS.main" />
       <extension name="coverage">
         <pattern>
@@ -246,7 +226,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.HelloApplication" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Gradle.LaboratorISS [build]" />
       <item itemvalue="Gradle.LaboratorISS [clean build]" />
       <item itemvalue="Gradle.LaboratorISS [clean]" />
@@ -254,8 +234,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Gradle.LaboratorISS [run]" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.LaboratorISS [clean build]" />
         <item itemvalue="Gradle.LaboratorISS [clean]" />
         <item itemvalue="Gradle.LaboratorISS [build]" />
@@ -278,11 +258,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742821082180</updated>
-      <workItem from="1742821083366" duration="2640000" />
+      <workItem from="1742821083366" duration="5074000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

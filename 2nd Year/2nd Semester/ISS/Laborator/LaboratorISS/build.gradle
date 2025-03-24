@@ -28,7 +28,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.example.laboratoriss'
-    mainClass = 'com.example.laboratoriss.HelloApplication'
+    mainClass = 'com.example.laboratoriss.Main'
 }
 
 dependencies {
