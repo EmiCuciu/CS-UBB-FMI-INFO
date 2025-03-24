@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\lab1",
+    "\\lab1\\Laborator1",
+    "\\lab1\\Laborator1\\Laborator1"
   ],
+  "SelectedNode": "\\lab1\\Laborator1\\Laborator1.sln",
   "PreviewInSolutionExplorer": false
 }
