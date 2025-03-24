@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.laboratoriss.GUI.LoginController">
+    <Button fx:id="Login" layoutX="248.0" layoutY="275.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0"
+            text="Login"/>
+    <Button fx:id="SignUp" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" text="Sign Up"/>
+    <TextField fx:id="UsernameTextField" layoutX="224.0" layoutY="187.0" promptText="username"/>
+    <PasswordField fx:id="PasswordTextField" layoutX="225.0" layoutY="226.0" promptText="password"/>
+</AnchorPane>

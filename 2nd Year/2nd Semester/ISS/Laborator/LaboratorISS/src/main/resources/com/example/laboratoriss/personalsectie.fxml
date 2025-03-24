@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.laboratoriss.GUI.PersonalSectieController">
+    <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Comandă Nouă">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0">
+                <TableView fx:id="medicamenteTableView" layoutX="14.0" layoutY="40.0" prefHeight="250.0"
+                           prefWidth="350.0">
+                    <columns>
+                        <TableColumn fx:id="numeColumn" prefWidth="180.0" text="Medicament"/>
+                        <TableColumn fx:id="pretColumn" prefWidth="80.0" text="Preț"/>
+                        <TableColumn fx:id="descriereColumn" prefWidth="180.0" text="Descriere"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <TableView fx:id="cosTableView" layoutX="434.0" layoutY="40.0" prefHeight="250.0" prefWidth="350.0">
+                    <columns>
+                        <TableColumn fx:id="cosNumeColumn" prefWidth="180.0" text="Medicament"/>
+                        <TableColumn fx:id="cosCantitateColumn" prefWidth="80.0" text="Cantitate"/>
+                        <TableColumn fx:id="cosTotalColumn" prefWidth="90.0" text="Total"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <Label layoutX="14.0" layoutY="14.0" text="Medicamente disponibile:"/>
+                <Label layoutX="434.0" layoutY="14.0" text="Coș comandă:"/>
+
+                <Spinner fx:id="cantitateSpinner" layoutX="186.0" layoutY="310.0" prefHeight="25.0" prefWidth="85.0"/>
+                <Label layoutX="100.0" layoutY="314.0" text="Cantitate:"/>
+                <Button fx:id="adaugaInCosButton" layoutX="282.0" layoutY="310.0" mnemonicParsing="false"
+                        text="Adaugă în coș"/>
+                <Button fx:id="stergeSelectieCosButton" layoutX="434.0" layoutY="310.0" mnemonicParsing="false"
+                        text="Șterge selecție"/>
+
+                <Button fx:id="trimiteComandaButton" layoutX="339.0" layoutY="400.0" mnemonicParsing="false"
+                        prefHeight="39.0" prefWidth="123.0" text="Trimite comandă"/>
+            </AnchorPane>
+        </Tab>
+
+        <Tab text="Comenzile mele">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0">
+                <TableView fx:id="comenziTableView" layoutX="14.0" layoutY="40.0" prefHeight="350.0" prefWidth="772.0">
+                    <columns>
+                        <TableColumn fx:id="comandaIdColumn" prefWidth="50.0" text="ID"/>
+                        <TableColumn fx:id="dataColumn" prefWidth="150.0" text="Data"/>
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                        <TableColumn fx:id="medicamenteColumn" prefWidth="471.0" text="Medicamente"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <Label layoutX="14.0" layoutY="14.0" text="Istoricul comenzilor:"/>
+                <Button fx:id="anuleazaComandaButton" layoutX="661.0" layoutY="400.0" mnemonicParsing="false"
+                        text="Anulează comandă"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</AnchorPane>
