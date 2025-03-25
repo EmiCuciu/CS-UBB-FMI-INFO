@@ -2,14 +2,15 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.laboratoriss.GUI.FarmacieController">
-    <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+<AnchorPane prefHeight="443.0" prefWidth="708.0"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.FarmacieController">
+    <TabPane prefHeight="443.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Comenzi">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="457.0">
-                <TableView fx:id="TabelComenziTableView" layoutX="13.0" layoutY="23.0" prefHeight="192.0"
-                           prefWidth="242.0">
+                <TableView fx:id="TabelComenziTableView" layoutX="15.0" layoutY="23.0" prefHeight="192.0"
+                           prefWidth="308.0">
                     <columns>
+                        <TableColumn fx:id="ComandaIDTableColumn" prefWidth="75.0" text="Comanda ID"/>
                         <TableColumn fx:id="SectieTableColumn" prefWidth="75.0" text="Sectie"/>
                         <TableColumn fx:id="MedicamentTableColumn" prefWidth="75.0" text="Medicament"/>
                         <TableColumn fx:id="CantitateTableColumn" prefWidth="75.0" text="Cantitate"/>
@@ -18,10 +19,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                     </columnResizePolicy>
                 </TableView>
-                <Label layoutX="91.0" layoutY="5.0" text="Comenzi primite"/>
-                <TableView fx:id="TabelComenziTableView_Onorate" layoutX="343.0" layoutY="23.0" prefHeight="192.0"
-                           prefWidth="242.0">
+                <Label layoutX="125.0" layoutY="5.0" text="Comenzi primite"/>
+                <TableView fx:id="TabelComenziTableView_Onorate" layoutX="369.0" layoutY="23.0" prefHeight="192.0"
+                           prefWidth="315.0">
                     <columns>
+                        <TableColumn fx:id="ComandaIDTableColumn_Onorate" prefWidth="75.0" text="Comanda ID"/>
                         <TableColumn fx:id="SectieTableColumn_Onorate" prefWidth="75.0" text="Sectie"/>
                         <TableColumn fx:id="MedicamentTableColumn_Onorate" prefWidth="75.0" text="Medicament"/>
                         <TableColumn fx:id="CantitateTableColumn_Onorate" prefWidth="75.0" text="Cantitate"/>
@@ -30,13 +32,12 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                     </columnResizePolicy>
                 </TableView>
-                <Label layoutX="388.0" layoutY="5.0" text="Comenzi onorate"/>
-                <Button fx:id="OnoreazaComandaButton" layoutX="222.0" layoutY="238.0" mnemonicParsing="false"
-                        prefHeight="53.0"
-                        prefWidth="155.0" text="Onoreaza Comanda"/>
-                <Button fx:id="RefuzaComandaButton" layoutX="169.0" layoutY="313.0" mnemonicParsing="false"
+                <Label layoutX="481.0" layoutY="5.0" text="Comenzi onorate"/>
+                <Button fx:id="OnoreazaComandaButton" layoutX="276.0" layoutY="235.0" mnemonicParsing="false"
+                        prefHeight="53.0" prefWidth="155.0" text="Onoreaza Comanda"/>
+                <Button fx:id="RefuzaComandaButton" layoutX="223.0" layoutY="300.0" mnemonicParsing="false"
                         text="Refuza Comanda"/>
-                <Button fx:id="StergeComandaButton" layoutX="325.0" layoutY="313.0" mnemonicParsing="false"
+                <Button fx:id="StergeComandaButton" layoutX="379.0" layoutY="300.0" mnemonicParsing="false"
                         text="Sterge Comanda"/>
             </AnchorPane>
         </Tab>
@@ -46,7 +47,8 @@
                            prefWidth="302.0">
                     <columns>
                         <TableColumn fx:id="MedicamenteInDepozitTableColumn" prefWidth="75.0" text="Medicament"/>
-                        <TableColumn fx:id="DisponibileInDepozitTableColumn" prefWidth="75.0" text="Disponibile"/>
+                        <TableColumn fx:id="PretInDepozitTableColumn" prefWidth="75.0" text="Pret"/>
+                        <TableColumn fx:id="DescriereInDepozitTableColumn" prefWidth="75.0" text="Descriere"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -57,8 +59,7 @@
                 <TextField fx:id="numeMedicamentTextField" layoutX="374.0" layoutY="34.0" promptText="nume"/>
                 <TextField fx:id="pretMedicamentTextField" layoutX="374.0" layoutY="67.0" promptText="pret "/>
                 <TextArea fx:id="descriereMedicamentTextField" layoutX="371.0" layoutY="101.0" prefHeight="49.0"
-                          prefWidth="154.0"
-                          promptText="descriere"/>
+                          prefWidth="154.0" promptText="descriere"/>
                 <Button fx:id="StergeMedicamentDepozitButton" layoutX="14.0" layoutY="277.0" mnemonicParsing="false"
                         text="Sterge Medicament"/>
                 <Button fx:id="UpdateMedicamtDepozitButton" layoutX="191.0" layoutY="277.0" mnemonicParsing="false"

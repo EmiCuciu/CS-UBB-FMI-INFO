@@ -10,8 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -19,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class FarmacieController implements Observer<Comanda> {
-    private static final Logger logger = LogManager.getLogger();
-
     // Comenzi tab
     @FXML
     private TableView<ComandaTableItem> TabelComenziTableView;
@@ -30,6 +26,8 @@ public class FarmacieController implements Observer<Comanda> {
     private TableColumn<ComandaTableItem, String> MedicamentTableColumn;
     @FXML
     private TableColumn<ComandaTableItem, Integer> CantitateTableColumn;
+    @FXML
+    private TableColumn<ComandaTableItem, Integer> ComandaIDTableColumn;
 
     @FXML
     private TableView<ComandaTableItem> TabelComenziTableView_Onorate;
@@ -39,6 +37,8 @@ public class FarmacieController implements Observer<Comanda> {
     private TableColumn<ComandaTableItem, String> MedicamentTableColumn_Onorate;
     @FXML
     private TableColumn<ComandaTableItem, Integer> CantitateTableColumn_Onorate;
+    @FXML
+    private TableColumn<ComandaTableItem, Integer> ComandaIDTableColumn_Onorate;
 
     @FXML
     private Button OnoreazaComandaButton;
@@ -53,7 +53,9 @@ public class FarmacieController implements Observer<Comanda> {
     @FXML
     private TableColumn<Medicament, String> MedicamenteInDepozitTableColumn;
     @FXML
-    private TableColumn<Medicament, Float> DisponibileInDepozitTableColumn;
+    private TableColumn<Medicament, Float> PretInDepozitTableColumn;
+    @FXML
+    private TableColumn<Medicament, String> DescriereInDepozitTableColumn;
 
     @FXML
     private TextField numeMedicamentTextField;
@@ -70,18 +72,16 @@ public class FarmacieController implements Observer<Comanda> {
 
     private IMedicamentService medicamentService;
     private IComandaService comandaService;
-    private User currentUser;
 
-    private ObservableList<ComandaTableItem> comenziModel = FXCollections.observableArrayList();
-    private ObservableList<ComandaTableItem> comenziOnorateModel = FXCollections.observableArrayList();
-    private ObservableList<Medicament> medicamenteModel = FXCollections.observableArrayList();
+    private final ObservableList<ComandaTableItem> comenziModel = FXCollections.observableArrayList();
+    private final ObservableList<ComandaTableItem> comenziOnorateModel = FXCollections.observableArrayList();
+    private final ObservableList<Medicament> medicamenteModel = FXCollections.observableArrayList();
 
     // Map to keep track of which ComandaTableItem belongs to which Comanda
-    private Map<ComandaTableItem, Comanda> comandaItemMap = new HashMap<>();
+    private final Map<ComandaTableItem, Comanda> comandaItemMap = new HashMap<>();
 
     public void setServices(IMedicamentService medicamentService, User currentUser) {
         this.medicamentService = medicamentService;
-        this.currentUser = currentUser;
 
         // Inject ComandaService from the application context
         // This would typically be done in a more formal way with dependency injection
@@ -91,23 +91,25 @@ public class FarmacieController implements Observer<Comanda> {
         comandaService.addObserver(this);
         medicamentService.addObserver(new MedicamentObserver());
 
-        initializeTables();
         loadData();
     }
 
     @FXML
     public void initialize() {
         // Configure cell factories
+        ComandaIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("comandaId"));
         SectieTableColumn.setCellValueFactory(new PropertyValueFactory<>("sectie"));
         MedicamentTableColumn.setCellValueFactory(new PropertyValueFactory<>("medicamentNume"));
         CantitateTableColumn.setCellValueFactory(new PropertyValueFactory<>("cantitate"));
 
+        ComandaIDTableColumn_Onorate.setCellValueFactory(new PropertyValueFactory<>("comandaId"));
         SectieTableColumn_Onorate.setCellValueFactory(new PropertyValueFactory<>("sectie"));
         MedicamentTableColumn_Onorate.setCellValueFactory(new PropertyValueFactory<>("medicamentNume"));
         CantitateTableColumn_Onorate.setCellValueFactory(new PropertyValueFactory<>("cantitate"));
 
         MedicamenteInDepozitTableColumn.setCellValueFactory(new PropertyValueFactory<>("nume"));
-        DisponibileInDepozitTableColumn.setCellValueFactory(new PropertyValueFactory<>("pret"));
+        PretInDepozitTableColumn.setCellValueFactory(new PropertyValueFactory<>("pret"));
+        DescriereInDepozitTableColumn.setCellValueFactory(new PropertyValueFactory<>("descriere"));
 
         // Set up button handlers
         OnoreazaComandaButton.setOnAction(event -> onoreazaComanda());
@@ -122,10 +124,6 @@ public class FarmacieController implements Observer<Comanda> {
         TabelComenziTableView.setItems(comenziModel);
         TabelComenziTableView_Onorate.setItems(comenziOnorateModel);
         TabelMedicamenteTableView.setItems(medicamenteModel);
-    }
-
-    private void initializeTables() {
-        // Nothing additional needed here as table setup is done in initialize()
     }
 
     private void loadData() {
@@ -158,9 +156,10 @@ public class FarmacieController implements Observer<Comanda> {
     private void processComenzi(List<Comanda> comenzi, ObservableList<ComandaTableItem> model) {
         for (Comanda comanda : comenzi) {
             String sectie = comanda.getUser().getSectie();
+            Integer comandaID = comanda.getId();
 
             for (ComandaItem item : comanda.getComandaItems()) {
-                ComandaTableItem tableItem = new ComandaTableItem(sectie, item.getMedicament().getNume(), item.getCantitate(), comanda.getData().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")));
+                ComandaTableItem tableItem = new ComandaTableItem(comandaID, sectie, item.getMedicament().getNume(), item.getCantitate(), comanda.getData().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")));
                 model.add(tableItem);
                 comandaItemMap.put(tableItem, comanda);
             }
@@ -301,16 +300,22 @@ public class FarmacieController implements Observer<Comanda> {
 
     // Helper class to represent table items
     public static class ComandaTableItem {
+        private final Integer comandaId;
         private final String sectie;
         private final String medicamentNume;
         private final int cantitate;
         private final String data;
 
-        public ComandaTableItem(String sectie, String medicamentNume, int cantitate, String data) {
+        public ComandaTableItem(Integer id, String sectie, String medicamentNume, int cantitate, String data) {
+            this.comandaId = id;
             this.sectie = sectie;
             this.medicamentNume = medicamentNume;
             this.cantitate = cantitate;
             this.data = data;
+        }
+
+        public int getComandaId(){
+            return comandaId;
         }
 
         public String getSectie() {
@@ -330,7 +335,9 @@ public class FarmacieController implements Observer<Comanda> {
         }
     }
 
-    // Simple application context for services
+    /**
+     * Clasa ajuta la injectarea serviciului de comenzi in controllerul de farmacie.
+     */
     public static class ApplicationContext {
         private static IComandaService comandaService;
 
