@@ -170,7 +170,6 @@ D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Text.Encodings.Web.xml
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Text.Json.xml
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.ValueTuple.xml
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\cs\Microsoft.Data.SqlClient.resources.dll
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
@@ -185,8 +184,6 @@ D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.AssemblyReference.cache
-D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.SuggestedBindingRedirects.cache
-D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.exe.config
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.MagazinTelefoane.resources
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.Properties.Resources.resources
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.GenerateResource.cache
@@ -194,3 +191,11 @@ D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.Up2Date
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.exe
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.pdb
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Microsoft.Bcl.Memory.dll
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Microsoft.Bcl.TimeProvider.dll
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Formats.Asn1.dll
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.IO.Pipelines.dll
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Microsoft.Bcl.Memory.xml
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Microsoft.Bcl.TimeProvider.xml
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Formats.Asn1.xml
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.IO.Pipelines.xml
