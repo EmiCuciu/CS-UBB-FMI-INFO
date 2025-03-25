@@ -62,6 +62,20 @@ public class SignUpController {
         }
 
         String username = usernameField.getText();
+        User newUser = getUser(username);
+
+        User registeredUser = userService.register(newUser);
+        if (registeredUser != null) {
+            showAlert(Alert.AlertType.INFORMATION, "Registration successful",
+                    "User " + username + " has been registered successfully!");
+            closeWindow();
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Registration failed",
+                    "Username already exists or registration failed.");
+        }
+    }
+
+    private User getUser(String username) {
         String password = passwordField.getText();
         String nume = numeField.getText();
         String prenume = prenumeField.getText();
@@ -74,16 +88,7 @@ public class SignUpController {
         } else {
             newUser = new User(null, username, password, userType, nume, prenume, sectie);
         }
-
-        User registeredUser = userService.register(newUser);
-        if (registeredUser != null) {
-            showAlert(Alert.AlertType.INFORMATION, "Registration successful",
-                    "User " + username + " has been registered successfully!");
-            closeWindow();
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Registration failed",
-                    "Username already exists or registration failed.");
-        }
+        return newUser;
     }
 
     private boolean validateInput() {
