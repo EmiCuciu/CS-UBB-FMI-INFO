@@ -69,9 +69,9 @@ public class PersonalSectieController implements Observer<Comanda> {
     @FXML
     private Button anuleazaComandaButton;
 
-    private ObservableList<Medicament> medicamentModel = FXCollections.observableArrayList();
-    private ObservableList<ComandaItemViewModel> cosModel = FXCollections.observableArrayList();
-    private ObservableList<ComandaViewModel> comenziModel = FXCollections.observableArrayList();
+    private final ObservableList<Medicament> medicamentModel = FXCollections.observableArrayList();
+    private final ObservableList<ComandaItemViewModel> cosModel = FXCollections.observableArrayList();
+    private final ObservableList<ComandaViewModel> comenziModel = FXCollections.observableArrayList();
 
     public void setServices(IMedicamentService medicamentService, IComandaService comandaService, User currentUser) {
         this.medicamentService = medicamentService;
@@ -134,6 +134,7 @@ public class PersonalSectieController implements Observer<Comanda> {
 
         for (Comanda comanda : comenzi) {
             ComandaViewModel viewModel = new ComandaViewModel(comanda);
+            viewModel.getDataFormatted();
             comenziModel.add(viewModel);
         }
     }
@@ -223,6 +224,10 @@ public class PersonalSectieController implements Observer<Comanda> {
     }
 
     // ViewModel classes
+
+    /**
+     * Clasa ajutătoare pentru a afișa informații despre un medicament în tabel.
+     */
     public static class ComandaItemViewModel {
         private Medicament medicament;
         private int cantitate;
@@ -259,6 +264,9 @@ public class PersonalSectieController implements Observer<Comanda> {
         }
     }
 
+    /**
+     * Clasa ajutătoare pentru a afișa informații despre o comandă în tabel.
+     */
     public static class ComandaViewModel {
         private final Integer id;
         private final LocalDateTime data;
@@ -277,8 +285,10 @@ public class PersonalSectieController implements Observer<Comanda> {
         }
 
         public String getDataFormatted() {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-            return data.format(formatter);
+            if (data == null) {
+                return "N/A"; // or empty string, or any default value
+            }
+            return data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         }
 
         public String getStatus() {

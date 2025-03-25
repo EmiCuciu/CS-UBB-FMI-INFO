@@ -5,13 +5,822 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8702507-7539-4549-9bf9-5a641f986b8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.~lock.AnalizaCerinte_Farmacie-Spital.odg#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.~lock.Descrierea cazurilor de utilizare.docx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.~lock.Use case template.docx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AnalizaCerinte_Farmacie-Spital.odg" beforeDir="false" afterPath="$PROJECT_DIR$/../AnalizaCerinte_Farmacie-Spital.odg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Caz de utilizare.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../Caz de utilizare.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Descrierea cazurilor de utilizare.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Descrierea cazurilor de utilizare.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iss.db" beforeDir="false" afterPath="$PROJECT_DIR$/iss.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/FarmacieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/FarmacieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/PersonalSectieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/PersonalSectieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/farmacie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/laboratoriss/farmacie.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/real.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/real.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/CopilotIndices/17.13.441.19478/CodeChunks.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/CopilotIndices/17.13.441.19478/CodeChunks.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/CopilotIndices/17.13.441.19478/SemanticSymbols.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/CopilotIndices/17.13.441.19478/SemanticSymbols.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/2cddac9c-38a5-44df-8a8d-f03b3ab2b627.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/b573f8c8-fa41-4e96-a57b-f5fa1dea8f0c.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/FileContentIndex/eb404cb4-3f1a-4757-b35e-2a8d982e5ec1.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/copilot-chat/4c1e6f66/sessions/cf177e15-9daf-410d-a64b-5cb660e4bac2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/copilot-chat/4c1e6f66/sessions/cf177e15-9daf-410d-a64b-5cb660e4bac2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/.vs/Laborator1/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/App.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Laborator1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/Laborator1.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/MagazinTelefoane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/MagazinTelefoane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Core.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Identity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Azure.Identity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Laborator1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.AsyncInterfaces.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.AsyncInterfaces.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.AsyncInterfaces.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.Cryptography.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.Cryptography.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.Cryptography.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Bcl.Cryptography.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Abstractions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Memory.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Caching.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.DependencyInjection.Abstractions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.DependencyInjection.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Logging.Abstractions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Logging.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Options.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Options.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Options.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Primitives.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Primitives.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Primitives.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Extensions.Primitives.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.Extensions.Msal.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.Identity.Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Abstractions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.JsonWebTokens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Logging.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Protocols.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/Microsoft.IdentityModel.Tokens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Buffers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Buffers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.ClientModel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.ClientModel.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.ClientModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.ClientModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Diagnostics.DiagnosticSource.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Diagnostics.DiagnosticSource.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.IdentityModel.Tokens.Jwt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.Data.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.Data.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.Data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.Data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Numerics.Vectors.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Numerics.Vectors.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.AccessControl.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.AccessControl.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.AccessControl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.AccessControl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.Pkcs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.Pkcs.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.Pkcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.Pkcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.ProtectedData.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Security.Cryptography.ProtectedData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Encodings.Web.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Encodings.Web.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Encodings.Web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Encodings.Web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Json.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Json.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Text.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Threading.Tasks.Extensions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Threading.Tasks.Extensions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/bin/Debug/System.ValueTuple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.SuggestedBindingRedirects.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.exe.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/packages.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/Azure.Core.1.38.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/azureicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net461/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net461/Azure.Core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net472/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net472/Azure.Core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net6.0/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/net6.0/Azure.Core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/netstandard2.0/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Core.1.38.0/lib/netstandard2.0/Azure.Core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/Azure.Identity.1.11.4.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/azureicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/lib/netstandard2.0/Azure.Identity.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Azure.Identity.1.11.4/lib/netstandard2.0/Azure.Identity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/Microsoft.Bcl.AsyncInterfaces.8.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/net462/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/net462/Microsoft.Bcl.AsyncInterfaces.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.AsyncInterfaces.8.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/Microsoft.Bcl.Cryptography.8.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/buildTransitive/net461/Microsoft.Bcl.Cryptography.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/buildTransitive/netcoreapp2.0/Microsoft.Bcl.Cryptography.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/net462/Microsoft.Bcl.Cryptography.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/net462/Microsoft.Bcl.Cryptography.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/net8.0/Microsoft.Bcl.Cryptography.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/net8.0/Microsoft.Bcl.Cryptography.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/netstandard2.0/Microsoft.Bcl.Cryptography.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/lib/netstandard2.0/Microsoft.Bcl.Cryptography.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Bcl.Cryptography.8.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/Microsoft.Extensions.Caching.Abstractions.8.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/buildTransitive/net461/Microsoft.Extensions.Caching.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/buildTransitive/netcoreapp2.0/Microsoft.Extensions.Caching.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net462/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net462/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net6.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net6.0/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net7.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net7.0/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/net8.0/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Abstractions.8.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/Microsoft.Extensions.Caching.Memory.8.0.1.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/buildTransitive/net461/Microsoft.Extensions.Caching.Memory.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/buildTransitive/netcoreapp2.0/Microsoft.Extensions.Caching.Memory.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net462/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net462/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net6.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net6.0/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net7.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net7.0/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net8.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/net8.0/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Caching.Memory.8.0.1/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/Microsoft.Extensions.Logging.Abstractions.8.0.2.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn3.11/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/Microsoft.Extensions.Logging.Generators.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net462/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net462/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net7.0/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Logging.Abstractions.8.0.2/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/Microsoft.Extensions.Options.8.0.2.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Options.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/buildTransitive/net461/Microsoft.Extensions.Options.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/buildTransitive/net462/Microsoft.Extensions.Options.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/buildTransitive/net6.0/Microsoft.Extensions.Options.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/buildTransitive/netstandard2.0/Microsoft.Extensions.Options.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net462/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net462/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net6.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net6.0/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net7.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net7.0/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net8.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/net8.0/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/netstandard2.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/netstandard2.0/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/netstandard2.1/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/lib/netstandard2.1/Microsoft.Extensions.Options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Options.8.0.2/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/Microsoft.Extensions.Primitives.8.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/PACKAGE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/buildTransitive/net461/Microsoft.Extensions.Primitives.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net462/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net462/Microsoft.Extensions.Primitives.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net6.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net6.0/Microsoft.Extensions.Primitives.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net7.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net7.0/Microsoft.Extensions.Primitives.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net8.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/net8.0/Microsoft.Extensions.Primitives.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/netstandard2.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/lib/netstandard2.0/Microsoft.Extensions.Primitives.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Extensions.Primitives.8.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/Microsoft.Identity.Client.4.61.3.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net462/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net462/Microsoft.Identity.Client.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0-android31.0/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0-android31.0/Microsoft.Identity.Client.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0-ios15.4/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0-ios15.4/Microsoft.Identity.Client.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/net6.0/Microsoft.Identity.Client.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/netstandard2.0/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.4.61.3/lib/netstandard2.0/Microsoft.Identity.Client.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/Microsoft.Identity.Client.Extensions.Msal.4.61.3.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/lib/net6.0/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/lib/net6.0/Microsoft.Identity.Client.Extensions.Msal.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/lib/netstandard2.0/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.Identity.Client.Extensions.Msal.4.61.3/lib/netstandard2.0/Microsoft.Identity.Client.Extensions.Msal.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/Microsoft.IdentityModel.Abstractions.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net461/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net461/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net462/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net462/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net472/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net472/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net6.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net6.0/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net8.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/net8.0/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Abstractions.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/Microsoft.IdentityModel.JsonWebTokens.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net462/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net462/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net472/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.JsonWebTokens.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/Microsoft.IdentityModel.Logging.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net461/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net461/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net462/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net462/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net472/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net472/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net6.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net6.0/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net8.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/net8.0/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Logging.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/Microsoft.IdentityModel.Protocols.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net461/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net461/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net462/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net462/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net472/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net472/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net6.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net6.0/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net8.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/net8.0/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net472/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net472/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/Microsoft.IdentityModel.Tokens.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net461/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net461/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net462/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net462/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net472/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net472/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net6.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net6.0/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net8.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/net8.0/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/Microsoft.IdentityModel.Tokens.7.5.0/lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/System.Buffers.4.5.1.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/net461/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/net461/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/netstandard1.1/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/netstandard1.1/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/netstandard2.0/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/netstandard2.0/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/lib/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/net45/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/net45/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/netstandard1.1/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/netstandard1.1/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/netstandard2.0/System.Buffers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/netstandard2.0/System.Buffers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/ref/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Buffers.4.5.1/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/DotNetPackageIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/System.ClientModel.1.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/lib/net6.0/System.ClientModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/lib/net6.0/System.ClientModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/lib/netstandard2.0/System.ClientModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ClientModel.1.0.0/lib/netstandard2.0/System.ClientModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/System.Diagnostics.DiagnosticSource.8.0.1.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/buildTransitive/net461/System.Diagnostics.DiagnosticSource.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net462/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net462/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net6.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net6.0/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net7.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net7.0/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net8.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/net8.0/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Diagnostics.DiagnosticSource.8.0.1/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/System.IdentityModel.Tokens.Jwt.7.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net461/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net461/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net462/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net462/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net472/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net472/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net6.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net6.0/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net8.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/net8.0/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.IdentityModel.Tokens.Jwt.7.5.0/lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/System.Memory.4.5.5.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/net461/System.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/net461/System.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/netcoreapp2.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/netstandard1.1/System.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/netstandard1.1/System.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/netstandard2.0/System.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/lib/netstandard2.0/System.Memory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/ref/netcoreapp2.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.4.5.5/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/DotNetPackageIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/System.Memory.Data.1.0.2.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/lib/net461/System.Memory.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/lib/net461/System.Memory.Data.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/lib/netstandard2.0/System.Memory.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Memory.Data.1.0.2/lib/netstandard2.0/System.Memory.Data.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/System.Numerics.Vectors.4.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/net46/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/net46/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/netstandard1.0/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/netstandard1.0/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/netstandard2.0/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/netstandard2.0/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/lib/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/net45/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/net45/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/net46/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/net46/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/netstandard1.0/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/netstandard1.0/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/netstandard2.0/System.Numerics.Vectors.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/netstandard2.0/System.Numerics.Vectors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/ref/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Numerics.Vectors.4.5.0/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/System.Runtime.CompilerServices.Unsafe.6.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/buildTransitive/netcoreapp3.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/net461/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/net461/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Runtime.CompilerServices.Unsafe.6.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/System.Security.AccessControl.5.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/net46/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/net461/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/net461/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/netstandard1.3/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/netstandard2.0/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/netstandard2.0/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/lib/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/net46/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/net461/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/net461/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/de/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/es/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/fr/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/it/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/ja/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/ko/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/ru/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard2.0/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/netstandard2.0/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/ref/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/net46/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/net461/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/net461/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/runtimes/win/lib/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.AccessControl.5.0.0/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/System.Security.Cryptography.Pkcs.8.0.1.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/buildTransitive/net461/System.Security.Cryptography.Pkcs.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/buildTransitive/net462/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/buildTransitive/net6.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net462/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net462/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net6.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net6.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net7.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net7.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net8.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/net8.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.Pkcs.8.0.1/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/System.Security.Cryptography.ProtectedData.4.7.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/net46/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/net461/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/net461/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/netstandard1.3/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/lib/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/net46/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/net461/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/net461/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/netstandard1.3/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/netstandard2.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/netstandard2.0/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/ref/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/net46/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/netstandard1.3/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Security.Cryptography.ProtectedData.4.7.0/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/System.Text.Encodings.Web.6.0.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/buildTransitive/netcoreapp3.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/net461/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/net461/System.Text.Encodings.Web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/net6.0/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/net6.0/System.Text.Encodings.Web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/netcoreapp3.1/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/netcoreapp3.1/System.Text.Encodings.Web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/netstandard2.0/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/lib/netstandard2.0/System.Text.Encodings.Web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Encodings.Web.6.0.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/System.Text.Json.6.0.10.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/buildTransitive/netcoreapp2.0/System.Text.Json.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/buildTransitive/netcoreapp3.1/System.Text.Json.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/buildTransitive/netstandard2.0/System.Text.Json.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/net461/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/net461/System.Text.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/net6.0/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/net6.0/System.Text.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/netcoreapp3.1/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/netcoreapp3.1/System.Text.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/netstandard2.0/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/lib/netstandard2.0/System.Text.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Text.Json.6.0.10/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/System.Threading.Tasks.Extensions.4.5.4.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/net461/System.Threading.Tasks.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/net461/System.Threading.Tasks.Extensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/netcoreapp2.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/netstandard1.0/System.Threading.Tasks.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/netstandard1.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/netstandard2.0/System.Threading.Tasks.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/netstandard2.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/lib/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/netcoreapp2.1/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/ref/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.Threading.Tasks.Extensions.4.5.4/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/System.ValueTuple.4.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/net461/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/net461/System.ValueTuple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/net47/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/net47/System.ValueTuple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/netstandard1.0/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/netstandard1.0/System.ValueTuple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/netstandard2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/lib/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/MonoAndroid10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/MonoTouch10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/net461/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/net47/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/netcoreapp2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/netstandard2.0/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/uap10.0.16299/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/xamarinios10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/xamarinmac20/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/xamarintvos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/ref/xamarinwatchos10/_._" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/useSharedDesignerContext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/packages/System.ValueTuple.4.5.0/version.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,30 +866,32 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "EmiCuciu"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EmiCuciu&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/EmiCuciu/CS-UBB-FMI-INFO.git",
-    "accountId": "cdcfa452-6828-4ac5-9633-9d00c61af1fe"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EmiCuciu/CS-UBB-FMI-INFO.git&quot;,
+    &quot;accountId&quot;: &quot;cdcfa452-6828-4ac5-9633-9d00c61af1fe&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2ulRGlsugXEQrlr56AbJR8Q55J2" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -89,31 +900,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.LaboratorISS [:com.example.laboratoriss.HelloApplication.main()].executor": "Run",
-    "Gradle.LaboratorISS [buildDependents].executor": "Run",
-    "Gradle.LaboratorISS [build].executor": "Run",
-    "Gradle.LaboratorISS [clean build].executor": "Run",
-    "Gradle.LaboratorISS [clean].executor": "Run",
-    "Gradle.LaboratorISS [run].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/GithubRepositories/Social-Network",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.20689656",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.LaboratorISS [:com.example.laboratoriss.HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [clean build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/ISS/Laborator/LaboratorISS/src/main/java/com/example/laboratoriss&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.20689656&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\src\main\java\com\example\laboratoriss" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.laboratoriss.Repository" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradlew clean build" />
@@ -258,7 +1086,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742821082180</updated>
-      <workItem from="1742821083366" duration="5074000" />
+      <workItem from="1742821083366" duration="19562000" />
+      <workItem from="1742843374055" duration="1341000" />
+      <workItem from="1742844740935" duration="1325000" />
+      <workItem from="1742846095577" duration="1189000" />
+      <workItem from="1742849363643" duration="599000" />
+      <workItem from="1742850181743" duration="19000" />
+      <workItem from="1742850885758" duration="3122000" />
+      <workItem from="1742864775993" duration="9000" />
+      <workItem from="1742892361399" duration="4680000" />
     </task>
     <servers />
   </component>

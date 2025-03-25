@@ -186,4 +186,46 @@ public class ComandaItemRepository implements IComandaItemRepository {
         }
         logger.traceExit();
     }
+
+    public void saveForComanda(ComandaItem item, int comandaId) {
+        logger.traceEntry("saving ComandaItem {} for comanda {}", item, comandaId);
+        String sql = "INSERT INTO ComandaItem(comanda_id, medicament_id, cantitate) VALUES(?, ?, ?)";
+
+        try (Connection connection = jdbcUtils.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            statement.setInt(1, comandaId);
+            statement.setInt(2, item.getMedicament().getId());
+            statement.setInt(3, item.getCantitate());
+
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        item.setId(generatedKeys.getInt(1));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("SQLException: " + e.getMessage());
+        }
+        logger.traceExit();
+    }
+
+    public void deleteByComandaId(Integer id) {
+        logger.traceEntry("deleting ComandaItems for comanda with id {}", id);
+        String sql = "DELETE FROM ComandaItem WHERE comanda_id = ?";
+
+        try (Connection connection = jdbcUtils.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("SQLException: " + e.getMessage());
+        }
+        logger.traceExit();
+    }
 }

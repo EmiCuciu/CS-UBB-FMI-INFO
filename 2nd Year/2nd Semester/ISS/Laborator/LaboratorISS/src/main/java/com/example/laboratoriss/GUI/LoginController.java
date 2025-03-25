@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,8 +33,6 @@ public class LoginController {
     @FXML
     private TextField PasswordTextField;
 
-    private ToggleGroup userTypeGroup;
-
     public void setServices(IUserService userService, IMedicamentService medicamentService, IComandaService comandaService) {
         this.userService = userService;
         this.medicamentService = medicamentService;
@@ -44,7 +41,6 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        userTypeGroup = new ToggleGroup();
         Login.setOnAction(event -> handleLogin());
         SignUp.setOnAction(event -> handleSignUp());
     }

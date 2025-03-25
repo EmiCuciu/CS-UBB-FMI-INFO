@@ -32,10 +32,10 @@ public class Main extends Application {
         }
 
         // Create repositories
-        IUserRepository userRepository = new UserRepository(props);
-        IMedicamentRepository medicamentRepository = new MedicamentRepository(props);
-        IComandaItemRepository comandaItemRepository = new ComandaItemRepository(props, medicamentRepository);
-        IComandaRepository comandaRepository = new ComandaRepository(props, userRepository, medicamentRepository, comandaItemRepository);
+        UserRepository userRepository = new UserRepository(props);
+        MedicamentRepository medicamentRepository = new MedicamentRepository(props);
+        ComandaItemRepository comandaItemRepository = new ComandaItemRepository(props, medicamentRepository);
+        IComandaRepository comandaRepository = new ComandaRepository(props, userRepository, comandaItemRepository);
 
         // Create services
         IUserService userService = new UserService(userRepository);
