@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|solutionrelative:laborator1\\magazintelefoane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|d:\\githubrepositories\\cs-ubb-fmi-info\\2nd year\\2nd semester\\sgbd\\laboratoare\\lab1\\laborator1\\laborator1\\magazintelefoane.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\laborator1\\magazintelefoane.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|solutionrelative:laborator1\\magazintelefoane.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\laborator1\\magazintelefoane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|solutionrelative:laborator1\\magazintelefoane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\laborator1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72FF9921-DDC9-4626-AC10-43D482E10402}|Laborator1\\Laborator1.csproj|solutionrelative:laborator1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,13 +50,37 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\Program.cs",
+              "RelativeDocumentMoniker": "Laborator1\\Program.cs",
+              "ToolTip": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\Program.cs",
+              "RelativeToolTip": "Laborator1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T21:37:49.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MagazinTelefoane.cs [Design]",
+              "DocumentMoniker": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\MagazinTelefoane.cs",
+              "RelativeDocumentMoniker": "Laborator1\\MagazinTelefoane.cs",
+              "ToolTip": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\MagazinTelefoane.cs [Design]",
+              "RelativeToolTip": "Laborator1\\MagazinTelefoane.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T21:37:43.928Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MagazinTelefoane.cs",
               "DocumentMoniker": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\MagazinTelefoane.cs",
               "RelativeDocumentMoniker": "Laborator1\\MagazinTelefoane.cs",
               "ToolTip": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\MagazinTelefoane.cs",
               "RelativeToolTip": "Laborator1\\MagazinTelefoane.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAjwFYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAswGgAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T11:59:31.29Z",
               "EditorCaption": ""
@@ -61,10 +93,9 @@
               "RelativeDocumentMoniker": "Laborator1\\MagazinTelefoane.Designer.cs",
               "ToolTip": "D:\\GithubRepositories\\CS-UBB-FMI-INFO\\2nd Year\\2nd Semester\\SGBD\\laboratoare\\lab1\\Laborator1\\Laborator1\\MagazinTelefoane.Designer.cs",
               "RelativeToolTip": "Laborator1\\MagazinTelefoane.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAEAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T11:49:37.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T11:49:37.945Z"
             }
           ]
         }
