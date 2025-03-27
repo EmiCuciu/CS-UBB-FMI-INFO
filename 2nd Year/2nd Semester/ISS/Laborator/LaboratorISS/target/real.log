@@ -2044,3 +2044,233 @@ java.time.format.DateTimeParseException: Text '1742990605000' could not be parse
 25 Mar 2025 12:39:19,546 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
 25 Mar 2025 12:39:19,546 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
 25 Mar 2025 12:39:19,546 TRACE com.example.laboratoriss.Service.ComandaService 69 delete - Exit
+25 Mar 2025 14:10:29,768 INFO  com.example.laboratoriss.Main 23 start - Starting application...
+25 Mar 2025 14:10:29,772 INFO  com.example.laboratoriss.Repository.UserRepository 23 <init> - Initializing UserRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:10:29,773 INFO  com.example.laboratoriss.Repository.MedicamentRepository 22 <init> - Initializing MedicamentRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:10:29,774 INFO  com.example.laboratoriss.Repository.ComandaItemRepository 24 <init> - Initializing ComandaItemRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:10:29,775 INFO  com.example.laboratoriss.Repository.ComandaRepository 29 <init> - Initializing ComandaRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:10:30,176 INFO  com.example.laboratoriss.Main 62 start - Application started successfully
+25 Mar 2025 14:10:46,628 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: emicuciu
+25 Mar 2025 14:10:46,629 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:10:46,629 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,796 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: emicuciu
+25 Mar 2025 14:10:46,803 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='emicuciu', password='0000', type=FARMACIST, nume='Cuciurean', prenume='Emilian', sectie='null'}
+25 Mar 2025 14:10:46,839 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:10:46,839 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:10:46,839 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,842 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:10:46,842 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:10:46,842 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,843 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 3
+25 Mar 2025 14:10:46,843 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,845 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:10:46,846 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,847 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: ONORATA
+25 Mar 2025 14:10:46,847 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: ONORATA
+25 Mar 2025 14:10:46,847 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:10:46,847 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,848 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:10:46,848 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,848 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:10:46,848 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:46,849 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:10:46,849 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:54,338 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: alex
+25 Mar 2025 14:10:54,339 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:10:54,339 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:54,341 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: alex
+25 Mar 2025 14:10:54,342 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:10:54,367 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:10:54,367 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:10:54,367 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:54,369 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:10:54,369 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:10:54,370 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:10:54,370 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:54,371 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:10:54,371 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:10:54,372 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 23
+25 Mar 2025 14:10:54,372 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:11:09,430 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: paul
+25 Mar 2025 14:11:09,430 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:11:09,430 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:11:09,431 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: paul
+25 Mar 2025 14:11:09,431 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:11:09,440 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:11:09,441 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:11:09,441 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:11:09,443 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:11:09,443 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:11:09,443 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:11:09,443 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:11:12,699 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: asd
+25 Mar 2025 14:11:12,699 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:11:12,699 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:11:12,700 TRACE com.example.laboratoriss.Service.UserService 28 login - Exit login failed for: asd
+25 Mar 2025 14:24:08,699 INFO  com.example.laboratoriss.Main 23 start - Starting application...
+25 Mar 2025 14:24:08,708 INFO  com.example.laboratoriss.Repository.UserRepository 23 <init> - Initializing UserRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:08,711 INFO  com.example.laboratoriss.Repository.MedicamentRepository 22 <init> - Initializing MedicamentRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:08,713 INFO  com.example.laboratoriss.Repository.ComandaItemRepository 24 <init> - Initializing ComandaItemRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:08,715 INFO  com.example.laboratoriss.Repository.ComandaRepository 29 <init> - Initializing ComandaRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:09,291 INFO  com.example.laboratoriss.Main 62 start - Application started successfully
+25 Mar 2025 14:24:52,267 INFO  com.example.laboratoriss.Main 23 start - Starting application...
+25 Mar 2025 14:24:52,272 INFO  com.example.laboratoriss.Repository.UserRepository 23 <init> - Initializing UserRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:52,273 INFO  com.example.laboratoriss.Repository.MedicamentRepository 22 <init> - Initializing MedicamentRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:52,275 INFO  com.example.laboratoriss.Repository.ComandaItemRepository 24 <init> - Initializing ComandaItemRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:52,276 INFO  com.example.laboratoriss.Repository.ComandaRepository 29 <init> - Initializing ComandaRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:24:52,675 INFO  com.example.laboratoriss.Main 62 start - Application started successfully
+25 Mar 2025 14:25:00,172 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: emicuciu
+25 Mar 2025 14:25:00,173 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:25:00,173 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,337 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: emicuciu
+25 Mar 2025 14:25:00,342 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='emicuciu', password='0000', type=FARMACIST, nume='Cuciurean', prenume='Emilian', sectie='null'}
+25 Mar 2025 14:25:00,384 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:25:00,384 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:25:00,384 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,387 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:25:00,387 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:25:00,388 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,389 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 3
+25 Mar 2025 14:25:00,389 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,391 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:25:00,391 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,393 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: ONORATA
+25 Mar 2025 14:25:00,393 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: ONORATA
+25 Mar 2025 14:25:00,393 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:25:00,393 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,394 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:25:00,394 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,395 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:25:00,395 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:00,396 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:25:00,396 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:06,698 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: alex
+25 Mar 2025 14:25:06,698 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:25:06,698 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:06,700 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: alex
+25 Mar 2025 14:25:06,700 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:25:06,727 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:25:06,727 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:25:06,727 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:06,729 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:25:06,729 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:25:06,729 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:25:06,729 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:06,730 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:25:06,730 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:06,731 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 23
+25 Mar 2025 14:25:06,731 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:13,802 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: paul
+25 Mar 2025 14:25:13,802 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:25:13,802 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:13,803 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: paul
+25 Mar 2025 14:25:13,804 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:25:13,810 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:25:13,810 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:25:13,811 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:25:13,811 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:25:13,811 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:25:13,812 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:25:13,812 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:20,452 INFO  com.example.laboratoriss.Main 23 start - Starting application...
+25 Mar 2025 14:26:20,456 INFO  com.example.laboratoriss.Repository.UserRepository 23 <init> - Initializing UserRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:26:20,458 INFO  com.example.laboratoriss.Repository.MedicamentRepository 22 <init> - Initializing MedicamentRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:26:20,458 INFO  com.example.laboratoriss.Repository.ComandaItemRepository 24 <init> - Initializing ComandaItemRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:26:20,459 INFO  com.example.laboratoriss.Repository.ComandaRepository 29 <init> - Initializing ComandaRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:26:20,930 INFO  com.example.laboratoriss.Main 62 start - Application started successfully
+25 Mar 2025 14:26:35,563 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: emicuciu
+25 Mar 2025 14:26:35,563 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:26:35,564 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,726 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: emicuciu
+25 Mar 2025 14:26:35,730 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='emicuciu', password='0000', type=FARMACIST, nume='Cuciurean', prenume='Emilian', sectie='null'}
+25 Mar 2025 14:26:35,761 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:26:35,761 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:26:35,761 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,764 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:26:35,764 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:26:35,764 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,765 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 3
+25 Mar 2025 14:26:35,765 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,767 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:26:35,767 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,769 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: ONORATA
+25 Mar 2025 14:26:35,769 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: ONORATA
+25 Mar 2025 14:26:35,769 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:26:35,769 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,770 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:26:35,770 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,770 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:26:35,770 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:35,771 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:26:35,771 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:43,719 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: paul
+25 Mar 2025 14:26:43,719 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:26:43,720 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:43,721 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: paul
+25 Mar 2025 14:26:43,721 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:26:43,746 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:26:43,747 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:26:43,747 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:26:43,751 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:26:43,751 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:26:43,751 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:26:43,751 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:01,240 INFO  com.example.laboratoriss.Main 23 start - Starting application...
+25 Mar 2025 14:27:01,244 INFO  com.example.laboratoriss.Repository.UserRepository 23 <init> - Initializing UserRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:27:01,245 INFO  com.example.laboratoriss.Repository.MedicamentRepository 22 <init> - Initializing MedicamentRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:27:01,246 INFO  com.example.laboratoriss.Repository.ComandaItemRepository 24 <init> - Initializing ComandaItemRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:27:01,248 INFO  com.example.laboratoriss.Repository.ComandaRepository 29 <init> - Initializing ComandaRepository with properties: {jdbc.url=jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db}
+25 Mar 2025 14:27:01,660 INFO  com.example.laboratoriss.Main 62 start - Application started successfully
+25 Mar 2025 14:27:10,503 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: emicuciu
+25 Mar 2025 14:27:10,503 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:27:10,503 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,668 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: emicuciu
+25 Mar 2025 14:27:10,672 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='emicuciu', password='0000', type=FARMACIST, nume='Cuciurean', prenume='Emilian', sectie='null'}
+25 Mar 2025 14:27:10,710 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:27:10,710 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:27:10,710 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,714 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:27:10,714 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: IN_ASTEPTARE
+25 Mar 2025 14:27:10,714 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,715 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 3
+25 Mar 2025 14:27:10,715 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,717 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:27:10,717 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,719 TRACE com.example.laboratoriss.Service.ComandaService 41 getByStatus - Enter getting comenzi with status: ONORATA
+25 Mar 2025 14:27:10,719 TRACE com.example.laboratoriss.Repository.ComandaRepository 141 findByStatus - Enter finding comenzi with status: ONORATA
+25 Mar 2025 14:27:10,719 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:27:10,719 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,719 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:27:10,719 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,720 TRACE com.example.laboratoriss.Repository.UserRepository 29 findOne - Enter finding Users with id: 2
+25 Mar 2025 14:27:10,720 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:10,721 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:27:10,721 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:32,640 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: paul
+25 Mar 2025 14:27:32,641 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:27:32,641 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:32,642 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: paul
+25 Mar 2025 14:27:32,643 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:27:32,673 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:27:32,673 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:27:32,673 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:32,674 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:27:32,675 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='paul', password='0000', type=PERSONAL_SECTIE, nume='Puiu', prenume='Paul', sectie='Testosteronologie'}
+25 Mar 2025 14:27:32,675 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 20
+25 Mar 2025 14:27:32,675 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:44,765 TRACE com.example.laboratoriss.Service.UserService 19 login - Enter login attempt with username: alex
+25 Mar 2025 14:27:44,765 TRACE com.example.laboratoriss.Repository.UserRepository 61 findAll - Enter finding all Users
+25 Mar 2025 14:27:44,765 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:44,767 TRACE com.example.laboratoriss.Service.UserService 23 login - Exit login successful for: alex
+25 Mar 2025 14:27:44,767 INFO  com.example.laboratoriss.GUI.LoginController 60 handleLogin - User logged in: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:27:44,778 TRACE com.example.laboratoriss.Service.MedicamentService 25 getAll - Enter getting all medicaments
+25 Mar 2025 14:27:44,778 TRACE com.example.laboratoriss.Repository.MedicamentRepository 51 findAll - Enter finding all Medicaments
+25 Mar 2025 14:27:44,778 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:44,778 TRACE com.example.laboratoriss.Service.ComandaService 35 getByUser - Enter getting comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:27:44,778 TRACE com.example.laboratoriss.Repository.ComandaRepository 111 findByUser - Enter finding comenzi for user: User{username='alex', password='0000', type=PERSONAL_SECTIE, nume='Galan', prenume='Alex', sectie='Neurologie'}
+25 Mar 2025 14:27:44,779 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 19
+25 Mar 2025 14:27:44,779 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:44,779 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 21
+25 Mar 2025 14:27:44,779 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db
+25 Mar 2025 14:27:44,780 TRACE com.example.laboratoriss.Repository.ComandaItemRepository 93 findByComandaId - Enter finding ComandaItems for comanda: 23
+25 Mar 2025 14:27:44,780 INFO  com.example.laboratoriss.Utils.JdbcUtils 31 getConnection - Initializing database connection to jdbc:sqlite:D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\ISS\Laborator\LaboratorISS\iss.db

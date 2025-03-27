@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.SignUpController">
+            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.SignUpController"
+            stylesheets="@style.css">
     <TextField fx:id="usernameField" alignment="CENTER" layoutX="227.0" layoutY="70.0" promptText="username"/>
     <TextField fx:id="numeField" alignment="CENTER" layoutX="227.0" layoutY="148.0" promptText="Nume"/>
     <TextField fx:id="prenumeField" alignment="CENTER" layoutX="228.0" layoutY="174.0" promptText="Prenume"/>

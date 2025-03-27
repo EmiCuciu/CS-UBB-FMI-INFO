@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="443.0" prefWidth="708.0"
-            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.FarmacieController">
+            xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.laboratoriss.GUI.FarmacieController"
+            stylesheets="@style.css">
     <TabPane prefHeight="443.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Comenzi">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="457.0">

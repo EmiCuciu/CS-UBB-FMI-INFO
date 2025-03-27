@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.laboratoriss.GUI.PersonalSectieController">
+            fx:controller="com.example.laboratoriss.GUI.PersonalSectieController"
+            stylesheets="@style.css">
     <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Comandă Nouă">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0">
