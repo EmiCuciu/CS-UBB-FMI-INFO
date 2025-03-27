@@ -5,7 +5,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.laboratoriss.GUI.LoginController">
+            xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.laboratoriss.GUI.LoginController"
+            stylesheets="@style.css">
     <Button fx:id="Login" layoutX="248.0" layoutY="275.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0"
             text="Login"/>
     <Button fx:id="SignUp" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" text="Sign Up"/>
