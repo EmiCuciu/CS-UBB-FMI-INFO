@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: red;
+    height: 100px;
+    text-align: center;
+}
+
+#menu{
+    background-color: yellow;
+    text-align: center;
+    height: 25px;
+}
+
+#main{
+    background-color: green;
+    min-height: calc(100vh - 100px - 25px - 60px);
+}
+
+footer{
+    background-color: pink;
+    height: 60px;
+    text-align: center;
+}

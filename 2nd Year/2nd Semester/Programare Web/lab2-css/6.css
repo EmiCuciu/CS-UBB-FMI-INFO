@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    width: 80px; 
+    font-weight: bold;
+    text-align: right;
+}
+
+input {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.input-row {
+    display: flex;
+}

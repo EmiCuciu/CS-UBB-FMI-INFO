@@ -1,0 +1,39 @@
+.social-menu-vertical, .social-menu-horizontal {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-menu-vertical {
+    flex-direction: column; 
+}
+
+.social-menu-horizontal {
+    flex-direction: row; 
+}
+
+.social-item {
+    display: block;
+    width: 84px; 
+    height: 84px;
+    background-image: url('css-pr4.png');
+    background-repeat: no-repeat;
+    filter: grayscale(100%); 
+}
+
+.social-item:hover {
+    filter: grayscale(0%); 
+}
+
+.facebook { background-position: 0 0; }
+.flickr { background-position: -84px 0; }
+.dribbble { background-position: -168px 0; }
+.googleplus { background-position: -252px 0; }
+.linkedin { background-position: -336px 0; }
+.pinterest { background-position: -420px 0; }
+.rss { background-position: -504px 0; }
+.skype { background-position: -588px 0; }
+.twitter { background-position: -672px 0; }
+.vimeo { background-position: -756px 0; }
+.youtube { background-position: -840px 0; }
