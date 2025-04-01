@@ -1,11 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
 .dialog{
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.alice{
-
+ul {
+    list-style-type: none;
 }
 
-.bob{
+li {
+    display: flex;
+    padding: 5px;
+    width: 10px;
+}
 
+.alice::before{
+    content: url(Stefan-Cel-Mare.png);  
+}
+
+.bob::after{
+    content: url(ksadasdsa.png);
 }
