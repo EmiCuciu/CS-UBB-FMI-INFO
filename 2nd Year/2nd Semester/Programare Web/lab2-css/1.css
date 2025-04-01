@@ -2,6 +2,7 @@
   display: flex;  
   border: 1px solid black;
   width: fit-content;
+  flex-direction: row-reverse;
 }
 
 .box{
