@@ -19,11 +19,11 @@
     height: 84px;
     background-image: url('css-pr4.png');
     background-repeat: no-repeat;
-    filter: grayscale(100%); 
+    filter: grayscale(0%); 
 }
 
 .social-item:hover {
-    filter: grayscale(0%); 
+    filter: grayscale(100%); 
 }
 
 .facebook { background-position: 0 0; }

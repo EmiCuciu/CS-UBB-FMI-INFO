@@ -10,24 +10,22 @@ body {
 
 .label-input {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
+    font-weight: bold;
 }
 
 label {
-    width: 80px; 
-    font-weight: bold;
+    width: 80px;
     text-align: right;
 }
 
-input {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-weight: bold;
+.input-text {
+    background-image: url('b4cde9b825c31e6387df82fb40669bc6.jpg'); 
+    background-repeat: repeat-x;
+    background-size: calc(100% / 10) 100%; 
     border: 2px solid black;
-}
-
-.input-row {
-    display: flex;
+    padding: 0px;
+    width: 200px; 
+    font-family: monospace;
+    letter-spacing: calc(200px / 10 - 1ch);
 }
