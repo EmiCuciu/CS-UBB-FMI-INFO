@@ -1,0 +1,22 @@
+ul{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    background-color: yellow;
+}
+
+li{
+    border-left: 1px solid black;
+    margin-right: 30px;
+    padding-left: 10px;
+}
+
+li:first{
+    border-left: none;
+}
+
+#MainView{
+    height: 100vh;
+    padding-top: 50%;
+    background-color: green;
+}

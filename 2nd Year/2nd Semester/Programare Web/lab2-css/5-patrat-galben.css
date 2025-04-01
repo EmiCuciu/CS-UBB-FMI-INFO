@@ -1,0 +1,20 @@
+.imagini{
+    background-color: yellow;
+    width: 50%;    
+    border: 2px solid black;
+}
+
+.imagini img{
+    width: 150px;
+    height: 200px;
+}
+
+.imagini li{
+    display: flex;    
+    align-items: center;
+    padding: 10px;
+}
+
+p{
+    padding-left: 10px;
+}

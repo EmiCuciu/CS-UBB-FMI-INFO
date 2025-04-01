@@ -1,0 +1,19 @@
+.imagini{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.imagini li{
+    list-style: none;
+    background-color: cyan;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.imagini img{
+    width: 150px;
+    height: 200px;
+}

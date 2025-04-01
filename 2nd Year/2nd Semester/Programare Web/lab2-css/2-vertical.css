@@ -1,0 +1,24 @@
+.parinte{
+    display: flex;    
+    height: 100vh;
+}
+
+.stanga{
+    background-color: yellow;
+}
+
+#MainView{
+    background-color: green;
+    width: 100%;
+    padding-top: 50%;
+}
+
+ul{
+    width: 140px;
+}
+
+li{
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    width: 15;
+}
