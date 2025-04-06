@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8702507-7539-4549-9bf9-5a641f986b8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iss.db" beforeDir="false" afterPath="$PROJECT_DIR$/iss.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/real.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/real.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Programare Web/lab2-css/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Programare Web/lab2-css/1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/FileContentIndex/b0a69aaa-ef99-45a3-b1ad-0e8657b5d328.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/workspaceFileList.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/workspaceFileList.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,6 +292,7 @@
       <workItem from="1742900093542" duration="663000" />
       <workItem from="1742904565236" duration="1651000" />
       <workItem from="1743428638637" duration="133000" />
+      <workItem from="1743499060868" duration="12000" />
     </task>
     <servers />
   </component>
