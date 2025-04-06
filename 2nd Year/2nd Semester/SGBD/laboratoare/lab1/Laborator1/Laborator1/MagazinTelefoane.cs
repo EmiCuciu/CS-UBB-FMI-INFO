@@ -1,125 +1,195 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace Laborator1 {
-    public partial class MagazinTelefoane : Form {
-        private SqlConnection cs = new SqlConnection("Data Source = EMI\\SQLEXPRESS;Initial Catalog=MagazinTelefoane;Integrated Security=true;TrustServerCertificate=true");
-        private SqlDataAdapter clientiAdapter;
-        private SqlDataAdapter comenziAdapter;
-        private DataSet dataset;
-        private BindingSource clientiBindingSource;
-        private BindingSource comenziBindingSource;
+namespace Laborator1
+{
+    public partial class MagazinTelefoane : Form
+    {
+        private static string _con = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
+        private static DataSet _dataset = new DataSet();
+        private static SqlDataAdapter _parentAdapter = new SqlDataAdapter();
+        private static SqlDataAdapter _childAdapter = new SqlDataAdapter();
+        private static BindingSource _parentBindingSource = new BindingSource();
+        private static BindingSource _childBindingSource = new BindingSource();
+        private static SqlCommandBuilder _parentCommandBuilder = new SqlCommandBuilder();
+        private static SqlCommandBuilder _childCommandBuilder = new SqlCommandBuilder();
+        SqlConnection _sqlConnection = new SqlConnection(_con);
+        private static string _parentTable = ConfigurationManager.AppSettings.Get("parentTable");
+        private static string _parentPrimaryKey = ConfigurationManager.AppSettings.Get("parentPrimaryKey");
+        private static string _childTable = ConfigurationManager.AppSettings.Get("childTable");
+        private static string _childForeignKey = ConfigurationManager.AppSettings.Get("childForeignKey");
 
-        public MagazinTelefoane() {
+        public MagazinTelefoane()
+        {
             InitializeComponent();
-            InitializeDataComponents();
-            LoadData();
         }
 
-        private void InitializeDataComponents() {
-            dataset = new DataSet();
-            clientiBindingSource = new BindingSource();
-            comenziBindingSource = new BindingSource();
+        private void ConnectBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectParent = ConfigurationManager.AppSettings.Get("selectParent");
+                string selectChild = ConfigurationManager.AppSettings.Get("selectChild");
 
-            // Configurare adapter pentru Clienti
-            clientiAdapter = new SqlDataAdapter("SELECT * FROM Clienti", cs);
-            SqlCommandBuilder clientiCommandBuilder = new SqlCommandBuilder(clientiAdapter);
-            clientiAdapter.InsertCommand = clientiCommandBuilder.GetInsertCommand();
-            clientiAdapter.UpdateCommand = clientiCommandBuilder.GetUpdateCommand();
-            clientiAdapter.DeleteCommand = clientiCommandBuilder.GetDeleteCommand();
+                _parentAdapter.SelectCommand = new SqlCommand(selectParent, _sqlConnection);
+                _childAdapter.SelectCommand = new SqlCommand(selectChild, _sqlConnection);
 
-            // Configurare adapter pentru Comenzi_Clienti
-            comenziAdapter = new SqlDataAdapter("SELECT * FROM Comenzi_Clienti", cs);
-            SqlCommandBuilder comenziCommandBuilder = new SqlCommandBuilder(comenziAdapter);
-            comenziAdapter.InsertCommand = comenziCommandBuilder.GetInsertCommand();
-            comenziAdapter.UpdateCommand = comenziCommandBuilder.GetUpdateCommand();
-            comenziAdapter.DeleteCommand = comenziCommandBuilder.GetDeleteCommand();
-        }
+                _parentCommandBuilder = new SqlCommandBuilder(_parentAdapter);
+                _childCommandBuilder = new SqlCommandBuilder(_childAdapter);
 
-        private void LoadData() {
-            try {
-                // Încărcare date Clienti
-                clientiAdapter.Fill(dataset, "Clienti");
+                _dataset.Clear();
+                _parentAdapter.Fill(_dataset, _parentTable);
+                _childAdapter.Fill(_dataset, _childTable);
 
-                // Încărcare date Comenzi_Clienti
-                comenziAdapter.Fill(dataset, "Comenzi_Clienti");
+                DataColumn parentPK = _dataset.Tables[_parentTable].Columns[_parentPrimaryKey];
+                DataColumn childFK = _dataset.Tables[_childTable].Columns[_childForeignKey];
 
-                // Definire relație între tabele
-                DataRelation relation = new DataRelation(
-                    "Comenzi_Clienti",
-                    dataset.Tables["Clienti"].Columns["ID_Client"],
-                    dataset.Tables["Comenzi_Clienti"].Columns["ID_Client"]);
+                DataRelation relation = new DataRelation("FK_" + _parentTable + "_" + _childTable, parentPK, childFK);
+                _dataset.Relations.Add(relation);
 
-                dataset.Relations.Add(relation);
+                _parentBindingSource.DataSource = _dataset;
+                _parentBindingSource.DataMember = _parentTable;
 
-                // Configurare binding sources
-                clientiBindingSource.DataSource = dataset;
-                clientiBindingSource.DataMember = "Clienti";
+                _childBindingSource.DataSource = _parentBindingSource;
+                _childBindingSource.DataMember = "FK_" + _parentTable + "_" + _childTable;
 
-                comenziBindingSource.DataSource = clientiBindingSource;
-                comenziBindingSource.DataMember = "Comenzi_Clienti";
+                Parent_dataGridView.DataSource = _parentBindingSource;
+                Child_dataGridView.DataSource = _childBindingSource;
 
-                // Legare grid-uri la surse de date
-                Clienti_dataGridView.DataSource = clientiBindingSource;
-                ComenziClienti_dataGridView.DataSource = comenziBindingSource;
-
-                ConfigureEditControls();
+                // Generate controls based on child table columns
+                GenerateControls();
             }
-            catch (Exception ex) {
-                MessageBox.Show("Eroare la încărcarea datelor: " + ex.Message);
+            catch (Exception exception)
+            {
+                MessageBox.Show("Eroare la conectare: " + exception.Message);
             }
         }
 
-        private void ConfigureEditControls() {
-            dateTimePicker1.DataBindings.Add("Value", comenziBindingSource, "Data_Comenzi", true);
+        private void GenerateControls()
+        {
+            // Clear existing controls
+            panel1.Controls.Clear();
+
+            // Get the child table configuration
+            string childColumnNames = ConfigurationManager.AppSettings.Get("childColumnNames");
+            string[] columnNames = childColumnNames.Split(',');
+
+            // Iterate through the columns of the child table
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                string columnName = columnNames[i].Trim();
+                Control control;
+
+                // Check if the column is the foreign key or not
+                if (columnName == _childForeignKey)
+                {
+                    continue; // Skip the foreign key column
+                }
+
+                // Check the data type and create appropriate control (TextBox or DateTimePicker)
+                if (columnName.Contains("Data") || columnName.ToLower().Contains("date"))
+                {
+                    control = new DateTimePicker(); // If the column is related to date, create DateTimePicker
+                }
+                else
+                {
+                    control = new TextBox(); // Otherwise, create a TextBox
+                }
+
+                // Set control properties
+                control.Name = "control" + columnName;
+                control.Location = new Point(10, 30 * i);
+                control.Size = new Size(200, 22);
+
+                // Add a label for the control
+                Label label = new Label();
+                label.Text = columnName;
+                label.Location = new Point(220, 30 * i);
+                label.Size = new Size(100, 22);
+
+                // Add the control and label to the panel
+                panel1.Controls.Add(control);
+                panel1.Controls.Add(label);
+            }
         }
 
-        private void Add_Button_Click(object sender, EventArgs e) {
-            try {
-                int idClient = (int)((DataRowView)clientiBindingSource.Current)["ID_Client"];
 
-                DataRow newRow = dataset.Tables["Comenzi_Clienti"].NewRow();
-                newRow["Data_Comenzi"] = DateTime.Now;
-                newRow["ID_Client"] = idClient;
+        private void AdaugaBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string childTable = ConfigurationManager.AppSettings.Get("childTable");
+                string childColumnNames = ConfigurationManager.AppSettings.Get("childColumnNames");
+                string childColumnNamesInsertParameters =
+                    ConfigurationManager.AppSettings.Get("childColumnNamesInsertParamenters");
 
-                dataset.Tables["Comenzi_Clienti"].Rows.Add(newRow);
-                comenziAdapter.Update(dataset, "Comenzi_Clienti");
+                List<string> columnNamesList = new List<string>(childColumnNames.Split(','));
+                List<string> columnParametersList = new List<string>(childColumnNamesInsertParameters.Split(','));
 
-                dataset.Tables["Comenzi_Clienti"].Clear();
-                comenziAdapter.Fill(dataset, "Comenzi_Clienti");
+                // Create the SQL command for the INSERT operation
+                SqlCommand sqlCommand =
+                    new SqlCommand(
+                        $"INSERT INTO {childTable} ({childColumnNames}) VALUES ({childColumnNamesInsertParameters})",
+                        _sqlConnection);
+
+                // Loop through the columns and parameters
+                for (int i = 0; i < columnNamesList.Count; i++)
+                {
+                    string columnName = columnNamesList[i].Trim();
+                    string parameterName = columnParametersList[i].Trim();
+
+                    // If the column is the foreign key, set the value from the selected parent row
+                    if (columnName == _childForeignKey)
+                    {
+                        DataRowView parentRowView = (DataRowView)_parentBindingSource.Current;
+                        sqlCommand.Parameters.AddWithValue(parameterName, parentRowView[_parentPrimaryKey]);
+                    }
+                    else
+                    {
+                        // If it's a regular field, get the value from the respective control
+                        Control control = panel1.Controls["control" + columnName];
+                        if (control is TextBox textBox)
+                        {
+                            sqlCommand.Parameters.AddWithValue(parameterName, textBox.Text);
+                        }
+                        else if (control is DateTimePicker dateTimePicker)
+                        {
+                            sqlCommand.Parameters.AddWithValue(parameterName, dateTimePicker.Value);
+                        }
+                    }
+                }
+
+                // Execute the command to insert data
+                _sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                _sqlConnection.Close();
+
+                // Refresh the dataset after inserting data
+                _dataset.Clear();
+                _parentAdapter.Fill(_dataset, _parentTable);
+                _childAdapter.Fill(_dataset, _childTable);
 
                 MessageBox.Show("Date adăugate cu succes");
-
             }
-            catch (Exception ex) {
-                MessageBox.Show("Eroare la adăugarea comenzii" + ex.Message);
-            }
-        }
-
-        private void Update_Button_Click(object sender, EventArgs e) {
-            try {
-                comenziBindingSource.EndEdit();
-                comenziAdapter.Update(dataset, "Comenzi_Clienti");
-                MessageBox.Show("Date actualizate cu succes");
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Eroare la actualizarea comenzii" + ex.Message);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroare la adăugarea datelor: " + ex.Message);
+                _sqlConnection.Close();
             }
         }
 
-        private void Delete_Button_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("Sunteți sigur că doriți să ștergeți comanda?", "Ștergere comandă", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                try {
-                    comenziBindingSource.RemoveCurrent();
-                    comenziAdapter.Update(dataset, "Comenzi_Clienti");
-                    MessageBox.Show("Comandă ștearsă cu succes");
-                }
-                catch (Exception ex) {
-                    MessageBox.Show("Eroare la ștergerea comenzii" + ex.Message);
-                }
-            }
+        private void StergeBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
         }
     }
 }
