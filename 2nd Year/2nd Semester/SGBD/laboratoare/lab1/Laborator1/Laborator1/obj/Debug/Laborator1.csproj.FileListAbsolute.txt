@@ -199,3 +199,5 @@ D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\Microsoft.Bcl.TimeProvider.xml
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.Formats.Asn1.xml
 D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\bin\Debug\System.IO.Pipelines.xml
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.csproj.SuggestedBindingRedirects.cache
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\SGBD\laboratoare\lab1\Laborator1\Laborator1\obj\Debug\Laborator1.exe.config
