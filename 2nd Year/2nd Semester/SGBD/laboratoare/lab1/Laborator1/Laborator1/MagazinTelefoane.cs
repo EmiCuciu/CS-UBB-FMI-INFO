@@ -185,11 +185,133 @@ namespace Laborator1
 
         private void StergeBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (_childBindingSource.Current == null)
+                {
+                    MessageBox.Show("Nu există un rând selectat pentru ștergere.");
+                    return;
+                }
+
+                if (MessageBox.Show("Sigur doriți să ștergeți înregistrarea selectată?", "Confirmare ștergere",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                DataRowView childRowView = (DataRowView)_childBindingSource.Current;
+                string childPrimaryKey = GetChildPrimaryKeyName();
+                object primaryKeyValue = childRowView[childPrimaryKey];
+
+                // Create DELETE command
+                string deleteQuery = $"DELETE FROM {_childTable} WHERE {childPrimaryKey} = @id";
+                SqlCommand sqlCommand = new SqlCommand(deleteQuery, _sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@id", primaryKeyValue);
+
+                _sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                _sqlConnection.Close();
+
+                // Refresh the dataset
+                _dataset.Clear();
+                _parentAdapter.Fill(_dataset, _parentTable);
+                _childAdapter.Fill(_dataset, _childTable);
+
+                MessageBox.Show("Date șterse cu succes");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroare la ștergerea datelor: " + ex.Message);
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
         }
 
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (_childBindingSource.Current == null)
+                {
+                    MessageBox.Show("Nu există un rând selectat pentru actualizare.");
+                    return;
+                }
+
+                DataRowView childRowView = (DataRowView)_childBindingSource.Current;
+                string childPrimaryKey = GetChildPrimaryKeyName();
+
+                // Get the UpdateQuery from configuration
+                string updateQuery = ConfigurationManager.AppSettings.Get("UpdateQuery");
+                SqlCommand sqlCommand = new SqlCommand(updateQuery, _sqlConnection);
+
+                // Get the primary key value of the selected row
+                object primaryKeyValue = childRowView[childPrimaryKey];
+                sqlCommand.Parameters.AddWithValue("@" + childPrimaryKey.ToLower(), primaryKeyValue);
+
+                // Get column names from configuration
+                string childColumnNames = ConfigurationManager.AppSettings.Get("childColumnNames");
+                List<string> columnNamesList = new List<string>(childColumnNames.Split(','));
+
+                // Loop through each column and add parameter values
+                foreach (string columnName in columnNamesList)
+                {
+                    string trimmedColumnName = columnName.Trim();
+                    string parameterName = "@" + trimmedColumnName.ToLower();
+
+                    // Handle foreign key
+                    if (trimmedColumnName == _childForeignKey)
+                    {
+                        DataRowView parentRowView = (DataRowView)_parentBindingSource.Current;
+                        sqlCommand.Parameters.AddWithValue(parameterName, parentRowView[_parentPrimaryKey]);
+                    }
+                    else
+                    {
+                        Control control = panel1.Controls["control" + trimmedColumnName];
+                        if (control is TextBox textBox)
+                        {
+                            sqlCommand.Parameters.AddWithValue(parameterName, textBox.Text);
+                        }
+                        else if (control is DateTimePicker dateTimePicker)
+                        {
+                            sqlCommand.Parameters.AddWithValue(parameterName, dateTimePicker.Value);
+                        }
+                    }
+                }
+
+                _sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                _sqlConnection.Close();
+
+                // Refresh the dataset
+                _dataset.Clear();
+                _parentAdapter.Fill(_dataset, _parentTable);
+                _childAdapter.Fill(_dataset, _childTable);
+
+                MessageBox.Show("Date actualizate cu succes");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroare la actualizarea datelor: " + ex.Message);
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
+        }
+
+        private string GetChildPrimaryKeyName()
+        {
+            DataTable schemaTable = _dataset.Tables[_childTable];
+            foreach (DataColumn column in schemaTable.Columns)
+            {
+                if (column.AutoIncrement || column.Unique ||
+                    column.ColumnName.StartsWith("ID_") && column.ColumnName != _childForeignKey)
+                {
+                    return column.ColumnName;
+                }
+            }
+
+            // If we can't determine the primary key, use the first column as a fallback
+            return schemaTable.Columns[0].ColumnName;
         }
     }
 }
