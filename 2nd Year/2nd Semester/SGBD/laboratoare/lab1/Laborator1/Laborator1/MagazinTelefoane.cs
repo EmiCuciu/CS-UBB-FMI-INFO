@@ -159,8 +159,14 @@ namespace Laborator1
                         }
                         else if (control is DateTimePicker dateTimePicker)
                         {
+                            if (dateTimePicker.Value.Date > DateTime.Now.Date)
+                            {
+                                throw new Exception("Data selectată nu poate fi mai veche decât data curentă.");
+                            }
+
                             sqlCommand.Parameters.AddWithValue(parameterName, dateTimePicker.Value);
                         }
+
                     }
                 }
 
@@ -200,7 +206,7 @@ namespace Laborator1
                 }
 
                 DataRowView childRowView = (DataRowView)_childBindingSource.Current;
-                string childPrimaryKey = GetChildPrimaryKeyName();
+                string childPrimaryKey = ConfigurationManager.AppSettings.Get("childPrimaryKey");
                 object primaryKeyValue = childRowView[childPrimaryKey];
 
                 // Create DELETE command
@@ -239,7 +245,7 @@ namespace Laborator1
                 }
 
                 DataRowView childRowView = (DataRowView)_childBindingSource.Current;
-                string childPrimaryKey = GetChildPrimaryKeyName();
+                string childPrimaryKey = ConfigurationManager.AppSettings.Get("childPrimaryKey");
 
                 // Get the UpdateQuery from configuration
                 string updateQuery = ConfigurationManager.AppSettings.Get("UpdateQuery");
@@ -296,22 +302,6 @@ namespace Laborator1
                 if (_sqlConnection.State == ConnectionState.Open)
                     _sqlConnection.Close();
             }
-        }
-
-        private string GetChildPrimaryKeyName()
-        {
-            DataTable schemaTable = _dataset.Tables[_childTable];
-            foreach (DataColumn column in schemaTable.Columns)
-            {
-                if (column.AutoIncrement || column.Unique ||
-                    column.ColumnName.StartsWith("ID_") && column.ColumnName != _childForeignKey)
-                {
-                    return column.ColumnName;
-                }
-            }
-
-            // If we can't determine the primary key, use the first column as a fallback
-            return schemaTable.Columns[0].ColumnName;
         }
     }
 }
