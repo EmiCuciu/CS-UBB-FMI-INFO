@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab3-2</title>
+    <link rel="stylesheet" href="2.css">
+    <script src="2.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Formular de înregistrare</h1>
+        
+        <div id="registrationForm">
+            <div class="form-group">
+                <label for="nume">Nume:</label>
+                <input type="text" id="nume" name="nume">
+                <span class="error-message" id="nume-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="dataNasterii">Data nașterii:</label>
+                <input type="date" id="dataNasterii" name="dataNasterii">
+                <span class="error-message" id="dataNasterii-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="varsta">Vârsta:</label>
+                <input type="number" id="varsta" name="varsta">
+                <span class="error-message" id="varsta-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Adresa de e-mail:</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="email-error"></span>
+            </div>
+            
+            <button type="button" id="submitBtn">Trimite</button>
+        </div>
+        
+        <div id="result-message" class="hidden"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.list-box {
+    width: 100px;
+}
+select {
+    height: 200px;
+    padding: 5px;
+}
