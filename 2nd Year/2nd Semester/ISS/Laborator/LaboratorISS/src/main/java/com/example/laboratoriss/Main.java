@@ -31,13 +31,24 @@ public class Main extends Application {
             System.exit(1);
         }
 
-        // Create repositories
-        UserRepository userRepository = new UserRepository(props);
-        MedicamentRepository medicamentRepository = new MedicamentRepository(props);
-        ComandaItemRepository comandaItemRepository = new ComandaItemRepository(props, medicamentRepository);
-        IComandaRepository comandaRepository = new ComandaRepository(props, userRepository, comandaItemRepository);
+//        // Create repositories
+//        UserRepository userRepository = new UserRepository(props);
+//        MedicamentRepository medicamentRepository = new MedicamentRepository(props);
+//        ComandaItemRepository comandaItemRepository = new ComandaItemRepository(props, medicamentRepository);
+//        IComandaRepository comandaRepository = new ComandaRepository(props, userRepository, comandaItemRepository);
+//
+//        // Create services
+//        IUserService userService = new UserService(userRepository);
+//        IMedicamentService medicamentService = new MedicamentService(medicamentRepository);
+//        IComandaService comandaService = new ComandaService(comandaRepository);
 
-        // Create services
+//         Create repositories using Hibernate
+        IMedicamentRepository medicamentRepository = new com.example.laboratoriss.Repository.Hibernate.MedicamentRepository();
+        IUserRepository userRepository = new com.example.laboratoriss.Repository.Hibernate.UserRepository();
+        IComandaItemRepository comandaItemRepository = new com.example.laboratoriss.Repository.Hibernate.ComandaItemRepository();
+        IComandaRepository comandaRepository = new com.example.laboratoriss.Repository.Hibernate.ComandaRepository();
+
+//        Create services with Hibernate repositories
         IUserService userService = new UserService(userRepository);
         IMedicamentService medicamentService = new MedicamentService(medicamentRepository);
         IComandaService comandaService = new ComandaService(comandaRepository);
