@@ -1,14 +1,33 @@
 package com.example.laboratoriss.Domain;
 
-import java.util.Objects;
+import javax.persistence.*;
 
+@javax.persistence.Entity
+@Table(name = "User")
 public class User extends Entity<Integer> {
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
     private UserType type;
+
+    @Column(name = "nume")
     private String nume;
+
+    @Column(name = "prenume")
     private String prenume;
+
+    @Column(name = "sectie")
     private String sectie;
+
+    public User() {
+        // Default constructor required by Hibernate
+    }
 
     public User(Integer integer, String username, String password, UserType type, String nume, String prenume) {
         super(integer);
@@ -26,6 +45,30 @@ public class User extends Entity<Integer> {
         this.type = type;
         this.nume = nume;
         this.prenume = prenume;
+        this.sectie = sectie;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
+    }
+
+    public String getSectie() {
+        return sectie;
+    }
+
+    public void setSectie(String sectie) {
         this.sectie = sectie;
     }
 
@@ -52,58 +95,4 @@ public class User extends Entity<Integer> {
     public void setType(UserType type) {
         this.type = type;
     }
-
-    public String getNume() {
-        return nume;
-    }
-
-    public void setNume(String nume) {
-        this.nume = nume;
-    }
-
-    public String getPrenume() {
-        return prenume;
-    }
-
-    public void setPrenume(String prenume) {
-        this.prenume = prenume;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password) &&
-                type == user.type &&
-                Objects.equals(nume, user.nume) &&
-                Objects.equals(prenume, user.prenume) &&
-                Objects.equals(sectie, user.sectie);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username, password, type, nume, prenume, sectie);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", type=" + type +
-                ", nume='" + nume + '\'' +
-                ", prenume='" + prenume + '\'' +
-                ", sectie='" + sectie + '\'' +
-                '}';
-    }
-
-    public String getSectie() {
-        return sectie;
-    }
-
-    public void setSectie(String sectie) {
-        this.sectie = sectie;
-    }
-
 }
