@@ -1,17 +1,36 @@
 package com.example.laboratoriss.Domain;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@javax.persistence.Entity
+@Table(name = "Comanda")
 public class Comanda extends Entity<Integer> {
-    private List<ComandaItem> comandaItems;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "comanda_id")
+    private List<ComandaItem> comandaItems = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
     private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(name = "data", nullable = false)
     private LocalDateTime data;
 
-    public Comanda(Integer integer, List<ComandaItem> comandaItems, Status status, User user, LocalDateTime data) {
-        super(integer);
+    public Comanda() {
+        // Default constructor required by Hibernate
+    }
+
+    public Comanda(Integer id, List<ComandaItem> comandaItems, Status status, User user, LocalDateTime data) {
+        super(id);
         this.comandaItems = comandaItems;
         this.status = status;
         this.user = user;
@@ -51,27 +70,30 @@ public class Comanda extends Entity<Integer> {
     }
 
     @Override
-    public String toString() {
-        return "Comanda{" +
-                "comandaItems=" + comandaItems +
-                ", status=" + status +
-                ", user=" + user +
-                ", data=" + data +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Comanda that)) return false;
-        return getComandaItems().equals(that.getComandaItems()) &&
-                getStatus().equals(that.getStatus()) &&
-                getUser().equals(that.getUser()) &&
-                getData().equals(that.getData());
+        if (o == null || getClass() != o.getClass()) return false;
+        Comanda comanda = (Comanda) o;
+        return Objects.equals(getId(), comanda.getId()) &&
+                Objects.equals(comandaItems, comanda.comandaItems) &&
+                status == comanda.status &&
+                Objects.equals(user, comanda.user) &&
+                Objects.equals(data, comanda.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getComandaItems(), getStatus(), getUser(), getData());
+        return Objects.hash(getId(), comandaItems, status, user, data);
+    }
+
+    @Override
+    public String toString() {
+        return "Comanda{" +
+                "id=" + getId() +
+                ", comandaItems=" + comandaItems +
+                ", status=" + status +
+                ", user=" + user +
+                ", data=" + data +
+                '}';
     }
 }

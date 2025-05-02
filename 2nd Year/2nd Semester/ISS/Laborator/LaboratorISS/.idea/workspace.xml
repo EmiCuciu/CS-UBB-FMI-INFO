@@ -5,13 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8702507-7539-4549-9bf9-5a641f986b8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/VSWorkspaceState.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/FileContentIndex/b0a69aaa-ef99-45a3-b1ad-0e8657b5d328.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/.wsuo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/DocumentLayout.backup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/workspaceFileList.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/laboratoare/v17/workspaceFileList.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/.vs/slnx.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab1/Laborator1/Laborator1/obj/Debug/Laborator1.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/AbstractHibernateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/ComandaItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/ComandaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/MedicamentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Utils/HibernateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Caz de utilizare.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../Caz de utilizare.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iss.db" beforeDir="false" afterPath="$PROJECT_DIR$/iss.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Comanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Comanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/ComandaItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/ComandaItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Medicament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Medicament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/FarmacieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/FarmacieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/real.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/real.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +73,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,6 +114,7 @@
     &quot;Gradle.LaboratorISS [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaboratorISS [clean build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaboratorISS [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaboratorISS [dependencyInsight --dependency byte-buddy].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaboratorISS [run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -138,10 +154,12 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="gradlew clean build" />
       <command value="gradlew run" />
       <command value="gradlew run --stacktrace " />
       <command value="gradlew clean " />
+      <command value="gradle clean build" />
+      <command value="gradlew clean build" />
+      <command value="gradlew dependencyInsight --dependency byte-buddy" />
     </option>
   </component>
   <component name="RunManager" selected="Gradle.LaboratorISS [run]">
@@ -157,28 +175,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="LaboratorISS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
     </configuration>
     <configuration name="LaboratorISS [clean build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -225,6 +221,30 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="LaboratorISS [dependencyInsight --dependency byte-buddy]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencyInsight" />
+            <option value="--dependency" />
+            <option value="byte-buddy" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="LaboratorISS [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -249,7 +269,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Gradle.LaboratorISS [build]" />
+      <item itemvalue="Gradle.LaboratorISS [dependencyInsight --dependency byte-buddy]" />
       <item itemvalue="Gradle.LaboratorISS [clean build]" />
       <item itemvalue="Gradle.LaboratorISS [clean]" />
       <item itemvalue="Gradle.LaboratorISS [run]" />
@@ -257,10 +277,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.LaboratorISS [run]" />
+        <item itemvalue="Gradle.LaboratorISS [dependencyInsight --dependency byte-buddy]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.LaboratorISS [clean build]" />
         <item itemvalue="Gradle.LaboratorISS [clean]" />
-        <item itemvalue="Gradle.LaboratorISS [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +313,10 @@
       <workItem from="1742904565236" duration="1651000" />
       <workItem from="1743428638637" duration="133000" />
       <workItem from="1743499060868" duration="12000" />
+      <workItem from="1745919030936" duration="140000" />
+      <workItem from="1745919251278" duration="5989000" />
+      <workItem from="1746193069751" duration="553000" />
+      <workItem from="1746193648288" duration="649000" />
     </task>
     <servers />
   </component>

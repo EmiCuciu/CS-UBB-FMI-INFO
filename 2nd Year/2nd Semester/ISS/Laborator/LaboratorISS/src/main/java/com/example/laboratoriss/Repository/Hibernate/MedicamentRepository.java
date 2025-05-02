@@ -14,5 +14,5 @@ public class MedicamentRepository extends AbstractHibernateRepository<Integer, M
         logger.info("Initializing MedicamentRepository with Hibernate");
     }
 
-    // Add any specific methods here
+
 }

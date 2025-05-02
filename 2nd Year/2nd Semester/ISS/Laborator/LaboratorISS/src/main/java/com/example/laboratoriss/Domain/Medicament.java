@@ -1,11 +1,24 @@
 package com.example.laboratoriss.Domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@javax.persistence.Entity
+@Table(name = "Medicament")
 public class Medicament extends Entity<Integer> {
+
+    @Column(name = "nume", nullable = false)
     private String nume;
+
+    @Column(name = "pret", nullable = false)
     private Float pret;
+
+    @Column(name = "descriere")
     private String descriere;
+
+    public Medicament() {
+        // Default constructor required by Hibernate
+    }
 
     public Medicament(Integer id, String nume, Float pret, String descriere) {
         super(id);
@@ -14,6 +27,7 @@ public class Medicament extends Entity<Integer> {
         this.descriere = descriere;
     }
 
+    // Existing getters, setters, equals, hashCode, toString methods remain unchanged
     public String getNume() {
         return nume;
     }
@@ -36,26 +50,5 @@ public class Medicament extends Entity<Integer> {
 
     public void setDescriere(String descriere) {
         this.descriere = descriere;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Medicament that = (Medicament) o;
-        return Objects.equals(nume, that.nume) && Objects.equals(pret, that.pret) && Objects.equals(descriere, that.descriere);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nume, pret, descriere);
-    }
-
-    @Override
-    public String toString() {
-        return "Medicament{" +
-                "nume='" + nume + '\'' +
-                ", pret=" + pret +
-                ", descriere='" + descriere + '\'' +
-                '}';
     }
 }

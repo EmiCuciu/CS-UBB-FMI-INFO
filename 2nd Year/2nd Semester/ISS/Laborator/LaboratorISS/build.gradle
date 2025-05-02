@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.24.0'
+    id 'org.beryx.jlink' version '2.25.0'
 }
 
 group 'com.example'
@@ -13,14 +13,11 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.10.2'
+    junitVersion = '5.9.2'
 }
 
-
-javafx {
-    version = '17.0.14'
-    modules = ['javafx.controls', 'javafx.fxml']
-}
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -31,15 +28,35 @@ application {
     mainClass = 'com.example.laboratoriss.Main'
 }
 
+javafx {
+    version = '17.0.6'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
 dependencies {
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.12.0'
+    // JavaFX Dependencies
+    implementation('org.controlsfx:controlsfx:11.1.2')
 
-    runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.41.2.2'
-    testImplementation 'org.xerial:sqlite-jdbc:3.41.2.2'
+    implementation 'net.bytebuddy:byte-buddy:1.14.5'
 
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
+    // Hibernate Dependencies
+    implementation 'org.hibernate:hibernate-core:5.6.15.Final'
 
+    // SQLite Dependencies
+    implementation 'org.xerial:sqlite-jdbc:3.42.0.0'
+    implementation 'com.github.gwenn:sqlite-dialect:0.1.2'
+
+    // Log4j Dependencies
+    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    // JPA Dependencies
+    implementation 'javax.persistence:javax.persistence-api:2.2'
+
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+
+    // Test Dependencies
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
@@ -58,4 +75,10 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'net.bytebuddy:byte-buddy:1.14.5'
+    }
 }

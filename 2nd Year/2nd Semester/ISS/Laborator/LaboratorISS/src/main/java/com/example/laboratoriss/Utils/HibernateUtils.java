@@ -11,23 +11,26 @@ public class HibernateUtils {
     private static final Logger logger = LogManager.getLogger();
     private static SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            try {
-                StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                        .configure() // Uses hibernate.cfg.xml by default
-                        .build();
+    static {
+        try {
+            // Create a StandardServiceRegistry
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                    .configure() // configures settings from hibernate.cfg.xml
+                    .build();
 
-                sessionFactory = new MetadataSources(registry)
-                        .buildMetadata()
-                        .buildSessionFactory();
+            // Create SessionFactory from registry
+            sessionFactory = new MetadataSources(registry)
+                    .buildMetadata()
+                    .buildSessionFactory();
 
-                logger.info("Hibernate SessionFactory initialized");
-            } catch (Exception e) {
-                logger.error("SessionFactory creation failed", e);
-                throw new RuntimeException("Failed to initialize Hibernate", e);
-            }
+            logger.info("Hibernate SessionFactory initialized successfully");
+        } catch (Exception e) {
+            logger.error("Exception initializing Hibernate: ", e);
+            throw new RuntimeException("Exception initializing Hibernate: " + e.getMessage(), e);
         }
+    }
+
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
