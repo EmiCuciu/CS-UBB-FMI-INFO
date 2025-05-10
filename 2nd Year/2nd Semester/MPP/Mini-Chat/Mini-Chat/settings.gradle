@@ -1,9 +1,0 @@
-rootProject.name = 'Mini-Chat'
-include ':ChatModel'
-include 'ChatModel'
-include 'ChatClientFX'
-include 'ChatNetworking'
-include 'ChatPersistence'
-include 'ChatServer'
-include 'ChatServices'
-
