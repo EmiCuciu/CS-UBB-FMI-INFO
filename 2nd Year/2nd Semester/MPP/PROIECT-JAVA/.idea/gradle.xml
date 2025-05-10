@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Laborator" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonArbitruFX" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonModel" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonNetworking" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonPersistence" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonServer" />
+            <option value="$PROJECT_DIR$/Laborator/TriatlonServices" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
