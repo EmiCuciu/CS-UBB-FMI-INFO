@@ -1,0 +1,28 @@
+USE MagazinTelefoane;
+
+CREATE OR ALTER PROCEDURE T2_DEADLOCK AS
+BEGIN 
+	SET DEADLOCK_PRIORITY HIGH	--!!	=> CA VA T1 DE ACUM
+	BEGIN TRY
+		BEGIN TRAN;
+
+		UPDATE Telefoane SET Pret = Pret - 100 WHERE ID_Telefon = 2;
+		
+		WAITFOR DELAY '00:00:05';
+
+		UPDATE Telefoane SET Pret = Pret - 50 WHERE ID_Telefon = 1;
+
+		COMMIT;
+	END TRY
+	BEGIN CATCH
+		ROLLBACK;
+
+		INSERT INTO Log_Erori_Deadlock(Mesaj_Eroare, Procedura) VALUES (ERROR_MESSAGE(), 'DEADLOCK T2');
+	END CATCH
+END;
+
+EXEC T2_DEADLOCK;
+
+SELECT * FROM Log_Erori_Deadlock;
+
+SELECT * FROM Telefoane;
