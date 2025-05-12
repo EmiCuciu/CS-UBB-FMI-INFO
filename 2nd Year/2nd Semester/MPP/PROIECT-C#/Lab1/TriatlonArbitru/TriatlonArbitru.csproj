@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab1\Lab1.csproj" />
+    <ProjectReference Include="..\TriatlonModel\TriatlonModel.csproj" />
+    <ProjectReference Include="..\TriatlonNetworking\TriatlonNetworking.csproj" />
+    <ProjectReference Include="..\TriatlonPersistance\TriatlonPersistance.csproj" />
+    <ProjectReference Include="..\TriatlonServer\TriatlonServer.csproj" />
+    <ProjectReference Include="..\TriatlonServicess\TriatlonServicess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
