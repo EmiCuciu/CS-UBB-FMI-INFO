@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laborator.GUI.MainController">
+    <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label fx:id="arbitruNameLabel" text="Arbitru: Nume Prenume">
+                <font>
+                    <Font name="System Bold" size="16.0"/>
+                </font>
+            </Label>
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Logout"/>
+        </HBox>
+        <Label text="Participants">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="participantsTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="400.0" text="Name"/>
+                <TableColumn fx:id="totalPointsColumn" prefWidth="200.0" text="Total Points"/>
+            </columns>
+        </TableView>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Add Result:">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <ComboBox fx:id="participantComboBox" prefWidth="250.0"/>
+            <TextField fx:id="pointsField" prefWidth="100.0" promptText="Points"/>
+            <Button fx:id="addResultButton" mnemonicParsing="false" onAction="#handleAddResult"
+                    text="Add Result"/>
+        </HBox>
+        <Label text="Results for Your Event:">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="resultsTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="resultNameColumn" prefWidth="400.0" text="Name"/>
+                <TableColumn fx:id="pointsColumn" prefWidth="200.0" text="Points"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
