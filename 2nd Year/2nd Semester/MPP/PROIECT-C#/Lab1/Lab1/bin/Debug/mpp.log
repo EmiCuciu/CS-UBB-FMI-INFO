@@ -1,0 +1,42 @@
+17 Mar 2025 22:44:09,697 INFO  Program Main - Hello logging world!
+17 Mar 2025 22:51:28,227 INFO  Program Main - Hello logging world!
+17 Mar 2025 22:51:28,244 INFO  Program Main - Testing FindOne method
+17 Mar 2025 22:51:28,245 DEBUG ArbitruRepository FindOne - Enter finding Arbitru with id: 1
+17 Mar 2025 22:51:28,245 DEBUG ArbitruRepository FindOne - Exit finding Arbitru with id: 1
+17 Mar 2025 22:51:28,245 INFO  Program Main - Testing Delete method
+17 Mar 2025 22:51:28,245 DEBUG ArbitruRepository Delete - Enter deleting Arbitru with id: 1
+17 Mar 2025 22:51:28,245 DEBUG ArbitruRepository Delete - Exit deleting Arbitru with id: 1
+17 Mar 2025 22:51:28,249 WARN  Program Main - Delete method is not implemented
+17 Mar 2025 22:51:28,249 INFO  Program Main - Testing FindAll method
+17 Mar 2025 22:51:28,250 DEBUG ArbitruRepository FindAll - Enter finding all Arbitri
+17 Mar 2025 22:51:28,250 DEBUG ArbitruRepository FindAll - Exit finding all Arbitri
+17 Mar 2025 22:51:28,253 WARN  Program Main - FindAll method is not implemented
+17 Mar 2025 22:51:28,253 INFO  Program Main - Testing Save method
+17 Mar 2025 22:51:28,254 DEBUG ArbitruRepository Save - Enter saving Arbitru: username firstName lastName
+17 Mar 2025 22:51:28,254 DEBUG ArbitruRepository Save - Exit saving Arbitru: username firstName lastName
+17 Mar 2025 22:51:28,256 WARN  Program Main - Save method is not implemented
+17 Mar 2025 22:51:28,256 INFO  Program Main - Testing Update method
+17 Mar 2025 22:51:28,256 DEBUG ArbitruRepository Update - Enter updating Arbitru: username firstName lastName
+17 Mar 2025 22:51:28,257 DEBUG ArbitruRepository Update - Exit updating Arbitru: username firstName lastName
+17 Mar 2025 22:51:28,259 WARN  Program Main - Update method is not implemented
+17 Mar 2025 22:51:42,536 INFO  Program Main - Hello logging world!
+17 Mar 2025 22:51:42,555 INFO  Program Main - Testing FindOne method
+17 Mar 2025 22:51:42,555 DEBUG ArbitruRepository FindOne - Enter finding Arbitru with id: 1
+17 Mar 2025 22:51:42,555 DEBUG ArbitruRepository FindOne - Exit finding Arbitru with id: 1
+17 Mar 2025 22:51:42,555 INFO  Program Main - Testing Delete method
+17 Mar 2025 22:51:42,555 DEBUG ArbitruRepository Delete - Enter deleting Arbitru with id: 1
+17 Mar 2025 22:51:42,555 DEBUG ArbitruRepository Delete - Exit deleting Arbitru with id: 1
+17 Mar 2025 22:51:42,560 WARN  Program Main - Delete method is not implemented
+17 Mar 2025 22:51:42,560 INFO  Program Main - Testing FindAll method
+17 Mar 2025 22:51:42,560 DEBUG ArbitruRepository FindAll - Enter finding all Arbitri
+17 Mar 2025 22:51:42,560 DEBUG ArbitruRepository FindAll - Exit finding all Arbitri
+17 Mar 2025 22:51:42,564 WARN  Program Main - FindAll method is not implemented
+17 Mar 2025 22:51:42,564 INFO  Program Main - Testing Save method
+17 Mar 2025 22:51:42,564 DEBUG ArbitruRepository Save - Enter saving Arbitru: username firstName lastName
+17 Mar 2025 22:51:42,565 DEBUG ArbitruRepository Save - Exit saving Arbitru: username firstName lastName
+17 Mar 2025 22:51:42,567 WARN  Program Main - Save method is not implemented
+17 Mar 2025 22:51:42,567 INFO  Program Main - Testing Update method
+17 Mar 2025 22:51:42,567 DEBUG ArbitruRepository Update - Enter updating Arbitru: username firstName lastName
+17 Mar 2025 22:51:42,568 DEBUG ArbitruRepository Update - Exit updating Arbitru: username firstName lastName
+17 Mar 2025 22:51:42,570 WARN  Program Main - Update method is not implemented
+2025-03-17 22:55:10,076 [1] INFO Lab1.Program - Hello logging world!
