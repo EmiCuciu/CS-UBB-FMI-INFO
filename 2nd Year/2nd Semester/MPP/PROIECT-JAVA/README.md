@@ -1,0 +1,1 @@
+-saptamana 4: Am realizat pana acum partea de model si repository-ul aplicatiei, cu persistenta datelor in baza de date SQLite, si cu jurnalizare folosind logger

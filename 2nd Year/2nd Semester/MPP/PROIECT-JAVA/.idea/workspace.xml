@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b13757cb-03a4-409d-9503-c3ef9caff7d6" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/Client-GUI">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Domain">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Laborator">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/Laborator">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Laborator/TriatlonServer">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Laborator/TriatlonArbitruFX">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Laborator/TriatlonNetworking">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonNetworking" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonNetworking" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonNetworking" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonServer" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonServer" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Laborator" type="f1a62948:ProjectNode" />
+                <item name="TriatlonServer" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Exception" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EmiCuciu&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mpp-at-cs-ubbcluj-ro/mpp-proiect-java-EmiCuciu.git&quot;,
+    &quot;accountId&quot;: &quot;cdcfa452-6828-4ac5-9633-9d00c61af1fe&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/17.0.14/772e2fc6d553a5c9f364ef582959100c749c1668/javafx-controls-17.0.14-win.jar!/javafx/scene/control/cell/PropertyValueFactory.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2umPh6jz10eYGn4S2aMCFxDqpIf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build Laborator.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator [generateProto].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator [test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator:TriatlonArbitruFX [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator:TriatlonNetworking [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator:TriatlonServer [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Laborator:TriatlonServer [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ParticipantRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ParticipantRepositoryTest.testSave.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RezultatRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Test1.test2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Whole project.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GithubRepositories/mpp-proiect-java-EmiCuciu/Laborator/TriatlonNetworking/src/main/java/triatlon/network/protobuffprotocol&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.20689656&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.google.protobuf" />
+      <recent name="" />
+      <recent name="triatlon.network.protobuffprotocol" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\TriatlonNetworking\src\main\java\triatlon\network\protobuffprotocol" />
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\test1" />
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\TriatlonNetworking\src\main\java\triatlon\network\protocol" />
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\TriatlonArbitruFX\src\main\java\triatlon\arbitru\gui" />
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\TriatlonServer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GithubRepositories\mpp-proiect-java-EmiCuciu\Laborator\TriatlonNetworking\src\main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="triatlon.arbitru.gui" />
+      <recent name="triatlon.persistence" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="./gradlew generateProto" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.Laborator:TriatlonArbitruFX [run]">
+    <configuration name="Laborator [generateProto]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateProto" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator [generateProto]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateProto" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonArbitruFX [run]" type="GradleRunConfiguration" factoryName="Gradle" singleton="false" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonArbitruFX" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonArbitruFX [run]" type="GradleRunConfiguration" factoryName="Gradle" singleton="false" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonArbitruFX" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonNetworking [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonNetworking" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonNetworking [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonNetworking" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonServer [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laborator:TriatlonServer [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator/TriatlonServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Whole project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Whole project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.Laborator [generateProto]" />
+      <item itemvalue="Gradle.Laborator:TriatlonArbitruFX [run]" />
+      <item itemvalue="Gradle.Laborator:TriatlonNetworking [build]" />
+      <item itemvalue="Gradle.Laborator:TriatlonServer [run]" />
+      <item itemvalue="JUnit.Whole project" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Laborator:TriatlonArbitruFX [run]" />
+        <item itemvalue="Gradle.Laborator:TriatlonServer [run]" />
+        <item itemvalue="Gradle.Laborator:TriatlonNetworking [build]" />
+        <item itemvalue="Gradle.Laborator [generateProto]" />
+        <item itemvalue="JUnit.Whole project" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b13757cb-03a4-409d-9503-c3ef9caff7d6" name="Changes" comment="" />
+      <created>1742850892848</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742850892848</updated>
+      <workItem from="1742850894093" duration="13608000" />
+      <workItem from="1742864783378" duration="211000" />
+      <workItem from="1742892005580" duration="1253000" />
+      <workItem from="1742902959077" duration="194000" />
+      <workItem from="1742903230447" duration="4000" />
+      <workItem from="1742904560664" duration="6000" />
+      <workItem from="1743499069805" duration="1796000" />
+      <workItem from="1743880185685" duration="197000" />
+      <workItem from="1743880402726" duration="14190000" />
+      <workItem from="1743895420425" duration="1669000" />
+      <workItem from="1744030544579" duration="18997000" />
+      <workItem from="1744096285237" duration="11346000" />
+      <workItem from="1744656590168" duration="26160000" />
+      <workItem from="1744683556512" duration="12627000" />
+      <workItem from="1744701814665" duration="356000" />
+      <workItem from="1744702187509" duration="556000" />
+      <workItem from="1744705250289" duration="4606000" />
+      <workItem from="1745321847800" duration="2836000" />
+      <workItem from="1745829056654" duration="1684000" />
+      <workItem from="1745830780588" duration="9203000" />
+      <workItem from="1745872683215" duration="7454000" />
+      <workItem from="1745917697644" duration="315000" />
+      <workItem from="1745919023822" duration="7000" />
+      <workItem from="1746194144497" duration="1749000" />
+      <workItem from="1746203657815" duration="23000" />
+      <workItem from="1746218396205" duration="6000" />
+      <workItem from="1746218552328" duration="1972000" />
+      <workItem from="1746308194274" duration="11264000" />
+      <workItem from="1746515974853" duration="8028000" />
+      <workItem from="1746809342989" duration="193000" />
+      <workItem from="1746809557301" duration="204000" />
+      <workItem from="1746809778356" duration="86000" />
+      <workItem from="1746809908606" duration="64000" />
+      <workItem from="1746809991625" duration="13000" />
+      <workItem from="1746810021263" duration="62000" />
+      <workItem from="1746832483413" duration="633000" />
+      <workItem from="1746884984245" duration="4931000" />
+      <workItem from="1746891194526" duration="3223000" />
+      <workItem from="1746895167084" duration="3415000" />
+      <workItem from="1746898739231" duration="18690000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
