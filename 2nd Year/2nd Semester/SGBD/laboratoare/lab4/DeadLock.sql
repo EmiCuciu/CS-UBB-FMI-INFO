@@ -1,0 +1,39 @@
+USE MagazinTelefoane;
+
+CREATE TABLE Log_Erori_Deadlock (
+    ID_Log INT IDENTITY(1,1) PRIMARY KEY,
+    Data_Eroare DATETIME DEFAULT GETDATE(),
+    Mesaj_Eroare NVARCHAR(MAX),
+    Procedura NVARCHAR(100)
+);
+
+
+CREATE OR ALTER PROCEDURE T1_DEADLOCK AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRAN;
+
+		UPDATE Telefoane SET Pret = Pret + 100 WHERE ID_Telefon = 1;
+
+		WAITFOR DELAY '00:00:5';
+
+		UPDATE Telefoane SET Pret = Pret + 50 WHERE ID_Telefon = 2;
+
+		COMMIT;
+	END TRY
+	
+	BEGIN CATCH
+		ROLLBACK;
+
+		INSERT INTO Log_Erori_Deadlock(Mesaj_Eroare, Procedura) VALUES (ERROR_MESSAGE(), 'DEADLOCK T1');
+	END CATCH
+END;
+
+
+-- SOLUTIE: SA AVEM ACEEASI ORDINE IN CARE FACEM UPDATE PENTRU AMBELE TRANZACTII
+
+EXEC T1_DEADLOCK;
+
+SELECT * FROM Log_Erori_Deadlock;
+
+SELECT * FROM Telefoane;
