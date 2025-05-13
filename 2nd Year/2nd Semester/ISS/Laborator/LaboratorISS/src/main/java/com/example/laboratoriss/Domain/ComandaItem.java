@@ -1,11 +1,11 @@
 package com.example.laboratoriss.Domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Objects;
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "ComandaItem")
-public class ComandaItem extends Entity<Integer> {
+public class ComandaItem extends Entiti<Integer> {
 
     @ManyToOne
     @JoinColumn(name = "medicament_id", nullable = false)
@@ -13,6 +13,10 @@ public class ComandaItem extends Entity<Integer> {
 
     @Column(name = "cantitate", nullable = false)
     private Integer cantitate;
+
+    @ManyToOne
+    @JoinColumn(name = "comanda_id")
+    private Comanda comanda;
 
     public ComandaItem() {
         // Default constructor required by Hibernate
@@ -62,5 +66,13 @@ public class ComandaItem extends Entity<Integer> {
                 ", medicament=" + medicament +
                 ", cantitate=" + cantitate +
                 '}';
+    }
+
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
     }
 }

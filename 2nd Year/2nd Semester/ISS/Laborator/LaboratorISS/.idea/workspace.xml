@@ -5,8 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8702507-7539-4549-9bf9-5a641f986b8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/HibernateComandaItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/HibernateComandaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/HibernateMedicamentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/HibernateUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/HibernateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/JdbcUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/iss.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Comanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Comanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/ComandaItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/ComandaItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Entiti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Medicament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/Medicament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/PersonalSectieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/GUI/PersonalSectieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/ComandaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/AbstractHibernateRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/ComandaItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/ComandaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/MedicamentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/Hibernate/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/MedicamentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/MedicamentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Utils/HibernateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laboratoriss/Utils/JdbcUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/real.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/real.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/ConcepteTRANZACTII.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/ConcepteTRANZACTII.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/bin/Debug/net8.0/Tranzactii.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/Tranzactii.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/ref/Tranzactii.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/ref/Tranzactii.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/refint/Tranzactii.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/Debug/net8.0/refint/Tranzactii.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SGBD/laboratoare/lab4/Tranzactii/Tranzactii/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,6 +341,7 @@
       <workItem from="1746193069751" duration="553000" />
       <workItem from="1746193648288" duration="649000" />
       <workItem from="1746993659405" duration="615000" />
+      <workItem from="1747121839038" duration="5338000" />
     </task>
     <servers />
   </component>
