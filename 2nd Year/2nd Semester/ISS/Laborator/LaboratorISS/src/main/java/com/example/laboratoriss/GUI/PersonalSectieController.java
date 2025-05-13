@@ -184,7 +184,16 @@ public class PersonalSectieController implements Observer<Comanda> {
             items.add(new ComandaItem(null, viewModel.getMedicament(), viewModel.getCantitate()));
         }
 
-        Comanda comanda = new Comanda(null, items, Status.IN_ASTEPTARE, currentUser, LocalDateTime.now());
+        Comanda comanda = new Comanda(null, new ArrayList<>(), Status.IN_ASTEPTARE, currentUser, LocalDateTime.now());
+
+        for (ComandaItemViewModel viewModel : cosModel) {
+            ComandaItem item = new ComandaItem(null, viewModel.getMedicament(), viewModel.getCantitate());
+            item.setComanda(comanda);  // Set parent reference
+            comanda.getComandaItems().add(item);  // Add to parent's collection
+        }
+
+        comandaService.save(comanda);
+
         comandaService.save(comanda);
 
         showAlert("Succes", "Comanda a fost trimisă cu succes!");

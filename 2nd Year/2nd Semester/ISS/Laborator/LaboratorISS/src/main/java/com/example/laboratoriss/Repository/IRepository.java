@@ -1,8 +1,8 @@
 package com.example.laboratoriss.Repository;
 
-import com.example.laboratoriss.Domain.Entity;
+import com.example.laboratoriss.Domain.Entiti;
 
-public interface IRepository<ID, E extends Entity<ID>> {
+public interface IRepository<ID, E extends Entiti<ID>> {
     E findOne(ID id);
 
     Iterable<E> findAll();

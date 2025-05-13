@@ -1,17 +1,16 @@
 package com.example.laboratoriss.Domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "Comanda")
-public class Comanda extends Entity<Integer> {
+public class Comanda extends Entiti<Integer> {
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "comanda_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "comanda")
     private List<ComandaItem> comandaItems = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

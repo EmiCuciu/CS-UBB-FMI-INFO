@@ -1,21 +1,21 @@
 package com.example.laboratoriss.Domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass
-public class Entity<ID> implements Serializable {
+public class Entiti<ID> implements Serializable {
     private static final long serialVersionUID = 7331115341259248461L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ID id;
 
-    public Entity() {
+    public Entiti() {
         // Default constructor required by Hibernate
     }
 
-    public Entity(ID id) {
+    public Entiti(ID id) {
         this.id = id;
     }
 
