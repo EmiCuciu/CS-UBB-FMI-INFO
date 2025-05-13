@@ -1,7 +1,6 @@
 package com.example.laboratoriss.Repository;
 
 import com.example.laboratoriss.Domain.Medicament;
-import com.example.laboratoriss.Utils.JdbcUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

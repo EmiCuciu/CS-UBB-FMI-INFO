@@ -4,7 +4,6 @@ import com.example.laboratoriss.Domain.Comanda;
 import com.example.laboratoriss.Domain.ComandaItem;
 import com.example.laboratoriss.Domain.Status;
 import com.example.laboratoriss.Domain.User;
-import com.example.laboratoriss.Utils.JdbcUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

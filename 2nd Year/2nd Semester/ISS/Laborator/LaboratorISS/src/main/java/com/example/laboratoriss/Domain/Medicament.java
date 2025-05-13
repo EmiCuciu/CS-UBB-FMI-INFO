@@ -1,11 +1,10 @@
 package com.example.laboratoriss.Domain;
 
-import javax.persistence.*;
-import java.util.Objects;
+import jakarta.persistence.*;
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "Medicament")
-public class Medicament extends Entity<Integer> {
+public class Medicament extends Entiti<Integer> {
 
     @Column(name = "nume", nullable = false)
     private String nume;
