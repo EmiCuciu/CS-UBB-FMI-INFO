@@ -11,13 +11,16 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .container {
             display: flex;
             justify-content: center;
         }
+
         .list-box {
             width: 100px;
         }
+
         select {
             height: 200px;
             padding: 5px;
@@ -48,23 +51,21 @@
 </div>
 
 <script>
-    $("#list1").on("dblclick", "option", function (){
-        const newOption = $("<option>")
-            .val($(this).val())
-            .text($(this).text());
+    function moveOption(fromListId, toListId) {
+        $("#" + fromListId).on("dblclick", "option", function () {
+            const newOption = $("<option>")
+                .val($(this).val())
+                .text($(this).text());
 
-        $('#list2').append(newOption);
-        $(this).remove();
-    })
+            $("#" + toListId).append(newOption);
+            $(this).remove();
+        });
+    }
 
-    $("#list2").on("dblclick", "option", function () {
-        const newOption = $("<option>")
-            .val($(this).val())
-            .text($(this).text());
-
-        $("#list1").append(newOption);
-        $(this).remove();
-    })
+    $(function () {
+        moveOption("list1", "list2");
+        moveOption("list2", "list1");
+    });
 </script>
 
 </body>

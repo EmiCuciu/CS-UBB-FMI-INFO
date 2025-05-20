@@ -13,8 +13,9 @@ namespace Tranzactii
 
         static void Main()
         {
-            // Thread t1 = new Thread(() => ExecuteWithRetry("T1_DEADLOCK"));
-            // Thread t2 = new Thread(() => ExecuteWithRetry("T2_DEADLOCK"));
+
+            // Thread t1 = new Thread(() => ExecuteWithRetry("T1_DEADLOCK_C#"));
+            // Thread t2 = new Thread(() => ExecuteWithRetry("T2_DEADLOCK_C#"));
             //
             // t1.Start();
             // t2.Start();
@@ -24,16 +25,15 @@ namespace Tranzactii
             // Console.WriteLine("Executie finalizata.");
 
 
-            Thread t1 = new Thread(() => ExecuteWithRetry("T1_DEADLOCK_C#"));
-            Thread t2 = new Thread(() => ExecuteWithRetry("T2_DEADLOCK_C#"));
+             Thread t2 = new Thread(() => ExecuteWithRetry("T2_DEADLOCK_C#"));
+             Thread t1 = new Thread(() => ExecuteWithRetry("T1_DEADLOCK_C#"));
 
-            t1.Start();
-            Thread.Sleep(50);
-            t2.Start();
+             t2.Start();
+             t1.Start();
 
-            t1.Join();
-            t2.Join();
-            Console.WriteLine("Executie finalizata.");
+             t2.Join();
+             t1.Join();
+             Console.WriteLine("Executie finalizata.");
 
 
         }

@@ -6,16 +6,13 @@ $(function() {
     let moves = 0;
     let gameCompleted = false;
 
-    // Initialize the game
     function initGame() {
         const $puzzleContainer = $('#puzzle-table');
         $puzzleContainer.empty();
 
-        // Create table
         const $table = $('<table>');
         $puzzleContainer.append($table);
 
-        // Initialize board with solved state first
         board = [];
         let counter = 1;
 
@@ -28,9 +25,8 @@ $(function() {
                 const $td = $('<td>');
                 $tr.append($td);
 
-                // Last cell is empty in solved state
                 if (i === size - 1 && j === size - 1) {
-                    board[i][j] = 0; // 0 represents empty cell
+                    board[i][j] = 0;
                     $td.addClass('empty');
                     $td.text('');
                     emptyCell = { row: i, col: j };
@@ -39,7 +35,6 @@ $(function() {
                     $td.text(board[i][j]);
                 }
 
-                // Add click event to move tile
                 $td.on('click', function() {
                     if (!gameCompleted) {
                         const cellPosition = findCellPosition($(this));
@@ -51,7 +46,6 @@ $(function() {
             }
         }
 
-        // Shuffle the board
         shuffleBoard();
         updateBoard();
 
@@ -60,14 +54,12 @@ $(function() {
         $('#message').text('');
     }
 
-    // Find position of a cell in the table
     function findCellPosition($cell) {
         const row = $cell.parent().index();
         const col = $cell.index();
         return { row, col };
     }
 
-    // Check if cell is adjacent to empty cell
     function isAdjacentToEmpty(row, col) {
         return (
             (row === emptyCell.row && Math.abs(col - emptyCell.col) === 1) ||
@@ -75,29 +67,22 @@ $(function() {
         );
     }
 
-    // Move a cell into the empty position
     function moveCell(row, col) {
-        // Swap values in board
         board[emptyCell.row][emptyCell.col] = board[row][col];
         board[row][col] = 0;
 
-        // Update empty cell position
         emptyCell = { row, col };
 
-        // Update the board display
         updateBoard();
 
-        // Increment moves counter
         moves++;
 
-        // Check if puzzle is solved
         if (checkSolution()) {
             gameCompleted = true;
             $('#message').text(`Puzzle solved in ${moves} moves!`);
         }
     }
 
-    // Update the visual representation of the board
     function updateBoard() {
         const $table = $('table');
 
@@ -116,19 +101,16 @@ $(function() {
         }
     }
 
-    // Shuffle the board for a new game
     function shuffleBoard() {
-        // Initialize with given example
         const initialBoard = [
             [3, 8, 9, 5],
             [7, 13, 6, 15],
-            [10, 0, 14, 4],  // 0 represents the empty space
+            [10, 0, 14, 4],
             [2, 11, 1, 12]
         ];
 
         board = initialBoard;
 
-        // Find the empty cell position
         for (let i = 0; i < size; i++) {
             for (let j = 0; j < size; j++) {
                 if (board[i][j] === 0) {
@@ -139,14 +121,12 @@ $(function() {
         }
     }
 
-    // Solve the puzzle (set to target solution)
     function solveBoard() {
-        // The target solved state
         const solvedBoard = [
             [1, 2, 3, 4],
             [5, 6, 7, 8],
             [9, 10, 11, 12],
-            [13, 14, 15, 0]  // 0 represents the empty space
+            [13, 14, 15, 0]
         ];
 
         board = solvedBoard;
@@ -157,13 +137,11 @@ $(function() {
         $('#message').text('Puzzle solved!');
     }
 
-    // Check if the puzzle is solved
     function checkSolution() {
         let counter = 1;
 
         for (let i = 0; i < size; i++) {
             for (let j = 0; j < size; j++) {
-                // Skip the last cell which should be empty
                 if (i === size - 1 && j === size - 1) {
                     if (board[i][j] !== 0) {
                         return false;
@@ -177,7 +155,6 @@ $(function() {
         return true;
     }
 
-    // Handle keyboard controls
     $(document).on('keydown', function(event) {
         if (gameCompleted) return;
 
@@ -204,16 +181,13 @@ $(function() {
                 break;
         }
 
-        // Prevent default scrolling behavior when using arrow keys
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
             event.preventDefault();
         }
     });
 
-    // Button event listeners
     $('#new-game').on('click', initGame);
     $('#solve').on('click', solveBoard);
 
-    // Initialize game on page load
     initGame();
 });
