@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab5-1</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .list-box {
+            width: 100px;
+        }
+        select {
+            height: 200px;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="list-box">
+        <h2>List 1</h2>
+        <select id="list1" multiple>
+            <option value="mar">Mar</option>
+            <option value="banana">Banana</option>
+            <option value="casa">Casa</option>
+            <option value="masa">Masa</option>
+        </select>
+    </div>
+
+    <div class="list-box">
+        <h2>List 2</h2>
+        <select id="list2" multiple>
+            <option value="kiwi">Kiwi</option>
+            <option value="iepure">Iepure</option>
+            <option value="mango">Mango</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    $("#list1").on("dblclick", "option", function (){
+        const newOption = $("<option>")
+            .val($(this).val())
+            .text($(this).text());
+
+        $('#list2').append(newOption);
+        $(this).remove();
+    })
+
+    $("#list2").on("dblclick", "option", function () {
+        const newOption = $("<option>")
+            .val($(this).val())
+            .text($(this).text());
+
+        $("#list1").append(newOption);
+        $(this).remove();
+    })
+</script>
+
+</body>
+</html>
