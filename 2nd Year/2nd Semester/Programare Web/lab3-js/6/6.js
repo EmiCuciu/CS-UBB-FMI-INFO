@@ -59,14 +59,12 @@ const DEFAULT_SIZE = 4; // 4x4 puzzle by default
             document.getElementById('message').textContent = '';
         }
         
-        // Find position of a cell in the table
         function findCellPosition(cell) {
             const row = cell.parentNode.rowIndex;
             const col = cell.cellIndex;
             return { row, col };
         }
         
-        // Check if cell is adjacent to empty cell
         function isAdjacentToEmpty(row, col) {
             return (
                 (row === emptyCell.row && Math.abs(col - emptyCell.col) === 1) ||

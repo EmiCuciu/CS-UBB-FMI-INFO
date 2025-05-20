@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab5-2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .invalid {
+            border: 2px solid #ff0000;
+        }
+
+        .error-message {
+            color: #ff0000;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Formular de înregistrare</h1>
+
+    <div id="registrationForm">
+        <div class="form-group">
+            <label for="nume">Nume:</label>
+            <input type="text" id="nume" name="nume">
+            <span class="error-message" id="nume-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="dataNasterii">Data nașterii:</label>
+            <input type="date" id="dataNasterii" name="dataNasterii">
+            <span class="error-message" id="dataNasterii-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="varsta">Vârsta:</label>
+            <input type="number" id="varsta" name="varsta">
+            <span class="error-message" id="varsta-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Adresa de e-mail:</label>
+            <input type="email" id="email" name="email">
+            <span class="error-message" id="email-error"></span>
+        </div>
+
+        <button type="button" id="submitBtn">Trimite</button>
+    </div>
+
+    <div id="result-message" class="hidden"></div>
+</div>
+
+<script>
+
+    $("#dataNasterii").on("change", function () {
+        if ($(this).val()) {
+            const birthDate = new Date($(this).val());
+            const calculatedAge = calculateAge(birthDate);
+            $("#varsta").val(calculatedAge);
+        }
+    });
+
+    $("#submitBtn").on("click", validateForm);
+
+    function calculateAge(birthDate) {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        return age;
+    }
+
+    function validateForm() {
+        clearErrors();
+
+        let isValid = true;
+        let invalidFields = [];
+
+        if (!$("#nume").val().trim() || !/^[A-Za-zĂăÂâÎîȘșȚț\s-]+$/.test($("#nume").val())) {
+            markAsInvalid($("#nume"), "Numele trebuie să conțină doar litere, spații și cratimă");
+            invalidFields.push("numele");
+            isValid = false;
+        }
+
+        if (!$("#dataNasterii").val()) {
+            markAsInvalid($("#dataNasterii"), "Data nașterii este obligatorie");
+            invalidFields.push("data nașterii");
+            isValid = false;
+        } else {
+            const birthDate = new Date($("#dataNasterii").val());
+            const today = new Date();
+            if (birthDate > today) {
+                markAsInvalid($("#dataNasterii"), "Data nașterii nu poate fi în viitor");
+                invalidFields.push("data nașterii");
+                isValid = false;
+            }
+        }
+
+        const varstaVal = $("#varsta").val();
+        if (!varstaVal || isNaN(varstaVal) || varstaVal < 1 || varstaVal > 120) {
+            markAsInvalid($("#varsta"), "Vârsta trebuie să fie între 1 și 120 ani");
+            invalidFields.push("vârsta");
+            isValid = false;
+        } else if ($("#dataNasterii").val()) {
+            const calculatedAge = calculateAge(new Date($("#dataNasterii").val()));
+            if (parseInt(varstaVal) !== calculatedAge) {
+                markAsInvalid($("#varsta"), "Vârsta nu corespunde cu data nașterii");
+                invalidFields.push("vârsta");
+                isValid = false;
+            }
+        }
+
+        if (!$("#email").val().trim() || !/@/.test($("#email").val())) {
+            markAsInvalid($("#email"), "Adresa de email nu este validă");
+            invalidFields.push("email-ul");
+            isValid = false;
+        }
+
+        if (isValid) {
+            showSuccessMessage();
+        } else {
+            showErrorMessage(invalidFields);
+        }
+    }
+
+    function markAsInvalid($inputElement, errorMessage) {
+        $inputElement.addClass("invalid");
+        $("#" + $inputElement.attr("id") + "-error").text(errorMessage);
+    }
+
+    function clearErrors() {
+        $("#nume, #dataNasterii, #varsta, #email").removeClass("invalid");
+        $(".error-message").text("");
+        $("#result-message").addClass("hidden").removeClass("error success");
+    }
+
+    function showSuccessMessage() {
+        $("#result-message")
+            .text("Datele sunt completate corect")
+            .removeClass("hidden error")
+            .addClass("success");
+    }
+
+    function showErrorMessage(invalidFields) {
+        const fieldsText = invalidFields.join(" și ");
+        $("#result-message")
+            .text(`Câmpurile ${fieldsText} nu sunt completate corect`)
+            .removeClass("hidden success")
+            .addClass("error");
+    }
+
+</script>
+</body>
+</html>
