@@ -1,7 +1,0 @@
-rootProject.name = "Laborator"
-include 'TriatlonArbitruFX'
-include 'TriatlonModel'
-include 'TriatlonNetworking'
-include 'TriatlonPersistence'
-include 'TriatlonServer'
-include 'TriatlonServices'

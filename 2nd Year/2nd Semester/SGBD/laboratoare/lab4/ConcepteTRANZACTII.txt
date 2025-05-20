@@ -1,0 +1,34 @@
+Dirty Reads:		-> update fara commit , select din cealalta tranzatie, rollback din prima			T1: UPDATE (fara commit)		T2:SELECT		T1: ROLBACK	-> se selecteaza in T2 ceva ce "nu exista"
+
+T1: UPDATE Telefoane SET Pret = 100 WHERE ID_Telefon = 1 (fără commit)
+
+T2: SELECT Pret FROM Telefoane WHERE ID_Telefon = 1 → vede 100
+
+T1 face ROLLBACK → T2 a văzut un preț care de fapt nu a existat.
+
+
+Non-Repeatable Reads:	-> Rezultate diferite pentru 2 select-uri, din cauza unei modificari intre timp de o alta tranzactie			T1: SELECT	 T2: MODIFY (UPDATE/DELETE + COMMIT)		T1: SELECT 	
+																										-> se observa modificari intre selecturile din T1 ( fara randuri in plus)
+
+T1: SELECT Pret FROM Telefoane WHERE ID_Telefon = 1 → 100
+
+T2: UPDATE Telefoane SET Pret = 150 WHERE ID_Telefon = 1 + COMMIT
+
+T1: SELECT Pret FROM Telefoane WHERE ID_Telefon = 1 → 150
+
+
+Phantom Reads:  		-> Apar randuri noi intre 2 SELECT-uri din T1, randurile sunt inserate de altcineva (T2)		T1: SELECT		T2: INSERT		T1: SELECT
+
+T1: SELECT * FROM Telefoane WHERE Pret < 1000
+
+T2: INSERT INTO Telefoane (Pret, ...) VALUES (999) + COMMIT
+
+T1: SELECT * FROM Telefoane WHERE Pret < 1000 → vede un rând "fantomă" nou
+
+Deadlock
+📌 Blocaj circular: două tranzacții se blochează reciproc, fiecare așteptând o resursă deținută de cealaltă. SQL Server detectează deadlock-ul și anulează una dintre tranzacții.
+T1: UPDATE Telefoane WHERE ID = 1
+
+T2: UPDATE Telefoane WHERE ID = 2
+
+T1: vrea și ID=2, T2: vrea și ID=1 → DEADLOCK
