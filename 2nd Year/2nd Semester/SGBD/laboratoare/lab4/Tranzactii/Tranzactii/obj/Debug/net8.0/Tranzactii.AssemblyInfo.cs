@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tranzactii")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f67aff8eb9b22715bf2e0e99c91be54b8ee5319f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90db3640566edfe8b6d06ff0f7266899ec972892")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tranzactii")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tranzactii")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

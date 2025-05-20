@@ -60,12 +60,10 @@ $(function() {
             $secondCard = $cell;
 
             if ($firstCard.data("image") === $secondCard.data("image")) {
-                // Match found
                 $firstCard = null;
                 $secondCard = null;
                 checkWin();
             } else {
-                // No match
                 lockBoard = true;
                 setTimeout(() => {
                     $firstCard.html("").removeClass("revealed");

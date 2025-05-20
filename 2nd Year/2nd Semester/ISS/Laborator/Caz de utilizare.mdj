@@ -11022,6 +11022,20 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAGVychjvVJgxTw="
 							}
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGWyWTJGrupJm0=",
+							"_parent": {
+								"$ref": "AAAAAAGVyal0rncfryA="
+							},
+							"font": "Arial;13;0",
+							"parentStyle": false,
+							"left": 750,
+							"top": 206,
+							"width": 100,
+							"height": 25,
+							"text": "Text"
 						}
 					]
 				},
@@ -11625,9 +11639,9 @@
 													"fillColor": "#008ED6",
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 72.72998046875,
+													"left": 70.55908203125,
 													"top": 29,
-													"width": 132.24072265625,
+													"width": 116.94287109375,
 													"height": 13,
 													"text": "Diagrama de Secventa"
 												},
@@ -11642,7 +11656,7 @@
 													"parentStyle": true,
 													"left": 53,
 													"top": 29,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -13969,7 +13983,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGWgU1YHmsGvtQ="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13988,7 +14003,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGWgU1YHmsGvtQ="
 							},
-							"name": "Role4"
+							"name": "Role4",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13996,7 +14012,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGWgU1YHmsGvtQ="
 							},
-							"name": "Role5"
+							"name": "Role5",
+							"type": ""
 						}
 					]
 				}
