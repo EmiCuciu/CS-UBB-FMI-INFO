@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
+    id 'com.google.protobuf' version '0.9.4'
+
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.2'
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainModule = 'com.example.laborator'
+    mainClass = 'com.example.laborator.HelloApplication'
+}
+
+javafx {
+    version = '17.0.14'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.12.0'
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
+
+    runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.41.2.2'
+    testImplementation 'org.xerial:sqlite-jdbc:3.41.2.2'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+
+    // For code generation
+    implementation 'com.google.protobuf:protobuf-java:3.19.4'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jlink {
+    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'app'
+    }
+}
+
+jlinkZip {
+    group = 'distribution'
+}
