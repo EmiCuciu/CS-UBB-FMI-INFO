@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree-View</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        ul { list-style-type: none; padding-left: 20px; }
+        li { cursor: pointer; margin: 5px 0; }
+        li.director:before { content: "📁 "; }
+        li.fisier:before { content: "📄 "; }
+        #continut { margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Structură directoare</h2>
+    <ul id="arbore"></ul>
+    <div id="continut"></div>
+
+    <script src="js_plain/5.js"></script>
+    <!--<script src="jquery/5_jquery.js"></script>-->
+</body>
+</html>
+
+
+<!--    http://localhost:63342/Programare%20Web/lab6-AJAX/5/get_director.php?cale=  -->

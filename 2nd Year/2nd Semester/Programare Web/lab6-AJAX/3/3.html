@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab6-3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 200px;
+            padding: 5px;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Editare Persoane</h2>
+<label for="lista">Selectați ID:</label>
+<select id="lista">
+    <option value="">Alegeți un utilizator</option>
+</select>
+<br><br>
+<form id="formular">
+    <label for="nume">Nume:</label>
+    <input type="text" id="nume" name="nume"><br>
+    <label for="prenume">Prenume:</label>
+    <input type="text" id="prenume" name="prenume"><br>
+    <label for="telefon">Telefon:</label>
+    <input type="text" id="telefon" name="telefon"><br>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email"><br>
+    <button type="button" id="save" disabled>Save</button>
+</form>
+<div id="mesaj"></div>
+
+<script src="js_plain/3.js"></script>
+<!--<script src="jquery/3_jquery.js"></script>-->
+</body>
+</html>
