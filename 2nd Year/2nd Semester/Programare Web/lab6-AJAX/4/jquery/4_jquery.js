@@ -4,7 +4,6 @@ $(document).ready(function() {
         .css('marginTop', '10px')
         .appendTo('body');
 
-    // Initialize the game state
     initializeGame();
 
     function initializeGame() {

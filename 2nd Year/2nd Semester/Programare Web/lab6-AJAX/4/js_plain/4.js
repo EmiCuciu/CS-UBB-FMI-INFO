@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     resetButton.style.marginTop = '10px';
     document.body.appendChild(resetButton);
 
-    // Initialize the game state
     initializeGame();
 
     function initializeGame() {
