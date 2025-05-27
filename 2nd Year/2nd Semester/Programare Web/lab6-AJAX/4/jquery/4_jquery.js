@@ -25,7 +25,7 @@ $(document).ready(function() {
     }
 
     $('td').click(function() {
-        if ($(this).text() !== '') return; // Cell already taken
+        if ($(this).text() !== '') return;
 
         var pozitie = $(this).data('poz');
         $.ajax({
