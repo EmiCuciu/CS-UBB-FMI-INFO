@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<script type="text/javascript">
+  var cancontinue = false;
+  // variabila declarata în scopul global (dată membră pe window) pentru a putea fi
+  // accesată de peste tot. Daca este true se poate face submit la formular
+  function verifica(usernameInput) {
+// userNameInput – inputul unde se introduce username-ul
+    var request;
+    var username = usernameInput.value; // valoarea din input
+    var statusImg = document.getElementById('statusImg');
+    // imaginea care animeaza starea apelului AJAX
+    request = new XMLHttpRequest(); // creăm apelul
+    // funcția anonimă de mai jos nu se execută acum! Acum se execută doar o atribuire
+    request.onreadystatechange = function() {
+      // la momentul execuției funcției, dacă apelul AJAX s-a termina și e OK (200)
+      if (request.readyState == 4)
+        if (request.status == 200)
+          if (request.responseText == 1) {
+            // dacă de pe back-end soșeste în urma apelului AJAX un 1
+            // username-ul este disponibil
+            statusImg.src = 'ok.png'; // bifă verde
+            cancontinue = true;
+            // setăm variabila din scopul global la true, putem face submit la form
+          }
+          else { // altfel, username-ul este folosit deja
+            statusImg.src = 'deny.png';
+            cancontinue = false;
+            // setăm variabila din scopul global la false,
+            // nu putem face submit la form
+          }
+    }
+    statusImg.src = 'loading.gif';
+    // Doar un gif animat care simbolizează apelul AJAX în desfășurare
+    request.open('POST', 'verif.cgi', true);
+    request.send('username=' + username);
+    // Facem call-ul AJAX efectiv trimițând prin POST numele de utilizator
+  }
+</script>
 <body>
-$END$
+<form method="post" action="#" onsubmit="return cancontinue;">
+  Nume utilizator: <input type="text" name="username" id="username"
+                          onblur="verifica(this)">
+  <!-- Evenimentul onblur se apelează când inputul pierde focusul -->
+  &nbsp;<img src="invisible_white_square.gif" id="statusImg"><br>
+  E-mail: <input type="text" name="email"><br>
+  Parola: <input type="password" name="pass"><br>
+  Parola din nou: <input type="password" name="pass2"><br>
+  <input type="Submit" value="Register">
+</form>
 </body>
 </html>
+

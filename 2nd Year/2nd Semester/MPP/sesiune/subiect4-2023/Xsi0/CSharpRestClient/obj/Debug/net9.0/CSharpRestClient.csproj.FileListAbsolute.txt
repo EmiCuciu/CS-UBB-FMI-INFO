@@ -1,0 +1,6 @@
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.csproj.AssemblyReference.cache
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.AssemblyInfoInputs.cache
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.AssemblyInfo.cs
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.csproj.CoreCompileInputs.cache
+D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\subiect4-2023\Xsi0\CSharpRestClient\obj\Debug\net9.0\CSharpRestClient.sourcelink.json

@@ -2,13 +2,12 @@
 header('Content-Type: application/json');
 
 $host = 'localhost';
-$port = '5432';
-$db = 'ProgramareWeb';
-$user = 'postgres';
-$pass = '0000';
+$db = 'ceir3511';
+$user = 'ceir3511';
+$pass = 'YzUxZWQzMDYz';
 
 try {
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $data = json_decode(file_get_contents('php://input'), true);

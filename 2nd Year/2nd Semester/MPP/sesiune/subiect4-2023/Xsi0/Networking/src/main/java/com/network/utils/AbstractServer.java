@@ -1,4 +1,4 @@
-package app.network.utils;
+package com.network.utils;
 
 import java.io.IOException;
 import java.net.ServerSocket;

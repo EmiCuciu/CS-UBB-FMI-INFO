@@ -1,6 +1,6 @@
 package com.persistence;
 
-import triatlon.model.Entiti;
+import com.model.Entiti;
 
 public interface IRepository<ID, E extends Entiti<ID>> {
     E findOne(ID id);
@@ -12,5 +12,4 @@ public interface IRepository<ID, E extends Entiti<ID>> {
     void delete(ID id);
 
     void update(E entity);
-
 }

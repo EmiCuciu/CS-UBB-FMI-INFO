@@ -1,7 +1,6 @@
-package persistence.repository.IRepositories;
+package com.persistence;
 
-import domain.Jucator;
-import persistence.repository.IRepository;
+import com.model.Jucator;
 
 import java.util.Optional;
 

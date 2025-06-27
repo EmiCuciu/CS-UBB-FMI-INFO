@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/ProgramareWeb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="PHP" uuid="406588b6-0cf1-4feb-8bf3-d52023eba5d9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/PHP_ProgramareWeb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -21,9 +21,9 @@ public class JdbcUtils {
     private Connection getNewConnection() {
         logger.traceEntry();
 
-        String url = jdbcProps.getProperty("chat.jdbc.url");
-        String user = jdbcProps.getProperty("chat.jdbc.user");
-        String pass = jdbcProps.getProperty("chat.jdbc.pass");
+        String url = jdbcProps.getProperty("jdbc.url");
+        String user = jdbcProps.getProperty("jdbc.user");
+        String pass = jdbcProps.getProperty("jdbc.pass");
 
         //logger.info("trying to connect to database ... {}", url);
         //logger.info("user: {}", user);

@@ -11,8 +11,8 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-        <mapping class="app.model.Game"/>
-        <mapping class="app.model.Player"/>
-        <mapping class="app.model.Position"/>
+        <mapping class="com.model.Game"/>
+        <mapping class="com.model.Player"/>
+        <mapping class="com.model.Position"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,8 +1,8 @@
-package app.network.jsonprotocol;
+package com.network.jsonprotocol;
 
-import app.model.Game;
-import app.model.Player;
-import app.model.Position;
+import com.model.Game;
+import com.model.Player;
+import com.model.Position;
 
 import java.util.List;
 

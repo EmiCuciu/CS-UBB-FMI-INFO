@@ -1,0 +1,8 @@
+rootProject.name = 'Xsi0'
+include 'Model'
+include 'Persistence'
+include 'Server'
+include 'Services'
+include 'Networking'
+include 'Client'
+include 'RestServices'

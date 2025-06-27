@@ -1,4 +1,4 @@
-package app.services.rest;
+package com.rest.services;
 
 public class ServiceException extends RuntimeException {
     public ServiceException(Exception e) {

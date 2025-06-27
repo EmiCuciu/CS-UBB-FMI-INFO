@@ -1,0 +1,231 @@
+26 Jun 2025 16:39:47,405 INFO  com.server.GameServer 35 <init> - Starting server...
+26 Jun 2025 16:39:47,408 INFO  com.persistence.PlayerRepository 16 <init> - PlayerRepository initialized
+26 Jun 2025 16:39:47,409 INFO  com.persistence.ConfigurationRepository 17 <init> - ConfigurationRepository initialized
+26 Jun 2025 16:39:47,409 INFO  com.persistence.GameRepository 16 <init> - GameRepository initialized
+26 Jun 2025 16:39:47,410 INFO  com.services.GameService 35 <init> - Game service initialized
+26 Jun 2025 16:39:47,412 INFO  com.server.GameServer 55 start - Starting server on port 55556
+26 Jun 2025 16:39:47,486 INFO  com.server.rest.RestServer 38 start - REST Server started on port 8080
+26 Jun 2025 16:39:47,486 INFO  com.server.GameServer 61 start - Server started. Waiting for clients...
+26 Jun 2025 16:41:33,720 INFO  com.server.GameServer 35 <init> - Starting server...
+26 Jun 2025 16:41:33,724 INFO  com.persistence.PlayerRepository 16 <init> - PlayerRepository initialized
+26 Jun 2025 16:41:33,724 INFO  com.persistence.ConfigurationRepository 17 <init> - ConfigurationRepository initialized
+26 Jun 2025 16:41:33,725 INFO  com.persistence.GameRepository 16 <init> - GameRepository initialized
+26 Jun 2025 16:41:33,726 INFO  com.services.GameService 35 <init> - Game service initialized
+26 Jun 2025 16:41:33,728 INFO  com.server.GameServer 55 start - Starting server on port 55556
+26 Jun 2025 16:41:33,802 INFO  com.server.rest.RestServer 38 start - REST Server started on port 8080
+26 Jun 2025 16:41:33,803 INFO  com.server.GameServer 61 start - Server started. Waiting for clients...
+26 Jun 2025 16:43:29,868 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:43:37,577 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:43:37,578 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player1
+26 Jun 2025 16:43:53,509 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 16:43:53,510 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player1
+26 Jun 2025 16:43:53,510 INFO  com.services.GameService 57 startGame - Starting game for player: player1
+26 Jun 2025 16:43:55,266 INFO  com.services.GameService 78 startGame - Game started with ID: 1
+26 Jun 2025 16:45:35,735 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGOUT
+26 Jun 2025 16:45:35,736 INFO  com.server.ClientHandler 110 handleLogout - Logout request from player: player1
+26 Jun 2025 16:45:35,736 INFO  com.server.GameServer 115 removeClient - Client disconnected. Remaining clients: 0
+26 Jun 2025 16:46:04,293 INFO  com.server.GameServer 35 <init> - Starting server...
+26 Jun 2025 16:46:04,295 INFO  com.persistence.PlayerRepository 16 <init> - PlayerRepository initialized
+26 Jun 2025 16:46:04,296 INFO  com.persistence.ConfigurationRepository 17 <init> - ConfigurationRepository initialized
+26 Jun 2025 16:46:04,297 INFO  com.persistence.GameRepository 16 <init> - GameRepository initialized
+26 Jun 2025 16:46:04,297 INFO  com.services.GameService 35 <init> - Game service initialized
+26 Jun 2025 16:46:04,299 INFO  com.server.GameServer 55 start - Starting server on port 55556
+26 Jun 2025 16:46:04,378 INFO  com.server.rest.RestServer 38 start - REST Server started on port 8080
+26 Jun 2025 16:46:04,378 INFO  com.server.GameServer 61 start - Server started. Waiting for clients...
+26 Jun 2025 16:46:33,709 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:48:41,820 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:48:51,019 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:48:51,020 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player1
+26 Jun 2025 16:49:01,854 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:49:01,855 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player1
+26 Jun 2025 16:49:03,440 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGOUT
+26 Jun 2025 16:49:03,440 INFO  com.server.ClientHandler 110 handleLogout - Logout request from player: player1
+26 Jun 2025 16:49:03,440 INFO  com.server.GameServer 115 removeClient - Client disconnected. Remaining clients: 1
+26 Jun 2025 16:49:15,660 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:49:19,432 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:49:19,433 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player2
+26 Jun 2025 16:49:24,224 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 16:49:24,224 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player2
+26 Jun 2025 16:49:24,224 INFO  com.services.GameService 57 startGame - Starting game for player: player2
+26 Jun 2025 16:49:25,514 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 16:49:25,515 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player1
+26 Jun 2025 16:49:25,515 INFO  com.services.GameService 57 startGame - Starting game for player: player1
+26 Jun 2025 16:49:26,339 INFO  com.services.GameService 78 startGame - Game started with ID: 2
+26 Jun 2025 16:49:26,353 INFO  com.services.GameService 78 startGame - Game started with ID: 3
+26 Jun 2025 16:49:31,626 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:49:31,626 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 3: rea
+26 Jun 2025 16:49:31,626 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 3: rea
+26 Jun 2025 16:49:31,636 ERROR com.server.ClientHandler 80 handleRequest - Error processing request org.hibernate.exception.GenericJDBCException: Could not extract column [12] from JDBC ResultSet [Error parsing time stamp] [n/a]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.getCurrentRowValue(JdbcValuesResultSetImpl.java:310) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.getJdbcValue(RowProcessingStateStandardImpl.java:119) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.basic.BasicResultAssembler.extractRawValue(BasicResultAssembler.java:52) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.basic.BasicResultAssembler.assemble(BasicResultAssembler.java:59) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.DomainResultAssembler.assemble(DomainResultAssembler.java:33) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.extractConcreteTypeStateValues(AbstractEntityInitializer.java:1081) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.initializeEntityInstance(AbstractEntityInitializer.java:838) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.initializeEntity(AbstractEntityInitializer.java:813) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.initializeInstance(AbstractEntityInitializer.java:799) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.internal.InitializersList.initializeInstance(InitializersList.java:70) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:109) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:86) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:188) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:209) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.ast.internal.SingleIdLoadPlan.load(SingleIdLoadPlan.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.ast.internal.SingleIdLoadPlan.load(SingleIdLoadPlan.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.ast.internal.SingleIdEntityLoaderStandardImpl.load(SingleIdEntityLoaderStandardImpl.java:75) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.doLoad(AbstractEntityPersister.java:3748) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.load(AbstractEntityPersister.java:3737) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.loadFromDatasource(DefaultLoadEventListener.java:604) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.loadFromCacheOrDatasource(DefaultLoadEventListener.java:590) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.load(DefaultLoadEventListener.java:560) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.doLoad(DefaultLoadEventListener.java:544) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.load(DefaultLoadEventListener.java:207) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.loadWithRegularProxy(DefaultLoadEventListener.java:290) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.proxyOrLoad(DefaultLoadEventListener.java:242) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.doOnLoad(DefaultLoadEventListener.java:111) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.internal.DefaultLoadEventListener.onLoad(DefaultLoadEventListener.java:68) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:138) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionImpl.fireLoadNoChecks(SessionImpl.java:1222) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionImpl.fireLoad(SessionImpl.java:1210) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.internal.IdentifierLoadAccessImpl.load(IdentifierLoadAccessImpl.java:209) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.internal.IdentifierLoadAccessImpl.doLoad(IdentifierLoadAccessImpl.java:160) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.internal.IdentifierLoadAccessImpl.lambda$load$1(IdentifierLoadAccessImpl.java:149) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.internal.IdentifierLoadAccessImpl.perform(IdentifierLoadAccessImpl.java:112) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.loader.internal.IdentifierLoadAccessImpl.load(IdentifierLoadAccessImpl.java:149) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionImpl.get(SessionImpl.java:1018) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at com.persistence.GameRepository.lambda$findOne$0(GameRepository.java:24) ~[Persistence-1.0-SNAPSHOT.jar:?]
+	at org.hibernate.internal.TransactionManagement.manageTransaction(TransactionManagement.java:22) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.SessionFactory.lambda$inTransaction$0(SessionFactory.java:237) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.SessionFactory.inSession(SessionFactory.java:217) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.SessionFactory.inTransaction(SessionFactory.java:237) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at com.persistence.GameRepository.findOne(GameRepository.java:23) ~[Persistence-1.0-SNAPSHOT.jar:?]
+	at com.persistence.GameRepository.findOne(GameRepository.java:11) ~[Persistence-1.0-SNAPSHOT.jar:?]
+	at com.services.GameService.processWordGuess(GameService.java:88) ~[Services-1.0-SNAPSHOT.jar:?]
+	at com.server.ClientHandler.handleWordSubmission(ClientHandler.java:99) ~[main/:?]
+	at com.server.ClientHandler.handleRequest(ClientHandler.java:70) [main/:?]
+	at com.server.ClientHandler.run(ClientHandler.java:49) [main/:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.sql.SQLException: Error parsing time stamp
+	at org.sqlite.jdbc3.JDBC3ResultSet.getTimestamp(JDBC3ResultSet.java:452) ~[sqlite-jdbc-3.42.0.0.jar:?]
+	at org.hibernate.type.descriptor.jdbc.TimestampJdbcType$2.doExtract(TimestampJdbcType.java:111) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.type.descriptor.jdbc.BasicExtractor.extract(BasicExtractor.java:44) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.getCurrentRowValue(JdbcValuesResultSetImpl.java:302) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 54 more
+Caused by: java.text.ParseException: Unparseable date: "1750945766319" does not match (\p{Nd}++)\Q-\E(\p{Nd}++)\Q-\E(\p{Nd}++)\Q \E(\p{Nd}++)\Q:\E(\p{Nd}++)\Q:\E(\p{Nd}++)\Q.\E(\p{Nd}++)
+	at org.sqlite.date.FastDateParser.parse(FastDateParser.java:311) ~[sqlite-jdbc-3.42.0.0.jar:?]
+	at org.sqlite.date.FastDateFormat.parse(FastDateFormat.java:449) ~[sqlite-jdbc-3.42.0.0.jar:?]
+	at org.sqlite.jdbc3.JDBC3ResultSet.getTimestamp(JDBC3ResultSet.java:450) ~[sqlite-jdbc-3.42.0.0.jar:?]
+	at org.hibernate.type.descriptor.jdbc.TimestampJdbcType$2.doExtract(TimestampJdbcType.java:111) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.type.descriptor.jdbc.BasicExtractor.extract(BasicExtractor.java:44) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.getCurrentRowValue(JdbcValuesResultSetImpl.java:302) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 54 more
+
+26 Jun 2025 16:51:27,165 INFO  com.server.GameServer 35 <init> - Starting server...
+26 Jun 2025 16:51:27,170 INFO  com.persistence.PlayerRepository 16 <init> - PlayerRepository initialized
+26 Jun 2025 16:51:27,171 INFO  com.persistence.ConfigurationRepository 17 <init> - ConfigurationRepository initialized
+26 Jun 2025 16:51:27,172 INFO  com.persistence.GameRepository 16 <init> - GameRepository initialized
+26 Jun 2025 16:51:27,172 INFO  com.services.GameService 35 <init> - Game service initialized
+26 Jun 2025 16:51:27,174 INFO  com.server.GameServer 55 start - Starting server on port 55556
+26 Jun 2025 16:51:27,260 INFO  com.server.rest.RestServer 38 start - REST Server started on port 8080
+26 Jun 2025 16:51:27,260 INFO  com.server.GameServer 61 start - Server started. Waiting for clients...
+26 Jun 2025 16:51:40,671 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:51:43,743 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:51:43,744 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player1
+26 Jun 2025 16:52:03,454 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 16:52:03,454 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player1
+26 Jun 2025 16:52:03,454 INFO  com.services.GameService 57 startGame - Starting game for player: player1
+26 Jun 2025 16:52:05,143 INFO  com.services.GameService 78 startGame - Game started with ID: 4
+26 Jun 2025 16:52:15,467 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 16:52:19,680 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 16:52:19,680 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player2
+26 Jun 2025 16:52:27,802 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 16:52:27,803 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player2
+26 Jun 2025 16:52:27,803 INFO  com.services.GameService 57 startGame - Starting game for player: player2
+26 Jun 2025 16:52:27,810 INFO  com.services.GameService 78 startGame - Game started with ID: 5
+26 Jun 2025 16:52:41,609 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:52:41,610 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 4: kl
+26 Jun 2025 16:52:41,610 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 4: kl
+26 Jun 2025 16:52:41,616 INFO  com.services.GameService 125 processWordGuess - Correct word guessed: kl
+26 Jun 2025 16:53:03,859 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:03,859 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 5: xzy
+26 Jun 2025 16:53:03,859 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 5: xzy
+26 Jun 2025 16:53:11,889 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:11,890 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 5: xyz
+26 Jun 2025 16:53:11,890 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 5: xyz
+26 Jun 2025 16:53:11,891 INFO  com.services.GameService 125 processWordGuess - Correct word guessed: xyz
+26 Jun 2025 16:53:20,352 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:20,352 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 4: mk
+26 Jun 2025 16:53:20,352 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 4: mk
+26 Jun 2025 16:53:20,354 INFO  com.services.GameService 125 processWordGuess - Correct word guessed: mk
+26 Jun 2025 16:53:25,730 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:25,731 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 5: sdf
+26 Jun 2025 16:53:25,731 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 5: sdf
+26 Jun 2025 16:53:25,733 INFO  com.services.GameService 110 processWordGuess - Invalid word: sdf - not made of available letters
+26 Jun 2025 16:53:30,637 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:30,637 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 5: zx
+26 Jun 2025 16:53:30,637 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 5: zx
+26 Jun 2025 16:53:30,639 INFO  com.services.GameService 125 processWordGuess - Correct word guessed: zx
+26 Jun 2025 16:53:44,838 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 16:53:44,838 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 4: kk
+26 Jun 2025 16:53:44,838 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 4: kk
+26 Jun 2025 16:53:46,775 INFO  com.server.ClientHandler 59 handleRequest - Received request: FINISH_GAME
+26 Jun 2025 16:53:46,776 INFO  com.server.ClientHandler 104 handleFinishGame - Finish game request for game: 4
+26 Jun 2025 16:53:46,776 INFO  com.services.GameService 161 finishGame - Finishing game: 4
+26 Jun 2025 16:53:46,803 INFO  com.services.GameService 183 finishGame - Game 4 finished with score: 20, correct words: 2
+26 Jun 2025 16:53:54,938 INFO  com.server.ClientHandler 59 handleRequest - Received request: FINISH_GAME
+26 Jun 2025 16:53:54,938 INFO  com.server.ClientHandler 104 handleFinishGame - Finish game request for game: 5
+26 Jun 2025 16:53:54,938 INFO  com.services.GameService 161 finishGame - Finishing game: 5
+26 Jun 2025 16:53:54,946 INFO  com.services.GameService 183 finishGame - Game 5 finished with score: 20, correct words: 2
+26 Jun 2025 16:54:01,341 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGOUT
+26 Jun 2025 16:54:01,341 INFO  com.server.ClientHandler 110 handleLogout - Logout request from player: player2
+26 Jun 2025 16:54:01,342 INFO  com.server.GameServer 115 removeClient - Client disconnected. Remaining clients: 1
+26 Jun 2025 16:54:09,176 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGOUT
+26 Jun 2025 16:54:09,176 INFO  com.server.ClientHandler 110 handleLogout - Logout request from player: player1
+26 Jun 2025 16:54:09,176 INFO  com.server.GameServer 115 removeClient - Client disconnected. Remaining clients: 0
+26 Jun 2025 19:17:48,017 INFO  com.server.GameServer 35 <init> - Starting server...
+26 Jun 2025 19:17:48,021 INFO  com.persistence.PlayerRepository 16 <init> - PlayerRepository initialized
+26 Jun 2025 19:17:48,022 INFO  com.persistence.ConfigurationRepository 17 <init> - ConfigurationRepository initialized
+26 Jun 2025 19:17:48,023 INFO  com.persistence.GameRepository 16 <init> - GameRepository initialized
+26 Jun 2025 19:17:48,023 INFO  com.services.GameService 35 <init> - Game service initialized
+26 Jun 2025 19:17:48,025 INFO  com.server.GameServer 55 start - Starting server on port 55556
+26 Jun 2025 19:17:48,098 INFO  com.server.rest.RestServer 38 start - REST Server started on port 8080
+26 Jun 2025 19:17:48,098 INFO  com.server.GameServer 61 start - Server started. Waiting for clients...
+26 Jun 2025 19:17:59,333 INFO  com.server.GameServer 64 start - Client connected from /127.0.0.1
+26 Jun 2025 19:18:10,072 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGIN
+26 Jun 2025 19:18:10,073 INFO  com.server.ClientHandler 86 handleLogin - Login request from player: player1
+26 Jun 2025 19:18:12,836 INFO  com.server.ClientHandler 59 handleRequest - Received request: START_GAME
+26 Jun 2025 19:18:12,836 INFO  com.server.ClientHandler 92 handleStartGame - Start game request from player: player1
+26 Jun 2025 19:18:12,836 INFO  com.services.GameService 57 startGame - Starting game for player: player1
+26 Jun 2025 19:18:14,808 INFO  com.services.GameService 78 startGame - Game started with ID: 6
+26 Jun 2025 19:18:18,970 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 19:18:18,970 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 6: as
+26 Jun 2025 19:18:18,971 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 6: as
+26 Jun 2025 19:18:18,980 INFO  com.services.GameService 110 processWordGuess - Invalid word: as - not made of available letters
+26 Jun 2025 19:18:19,910 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 19:18:19,910 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 6: sa
+26 Jun 2025 19:18:19,910 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 6: sa
+26 Jun 2025 19:18:19,911 INFO  com.services.GameService 110 processWordGuess - Invalid word: sa - not made of available letters
+26 Jun 2025 19:18:20,783 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 19:18:20,784 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 6: as
+26 Jun 2025 19:18:20,784 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 6: as
+26 Jun 2025 19:18:20,785 INFO  com.services.GameService 110 processWordGuess - Invalid word: as - not made of available letters
+26 Jun 2025 19:18:21,674 INFO  com.server.ClientHandler 59 handleRequest - Received request: SUBMIT_WORD
+26 Jun 2025 19:18:21,675 INFO  com.server.ClientHandler 98 handleWordSubmission - Word submission for game 6: ads
+26 Jun 2025 19:18:21,675 INFO  com.services.GameService 86 processWordGuess - Processing guess for game 6: ads
+26 Jun 2025 19:18:21,677 INFO  com.services.GameService 110 processWordGuess - Invalid word: ads - not made of available letters
+26 Jun 2025 19:18:22,761 INFO  com.server.ClientHandler 59 handleRequest - Received request: FINISH_GAME
+26 Jun 2025 19:18:22,761 INFO  com.server.ClientHandler 104 handleFinishGame - Finish game request for game: 6
+26 Jun 2025 19:18:22,761 INFO  com.services.GameService 161 finishGame - Finishing game: 6
+26 Jun 2025 19:18:22,784 INFO  com.services.GameService 183 finishGame - Game 6 finished with score: 0, correct words: 0
+26 Jun 2025 19:18:25,252 INFO  com.server.ClientHandler 59 handleRequest - Received request: LOGOUT
+26 Jun 2025 19:18:25,252 INFO  com.server.ClientHandler 110 handleLogout - Logout request from player: player1
+26 Jun 2025 19:18:25,253 INFO  com.server.GameServer 115 removeClient - Client disconnected. Remaining clients: 0

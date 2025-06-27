@@ -1,7 +1,7 @@
-package app.network.utils;
+package com.network.utils;
 
-import app.network.jsonprotocol.ClientJsonWorker;
-import app.services.IServices;
+import com.network.jsonprotocol.ClientJsonWorker;
+import com.services.IServices;
 
 import java.net.Socket;
 
