@@ -1,6 +1,6 @@
-package app.network.jsonprotocol;
+package com.network.jsonprotocol;
 
-import app.model.*;
+import com.model.*;
 
 import java.util.List;
 

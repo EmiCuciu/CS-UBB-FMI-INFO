@@ -1,4 +1,7 @@
 package com.persistence;
 
-public interface IConfigurationRepository {
+import com.model.Configuration;
+
+public interface IConfigurationRepository extends IRepository<Integer, Configuration> {
+    Configuration getRandomConfiguration();
 }

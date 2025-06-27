@@ -1,0 +1,8 @@
+rootProject.name = 'Gaseste-animal'
+include 'a-ORM-maparea-mostenirii'
+include 'Model'
+include 'Persistence'
+include 'Server'
+include 'Services'
+include 'Networking'
+include 'RestServices'

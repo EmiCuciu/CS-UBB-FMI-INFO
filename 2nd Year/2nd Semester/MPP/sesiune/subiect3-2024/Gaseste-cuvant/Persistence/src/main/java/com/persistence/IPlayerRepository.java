@@ -1,4 +1,7 @@
 package com.persistence;
 
-public interface IPlayerRepository {
+import com.model.Player;
+
+public interface IPlayerRepository extends IRepository<Integer, Player> {
+    Player findByAlias(String alias);
 }

@@ -1,9 +1,9 @@
-package com;
+package serverr;
 
 import com.network.utils.AbstractServer;
 import com.network.utils.JsonConcurrentServer;
 import com.network.utils.ServerException;
-import com.server.ServicesImpl;
+import serverr.server.ServicesImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

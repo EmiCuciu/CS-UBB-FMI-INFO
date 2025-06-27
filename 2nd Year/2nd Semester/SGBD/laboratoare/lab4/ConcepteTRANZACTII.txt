@@ -26,7 +26,7 @@ T2: INSERT INTO Telefoane (Pret, ...) VALUES (999) + COMMIT
 T1: SELECT * FROM Telefoane WHERE Pret < 1000 → vede un rând "fantomă" nou
 
 Deadlock
-📌 Blocaj circular: două tranzacții se blochează reciproc, fiecare așteptând o resursă deținută de cealaltă. SQL Server detectează deadlock-ul și anulează una dintre tranzacții.
+📌 Blocaj circular: două tranzacții se blochează reciproc, fiecare așteptând o resursă deținută de cealaltă.
 T1: UPDATE Telefoane WHERE ID = 1
 
 T2: UPDATE Telefoane WHERE ID = 2

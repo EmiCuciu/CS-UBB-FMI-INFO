@@ -1,6 +1,6 @@
 package com.rest.client;
 
-import com.model.Game;
+import com.model.Joc;
 import com.model.Player;
 import com.model.Position;
 import com.rest.services.ServiceException;
@@ -23,7 +23,7 @@ public class Client {
             .requestInterceptor(new CustomRestClientInterceptor())
             .build();
 
-    public static final String URL = "http://localhost:8080/xsi0";
+    public static final String URL = "http://localhost:8080/gasesteAnimal";
 
     private <T> T execute(Callable<T> callable){
         try{
@@ -37,16 +37,16 @@ public class Client {
         }
     }
 
-    public Game getGameById(Long id){
-        return execute(() -> restClient.get().uri(String.format(URL + "/game/" + id)).retrieve().body(Game.class));
+    public Joc getGameById(Integer id){
+        return execute(() -> restClient.get().uri(String.format(URL + "/game/" + id)).retrieve().body(Joc.class));
     }
 
-    public Position[] getPositionsByGame(Game game) {
+    public Position[] getPositionsByGame(Joc game) {
         return execute(() -> restClient.get().uri(String.format(URL + "/positions/" + game.getId())).retrieve().body(Position[].class));
     }
 
-    public Game[] getGamesByPlayer(Player player) {
-        return execute(() -> restClient.get().uri(String.format(URL + "/games/" + player.getAlias())).retrieve().body(Game[].class));
+    public Joc[] getGamesByPlayer(Player player) {
+        return execute(() -> restClient.get().uri(String.format(URL + "/games/" + player.getPorecla())).retrieve().body(Joc[].class));
     }
 
     public Position addPosition(Position position) {

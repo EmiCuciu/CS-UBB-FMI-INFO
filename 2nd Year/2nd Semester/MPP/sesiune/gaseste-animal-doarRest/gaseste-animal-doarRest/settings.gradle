@@ -1,0 +1,5 @@
+rootProject.name = 'gaseste-animal-doarRest'
+include 'Model'
+include 'Persistence'
+include 'RestServices'
+include 'Networking'
