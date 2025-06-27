@@ -1,4 +1,4 @@
-package app.network.utils;
+package com.network.utils;
 
 import java.net.Socket;
 

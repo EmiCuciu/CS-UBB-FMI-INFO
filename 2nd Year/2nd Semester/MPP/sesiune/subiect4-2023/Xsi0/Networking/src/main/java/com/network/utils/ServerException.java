@@ -1,4 +1,4 @@
-package app.network.utils;
+package com.network.utils;
 
 public class ServerException extends Exception {
     public ServerException() {

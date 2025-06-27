@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<form method="get" action="register.php">
+    Nume utilizator: <input type="text" name="username"><br>
+    E-mail: <input type="text" name="email"/><br>
+    Parola: <input type="password" name="pass"/><br>
+    Parola din nou: <input type="password" name="pass2"/><br>
+    <input type="Submit" value="Register">
+</form>
+
+<?php
+$str = '<a href="https://www.w3schools.com">Go to w3schools.com</a>';
+echo htmlentities($str);
+?>
+
 </body>
 </html>

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div id="container"></div>
+<script>
+  var container = document.getElementById("container");
+  select = document.createElement('select');
+  select.setAttribute('name', 'numar');
+  container.appendChild(select);
+  for (var i = 1; i <= 100; i++) {
+      var option = document.createElement('option');
+      option.setAttribute('value', i);
+      option.text = i;
+      select.appendChild(option);
+      if (i == 50)
+        option.setAttribute('selected','selected');
+  }
+</script>
+
 </body>
 </html>

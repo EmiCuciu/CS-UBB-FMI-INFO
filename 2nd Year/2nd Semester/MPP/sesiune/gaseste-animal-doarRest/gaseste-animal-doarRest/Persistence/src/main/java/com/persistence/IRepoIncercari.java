@@ -1,7 +1,6 @@
-package persistence.repository.IRepositories;
+package com.persistence;
 
-import domain.Incercare;
-import persistence.repository.IRepository;
+import com.model.Incercare;
 
 public interface IRepoIncercari extends IRepository<Integer, Incercare> {
 }

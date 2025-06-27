@@ -37,7 +37,10 @@ public class GameDBRepository implements IGameRepository {
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
             return Optional.ofNullable(session.createQuery("FROM Game WHERE id=:idM", Game.class)
                     .setParameter("idM", id)
-                    .getSingleResult());
+                    .uniqueResult());
+        } catch (Exception e) {
+            logger.error("Error finding game with id: " + id, e);
+            return Optional.empty();
         }
     }
 
@@ -59,11 +62,41 @@ public class GameDBRepository implements IGameRepository {
 
     @Override
     public Optional<Game> delete(Long aLong) {
-        return Optional.empty();
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            Game game = session.find(Game.class, aLong);
+            if (game != null) {
+                session.beginTransaction();
+                session.remove(game);
+                session.getTransaction().commit();
+                return Optional.of(game);
+            } else {
+                logger.warn("Game with id {} not found for deletion", aLong);
+                return Optional.empty();
+            }
+        } catch (Exception e) {
+            logger.error("Error deleting game with id: " + aLong, e);
+            return Optional.empty();
+        }
     }
 
     @Override
     public Optional<Game> update(Game entity) {
-        return Optional.empty();
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            Game existingGame = session.find(Game.class, entity.getId());
+            if (existingGame != null) {
+                session.beginTransaction();
+                existingGame.setPlayer(entity.getPlayer());
+                existingGame.setScore(entity.getScore());
+                session.update(existingGame);
+                session.getTransaction().commit();
+                return Optional.of(existingGame);
+            } else {
+                logger.warn("Game with id {} not found for update", entity.getId());
+                return Optional.empty();
+            }
+        } catch (Exception e) {
+            logger.error("Error updating game: " + entity, e);
+            return Optional.empty();
+        }
     }
 }

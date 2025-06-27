@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Service {
-    private static final Logger logger = LogManager.getLogger(Service.class);
+public class GameService {
+    private static final Logger logger = LogManager.getLogger(GameService.class);
 
     private final IGameRepository gameRepo;
     private final IPlayerRepository playerRepo;
@@ -28,7 +28,7 @@ public class Service {
     // Observer pattern for ranking updates
     private final List<GameObserver> observers = new ArrayList<>();
 
-    public Service(IGameRepository gameRepo, IPlayerRepository playerRepo, IConfigurationRepository configRepo) {
+    public GameService(IGameRepository gameRepo, IPlayerRepository playerRepo, IConfigurationRepository configRepo) {
         this.gameRepo = gameRepo;
         this.playerRepo = playerRepo;
         this.configRepo = configRepo;

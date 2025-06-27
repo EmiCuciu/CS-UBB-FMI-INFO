@@ -1,11 +1,12 @@
-package persistence.repository.IRepositories;
+package com.persistence;
 
-import domain.Joc;
-import network.dto.JocNeghicitDTO;
-import persistence.repository.IRepository;
+
+import com.model.Joc;
+import com.network.dto.JocNeghicitDTO;
 
 import java.util.List;
 
 public interface IRepoJocuri extends IRepository<Integer, Joc> {
+
     List<JocNeghicitDTO> findJocuriNeghicite(int id);
 }

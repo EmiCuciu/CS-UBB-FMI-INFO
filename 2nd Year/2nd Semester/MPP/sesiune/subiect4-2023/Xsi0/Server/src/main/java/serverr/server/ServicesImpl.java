@@ -1,4 +1,4 @@
-package com.server;
+package serverr.server;
 
 import com.model.Game;
 import com.model.Player;

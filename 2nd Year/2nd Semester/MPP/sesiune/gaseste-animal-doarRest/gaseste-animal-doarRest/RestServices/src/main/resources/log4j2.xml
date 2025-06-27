@@ -2,15 +2,16 @@
 <Configuration status="info">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-
-            <PatternLayout pattern="%d{DATE} %-5level %class{36} %L %M - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %class{36} %L %M - %msg%n"/>
         </Console>
-        <File name="log" fileName="/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/gaseste-animal-doarRest/gaseste-animal-doarRest/target/JocAnimale.log" append="true">
-            <PatternLayout pattern="%d{DATE} %-5level %class{36} %L %M - %msg%n"/>
-        </File>c
+
+        <File name="log" fileName="/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/gaseste-animal-doarRest/gaseste-animal-doarRest/RestServices/target/JocAnimale.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %class{36} %L %M - %msg%n"/>
+        </File>
     </Appenders>
+
     <Loggers>
-        <Root level="trace">
+        <Root level="info">
             <AppenderRef ref="log"/>
             <AppenderRef ref="Console"/>
         </Root>

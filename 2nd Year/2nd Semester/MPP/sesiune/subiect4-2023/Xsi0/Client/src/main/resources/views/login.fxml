@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.gui.LoginController">
+    <Label layoutX="105.0" layoutY="145.0" prefHeight="22.0" prefWidth="82.0" text="Player alias" />
+    <Button fx:id="LoginButton" layoutX="274.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
+    <TextField fx:id="AliasTextField" layoutX="200.0" layoutY="144.0" promptText="alias" />
+</AnchorPane>

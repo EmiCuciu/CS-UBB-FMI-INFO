@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>ex1</title>
 </head>
 <body>
-$END$
+
+<div id="container">
+</div>
+<script type="text/javascript">
+    var container = document.getElementById("container");
+    var string = '<select name="numar">';
+    for (var i = 1; i <= 100; i++)
+        if (i == 50)
+            string += '<option selected value="' + i + '">' + i + '</option>';
+        else
+            string += '<option value="' + i + '">' + i + '</option>';
+    string += '</select>';
+    container.innerHTML = string;
+</script>
+
 </body>
 </html>

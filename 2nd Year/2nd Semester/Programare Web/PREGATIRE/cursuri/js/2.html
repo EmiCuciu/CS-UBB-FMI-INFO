@@ -1,10 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<head><title>Exemplul 2 JavaScript</title></head>
 <body>
-$END$
+<div id='somediv'></div>
+<script>
+    var mydiv = document.getElementById('somediv');
+    mydiv.innerHTML = '<a href="http://www.google.com" id="somelink">Click here</a>';
+    var mylink = document.getElementById('somelink');
+    mylink.style.color = '#00FF00';
+    mylink.style.backgroundColor = 'red';
+</script>
+
 </body>
 </html>

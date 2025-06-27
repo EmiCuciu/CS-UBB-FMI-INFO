@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <link rel="stylesheet" href="1.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            color: blue;
+        }
+
+        #id2 {
+            background-color: blue !important;
+        }
+
+        div #id1 .class2 {
+            background-color: green !important;
+        }
+
+        div .class1 #id2{
+            background-color: yellow !important;
+        }
+
+        #id1 {
+            background-color: red !important;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div style="border: 1px solid red; text-align: center; position: relative">
+    Ana are mere
+    <ul style="width: 300px; border: 1px solid black">
+        <li>Element din lista</li>
+    </ul>
+</div>
+
+<div style="position: relative;">
+    <p><img src="img_1.png" alt="" style="float: right;"></p>
+    <img src="img.png" alt="" style="">
+</div>
+
+<div style="position: relative; background-color: red; width: 500px; height:
+100px">
+    <div style="position: absolute; background-color: yellow; width: 300px;
+right: 0; bottom: 0">
+        Ana are mere
+    </div>
+</div>
+
+<div>
+    <div class="class1" id="id1">
+        <div class="class2" id="id2" style="background-color: tan">
+            Cocosul canta
+        </div>
+    </div>
+</div>
+
+<!--<p style="color: magenta"> Text </p>-->
+<p style="color: magenta !important;"> Text </p>
+
 </body>
 </html>

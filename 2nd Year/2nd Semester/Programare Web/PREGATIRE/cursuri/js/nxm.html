@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body>
-$END$
-</body>
+<body></body>
+<script>
+  Array.prototype.shuffle = function() {
+    this.sort(function (x, y) {
+      return (Math.random() * 2 - 1);
+    });
+  }
+  var x = new Array(1, 2, 3, 4, 5);
+  x.shuffle();
+  console.log(x);
+</script>
+
 </html>

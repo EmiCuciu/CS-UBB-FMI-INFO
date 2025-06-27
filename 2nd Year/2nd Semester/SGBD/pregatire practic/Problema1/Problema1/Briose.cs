@@ -68,23 +68,6 @@ public partial class Briose : Form
         // Legare grid-uri la surse de date
         CofetariiDataGridView.DataSource = _cofetarieBindingSource;
         BrioseDataGridView.DataSource = _brioseBindingSource;
-
-        ConfigureEditControls();
-    }
-
-    private void ConfigureEditControls()
-    {
-        BrioseDataGridView.SelectionChanged += (s, e) =>
-        {
-            if (BrioseDataGridView.CurrentRow != null)
-            {
-                DataRowView row = (DataRowView)_brioseBindingSource.Current;
-                nume_briosa.Text = row["nume_briosa"].ToString();
-                descriere.Text = row["descriere"].ToString();
-                pret.Text = row["pret"].ToString();
-                cod_cofetarie.Text = row["cod_cofetarie"].ToString();
-            }
-        };
     }
 
     private void Add_briosa_Click(object sender, EventArgs e)

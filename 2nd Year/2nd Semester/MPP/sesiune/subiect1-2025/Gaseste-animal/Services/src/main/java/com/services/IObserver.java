@@ -1,8 +1,8 @@
 package com.services;
 
-import com.model.*;
+import com.model.Joc;
 
 public interface IObserver {
 
-    void gameAdded(Game game) throws AppException;
+    void gameAdded(Joc game) throws AppException;
 }

@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<?php
+$echipe = array("CFR", "FCSB", "Dinamo");
+print $echipe[0];
+print count($echipe);
+?>
+
+<?php
+$capitale["Romania"] = "Bucuresti";
+$capitale["Ungaria"] = "Budapesta";
+$capitale["Franta"] = "Paris";
+print $capitale["Romania"];
+?>
+
+<?php
+foreach ($capitale as $capitala)
+print $capitala . "<br>\n";
+foreach ($capitale as $tara=>$capitala)
+  print $tara . " are capitala " . $capitala . "<br>\n";
+?>
+
+<?php
+$continente = array(
+  "Europa"=>array("Romania", "Franta", "Ungaria"),
+  "Asia"=>array("China", "India", "Japonia"),
+  "Africa"=>array("Egipt", "Maroc", "Nigeria")
+  );
+print $continente["Asia"][2];
+
+print "\nlalalalal";
+echo "\nlalalalal";
+?>
+
+
+
 </body>
 </html>
