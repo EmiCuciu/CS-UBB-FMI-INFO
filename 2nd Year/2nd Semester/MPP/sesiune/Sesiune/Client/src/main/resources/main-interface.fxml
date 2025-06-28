@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="20" />
+            </padding>
+            <Label fx:id="lblPlayerInfo" style="-fx-font-size: 16;" text="Player information will appear here" />
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="btnNewGame" onAction="#onNewGameClick" text="Start New Game" />
+                <Button fx:id="btnRefresh" onAction="#onRefreshClick" text="Refresh Games" />
+                <Button fx:id="btnLogout" onAction="#onLogoutClick" text="Logout" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="My Games">
+                <TableView fx:id="tblGames">
+                    <columns>
+                        <TableColumn fx:id="colGameId" text="Game ID" />
+                        <TableColumn fx:id="colStartDate" text="Start Date" />
+                        <TableColumn fx:id="colEndDate" text="End Date" />
+                        <TableColumn fx:id="colScore" text="Score" />
+                        <TableColumn fx:id="colStatus" text="Status" />
+                        <TableColumn fx:id="colLevel" text="Current Level" />
+                    </columns>
+                </TableView>
+            </Tab>
+            <Tab text="Game Answers">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="Selected Game:" />
+                        <Label fx:id="lblSelectedGame" text="No game selected" />
+                    </HBox>
+                    <TableView fx:id="tblAnswers">
+                        <columns>
+                            <TableColumn fx:id="colQuestion" text="Question" />
+                            <TableColumn fx:id="colYourAnswer" text="Your Answer" />
+                            <TableColumn fx:id="colCorrectAnswer" prefWidth="115.99998474121094" text="Correct Answer" />
+                            <TableColumn fx:id="colPoints" minWidth="7.0" prefWidth="121.0" text="Points" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <Label fx:id="lblStatus" text="Status: Ready" />
+        </HBox>
+    </bottom>
+</BorderPane>

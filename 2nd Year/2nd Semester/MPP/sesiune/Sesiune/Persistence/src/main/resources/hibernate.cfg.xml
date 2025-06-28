@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/Sesiune/JocTriviaMPP.db</property>
+        <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+
+        <mapping class="domain.Jucator"/>
+        <mapping class="domain.Intrebare"/>
+        <mapping class="domain.Joc"/>
+        <mapping class="domain.RaspunsJucator"/>
+    </session-factory>
+</hibernate-configuration>

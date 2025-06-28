@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '3.0.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'ro.mpp2024'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    all {
+        // Excludem logging-ul implicit (logback) al Spring Boot
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+dependencies {
+    // Spring Boot Web starter (REST API)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Log4j2 (API, Core, integrare cu SLF4J)
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3'
+
+    // Driver SQLite
+    implementation 'org.xerial:sqlite-jdbc:3.45.1.0'
+
+    // Modulele tale
+    implementation project(':Model')
+    implementation project(':Persistence')
+    implementation project(':Services')
+    implementation project(':Network')
+
+    // Testare JUnit 5
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    mainClass = 'server.StartServer'
+}
+
+test {
+    useJUnitPlatform()
+}
