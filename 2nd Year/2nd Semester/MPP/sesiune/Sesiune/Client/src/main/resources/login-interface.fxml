@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+
+    <children>
+        <VBox alignment="CENTER" spacing="15" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="Nume:" />
+                <TextField fx:id="txtAlias" prefWidth="200" />
+            </HBox>
+
+            <Button fx:id="btnLogin" onAction="#onLoginButtonClick" prefWidth="100" text="Login" />
+        </VBox>
+    </children>
+</AnchorPane>
