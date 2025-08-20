@@ -1,91 +1,62 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function AppConfigurationForm() {
-    const [linie, setLinie] = useState("");
-    const [coloana, setColoana] = useState("");
-    const [animal, setAnimal] = useState("");
-    const [urlAnimal, setUrlAnimal] = useState("");
-    const [message, setMessage] = useState("");
+function UpdateConfigurationForm() {
+    const [configId, setConfigId] = useState("");
+    const [words, setWords] = useState("");
+    const [result, setResult] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const wordList = words.split(",").map(w => w.trim());
         try {
-            const response = await fetch("http://localhost:8080/api/configuratii", {
-                method: "POST",
+            // Updated URL to include port 8080 where Spring Boot is running
+            const response = await fetch(`http://localhost:8080/api/configuratii/${configId}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    linie: Number(linie),
-                    coloana: Number(coloana),
-                    animal,
-                    url_animal: urlAnimal
-                })
+                body: JSON.stringify({ id: Number(configId), words: wordList })
             });
-
             if (response.ok) {
-                setMessage("Configurația a fost adăugată.");
-                setLinie("");
-                setColoana("");
-                setAnimal("");
-                setUrlAnimal("");
-
+                const data = await response.json();
+                setResult(data);
+            } else {
+                setResult("Update failed");
             }
-            else {
-                setMessage("Eroare la adăugare.");
-            }
-        }
-        catch (err) {
-            setMessage("Serverul nu a răspuns.");
+        } catch (err) {
+            setResult("Error: " + err.message);
         }
     };
 
-    return React.createElement("div", null,
-        React.createElement("h2", null,"Adaugă configurație"),
-        React.createElement("form", { onSubmit: handleSubmit },
-
-            React.createElement("input", {
-                type: "number",
-                placeholder: "Linie (1-3)",
-                value: linie,
-                onChange: (e) => setLinie(e.target.value),
-                required: true
-            }),
-
-
-            React.createElement("input", {
-                type: "number",
-                placeholder: "Coloană (1-4)",
-                value: coloana,
-                onChange: (e) => setColoana(e.target.value),
-                required: true
-            }),
-
-            React.createElement("input", {
-                type: "text",
-                placeholder: "Animal",
-                value: animal,
-                onChange: (e) => setAnimal(e.target.value),
-                required: true
-            }),
-
-            React.createElement("input", {
-                type: "text",
-                placeholder: "URL Imagine",
-                value: urlAnimal,
-                onChange: (e) => setUrlAnimal(e.target.value),
-                required: true
-            }),
-
-            React.createElement("button", {
-                type: "submit"
-            }, "Adaugă")
-
-            ),
-
-        message && React.createElement("p", null, message)
-        );
+    // Rest of component remains the same
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Configuration ID: </label>
+                <input
+                    type="number"
+                    value={configId}
+                    onChange={e => setConfigId(e.target.value)}
+                    required
+                />
+            </div>
+            <div>
+                <label>Words (comma separated): </label>
+                <input
+                    type="text"
+                    value={words}
+                    onChange={e => setWords(e.target.value)}
+                    required
+                />
+            </div>
+            <button type="submit">Update Configuration</button>
+            {result && (
+                <div>
+                    <strong>Result:</strong> {typeof result === "string" ? result : JSON.stringify(result)}
+                </div>
+            )}
+        </form>
+    );
 }
 
-export default AppConfigurationForm;
+export default UpdateConfigurationForm;

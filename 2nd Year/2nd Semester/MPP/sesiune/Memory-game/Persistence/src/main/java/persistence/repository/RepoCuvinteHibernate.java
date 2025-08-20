@@ -1,4 +1,4 @@
-package persistence;
+package persistence.repository;
 
 import domain.Cuvant;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 public class RepoCuvinteHibernate implements IRepoCuvinte {
-    private Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger();
 
     @Override
     public void save(Cuvant entity) {

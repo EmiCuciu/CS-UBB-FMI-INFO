@@ -1,0 +1,243 @@
+2025-06-28 00:31:12 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:31:13 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:31:13 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 42688 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:31:13 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:31:13 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:31:13 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:31:13 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:31:13 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 886 ms
+2025-06-28 00:31:14 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:31:14 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:31:14 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:31:14 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:31:14 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:31:14 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@6e5f5478
+2025-06-28 00:31:14 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:31:14 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:31:14 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:31:14 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:31:15 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:31:15 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.4 seconds (process running for 3.086)
+2025-06-28 00:31:15 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 00:31:29 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-28 00:31:29 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 1 ms
+2025-06-28 00:31:29 INFO  rest.GameController 27 getGameDetails - REST request to get game details for ID: 2
+2025-06-28 00:31:29 INFO  rest.GameRestService 37 getGameDetails - Getting details for game with ID: 2
+2025-06-28 00:31:29 INFO  persistence.repository.RepoJocuriHibernate 52 findOne - Finding Joc with id: 2
+2025-06-28 00:31:29 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:31:29 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 81 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-28 00:31:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 136 buildCreator - HHH10001005: Loaded JDBC driver class: org.sqlite.JDBC
+2025-06-28 00:31:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 158 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/C:/Users/emicu/Desktop/databases/memory-game.db]
+2025-06-28 00:31:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 167 buildCreator - HHH10001001: Connection properties: {}
+2025-06-28 00:31:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 171 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-28 00:31:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 371 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-28 00:31:30 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:31:30 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 52 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@219a20b7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-28 00:31:30 INFO  persistence.repository.RepoIncercariHibernate 86 findByJoc - Finding Incercari by Joc: 2
+2025-06-28 00:34:52 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:34:52 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 00:34:52 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 00:38:39 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:38:40 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:38:40 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 44080 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:38:40 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:38:40 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:38:40 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:38:40 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:38:40 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 898 ms
+2025-06-28 00:38:41 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:38:41 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:38:41 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:38:41 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:38:41 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:38:41 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@5c25d0d1
+2025-06-28 00:38:41 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:38:41 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:38:41 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:38:42 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:38:42 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:38:42 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.533 seconds (process running for 3.556)
+2025-06-28 00:38:42 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 00:39:01 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-28 00:39:01 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 1 ms
+2025-06-28 00:39:01 INFO  rest.GameController 27 getGameDetails - REST request to get game details for ID: 1
+2025-06-28 00:39:01 INFO  rest.GameRestService 37 getGameDetails - Getting details for game with ID: 1
+2025-06-28 00:39:01 INFO  persistence.repository.RepoJocuriHibernate 52 findOne - Finding Joc with id: 1
+2025-06-28 00:39:01 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:39:01 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 81 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-28 00:39:01 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 136 buildCreator - HHH10001005: Loaded JDBC driver class: org.sqlite.JDBC
+2025-06-28 00:39:01 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 158 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/C:/Users/emicu/Desktop/databases/memory-game.db]
+2025-06-28 00:39:01 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 167 buildCreator - HHH10001001: Connection properties: {}
+2025-06-28 00:39:01 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 171 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-28 00:39:01 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 371 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-28 00:39:02 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:39:02 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 52 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6146f338] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-28 00:39:02 INFO  persistence.repository.RepoIncercariHibernate 86 findByJoc - Finding Incercari by Joc: 1
+2025-06-28 00:42:03 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:42:03 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 00:42:03 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 00:42:05 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:42:06 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:42:06 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 44316 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:42:06 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:42:06 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:42:06 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:42:06 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:42:07 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 958 ms
+2025-06-28 00:42:07 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:42:07 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:42:07 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:42:07 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:42:07 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:42:07 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@5c25d0d1
+2025-06-28 00:42:07 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:42:07 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:42:07 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:42:08 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:42:08 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:42:08 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.574 seconds (process running for 3.576)
+2025-06-28 00:42:08 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 00:42:18 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-28 00:42:18 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 1 ms
+2025-06-28 00:48:54 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:48:54 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 00:48:54 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 00:48:57 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:48:57 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:48:57 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 44476 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:48:57 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:48:58 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:48:58 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:48:58 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:48:58 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1019 ms
+2025-06-28 00:48:58 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:48:58 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:48:58 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:48:59 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:48:59 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:48:59 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@44bbb7c6
+2025-06-28 00:48:59 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:48:59 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:48:59 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:48:59 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:49:00 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:49:00 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 3.31 seconds (process running for 4.076)
+2025-06-28 00:49:00 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 00:50:53 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:50:53 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 00:50:53 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 00:50:55 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:50:56 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:50:56 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 34104 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:50:56 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:50:56 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:50:56 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:50:57 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:50:57 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 875 ms
+2025-06-28 00:50:57 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:50:57 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:50:57 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:50:57 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:50:57 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:50:57 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@51f01535
+2025-06-28 00:50:57 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:50:58 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:50:58 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:50:58 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:50:58 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:50:58 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.444 seconds (process running for 3.086)
+2025-06-28 00:50:58 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 00:54:48 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:54:48 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 00:54:48 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 00:54:51 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 00:54:51 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 00:54:51 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 46508 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 00:54:51 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 00:54:52 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 00:54:52 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-06-28 00:54:52 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 00:54:52 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 920 ms
+2025-06-28 00:54:52 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 00:54:53 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 00:54:53 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 00:54:53 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 00:54:53 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 00:54:53 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@4cfcac13
+2025-06-28 00:54:53 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 00:54:53 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 00:54:53 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 00:54:53 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 00:54:54 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 00:54:54 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.467 seconds (process running for 3.433)
+2025-06-28 00:54:54 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 01:03:28 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 01:03:28 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 01:03:28 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 01:03:31 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 01:03:31 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 01:03:31 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 52940 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 01:03:31 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 01:03:32 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 01:03:32 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-06-28 01:03:32 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 01:03:33 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1012 ms
+2025-06-28 01:03:33 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 01:03:33 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 01:03:33 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 01:03:33 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 01:03:33 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 01:03:33 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@51f01535
+2025-06-28 01:03:33 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 01:03:33 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 01:03:33 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 01:03:33 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 01:03:34 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 01:03:34 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.584 seconds (process running for 3.434)
+2025-06-28 01:03:34 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 01:05:36 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 01:05:36 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 01:05:36 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 01:05:39 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 01:05:39 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 01:05:39 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 36884 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Memory-game)
+2025-06-28 01:05:39 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 01:05:40 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 01:05:40 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-06-28 01:05:40 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 01:05:40 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 948 ms
+2025-06-28 01:05:40 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 01:05:40 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 01:05:40 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 01:05:40 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 01:05:41 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 01:05:41 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@67eeb310
+2025-06-28 01:05:41 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 01:05:41 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 01:05:41 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 01:05:41 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 01:05:41 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 01:05:41 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.574 seconds (process running for 3.392)
+2025-06-28 01:05:41 INFO  rest.StartRestServices 18 main - [INFO] A pornit!!!
+2025-06-28 01:06:14 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-28 01:06:14 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 0 ms
+2025-06-28 01:06:14 INFO  rest.ConfigurationController 29 updateConfiguration - REST request to update configuration ID: 1
+2025-06-28 01:06:14 INFO  rest.GameRestService 71 updateConfiguration - Updating configuration with ID: 1
+2025-06-28 01:06:14 INFO  persistence.repository.RepoConfiguratiiHibernate 51 findOne - Finding Configuratie with id: 1
+2025-06-28 01:06:14 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 01:06:14 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 81 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-28 01:06:14 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 136 buildCreator - HHH10001005: Loaded JDBC driver class: org.sqlite.JDBC
+2025-06-28 01:06:14 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 158 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/C:/Users/emicu/Desktop/databases/memory-game.db]
+2025-06-28 01:06:14 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 167 buildCreator - HHH10001001: Connection properties: {}
+2025-06-28 01:06:14 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 171 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-28 01:06:14 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 371 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-28 01:06:15 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 01:06:15 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 52 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6aa591d9] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-28 01:06:15 INFO  persistence.repository.RepoConfiguratiiHibernate 73 update - Updating Configuratie: Configuratie{id=1, cuvinte=[zebra, leu, pisica, caine]}
+2025-06-28 01:07:08 INFO  rest.ConfigurationController 29 updateConfiguration - REST request to update configuration ID: 2
+2025-06-28 01:07:08 INFO  rest.GameRestService 71 updateConfiguration - Updating configuration with ID: 2
+2025-06-28 01:07:08 INFO  persistence.repository.RepoConfiguratiiHibernate 51 findOne - Finding Configuratie with id: 2
+2025-06-28 01:07:08 INFO  persistence.repository.RepoConfiguratiiHibernate 73 update - Updating Configuratie: Configuratie{id=2, cuvinte=[zebra, leu, pisica, caine]}
+2025-06-28 01:08:24 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 01:08:24 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 01:08:24 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.

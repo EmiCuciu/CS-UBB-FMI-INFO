@@ -337,3 +337,47 @@
 2025-06-27 21:01:05 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-06-27 21:01:05 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
 2025-06-27 21:01:05 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-27 22:36:28 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-27 22:36:28 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 25004 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\gaseste-animal-doarRest\gaseste-animal-doarRest\RestServices\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\gaseste-animal-doarRest\gaseste-animal-doarRest)
+2025-06-27 22:36:28 INFO  org.springframework.boot.SpringApplication 653 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-27 22:36:29 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 139 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-27 22:36:29 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 208 registerRepositoriesIn - Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-06-27 22:36:29 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 108 initialize - Tomcat initialized with port 8080 (http)
+2025-06-27 22:36:29 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1327 ms
+2025-06-27 22:36:29 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-27 22:36:30 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@4ef5dd23
+2025-06-27 22:36:30 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-27 22:36:30 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-27 22:36:30 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-06-27 22:36:30 INFO  org.hibernate.cfg.Environment 148 <clinit> - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.format_sql=true, hibernate.id.new_generator_mappings=false, hibernate.dialect=org.hibernate.community.dialect.SQLiteDialect, hibernate.highlight_sql=true, jakarta.persistence.jdbc.url=jdbc:sqlite:/C:/Users/emicu/Desktop/databases/gaseste_animal_doarRest.db, hibernate.show_sql=true, jakarta.persistence.schema-generation.database.action=update}
+2025-06-27 22:36:30 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-27 22:36:30 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-27 22:36:30 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-27 22:36:30 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-27 22:36:30 INFO  com.persistence.repo.ConfiguratiiRepository 16 <init> - ConfiguratiiRepository initialized
+2025-06-27 22:36:30 INFO  com.persistence.repo.JocuriRepository 21 <init> - JocuriRepository initialized
+2025-06-27 22:36:30 INFO  com.persistence.repo.JucatoriRepository 18 <init> - JucatoriRepository initialized
+2025-06-27 22:36:30 INFO  com.persistence.repo.IncercareRepository 15 <init> - IncercareRepository initialized
+2025-06-27 22:36:30 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-27 22:36:31 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 221 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-27 22:36:31 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 2.982 seconds (process running for 4.515)
+2025-06-27 22:37:45 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-27 22:37:45 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 0 ms
+2025-06-27 22:37:45 INFO  com.rest.MemoryGameConfigController 69 getConfiguration - Getting configuration with ID: 1
+2025-06-27 22:37:45 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-27 22:37:45 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 80 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 139 buildCreator - HHH10001010: No JDBC driver class specified by hibernate.connection.driver_class
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 148 buildCreator - HHH10001011: Loaded JDBC drivers: org.sqlite.JDBC
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 157 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/C:/Users/emicu/Desktop/databases/gaseste_animal_doarRest.db]
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 166 buildCreator - HHH10001001: Connection properties: {}
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 170 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-27 22:37:45 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 366 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-27 22:37:46 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-27 22:37:46 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 52 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@151964d9] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-27 22:38:16 INFO  com.rest.MemoryGameConfigController 69 getConfiguration - Getting configuration with ID: 2
+2025-06-27 22:42:26 INFO  com.rest.MemoryGameConfigController 31 updateConfiguration - Updating configuration with ID: 2
+2025-06-27 22:42:26 INFO  com.persistence.repo.ConfiguratiiRepository 80 update - Configuratie with id 2 updated successfully
+2025-06-27 22:42:26 INFO  com.rest.MemoryGameConfigController 57 updateConfiguration - Configuration updated successfully for ID: 2
+2025-06-27 23:10:13 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-27 23:10:13 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-27 23:10:13 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.

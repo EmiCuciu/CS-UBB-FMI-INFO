@@ -1,4 +1,4 @@
-package persistence;
+package persistence.repository;
 
 import domain.Joc;
 import domain.Jucator;
@@ -48,10 +48,18 @@ public class RepoJocuriHibernate implements IRepoJocuri {
     }
 
     @Override
-    public Optional<Joc> findOne(Integer integer) {
-        logger.info("Finding Joc with id: {}", integer);
+    public Optional<Joc> findOne(Integer id) {
+        logger.info("Finding Joc with id: {}", id);
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return Optional.ofNullable(session.find(Joc.class, integer));
+            Joc joc = session.createQuery(
+                            "SELECT j FROM Joc j " +
+                                    "JOIN FETCH j.configuratie c " +
+                                    "JOIN FETCH j.jucator " +
+                                    "LEFT JOIN FETCH c.cuvinte " +
+                                    "WHERE j.id = :id", Joc.class)
+                    .setParameter("id", id)
+                    .uniqueResult();
+            return Optional.ofNullable(joc);
         } catch (Exception e) {
             logger.error("Error finding Joc: {}", e.getMessage());
             return Optional.empty();
