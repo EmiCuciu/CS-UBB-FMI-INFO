@@ -1,0 +1,9 @@
+rootProject.name = 'Memory-game'
+
+include 'Model'
+include 'Network'
+include 'Persistence'
+include 'REST'
+include 'Server'
+include 'Services'
+include 'Client'

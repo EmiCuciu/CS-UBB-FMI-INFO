@@ -1,0 +1,3 @@
+2025-06-28 00:03:37 INFO  server.StartServer 39 main - Server properties set. {server.port=55556, jdbc.url=jdbc:sqlite:/C:/Users/emicu/Desktop/databases/memory-game.db}
+2025-06-28 00:03:37 INFO  network.utils.ConcurrentServer 20 <init> - Concurrent Server created!
+2025-06-28 00:03:37 INFO  network.utils.AbstractServer 27 start - Waiting for clients...

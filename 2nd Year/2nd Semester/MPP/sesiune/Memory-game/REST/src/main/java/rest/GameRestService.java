@@ -1,4 +1,4 @@
-package rest.services;
+package rest;
 
 import domain.Configuratie;
 import domain.Incercare;
