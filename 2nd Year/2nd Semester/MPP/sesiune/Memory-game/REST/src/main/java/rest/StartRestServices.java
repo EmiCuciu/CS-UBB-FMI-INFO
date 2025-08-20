@@ -18,3 +18,9 @@ public class StartRestServices {
         logger.info("[INFO] A pornit!!!");
     }
 }
+
+/**
+ * npx create-react-app memory-game
+ * cd memory-game
+ * npm install axios
+ */

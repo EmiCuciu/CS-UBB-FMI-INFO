@@ -465,3 +465,311 @@
 2025-06-28 10:04:38 INFO  server.ServiceImpl 72 getRaspunsuriByJoc - Found 0 answers for joc
 2025-06-28 10:05:58 ERROR network.object_protocol.ClientWorker 55 run - java.net.SocketException: Connection reset
 2025-06-28 10:05:58 ERROR network.object_protocol.ClientWorker 56 run - [Ljava.lang.StackTraceElement;@7ff1e5d6
+2025-06-28 10:47:16 INFO  rest.StartRestServices 15 main - [INFO] Acum pornim aplicatia din rest...
+2025-06-28 10:47:17 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-28 10:47:17 INFO  org.springframework.boot.StartupInfoLogger 50 logStarting - Starting StartRestServices using Java 17.0.15 with PID 54844 (D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Sesiune\REST\build\classes\java\main started by emicu in D:\GithubRepositories\CS-UBB-FMI-INFO\2nd Year\2nd Semester\MPP\sesiune\Sesiune)
+2025-06-28 10:47:17 INFO  org.springframework.boot.SpringApplication 654 logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+2025-06-28 10:47:18 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 143 registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-28 10:47:18 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 211 registerRepositoriesIn - Finished Spring Data repository scanning in 19 ms. Found 0 JPA repository interfaces.
+2025-06-28 10:47:18 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 109 initialize - Tomcat initialized with port 8080 (http)
+2025-06-28 10:47:18 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1726 ms
+2025-06-28 10:47:19 INFO  org.hibernate.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-28 10:47:19 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-28 10:47:19 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 10:47:19 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo 87 addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-28 10:47:19 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+2025-06-28 10:47:19 INFO  com.zaxxer.hikari.pool.HikariPool 565 checkFailFast - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@3ef2b8e5
+2025-06-28 10:47:19 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+2025-06-28 10:47:20 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 10:47:20 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 437 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 10:47:20 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration 232 openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-28 10:47:20 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 241 start - Tomcat started on port 8080 (http) with context path ''
+2025-06-28 10:47:20 INFO  org.springframework.boot.StartupInfoLogger 56 logStarted - Started StartRestServices in 3.822 seconds (process running for 4.589)
+2025-06-28 10:48:22 INFO  org.springframework.web.servlet.FrameworkServlet 532 initServletBean - Initializing Servlet 'dispatcherServlet'
+2025-06-28 10:48:22 INFO  org.springframework.web.servlet.FrameworkServlet 554 initServletBean - Completed initialization in 1 ms
+2025-06-28 10:48:22 INFO  persistence.repository.RepoJucatoriHibernate 53 findOne - Finding Jucator with Hibernate: 1
+2025-06-28 10:48:22 INFO  org.hibernate.cache.internal.RegionFactoryInitiator 50 initiateService - HHH000026: Second-level cache disabled
+2025-06-28 10:48:22 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 81 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-28 10:48:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 136 buildCreator - HHH10001005: Loaded JDBC driver class: org.sqlite.JDBC
+2025-06-28 10:48:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 158 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/Sesiune/JocTriviaMPP.db]
+2025-06-28 10:48:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 167 buildCreator - HHH10001001: Connection properties: {}
+2025-06-28 10:48:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 171 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-28 10:48:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 371 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-28 10:48:23 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 58 initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-28 10:48:23 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 52 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@621cf033] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-28 10:48:23 INFO  persistence.repository.RepoJocuriHibernate 54 findOne - Finding Joc with id: 2
+2025-06-28 10:48:23 INFO  persistence.repository.RepoRaspunsuriHibernate 91 findByJoc - Finding RaspunsJucator by Joc: Joc{id=2, jucator=Entity{id=1}, dataInceput=2025-06-28T09:54:13, dataSfarsit=2025-06-28T09:54:19, punctajTotal=74, finalizatCuSucces=true, nivelCurent=3, intrebariCorecteNivel=2}
+2025-06-28 10:49:08 INFO  persistence.repository.RepoIntrebariHibernate 53 findOne - Finding Intrebare with id: 1
+2025-06-28 10:49:08 INFO  persistence.repository.RepoIntrebariHibernate 76 update - Updating Intrebare: Intrebare{id=1, text='Cat face 3 + 3', raspunsCorect='Londra', nivel=1}
+2025-06-28 10:49:08 INFO  persistence.repository.RepoIntrebariHibernate 81 update - Intrebare updated successfully: Intrebare{id=1, text='Cat face 3 + 3', raspunsCorect='Londra', nivel=1}
+2025-06-28 10:50:54 INFO  org.springframework.orm.jpa.AbstractEntityManagerFactoryBean 650 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-28 10:50:54 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
+2025-06-28 10:50:54 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+2025-06-28 10:50:58 INFO  server.StartServer 43 main - Server properties set. {server.port=55556, jdbc.url=jdbc:sqlite:/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/Sesiune/JocTriviaMPP.db}
+2025-06-28 10:50:58 INFO  network.utils.ConcurrentServer 20 <init> - Concurrent Server created!
+2025-06-28 10:50:58 INFO  network.utils.AbstractServer 27 start - Waiting for clients...
+2025-06-28 10:51:12 INFO  StartClient 31 start - Client properties set {server.host=localhost, server.port=55556}
+2025-06-28 10:51:12 INFO  StartClient 47 start - Using server IP: localhost
+2025-06-28 10:51:12 INFO  StartClient 48 start - Using server port: 55556
+2025-06-28 10:51:14 INFO  gui.LoginController 52 onLoginButtonClick - Alias: Emi
+2025-06-28 10:51:14 INFO  network.utils.AbstractServer 29 start - Client connected...
+2025-06-28 10:51:14 INFO  network.utils.AbstractServer 27 start - Waiting for clients...
+2025-06-28 10:51:14 INFO  persistence.repository.RepoJucatoriHibernate 93 findByNume - Finding Jucator by nume with Hibernate: Emi
+2025-06-28 10:51:14 INFO  org.hibernate.Version 44 logVersion - HHH000412: Hibernate ORM core version 6.1.7.Final
+2025-06-28 10:51:15 WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 80 configure - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 139 buildCreator - HHH10001005: Loaded JDBC driver class: org.sqlite.JDBC
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 161 buildCreator - HHH10001012: Connecting with JDBC URL [jdbc:sqlite:/D:/GithubRepositories/CS-UBB-FMI-INFO/2nd Year/2nd Semester/MPP/sesiune/Sesiune/JocTriviaMPP.db]
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 170 buildCreator - HHH10001001: Connection properties: {}
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl 174 buildCreator - HHH10001003: Autocommit mode: false
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections 366 <init> - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-28 10:51:15 INFO  org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl 66 logSelectedDialect - HHH000400: Using dialect: org.hibernate.community.dialect.SQLiteDialect
+2025-06-28 10:51:15 INFO  org.hibernate.validator.internal.util.Version 21 <clinit> - HV000001: Hibernate Validator 8.0.0.Final
+2025-06-28 10:51:16 INFO  org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl 45 getIsolatedConnection - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@63829917] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-28 10:51:16 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator 51 initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-06-28 10:51:16 INFO  persistence.repository.RepoJucatoriHibernate 100 findByNume - Found Jucator with nume Emi: Entity{id=1}
+2025-06-28 10:51:16 INFO  server.ServiceImpl 47 logIn - Jucator logged in: Emi
+2025-06-28 10:51:17 INFO  server.ServiceImpl 62 getJocuriByJucator - Getting games for jucator: Emi
+2025-06-28 10:51:17 INFO  persistence.repository.RepoJocuriHibernate 90 findByJucator - Finding Jocuri by Jucator: Entity{id=1}
+2025-06-28 10:51:17 INFO  server.ServiceImpl 64 getJocuriByJucator - Found 1 games for jucator
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset
+2025-06-28 10:51:28 ERROR network.object_protocol.ServicesProxy$ReaderThread 123 run - Reading error java.net.SocketException: Connection reset

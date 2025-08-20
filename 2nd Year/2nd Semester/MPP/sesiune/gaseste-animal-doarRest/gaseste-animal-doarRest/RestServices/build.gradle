@@ -29,18 +29,21 @@ dependencies {
     // JDBC
     implementation 'org.xerial:sqlite-jdbc:3.42.0.0'
 
-    // ✅ Log4j2 (complet)
+    //  Log4j2 (complet)
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
     implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
     implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0' // SLF4J bridge
 
-    // ✅ Opțional (dacă ai configurație via YAML)
+    //  Opțional (dacă ai configurație via YAML)
     // implementation 'org.apache.logging.log4j:log4j-layout-template-json:2.20.0'
 
     // Testare
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.hibernate.orm:hibernate-community-dialects:6.4.4.Final'
+
 }
 
 test {

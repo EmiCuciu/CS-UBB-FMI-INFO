@@ -1,4 +1,4 @@
-package persistence;
+package persistence.repository;
 
 import domain.Incercare;
 import domain.Joc;

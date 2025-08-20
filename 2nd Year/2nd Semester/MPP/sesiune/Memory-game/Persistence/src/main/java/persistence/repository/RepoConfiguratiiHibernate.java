@@ -1,4 +1,4 @@
-package persistence;
+package persistence.repository;
 
 import domain.Configuratie;
 import org.apache.logging.log4j.LogManager;
@@ -77,6 +77,7 @@ public class RepoConfiguratiiHibernate implements IRepoConfiguratii {
             tx.commit();
         } catch (Exception e) {
             logger.error("Error updating Configuratie: {}", e.getMessage());
+            throw new RuntimeException("Failed to update configuration: " + e.getMessage(), e);
         }
     }
 }

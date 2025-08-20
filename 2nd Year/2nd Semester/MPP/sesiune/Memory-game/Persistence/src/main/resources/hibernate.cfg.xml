@@ -4,14 +4,15 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
-        <property name="hibernate.connection.url">jdbc:sqlite:./JocAnimaleMPP</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:/C:/Users/emicu/Desktop/databases/memory-game.db</property>
         <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
 
-        <!--<mapping class="domain.Joc"/>-->
         <mapping class="domain.Jucator"/>
-        <!--<mapping class="domain.Configuratie"/>
-        <mapping class="domain.Incercare"/>-->
+        <mapping class="domain.Cuvant"/>
+        <mapping class="domain.Configuratie"/>
+        <mapping class="domain.Joc"/>
+        <mapping class="domain.Incercare"/>
     </session-factory>
 </hibernate-configuration>

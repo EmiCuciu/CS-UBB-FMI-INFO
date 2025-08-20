@@ -11,7 +11,7 @@ import rest.GameRestService;
 import services.ServiceException;
 
 @RestController
-@RequestMapping("/api/configurations")
+@RequestMapping("/api/configuratii")
 public class ConfigurationController {
     private static final Logger logger = LogManager.getLogger();
 
