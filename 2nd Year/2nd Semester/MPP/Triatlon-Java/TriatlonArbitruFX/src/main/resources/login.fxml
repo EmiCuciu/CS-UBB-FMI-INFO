@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="triatlon.arbitru.gui.LoginController">
+    <VBox alignment="CENTER" layoutX="150.0" layoutY="50.0" spacing="20.0" AnchorPane.leftAnchor="150.0"
+          AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <Label text="Triatlon Competition Login">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="usernameField" promptText="Username"/>
+        <PasswordField fx:id="passwordField" promptText="Password"/>
+        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="100.0"
+                text="Login"/>
+    </VBox>
+    <Button fx:id="signUpButton" layoutX="270.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleSignUp"
+            prefHeight="0.0" prefWidth="60.0" text="Sign Up"/>
+</AnchorPane>
