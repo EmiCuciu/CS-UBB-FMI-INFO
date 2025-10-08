@@ -20,6 +20,120 @@
 					"name": "UseCaseDiagram",
 					"ownedViews": [
 						{
+							"_type": "UMLUseCaseSubjectView",
+							"_id": "AAAAAAGVxZcXU3hs/BQ=",
+							"_parent": {
+								"$ref": "AAAAAAGVxZUys3dpWgE="
+							},
+							"model": {
+								"$ref": "AAAAAAGVxZcXU3hqNUw="
+							},
+							"subViews": [
+								{
+									"_type": "UMLNameCompartmentView",
+									"_id": "AAAAAAGVxZcXU3htuQU=",
+									"_parent": {
+										"$ref": "AAAAAAGVxZcXU3hs/BQ="
+									},
+									"model": {
+										"$ref": "AAAAAAGVxZcXU3hqNUw="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGVxZcXU3huzq4=",
+											"_parent": {
+												"$ref": "AAAAAAGVxZcXU3htuQU="
+											},
+											"visible": false,
+											"fillColor": "#C6C6C6",
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 448,
+											"top": 64,
+											"height": 13
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGVxZcXU3hvVOw=",
+											"_parent": {
+												"$ref": "AAAAAAGVxZcXU3htuQU="
+											},
+											"fillColor": "#C6C6C6",
+											"font": "Arial;13;1",
+											"parentStyle": true,
+											"left": 229,
+											"top": 39,
+											"width": 783,
+											"height": 13,
+											"text": "Sistem"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGVxZcXU3hwE1M=",
+											"_parent": {
+												"$ref": "AAAAAAGVxZcXU3htuQU="
+											},
+											"visible": false,
+											"fillColor": "#C6C6C6",
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 221,
+											"top": 46,
+											"width": 783,
+											"height": 13,
+											"text": "(from Model)"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGVxZcXU3hxwzM=",
+											"_parent": {
+												"$ref": "AAAAAAGVxZcXU3htuQU="
+											},
+											"visible": false,
+											"fillColor": "#C6C6C6",
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 165,
+											"top": -2,
+											"width": 575,
+											"height": 13,
+											"horizontalAlignment": 1
+										}
+									],
+									"fillColor": "#C6C6C6",
+									"font": "Arial;13;0",
+									"parentStyle": true,
+									"left": 224,
+									"top": 32,
+									"width": 793,
+									"height": 25,
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGVxZcXU3huzq4="
+									},
+									"nameLabel": {
+										"$ref": "AAAAAAGVxZcXU3hvVOw="
+									},
+									"namespaceLabel": {
+										"$ref": "AAAAAAGVxZcXU3hwE1M="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGVxZcXU3hxwzM="
+									}
+								}
+							],
+							"fillColor": "#C6C6C6",
+							"font": "Arial;13;0",
+							"parentStyle": false,
+							"left": 224,
+							"top": 32,
+							"width": 792,
+							"height": 792,
+							"nameCompartment": {
+								"$ref": "AAAAAAGVxZcXU3htuQU="
+							}
+						},
+						{
 							"_type": "UMLActorView",
 							"_id": "AAAAAAGVxZaac3gWCrs=",
 							"_parent": {
@@ -417,120 +531,6 @@
 							},
 							"templateParameterCompartment": {
 								"$ref": "AAAAAAGVxZboq3hLSX0="
-							}
-						},
-						{
-							"_type": "UMLUseCaseSubjectView",
-							"_id": "AAAAAAGVxZcXU3hs/BQ=",
-							"_parent": {
-								"$ref": "AAAAAAGVxZUys3dpWgE="
-							},
-							"model": {
-								"$ref": "AAAAAAGVxZcXU3hqNUw="
-							},
-							"subViews": [
-								{
-									"_type": "UMLNameCompartmentView",
-									"_id": "AAAAAAGVxZcXU3htuQU=",
-									"_parent": {
-										"$ref": "AAAAAAGVxZcXU3hs/BQ="
-									},
-									"model": {
-										"$ref": "AAAAAAGVxZcXU3hqNUw="
-									},
-									"subViews": [
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGVxZcXU3huzq4=",
-											"_parent": {
-												"$ref": "AAAAAAGVxZcXU3htuQU="
-											},
-											"visible": false,
-											"fillColor": "#C6C6C6",
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 448,
-											"top": 64,
-											"height": 13
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGVxZcXU3hvVOw=",
-											"_parent": {
-												"$ref": "AAAAAAGVxZcXU3htuQU="
-											},
-											"fillColor": "#C6C6C6",
-											"font": "Arial;13;1",
-											"parentStyle": true,
-											"left": 229,
-											"top": 39,
-											"width": 783,
-											"height": 13,
-											"text": "Sistem"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGVxZcXU3hwE1M=",
-											"_parent": {
-												"$ref": "AAAAAAGVxZcXU3htuQU="
-											},
-											"visible": false,
-											"fillColor": "#C6C6C6",
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 221,
-											"top": 46,
-											"width": 783,
-											"height": 13,
-											"text": "(from Model)"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGVxZcXU3hxwzM=",
-											"_parent": {
-												"$ref": "AAAAAAGVxZcXU3htuQU="
-											},
-											"visible": false,
-											"fillColor": "#C6C6C6",
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 165,
-											"top": -2,
-											"width": 575,
-											"height": 13,
-											"horizontalAlignment": 1
-										}
-									],
-									"fillColor": "#C6C6C6",
-									"font": "Arial;13;0",
-									"parentStyle": true,
-									"left": 224,
-									"top": 32,
-									"width": 793,
-									"height": 25,
-									"stereotypeLabel": {
-										"$ref": "AAAAAAGVxZcXU3huzq4="
-									},
-									"nameLabel": {
-										"$ref": "AAAAAAGVxZcXU3hvVOw="
-									},
-									"namespaceLabel": {
-										"$ref": "AAAAAAGVxZcXU3hwE1M="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAGVxZcXU3hxwzM="
-									}
-								}
-							],
-							"fillColor": "#C6C6C6",
-							"font": "Arial;13;0",
-							"parentStyle": false,
-							"left": 224,
-							"top": 32,
-							"width": 792,
-							"height": 792,
-							"nameCompartment": {
-								"$ref": "AAAAAAGVxZcXU3htuQU="
 							}
 						},
 						{
@@ -11641,9 +11641,9 @@
 													"parentStyle": true,
 													"left": 70.55908203125,
 													"top": 29,
-													"width": 116.94287109375,
+													"width": 62.8037109375,
 													"height": 13,
-													"text": "Diagrama de Secventa"
+													"text": "Interaction1"
 												},
 												{
 													"_type": "LabelView",
@@ -14019,5 +14019,6 @@
 				}
 			]
 		}
-	]
+	],
+	"documentVersion": 1
 }
