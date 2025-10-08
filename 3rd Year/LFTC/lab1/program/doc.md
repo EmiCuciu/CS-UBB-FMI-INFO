@@ -10,6 +10,42 @@ ales ca subset al unui limbaj existent.
 
 ## 1) Specificarea minilibajului
 
+```
+<program>            ::= <header><main_block>
+<header>             ::= "#include<iostream>"
+<main_block>         ::= "int main()" "{" <lista_instructiuni> "}"
+<lista_instructiuni> ::= <instructiune> | <instructiune> <lista_instructiuni>
+<instructiune>       ::= <declarare> ";" |   
+                         <atribuire> ";" |
+                         <instr_citire> ";"   |
+                         <instr_iesire> ";"    |
+                         <instr_if>   |
+                         <instr_while> 
+<declarare>          ::= <tip> ID 
+<atribuire>          ::= ID "<-" <expresie>  
+<instr_citire>       ::= "hear" ">>" ID 
+<instr_iesire>       ::= "speak" "<<" ID 
+<instr_if>           ::= "maybe" "(" <expresie> ")" "{" <lista_instructiuni> "}" "else" "{" <lista_instructiuni> "}"
+<instr_while>        ::= "loop" "(" <expresie> ")" "{" <lista_instructiuni> "}"
+
+<expresie>           ::= <operand> | <operand> <operatie> <expresie>
+<operand>            ::= ID | CONST
+<operatie>           ::= "+" | "-" | "*" | "/" | "%" | "<" | "<=" | ">" | ">=" | "==" | "!="
+<tip>                ::= "int" | "double" | "float" | "string" | "word"
+
+ID                   ::= <litera> | <litera> <cifra> | <litera> "_"
+CONST                ::= <int_const> | <float_const> | <string_const>
+
+<litera>             ::= "a" | ... | "z" | "A" | ... | "Z"
+<cifra>              ::= "0" | ... | "9"
+
+<int_const>          ::= <cifra> | <int_const>
+<float_const>        ::= <int_const> "." <int_const>
+<string_const>       ::= '"' <sir_caractere> '"'
+<sir_caractere>      ::= <caracter> | <caracter> <sir_caractere>
+<caracter>           ::= <litera> | <cifra> | " " | "." | ","
+```
+
 ### Tipuri de date:
 
 1. Integer: `int` numere intregi
@@ -43,7 +79,7 @@ loop (conditie) {
 }
 ```
 
-### Restrictii identificatori si constante:
+### Restrictii identificatori :
 
 - pot contine: litere, cifre, underscore
 - trebuie neaparat **_sa inceapa cu o litera_**
@@ -57,6 +93,8 @@ limbajul original:
 
 ```
 #include <iostream>
+
+using namespace std;
 
 float calculeaza_perimetrul(float raza)
 {
@@ -75,12 +113,12 @@ float calculeaza_aria(float raza)
 int main()
 {
     float raza;
-    std::cout << "Introdu raza: ";
-    std::cin >> raza;
+    cout << "Introdu raza: ";
+    cin >> raza;
     float rezultat = calculeaza_perimetrul(raza);
-    std::cout << "Circumferinta = " << rezultat;
+    cout << "Circumferinta = " << rezultat;
     rezultat = calculeaza_aria(raza);
-    std::cout << "\nAria = " << rezultat;
+    cout << "\nAria = " << rezultat;
     return 0;
 }
 
@@ -126,20 +164,22 @@ limbajul original:
 ```
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     int a, b, r;
-    std::cout << "Primul numar: ";
-    std::cin >> a;
-    std::cout << "Al doilea numar: ";
-    std::cin >> b;
+    cout << "Primul numar: ";
+    cin >> a;
+    cout << "Al doilea numar: ";
+    cin >> b;
     while (b != 0)
     {
         r = a % b;
         a = b;
         b = r;
     }
-    std::cout << "CMMDC : " << a;
+    cout << "CMMDC : " << a;
     return 0;
 }
 ```
@@ -158,9 +198,9 @@ int main()
     hear >> b;
     loop (b != 0)
     {
-        r = a % b;
-        a = b;
-        b = r;
+        r <- a % b;
+        a <- b;
+        b <- r;
     }
     speak << "CMMDC : " << a;
     return 0;
@@ -175,21 +215,23 @@ limbajul original:
 ```
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     int n, suma, x;
     suma = 0;
-    std::cout << "Introdu n: ";
-    std::cin >> n;
+    cout << "Introdu n: ";
+    cin >> n;
 
     while (n)
     {
-        std::cin >> x;
+        cin >> x;
         suma += x;
         n--;
     }
 
-    std::cout << "Suma este: " << suma;
+    cout << "Suma este: " << suma;
     return 0;
 }
 ```
@@ -222,13 +264,15 @@ A) primul program are erori atat in limbajul original cat si in MLP
 ```
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     integer n; // eroare
-    std::cin >> n;      // hear >> n (in MLP)
+    cin >> n;      // hear >> n (in MLP)
     while (n != 0)      // loop (n != 0) (in MLP)
     {
-        std::cout < "tema lftc \n";    //  speak < "tema lftc" (in MLP) | // eroare , trebuie << 
+        cout < "tema lftc \n";    //  speak < "tema lftc" (in MLP) | // eroare , trebuie << 
         n = n - 1;
     }
 
@@ -241,15 +285,17 @@ B) al doilea program are 2 erori in MLP, dar nu si in limbajul original
 ```
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
-    std::string nume; // word nume;
-    std::cin >> nume; // hear >> nume;
-    std::cout << nume << std::endl; //  speak << nume << std::endl; | EROARE - in MLP nu exista endl, doar "\n"
+    string nume; // word nume;
+    cin >> nume; // hear >> nume;
+    cout << nume << std::endl; //  speak << nume << std::endl; | EROARE - in MLP nu exista endl, doar "\n"
 
     int a, b;
-    std::cin >> a >> b; // hear >> a >> b;
-    std::cout << a + b; // speak << a + b |  EROARE - in MLP nu se pot executa operatii in instructiunea de iesire ( ex. "a + b")
+    cin >> a >> b; // hear >> a >> b;
+    cout << a + b; // speak << a + b |  EROARE - in MLP nu se pot executa operatii in instructiunea de iesire ( ex. "a + b")
 
     return 0;
 }
