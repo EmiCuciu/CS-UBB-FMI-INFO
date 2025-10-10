@@ -20,13 +20,15 @@ ales ca subset al unui limbaj existent.
                          <instr_citire> ";"   |
                          <instr_iesire> ";"    |
                          <instr_if>   |
-                         <instr_while> 
+                         <instr_while>  |
+                         <instr_for>
 <declarare>          ::= <tip> ID 
 <atribuire>          ::= ID "<-" <expresie>  
 <instr_citire>       ::= "hear" ">>" ID 
 <instr_iesire>       ::= "speak" "<<" ID 
 <instr_if>           ::= "maybe" "(" <expresie> ")" "{" <lista_instructiuni> "}" "else" "{" <lista_instructiuni> "}"
 <instr_while>        ::= "loop" "(" <expresie> ")" "{" <lista_instructiuni> "}"
+<instr_for>          ::= "forloop" "(" <expresie> ")" "{" <lista_instructiuni> "}"
 
 <expresie>           ::= <operand> | <operand> <operatie> <expresie>
 <operand>            ::= ID | CONST
@@ -34,7 +36,7 @@ ales ca subset al unui limbaj existent.
 <tip>                ::= "int" | "double" | "float" | "string" | "word"
 
 ID                   ::= <litera> | <litera> <cifra> | <litera> "_"
-CONST                ::= <int_const> | <float_const> | <string_const>
+CONST                ::= <int_const> | <float_const>
 
 <litera>             ::= "a" | ... | "z" | "A" | ... | "Z"
 <cifra>              ::= "0" | ... | "9"
@@ -83,7 +85,6 @@ loop (conditie) {
 
 - pot contine: litere, cifre, underscore
 - trebuie neaparat **_sa inceapa cu o litera_**
-- nu pot fi identici cu cuvintele cheie (ex. int, for, return, class etc.)
 
 ## 2) Textele sursa a 3 mini-programe
 
