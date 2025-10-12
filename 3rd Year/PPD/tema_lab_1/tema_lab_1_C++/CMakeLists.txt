@@ -3,4 +3,11 @@ project(tema_lab_1_C__)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(tema_lab_1_C__ main.cpp)
+add_executable(tema_lab_1_C__ main.cpp
+        Utils.cpp
+        Utils.h
+        SecventialStatic.cpp
+        SecventialStatic.h
+        SecventialDinamic.cpp
+        SecventialDinamic.h
+)
