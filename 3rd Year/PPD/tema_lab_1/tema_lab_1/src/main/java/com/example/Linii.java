@@ -36,6 +36,7 @@ public class Linii {
             startingRow = endingRow;
         }
 
+        // asteptam toate thread-urile sa termine executia
         for (int thNr = 0; thNr < p; thNr++) {
             threads[thNr].join();
         }
