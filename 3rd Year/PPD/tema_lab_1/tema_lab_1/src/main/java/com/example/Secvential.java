@@ -29,7 +29,7 @@ public class Secvential {
 
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < n; j++) {
-                        int ii = row - offset + i;
+                        int ii = row - offset + i;  // care rand din matrice ii corespunde kernel-ului
                         int jj = col - offset + j;
 
                         //bordam
