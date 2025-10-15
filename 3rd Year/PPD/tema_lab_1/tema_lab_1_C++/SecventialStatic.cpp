@@ -40,7 +40,7 @@ int (& SecventialStatic::run())[10][10]
         }
 
     writeToFile(
-        "../data/outputSecventialStatic.txt",
+        "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialStatic.txt",
         resultMatrix);
 
     return resultMatrix;

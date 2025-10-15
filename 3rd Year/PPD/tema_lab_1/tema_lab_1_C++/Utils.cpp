@@ -46,7 +46,6 @@ bool Utils::compareFiles(const string& file1, const string& file2)
     }
 
     string line1, line2;
-    int lineNr = 0;
 
     vector<string> lines1, lines2;
 
