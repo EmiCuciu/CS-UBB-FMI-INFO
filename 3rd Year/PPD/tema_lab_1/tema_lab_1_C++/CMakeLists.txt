@@ -10,4 +10,12 @@ add_executable(tema_lab_1_C__ main.cpp
         SecventialStatic.h
         SecventialDinamic.cpp
         SecventialDinamic.h
+        LiniiStatic.cpp
+        LiniiStatic.h
+        LiniiDinamic.cpp
+        LiniiDinamic.h
+        ColoaneStatic.cpp
+        ColoaneStatic.h
+        ColoaneDinamic.cpp
+        ColoaneDinamic.h
 )

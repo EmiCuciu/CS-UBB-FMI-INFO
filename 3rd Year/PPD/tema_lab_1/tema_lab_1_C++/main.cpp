@@ -1,22 +1,19 @@
-#include <chrono>
 #include <iostream>
 #include <vector>
-
-#include "SecventialDinamic.h"
-#include "SecventialStatic.h"
+#include <chrono>
 #include "Utils.h"
+#include "SecventialStatic.h"
+#include "SecventialDinamic.h"
+#include "LiniiStatic.h"
+#include "LiniiDinamic.h"
+#include "ColoaneStatic.h"
+#include "ColoaneDinamic.h"
 
 using namespace std;
 
-int main()
-{
-    int N, M, n, p;
-    vector<vector<int>> matrix, convMatrix;
-
-    Utils::readData("../data/date.txt", N, M,
-                    n, p, matrix, convMatrix);
-
+double try_secvential_static(int N, int M, int n, const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
     int staticMatrix[10][10]{}, staticConv[5][5]{};
+
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < M; ++j)
             staticMatrix[i][j] = matrix[i][j];
@@ -24,27 +21,138 @@ int main()
         for (int j = 0; j < n; ++j)
             staticConv[i][j] = convMatrix[i][j];
 
-    SecventialStatic staticSolver(N, M, n, staticMatrix, staticConv);
+    SecventialStatic solver(N, M, n, staticMatrix, staticConv);
+
     auto start = chrono::high_resolution_clock::now();
-    auto& staticResult = staticSolver.run();
+    solver.run();
     auto end = chrono::high_resolution_clock::now();
+
     chrono::duration<double, milli> duration = end - start;
-    cout << "Timpul de executie pentru Secvential Static: " << duration.count() << " ms\n";
+    return duration.count();
+}
 
-
-    SecventialDinamic dynamicSolver(N, M, n);
-    start = chrono::high_resolution_clock::now();
+double try_secvential_dinamic(const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
+    auto start = chrono::high_resolution_clock::now();
     SecventialDinamic::run(matrix, convMatrix);
-    end = chrono::high_resolution_clock::now();
-    duration = end - start;
-    cout << "Timpul de executie pentru Secvential Dinamic: " << duration.count() << " ms\n";
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
+}
+
+double try_linii_static(int N, int M, int n, int p, const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
+    int staticMatrix[10][10]{}, staticConv[5][5]{};
+
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < M; ++j)
+            staticMatrix[i][j] = matrix[i][j];
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            staticConv[i][j] = convMatrix[i][j];
+
+    LiniiStatic solver(N, M, n, p, staticMatrix, staticConv);
+
+    auto start = chrono::high_resolution_clock::now();
+    solver.run();
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
+}
+
+double try_linii_dinamic(int N, int M, int n, int p, const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
+    LiniiDinamic solver(N, M, n, p);
+    solver.loadData(matrix, convMatrix);
+
+    auto start = chrono::high_resolution_clock::now();
+    solver.run();
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
+}
+
+double try_coloane_static(int N, int M, int n, int p, const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
+    int staticMatrix[10][10]{}, staticConv[5][5]{};
+
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < M; ++j)
+            staticMatrix[i][j] = matrix[i][j];
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            staticConv[i][j] = convMatrix[i][j];
+
+    ColoaneStatic solver(N, M, n, p, staticMatrix, staticConv);
+
+    auto start = chrono::high_resolution_clock::now();
+    solver.run();
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
+}
+
+double try_coloane_dinamic(int N, int M, int n, int p, const vector<vector<int>>& matrix, const vector<vector<int>>& convMatrix) {
+    ColoaneDinamic solver(N, M, n, p);
+    solver.loadData(matrix, convMatrix);
+
+    auto start = chrono::high_resolution_clock::now();
+    solver.run();
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
+}
+
+void secvential()
+{
+    int N, M, n, p;
+    vector<vector<int>> matrix, convMatrix;
+    Utils::readData("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/date.txt", N, M, n, p, matrix, convMatrix);
+
+    double t_static = try_secvential_static(N, M, n, matrix, convMatrix);
+    double t_dynamic = try_secvential_dinamic(matrix, convMatrix);
+    Utils::compareFiles("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialStatic.txt", "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialDinamic.txt");
+    cout << "Timp static: " << t_static << " ms | Timp dinamic: " << t_dynamic << " ms\n";
+}
+
+void linii()
+{
+    int N, M, n, p;
+    vector<vector<int>> matrix, convMatrix;
+    Utils::readData("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/date.txt", N, M, n, p, matrix, convMatrix);
+
+    double t_linii_static = try_linii_static(N, M, n, p, matrix, convMatrix);
+    double t_linii_dinamic = try_linii_dinamic(N, M, n, p, matrix, convMatrix);
+    Utils::compareFiles("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputLiniiStatic.txt", "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputLiniiDinamic.txt");
+    cout << "Timp static: " << t_linii_static << " ms | Timp dinamic: " << t_linii_dinamic << " ms\n";
+
+}
+
+void coloane()
+{
+    int N, M, n, p;
+    vector<vector<int>> matrix, convMatrix;
+    Utils::readData("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/date.txt", N, M, n, p, matrix, convMatrix);
 
 
-    bool areEqual = Utils::compareFiles("../data/outputSecventialStatic.txt", "../data/outputSecventialDinamic.txt");
-    if (areEqual)
-        cout << "Identice.\n";
-    else
-        cout << "Diferite.\n";
+    double t_coloane_static = try_coloane_static(N, M, n, p, matrix, convMatrix);
+    double t_coloane_dinamic = try_coloane_dinamic(N, M, n, p, matrix, convMatrix);
+    Utils::compareFiles("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++//data/outputColoaneStatic.txt", "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputColoaneDinamic.txt");
+    cout << "Timp static: " << t_coloane_static << " ms | Timp dinamic: " << t_coloane_dinamic << " ms\n";
+}
+int main(int argc, char* argv[]) {
+
+    int N, M, n, p;
+    vector<vector<int>> matrix, convMatrix;
+    Utils::readData("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/date.txt", N, M, n, p, matrix, convMatrix);
+
+
+    // double t_static = try_secvential_static(N, M, n, matrix, convMatrix);
+    double t_dynamic = try_secvential_dinamic(matrix, convMatrix);
+    Utils::compareFiles("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialStatic.txt", "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialDinamic.txt");
+    cout << t_dynamic;
+
 
     return 0;
 }
