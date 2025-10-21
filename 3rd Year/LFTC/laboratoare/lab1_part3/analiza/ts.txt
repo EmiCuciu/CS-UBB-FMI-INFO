@@ -1,0 +1,9 @@
+Poz_TS  Atom_lexical
+----------------------
+0       a
+1       b
+2       r
+3       "Primul numar: "
+4       "Al doilea numar: "
+5       0
+6       "CMMDC : "
