@@ -1,7 +1,0 @@
-{
-  "name": "firstApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}

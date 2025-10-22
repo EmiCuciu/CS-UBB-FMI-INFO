@@ -6,7 +6,7 @@
 #include <fstream>
 
 ColoaneStatic::ColoaneStatic(int N, int M, int n, int p,
-                             const int srcMatrix[10][10], const int srcConv[5][5])
+                             const int srcMatrix[1000][10], const int srcConv[5][5])
     : N(N), M(M), n(n), p(p) {
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < M; ++j)
@@ -54,12 +54,12 @@ void ColoaneStatic::run() {
     for (auto& th : threads)
         th.join();
 
-    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputColoaneStatic.txt", resultMatrix);
+    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/cmake-build-release/outputColoaneStatic.txt", resultMatrix);
 }
 
-void ColoaneStatic::writeToFile(const char* path, int arr[10][10]) {
+void ColoaneStatic::writeToFile(const char* path, int arr[1000][10]) {
     std::ofstream fout(path);
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 1000; ++i) {
         for (int j = 0; j < 10; ++j)
             fout << arr[i][j] << " ";
         fout << "\n";

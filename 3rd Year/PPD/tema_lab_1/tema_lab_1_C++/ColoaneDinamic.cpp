@@ -25,7 +25,8 @@ void ColoaneDinamic::allocate() {
         convMatrix[i] = new int[n];
 }
 
-void ColoaneDinamic::deallocate() {
+void ColoaneDinamic::deallocate() const
+{
     for (int i = 0; i < N; ++i) {
         delete[] matrix[i];
         delete[] resultMatrix[i];
@@ -38,7 +39,8 @@ void ColoaneDinamic::deallocate() {
     delete[] convMatrix;
 }
 
-void ColoaneDinamic::loadData(const std::vector<std::vector<int>>& mat, const std::vector<std::vector<int>>& conv) {
+void ColoaneDinamic::loadData(const std::vector<std::vector<int>>& mat, const std::vector<std::vector<int>>& conv) const
+{
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < M; ++j)
             matrix[i][j] = mat[i][j];
@@ -47,7 +49,8 @@ void ColoaneDinamic::loadData(const std::vector<std::vector<int>>& mat, const st
             convMatrix[i][j] = conv[i][j];
 }
 
-void ColoaneDinamic::worker(int startCol, int endCol) {
+void ColoaneDinamic::worker(int startCol, int endCol) const
+{
     int offset = n / 2;
 
     for (int col = startCol; col < endCol; ++col)
@@ -82,7 +85,7 @@ void ColoaneDinamic::run() {
     for (auto& th : threads)
         th.join();
 
-    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputColoaneDinamic.txt", resultMatrix, N, M);
+    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/cmake-build-release/outputColoaneDinamic.txt", resultMatrix, N, M);
 }
 
 void ColoaneDinamic::writeToFile(const char* path, int** arr, int N, int M) {

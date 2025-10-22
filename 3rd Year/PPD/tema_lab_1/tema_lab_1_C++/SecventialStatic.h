@@ -9,12 +9,12 @@
 class SecventialStatic
 {
     int N, M, n;
-    int matrix[10][10]{}, convMatrix[5][5]{}, resultMatrix[10][10]{};
+    int matrix[1000][10]{}, convMatrix[5][5]{}, resultMatrix[1000][10]{};
 
 public:
-    SecventialStatic(int N, int M, int n, const int srcMatrix[10][10], const int srcConv[5][5]);
-    int (& run())[10][10];
-    static void writeToFile(const char* path, int arr[10][10]);
+    SecventialStatic(int N, int M, int n, const int srcMatrix[1000][10], const int srcConv[5][5]);
+    int (& run())[1000][10];
+    static void writeToFile(const char* path, int arr[1000][10], int N, int M);
 };
 
 
