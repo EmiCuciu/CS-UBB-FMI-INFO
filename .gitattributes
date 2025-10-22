@@ -1,13 +1,11 @@
 # Exclude fișiere generate
 *.proto linguist-generated=true
 *.log linguist-generated=true
-*.zip linguist-generated=true
-
+*.zip filter=lfs diff=lfs merge=lfs -text
 # Exclude foldere de build Java/.NET
 **/target/** linguist-generated=true
 **/bin/** linguist-generated=true
 **/obj/** linguist-generated=true
-
 # Alte foldere ne-relevante
 **/.idea/** linguist-generated=true
 **/.vs/** linguist-generated=true
