@@ -81,7 +81,7 @@ void LiniiDinamic::run() {
     for (auto& th : threads)
         th.join();
 
-    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputLiniiDinamic.txt", resultMatrix, N, M);
+    writeToFile("D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/cmake-build-release/outputLiniiDinamic.txt", resultMatrix, N, M);
 }
 
 void LiniiDinamic::writeToFile(const char* path, int** arr, int N, int M) {

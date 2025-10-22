@@ -66,7 +66,8 @@ void SecventialDinamic::run(const std::vector<std::vector<int>>& srcMatrix,
         }
 
     writeToFile(
-        "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialDinamic.txt", secventialDinamic.resultMatrix, N, M);
+        "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/cmake-build-release/outputSecventialDinamic.txt",
+        secventialDinamic.resultMatrix, N, M);
 }
 
 void SecventialDinamic::writeToFile(const char* path, int** arr, int N, int M)

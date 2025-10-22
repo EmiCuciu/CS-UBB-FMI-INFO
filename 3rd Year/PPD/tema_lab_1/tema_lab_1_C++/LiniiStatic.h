@@ -10,13 +10,13 @@
 
 class LiniiStatic {
     int N, M, n, p;
-    int matrix[10][10]{}, convMatrix[5][5]{}, resultMatrix[10][10]{};
+    int matrix[1000][10]{}, convMatrix[5][5]{}, resultMatrix[1000][10]{};
 
 public:
-    LiniiStatic(int N, int M, int n, int p, const int srcMatrix[10][10], const int srcConv[5][5]);
+    LiniiStatic(int N, int M, int n, int p, const int srcMatrix[1000][10], const int srcConv[5][5]);
     void run();
     void worker(int startRow, int endRow);
-    static void writeToFile(const char* path, int arr[10][10]);
+    static void writeToFile(const char* path, int arr[1000][10], int N, int M);
 };
 
 

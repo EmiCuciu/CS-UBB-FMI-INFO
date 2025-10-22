@@ -31,19 +31,19 @@ public class Main {
         System.out.println("threads: " + p);
 
         //! doar prima rulare
-//        Utils.generateMatrix(N, M, n, p);
+        Utils.generateMatrix(N, M, n, p);
 
         matrix = Utils.getMatrix();
         convMatrix = Utils.getConvMatrix();
 
 
 //?        SECVENTIAL
-//        long startTime = System.nanoTime();
-//        Secvential secvential = new Secvential(N, M, n, matrix, convMatrix);
-//        int[][] result = secvential.run();
-//        long endTime = System.nanoTime();
-//
-//        Utils.writeToFile(result);
+        long startTime = System.nanoTime();
+        Secvential secvential = new Secvential(N, M, n, matrix, convMatrix);
+        int[][] result = secvential.run();
+        long endTime = System.nanoTime();
+
+        Utils.writeToFile(result);
 
 
 
@@ -62,16 +62,16 @@ public class Main {
 
 
 //?         Coloane
-        long startTime = System.nanoTime();
-        Coloane coloane = new Coloane(N, M, n, p, matrix, convMatrix);
-        int[][] result = coloane.run();
-        long endTime = System.nanoTime();
-
-        Utils.writeToFile(result);
-
-        if (!Utils.compareOutputFiles()) {
-            System.err.println("Outputurile nu coincid");
-        }
+//        long startTime = System.nanoTime();
+//        Coloane coloane = new Coloane(N, M, n, p, matrix, convMatrix);
+//        int[][] result = coloane.run();
+//        long endTime = System.nanoTime();
+//
+//        Utils.writeToFile(result);
+//
+//        if (!Utils.compareOutputFiles()) {
+//            System.err.println("Outputurile nu coincid");
+//        }
 
 
         System.out.println((double) (endTime - startTime) / 1E6);

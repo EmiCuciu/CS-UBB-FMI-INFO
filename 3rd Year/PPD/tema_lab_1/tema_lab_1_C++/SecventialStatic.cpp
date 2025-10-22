@@ -5,7 +5,7 @@
 
 #include "SecventialStatic.h"
 
-SecventialStatic::SecventialStatic(int N, int M, int n, const int srcMatrix[10][10], const int srcConv[5][5])
+SecventialStatic::SecventialStatic(int N, int M, int n, const int srcMatrix[1000][10], const int srcConv[5][5])
     : N(N), M(M), n(n)
 {
     for (int i = 0; i < N; ++i)
@@ -16,7 +16,7 @@ SecventialStatic::SecventialStatic(int N, int M, int n, const int srcMatrix[10][
             convMatrix[i][j] = srcConv[i][j];
 }
 
-int (& SecventialStatic::run())[10][10]
+int (& SecventialStatic::run())[1000][10]
 {
     int offset = n / 2;
 
@@ -40,21 +40,21 @@ int (& SecventialStatic::run())[10][10]
         }
 
     writeToFile(
-        "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/data/outputSecventialStatic.txt",
-        resultMatrix);
+        "D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/PPD/tema_lab_1/tema_lab_1_C++/cmake-build-release/outputSecventialStatic.txt",
+        resultMatrix, N, M);
 
     return resultMatrix;
 }
 
-void SecventialStatic::writeToFile(const char* path, int arr[10][10])
+void SecventialStatic::writeToFile(const char* path, int arr[1000][10], int N, int M)
 {
     std::ofstream fout(path);
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < N; ++i)
     {
-        for (int j = 0; j < 10; ++j)
+        for (int j = 0; j < M; ++j)
         {
             fout << arr[i][j];
-            if (j < 10 - 1) fout << " ";
+            if (j < M - 1) fout << " ";
         }
         fout << "\n";
     }

@@ -12,13 +12,13 @@
 
 class ColoaneStatic {
     int N, M, n, p;
-    int matrix[10][10]{}, convMatrix[5][5]{}, resultMatrix[10][10]{};
+    int matrix[1000][10]{}, convMatrix[5][5]{}, resultMatrix[1000][10]{};
 
 public:
-    ColoaneStatic(int N, int M, int n, int p, const int srcMatrix[10][10], const int srcConv[5][5]);
+    ColoaneStatic(int N, int M, int n, int p, const int srcMatrix[1000][10], const int srcConv[5][5]);
     void run();
     void worker(int startCol, int endCol);
-    static void writeToFile(const char* path, int arr[10][10]);
+    static void writeToFile(const char* path, int arr[1000][10]);
 };
 
 

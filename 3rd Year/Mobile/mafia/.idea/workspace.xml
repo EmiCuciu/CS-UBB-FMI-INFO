@@ -5,17 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17201acb-79bb-44b2-b5eb-b9164f51c6c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mafia/capacitor.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/core/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/Mafiot.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotApi.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotEdit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mafia/src/todo/useItems.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/HashSymbolTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/HashSymbolTable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/Lexer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/analiza/fip.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/analiza/fip.txt" afterDir="false" />
@@ -49,13 +38,6 @@
       <change beforePath="$PROJECT_DIR$/../lab1/firstApp/tsconfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab1/firstApp/tsconfig.node.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab1/firstApp/vite.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/src/components/ExploreContainer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/src/components/ExploreContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mafia/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../my-node-server" beforeDir="false" afterPath="$PROJECT_DIR$/../my-node-server" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../my-node-server-auth" beforeDir="false" afterPath="$PROJECT_DIR$/../my-node-server-auth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/doc.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/doc.odt" afterDir="false" />
@@ -147,7 +129,7 @@
       <workItem from="1761025029965" duration="1210000" />
       <workItem from="1761120938463" duration="753000" />
       <workItem from="1761132190900" duration="3627000" />
-      <workItem from="1761135959478" duration="709000" />
+      <workItem from="1761135959478" duration="992000" />
     </task>
     <servers />
   </component>
