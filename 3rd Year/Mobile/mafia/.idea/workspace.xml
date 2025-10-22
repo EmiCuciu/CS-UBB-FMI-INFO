@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="17201acb-79bb-44b2-b5eb-b9164f51c6c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mafia/capacitor.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/core/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/Mafiot.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotEdit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotProps.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/MafiotProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mafia/src/todo/useItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/HashSymbolTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/HashSymbolTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/Lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/analiza/fip.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/analiza/fip.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/token_defs.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFTC/laboratoare/lab1_part3/token_defs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/.browserslistrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/capacitor.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/cypress.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/cypress/e2e/test.cy.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/cypress/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/cypress/support/commands.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/cypress/support/e2e.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/ionic.config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/public/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/components/ExploreContainer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/components/ExploreContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/pages/Home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/pages/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/theme/variables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/firstApp/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/src/components/ExploreContainer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/src/components/ExploreContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mafia/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mafia/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-node-server" beforeDir="false" afterPath="$PROJECT_DIR$/../my-node-server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-node-server-auth" beforeDir="false" afterPath="$PROJECT_DIR$/../my-node-server-auth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/doc.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/doc.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1/src/main/java/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1/src/main/java/com/example/data/date.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1/src/main/java/com/example/data/date.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/.idea/csv-editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneDinamic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneDinamic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneDinamic.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneDinamic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneStatic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneStatic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneStatic.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/ColoaneStatic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiDinamic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiDinamic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiStatic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiStatic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiStatic.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/LiniiStatic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialDinamic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialDinamic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialStatic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialStatic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialStatic.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/SecventialStatic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../PPD/tema_lab_1/tema_lab_1_C++/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EmiCuciu&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EmiCuciu/CS-UBB-FMI-INFO.git&quot;,
+    &quot;accountId&quot;: &quot;cdcfa452-6828-4ac5-9633-9d00c61af1fe&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="34MWG0sN9Z9I47L1NMYkm5qE63Z" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GithubRepositories/CS-UBB-FMI-INFO/3rd Year/Mobile/mafia&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\GithubRepositories\\CS-UBB-FMI-INFO\\3rd Year\\Mobile\\mafia\\mafia\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17201acb-79bb-44b2-b5eb-b9164f51c6c8" name="Changes" comment="" />
+      <created>1761023821983</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761023821983</updated>
+      <workItem from="1761023823067" duration="111000" />
+      <workItem from="1761025029965" duration="1210000" />
+      <workItem from="1761120938463" duration="753000" />
+      <workItem from="1761132190900" duration="3627000" />
+      <workItem from="1761135959478" duration="709000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
