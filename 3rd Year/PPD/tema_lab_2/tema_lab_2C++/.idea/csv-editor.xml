@@ -3,14 +3,7 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\cmake-build-debug\outC.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\cmake-build-release\outC.csv">
+        <entry key="/cmake-build-release/out.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
