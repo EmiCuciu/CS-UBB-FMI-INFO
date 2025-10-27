@@ -1,0 +1,20 @@
+<automat> ::=   <numar_stari> <stari>
+                <dimensiune_alfabet> <alfabet>
+                <numar_tranzitii> <tranzitii>
+                <stare_de_inceput> <numar_stari_finale> <stari_finale>
+
+<numar_stari> ::= CONST
+<stari> ::= <stare> { <stare> }
+<stare> ::= "q" DIGITS
+
+<dimensiune_alfabet> ::= CONST
+<alfabet> ::= <simbol> { <simbol> }
+<simbol> ::= "0" | "1" | "2" | ... | "a" | "b" | ...
+
+<numar_tranzitii> ::= CONST
+<tranzitii> ::= <tranzitie> { <tranzitie> }
+<tranzitie> ::= <stare> <simbol> <stare>
+
+<stare_de_inceput> ::= <stare>
+<numar_stari_finale> ::= CONST
+<stari_finale> ::= <stare> { <stare> }
