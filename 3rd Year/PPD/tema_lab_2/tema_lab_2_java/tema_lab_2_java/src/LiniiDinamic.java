@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -15,145 +17,125 @@ public class LiniiDinamic {
         this.convMatrix = new int[n][n];
     }
 
-    public void loadData(int[][] srcMatrix, int[][] srcConv) {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                matrix[i][j] = srcMatrix[i][j];
-            }
-        }
+    public void loadData(int[][] mat, int[][] conv) {
+        for (int i = 0; i < N; i++)
+            System.arraycopy(mat[i], 0, matrix[i], 0, M);
+        for (int i = 0; i < n; i++)
+            System.arraycopy(conv[i], 0, convMatrix[i], 0, n);
+    }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                convMatrix[i][j] = srcConv[i][j];
+    public void writeToFile(String path) throws IOException {
+        try (FileWriter fout = new FileWriter(path)) {
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++)
+                    fout.write(matrix[i][j] + " ");
+                fout.write("\n");
             }
         }
     }
 
-    private class Worker implements Runnable {
-        private final int threadId;
-        private final int totalThreads;
-        private final CyclicBarrier barrierStart;
-        private final CyclicBarrier barrierEnd;
-        private final int[] sharedPrev;
-        private final int[] sharedCur;
-        private final int[] sharedTemp;
+    private void calculateRow(int[] prev, int[] current, int[] next, int[] result) {
+        int offset = n / 2;
 
-        public Worker(int threadId, int totalThreads,
-                      CyclicBarrier barrierStart, CyclicBarrier barrierEnd,
-                      int[] sharedPrev, int[] sharedCur, int[] sharedTemp) {
-            this.threadId = threadId;
-            this.totalThreads = totalThreads;
-            this.barrierStart = barrierStart;
-            this.barrierEnd = barrierEnd;
-            this.sharedPrev = sharedPrev;
-            this.sharedCur = sharedCur;
-            this.sharedTemp = sharedTemp;
+        for (int col = 0; col < M; col++) {
+            long sum = 0;
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    int jj = col - offset + j;
+
+                    if (jj < 0) jj = 0;
+                    if (jj >= M) jj = M - 1;
+
+                    int val;
+                    if (i < offset)
+                        val = prev[jj];
+                    else if (i > offset)
+                        val = next[jj];
+                    else
+                        val = current[jj];
+
+                    sum += (long) val * convMatrix[i][j];
+                }
+            }
+
+            result[col] = (int) sum;
+        }
+    }
+
+    // 🔹 Thread-ul care procesează un subset de linii consecutive
+    private void worker(int t, int startRow, int endRow, CyclicBarrier barrier) {
+        int[] prevRow = new int[M];
+        int[] currentRow = new int[M];
+        int[] nextRow = new int[M];
+        int[] outRow = new int[M];
+        int[] bufferUp = new int[M];
+        int[] bufferDown = new int[M];
+
+        int upIdx = (startRow == 0) ? 0 : (startRow - 1);
+        int downIdx = (endRow < N) ? endRow : (N - 1);
+
+        System.arraycopy(matrix[upIdx], 0, bufferUp, 0, M);
+        System.arraycopy(matrix[downIdx], 0, bufferDown, 0, M);
+        System.arraycopy(bufferUp, 0, prevRow, 0, M);
+        System.arraycopy(matrix[startRow], 0, currentRow, 0, M);
+
+        if (startRow + 1 < endRow)
+            System.arraycopy(matrix[startRow + 1], 0, nextRow, 0, M);
+        else
+            System.arraycopy(bufferDown, 0, nextRow, 0, M);
+
+        try {
+            barrier.await();
+
+            for (int row = startRow; row < endRow; row++) {
+                calculateRow(prevRow, currentRow, nextRow, outRow);
+
+                System.arraycopy(outRow, 0, matrix[row], 0, M);
+
+                if (row + 1 < endRow) {
+                    int[] temp = prevRow;
+                    prevRow = currentRow;
+                    currentRow = nextRow;
+                    nextRow = temp;
+
+                    if (row + 2 < endRow)
+                        System.arraycopy(matrix[row + 2], 0, nextRow, 0, M);
+                    else
+                        System.arraycopy(bufferDown, 0, nextRow, 0, M);
+                }
+            }
+        } catch (InterruptedException | BrokenBarrierException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void run() {
+        Thread[] threads = new Thread[p];
+        CyclicBarrier barrier = new CyclicBarrier(p);
+
+        int rowsPerThread = N / p;
+        int extra = N % p;
+        int start = 0;
+
+        for (int t = 0; t < p; ++t) {
+            int end = start + rowsPerThread + (extra > 0 ? 1 : 0);
+            if (extra > 0) extra--;
+
+            final int threadId = t;
+            final int s = start, e = end;
+            threads[t] = new Thread(() -> worker(threadId, s, e, barrier));
+            threads[t].start();
+
+            start = end;
         }
 
-        @Override
-        public void run() {
-            int offset = n / 2;
-
-            // Calculate column range for this thread once
-            int colsPerThread = M / totalThreads;
-            int extra = M % totalThreads;
-            int startCol = threadId * colsPerThread + Math.min(threadId, extra);
-            int endCol = startCol + colsPerThread + (threadId < extra ? 1 : 0);
-
+        for (Thread th : threads) {
             try {
-                for (int row = 0; row < N; row++) {
-                    // Thread 0 prepares sharedCur
-                    if (threadId == 0) {
-                        for (int j = 0; j < M; j++) {
-                            sharedCur[j] = matrix[row][j];
-                        }
-                    }
-
-                    // Wait for sharedCur to be ready
-                    barrierStart.await();
-
-                    // Compute convolution for assigned columns
-                    for (int col = startCol; col < endCol; col++) {
-                        long sum = 0;
-
-                        for (int i = 0; i < n; i++) {
-                            for (int j = 0; j < n; j++) {
-                                int ii = row - offset + i;
-                                int jj = col - offset + j;
-
-                                // Clipping
-                                if (ii < 0) ii = 0;
-                                if (ii >= N) ii = N - 1;
-                                if (jj < 0) jj = 0;
-                                if (jj >= M) jj = M - 1;
-
-                                int val;
-                                if (ii < row) {
-                                    val = sharedPrev[jj];
-                                } else if (ii == row) {
-                                    val = sharedCur[jj];
-                                } else {
-                                    val = matrix[ii][jj];
-                                }
-
-                                sum += (long) val * convMatrix[i][j];
-                            }
-                        }
-
-                        sharedTemp[col] = (int) sum;
-                    }
-
-                    // Wait for all threads to finish computing
-                    barrierEnd.await();
-
-                    // Copy results back to matrix
-                    for (int col = startCol; col < endCol; col++) {
-                        matrix[row][col] = sharedTemp[col];
-                    }
-
-                    // Thread 0 updates sharedPrev for next iteration
-                    if (threadId == 0) {
-                        for (int j = 0; j < M; j++) {
-                            sharedPrev[j] = sharedCur[j];
-                        }
-                    }
-
-                    // Ensure sharedPrev is updated before next iteration
-                    barrierStart.await();
-                }
-            } catch (InterruptedException | BrokenBarrierException e) {
+                th.join();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void run() throws InterruptedException {
-        CyclicBarrier barrierStart = new CyclicBarrier(p);
-        CyclicBarrier barrierEnd = new CyclicBarrier(p);
-
-        int[] sharedPrev = new int[M];
-        int[] sharedCur = new int[M];
-        int[] sharedTemp = new int[M];
-
-        // Initialize sharedPrev = matrix[0]
-        for (int j = 0; j < M; j++) {
-            sharedPrev[j] = matrix[0][j];
-        }
-
-        Thread[] threads = new Thread[p];
-
-        for (int t = 0; t < p; t++) {
-            threads[t] = new Thread(new Worker(t, p, barrierStart, barrierEnd,
-                    sharedPrev, sharedCur, sharedTemp));
-            threads[t].start();
-        }
-
-        for (Thread thread : threads) {
-            thread.join();
-        }
-    }
-
-    public int[][] getMatrix() {
-        return matrix;
     }
 }
