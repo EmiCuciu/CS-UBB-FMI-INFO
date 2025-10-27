@@ -96,8 +96,8 @@ int main(int argc, char *argv[]) {
 
     int threads = stoi(argv[1]);
 
-    // const string& inputFile = date_10_10_3_2;
-    const string& inputFile = date_1000_1000_3_2;
+    const string& inputFile = date_10_10_3_2;
+    // const string& inputFile = date_1000_1000_3_2;
     // const string& inputFile = date_10000_10000_3_2;
 
     TestConfig config = getTestConfig(inputFile);

@@ -6,22 +6,29 @@
 
 using namespace std;
 
-class my_barrier {
+class my_barrier
+{
 public:
-    my_barrier(int count) : thread_count(count), counter(0), generation(0) {}
+    my_barrier(int count) : thread_count(count), counter(0), generation(0)
+    {
+    }
 
-    void wait() {
+    void wait()
+    {
         std::unique_lock<std::mutex> lk(m);
         int local_gen = generation;
 
         ++counter;
 
-        if (counter >= thread_count) {
+        if (counter >= thread_count)
+        {
             ++generation;
             counter = 0;
             cv.notify_all();
-        } else {
-            cv.wait(lk, [&]{ return local_gen != generation; });
+        }
+        else
+        {
+            cv.wait(lk, [&] { return local_gen != generation; });
         }
     }
 
@@ -33,20 +40,30 @@ private:
     int thread_count;
 };
 
-class LiniiDinamic {
+class LiniiDinamic
+{
     int N, M, n, p;
     int **matrix = nullptr, **convMatrix = nullptr;
+
+    // Vector partajat pentru salvarea frontierelor
+    // Dimensiune 2*p (sus, jos) x M (lățimea)
+    vector<vector<int>> savedBoundaries;
+
+    // Funcție helper pentru calculul unui rând
+    void calculateRow(const vector<int>& prev, const vector<int>& current,
+                      const vector<int>& next, vector<int>& result) const;
 
 public:
     LiniiDinamic(int N, int M, int n, int p);
     ~LiniiDinamic();
     void allocate();
     void deallocate() const;
-    void loadData(const vector<vector<int>> &mat, const vector<vector<int>> &conv) const;
+    void loadData(const vector<vector<int>>& mat, const vector<vector<int>>& conv) const;
     void run();
-    void writeToFile(const char *path) const;
-    void worker(int threadId, int totalThreads, my_barrier &barrierStart, my_barrier &barrierEnd,
-                vector<int> &sharedPrev, vector<int> &sharedCur, vector<int> &sharedTemp) const;
+    void writeToFile(const char* path) const;
+
+    // Am adăugat threadId (t) și referința la vectorul de frontiere
+    void worker(int t, int startRow, int endRow, my_barrier& barrier);
 };
 
 #endif //TEMA_LAB_2C___LINIIDINAMIC_H
