@@ -63,7 +63,6 @@ public class LiniiDinamic {
         }
     }
 
-    // 🔹 Thread-ul care procesează un subset de linii consecutive
     private void worker(int t, int startRow, int endRow, CyclicBarrier barrier) {
         int[] prevRow = new int[M];
         int[] currentRow = new int[M];
