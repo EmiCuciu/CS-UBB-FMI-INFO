@@ -2,29 +2,29 @@
 #include <fstream>
 
 LiniiDinamic::LiniiDinamic(const int N, const int M, const int n, const int p)
-    : N(N), M(M), n(n), p(p) {
+    : N(N), M(M), n(n), p(p)
+{
     allocate();
-    // Alocăm spațiul pentru frontiere.
-    // Fiecare thread 't' salvează linia 'start' la indexul 2*t
-    // și linia 'end-1' la indexul 2*t + 1
-    savedBoundaries.resize(2 * p, vector<int>(M));
 }
 
-LiniiDinamic::~LiniiDinamic() {
+LiniiDinamic::~LiniiDinamic()
+{
     deallocate();
 }
 
-void LiniiDinamic::allocate() {
-    matrix = new int *[N];
+void LiniiDinamic::allocate()
+{
+    matrix = new int*[N];
     for (int i = 0; i < N; i++)
         matrix[i] = new int[M];
 
-    convMatrix = new int *[n];
+    convMatrix = new int*[n];
     for (int i = 0; i < n; i++)
         convMatrix[i] = new int[n];
 }
 
-void LiniiDinamic::deallocate() const {
+void LiniiDinamic::deallocate() const
+{
     for (int i = 0; i < N; i++)
         delete[] matrix[i];
     delete[] matrix;
@@ -34,8 +34,9 @@ void LiniiDinamic::deallocate() const {
     delete[] convMatrix;
 }
 
-void LiniiDinamic::loadData(const vector<vector<int>> &mat,
-                            const vector<vector<int>> &conv) const {
+void LiniiDinamic::loadData(const vector<vector<int>>& mat,
+                            const vector<vector<int>>& conv) const
+{
     for (int i = 0; i < N; i++)
         for (int j = 0; j < M; j++)
             matrix[i][j] = mat[i][j];
@@ -44,100 +45,112 @@ void LiniiDinamic::loadData(const vector<vector<int>> &mat,
             convMatrix[i][j] = conv[i][j];
 }
 
+void LiniiDinamic::writeToFile(const char* path) const
+{
+    ofstream fout(path);
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+            fout << matrix[i][j] << " ";
+        fout << "\n";
+    }
+    fout.close();
+}
+
 void LiniiDinamic::calculateRow(const vector<int>& prev,
                                 const vector<int>& current,
                                 const vector<int>& next,
-                                vector<int>& result) const {
+                                vector<int>& result) const
+{
     int offset = n / 2;
 
-    for (int col = 0; col < M; col++) {
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+    for (int col = 0; col < M; col++)
+    {
+        long long sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
                 int jj = col - offset + j;
                 if (jj < 0) jj = 0;
                 if (jj >= M) jj = M - 1;
 
                 int val;
-                if (i < offset) {
+                if (i < offset)
+                {
                     val = prev[jj];
-                } else if (i > offset) {
+                }
+                else if (i > offset)
+                {
                     val = next[jj];
-                } else {
+                }
+                else
+                {
                     val = current[jj];
                 }
-                sum += val * convMatrix[i][j];
+                sum += (long long)val * convMatrix[i][j];
             }
         }
-        result[col] = sum;
+        result[col] = (int)sum;
     }
 }
 
 void LiniiDinamic::worker(int t, int startRow, int endRow, my_barrier &barrier) {
-    // PASUL 1: Copierea frontierelor proprii în vectorii auxiliari partajați
-    for (int j = 0; j < M; j++) {
-        savedBoundaries[2 * t][j] = matrix[startRow][j];
-        savedBoundaries[2 * t + 1][j] = matrix[endRow - 1][j];
-    }
-
-    // PASUL 2: Barieră de sincronizare
-    barrier.wait();
-
-    // PASUL 3: Actualizarea elementelor folosind vectorii auxiliari
-    // Folosim buffere locale O(M) pentru a rula algoritmul secvențial
-    // in-place pe bucata [startRow, endRow)
     vector<int> prevRow(M);
     vector<int> currentRow(M);
     vector<int> nextRow(M);
-    vector<int> newRow(M);
+    vector<int> outRow(M);
 
-    // Initializam prevRow cu frontiera de sus (de la thread-ul t-1)
-    if (t == 0) {
-        // Primul thread, border handling
-        prevRow = savedBoundaries[2 * t]; // Propria linie de start
+    vector<int> bufferUp(M), bufferDown(M);
+
+    int upIdx = (startRow == 0) ? 0 : (startRow - 1);
+    for (int j = 0; j < M; ++j)
+        bufferUp[j] = matrix[upIdx][j];
+
+    int downIdx = (endRow < N) ? endRow : (N - 1);
+    for (int j = 0; j < M; ++j)
+        bufferDown[j] = matrix[downIdx][j];
+
+    for (int j = 0; j < M; ++j)
+        prevRow[j] = bufferUp[j];
+    for (int j = 0; j < M; ++j)
+        currentRow[j] = matrix[startRow][j]; // prima linie din chunk
+
+    if (startRow + 1 < endRow) {
+        for (int j = 0; j < M; ++j)
+            nextRow[j] = matrix[startRow + 1][j];
     } else {
-        // Citim linia 'end-1' a thread-ului t-1
-        prevRow = savedBoundaries[2 * (t - 1) + 1];
+        for (int j = 0; j < M; ++j)
+            nextRow[j] = bufferDown[j];
     }
 
-    // Initializam currentRow cu prima linie proprie (pe care am salvat-o)
-    currentRow = savedBoundaries[2 * t];
+    barrier.wait();
 
-    for (int row = startRow; row < endRow; row++) {
-        // Citim linia urmatoare
-        if (row == endRow - 1) {
-            // Suntem la ultima linie, citim frontiera de jos (de la t+1)
-            if (t == p - 1) {
-                // Ultimul thread, border handling
-                nextRow = savedBoundaries[2 * t + 1]; // Propria linie de final
+    for (int row = startRow; row < endRow; ++row) {
+        calculateRow(prevRow, currentRow, nextRow, outRow);
+        for (int col = 0; col < M; ++col)
+            matrix[row][col] = outRow[col];
+
+        if (row + 1 < endRow) {
+            // rotate window
+            prevRow.swap(currentRow);
+            currentRow.swap(nextRow);
+
+            // load the new 'nextRow'
+            if (row + 2 < endRow) {
+                for (int col = 0; col < M; ++col)
+                    nextRow[col] = matrix[row + 2][col];
             } else {
-                // Citim linia 'start' a thread-ului t+1
-                nextRow = savedBoundaries[2 * (t + 1)];
-            }
-        } else if (row == endRow - 2) {
-            // Suntem la penultima linie, citim ultima (pe care am salvat-o)
-            nextRow = savedBoundaries[2 * t + 1];
-        } else {
-            // Linie internă, citim direct din matricea originală
-            for (int j = 0; j < M; j++) {
-                nextRow[j] = matrix[row + 1][j];
+                for (int col = 0; col < M; ++col)
+                    nextRow[col] = bufferDown[col];
             }
         }
-
-        // Calculam noul rand folosind prev, current, next (care sunt VALORI ORIGINALE)
-        calculateRow(prevRow, currentRow, nextRow, newRow);
-
-        // Suprascriem linia in matricea originala [cite: 4]
-        for (int j = 0; j < M; j++)
-            matrix[row][j] = newRow[j];
-
-        // Shiftam bufferele
-        prevRow = currentRow;
-        currentRow = nextRow;
     }
 }
 
-void LiniiDinamic::run() {
+
+void LiniiDinamic::run()
+{
     vector<thread> threads;
     my_barrier barrier(p);
 
@@ -150,20 +163,10 @@ void LiniiDinamic::run() {
         if (extra > 0) extra--;
 
         threads.emplace_back(&LiniiDinamic::worker, this, t, start, end,
-                            ref(barrier));
+                             ref(barrier));
         start = end;
     }
 
-    for (auto &th : threads)
+    for (auto& th : threads)
         th.join();
-}
-
-void LiniiDinamic::writeToFile(const char *path) const {
-    ofstream fout(path);
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++)
-            fout << matrix[i][j] << " ";
-        fout << "\n";
-    }
-    fout.close();
 }

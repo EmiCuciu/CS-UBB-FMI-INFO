@@ -9,13 +9,13 @@ using namespace std;
 class my_barrier
 {
 public:
-    my_barrier(int count) : thread_count(count), counter(0), generation(0)
+    explicit my_barrier(int count) : thread_count(count), counter(0), generation(0)
     {
     }
 
     void wait()
     {
-        std::unique_lock<std::mutex> lk(m);
+        std::unique_lock lk(m);
         int local_gen = generation;
 
         ++counter;
@@ -45,11 +45,6 @@ class LiniiDinamic
     int N, M, n, p;
     int **matrix = nullptr, **convMatrix = nullptr;
 
-    // Vector partajat pentru salvarea frontierelor
-    // Dimensiune 2*p (sus, jos) x M (lățimea)
-    vector<vector<int>> savedBoundaries;
-
-    // Funcție helper pentru calculul unui rând
     void calculateRow(const vector<int>& prev, const vector<int>& current,
                       const vector<int>& next, vector<int>& result) const;
 
@@ -62,7 +57,6 @@ public:
     void run();
     void writeToFile(const char* path) const;
 
-    // Am adăugat threadId (t) și referința la vectorul de frontiere
     void worker(int t, int startRow, int endRow, my_barrier& barrier);
 };
 
