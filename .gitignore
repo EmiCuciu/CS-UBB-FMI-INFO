@@ -1,1 +1,33 @@
-/2nd Year/1st Semester/Programare logica si functionala/Lab/ResurseLab/CLisp/clisp-2.30-win32.zip
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dylib
+
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# IDE - CLion
+.idea/
+*.iml
+CMakeCache.txt
+CMakeFiles/
+
+# Archives
+*.zip
+*.tar
+*.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.swp
+*.swo
+*~
