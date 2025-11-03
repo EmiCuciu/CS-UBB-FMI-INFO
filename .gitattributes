@@ -9,3 +9,4 @@
 # Alte foldere ne-relevante
 **/.idea/** linguist-generated=true
 **/.vs/** linguist-generated=true
+*.idea
