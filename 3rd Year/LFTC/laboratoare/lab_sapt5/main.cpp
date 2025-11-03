@@ -26,6 +26,7 @@ int main() {
         // af.citireFisier("automat.txt");
         // af.citireFisier("automatNedeterminist.txt");
         af.citireFisier("automatLiteraliIntregic++.txt");
+        // af.citireFisier("inclass.txt");
     } else {
         af.citireTastatura();
     }
