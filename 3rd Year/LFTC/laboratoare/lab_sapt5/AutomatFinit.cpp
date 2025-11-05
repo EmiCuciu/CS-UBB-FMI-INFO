@@ -157,7 +157,6 @@ using namespace std;
         return finalStates.contains(currentState);
     }
 
-    // Determina cel mai lung prefix acceptat dintr-o secventa
     string AutomatFinit::celMaiLungPrefixAcceptat(const string& secventa) {
         string currentState = startState;
         string longestPrefix;

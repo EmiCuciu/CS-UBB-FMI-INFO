@@ -73,10 +73,10 @@ export const useMafiots: () => MafiotHookResult = () => {
             try {
                 log('fetchItems started');
                 dispatch({ type: FETCH_ITEMS_STARTED });
-                const items = await getMafiots();
+                const response = await getMafiots();
                 log('fetchItems succeeded');
                 if (!canceled) {
-                    dispatch({ type: FETCH_ITEMS_SUCCEEDED, payload: { items } });
+                    dispatch({ type: FETCH_ITEMS_SUCCEEDED, payload: { items: response.mafiots } });
                 }
             } catch (error) {
                 log('fetchItems failed');

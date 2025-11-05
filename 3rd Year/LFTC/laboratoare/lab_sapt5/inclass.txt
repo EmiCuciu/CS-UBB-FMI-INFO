@@ -1,16 +1,6 @@
-3
-p q r
-
-2
-a b
-
-4
-p b p
-p a q
-q a r
-r a r
-
-p
-
-2
-p r
+AutomatFinit:
+    states: set<string>
+    alphabet: set<char>
+    transitions: map<pair<string, char>, string>
+    startState: string
+    finalStates: set<string>

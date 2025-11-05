@@ -3,6 +3,9 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { MafiotList, MafiotEdit } from './todo';
 import { MafiotProvider } from './todo/MafiotProvider';
+import { AuthProvider } from './auth/AuthProvider';
+import { Login } from './auth/Login';
+import { PrivateRoute } from './auth/PrivateRoute';
 
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
@@ -23,15 +26,18 @@ setupIonicReact();
 
 const App: React.FC = () => (
     <IonApp>
-        <MafiotProvider>
-            <IonReactRouter>
-                <IonRouterOutlet>
-                    <Route path="/mafiot" exact={true} component={MafiotList} />
-                    <Route path="/mafiot/:id" component={MafiotEdit} />
-                    <Route exact path="/" render={() => <Redirect to="/mafiot" />} />
-                </IonRouterOutlet>
-            </IonReactRouter>
-        </MafiotProvider>
+        <AuthProvider>
+            <MafiotProvider>
+                <IonReactRouter>
+                    <IonRouterOutlet>
+                        <Route path="/login" component={Login} exact={true} />
+                        <PrivateRoute path="/mafiot" exact={true} component={MafiotList} />
+                        <PrivateRoute path="/mafiot/:id" component={MafiotEdit} />
+                        <Route exact path="/" render={() => <Redirect to="/mafiot" />} />
+                    </IonRouterOutlet>
+                </IonReactRouter>
+            </MafiotProvider>
+        </AuthProvider>
     </IonApp>
 );
 
