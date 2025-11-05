@@ -1,0 +1,21 @@
+{
+  "name": "mafia-server",
+  "version": "1.0.0",
+  "description": "Secured Node.js server for Mafia app",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "koa": "^2.15.0",
+    "koa-router": "^12.0.1",
+    "@koa/cors": "^5.0.0",
+    "koa-bodyparser": "^4.4.1",
+    "koa-jwt": "^4.0.4",
+    "jsonwebtoken": "^9.0.2",
+    "nedb-promise": "^2.0.1",
+    "ws": "^8.16.0"
+  }
+}
