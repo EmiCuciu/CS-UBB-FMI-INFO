@@ -112,7 +112,7 @@ int main(int argc, char** argv)
         N_padded = N_max;
         if (N_max % p != 0)
         {
-            N_padded = N_max + (p - (N_max % p));
+            N_padded = N_max + (p - (N_max % p)); // ca sa avem multiplu de p, ne ajuta la Gather
         }
         chunk_size = N_padded / p;
 
@@ -122,8 +122,6 @@ int main(int argc, char** argv)
         N_3.resize(N_padded);
     }
 
-    // acum vectorii au dim egale, umplute cu 0 unde e cazul
-    // chunk_size = bucata de numar pe care o primeste un proces
 
     MPI_Bcast(&chunk_size, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
@@ -135,30 +133,20 @@ int main(int argc, char** argv)
 
     MPI_Scatter(N_2.data(), chunk_size, MPI_INT, local_N_2.data(), chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
 
-    int local_carry = 0;
-    for (int i = 0; i < chunk_size; i++)
-    {
-        int sum = local_N_1[i] + local_N_2[i] + local_carry;
-        local_result[i] = sum % 10;
-        local_carry = sum / 10;
-    }
     int carry_in = 0;
-
     if (rank > 0)
     {
-        MPI_Recv(&carry_in, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(&carry_in, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);    // primim carry de la procesul anterior
     }
 
-    int i = 0;
-    while (carry_in > 0 && i < chunk_size)
+    for (int i = 0; i < chunk_size; i++)
     {
-        int sum = local_result[i] + carry_in;
+        int sum = local_N_1[i] + local_N_2[i] + carry_in;
         local_result[i] = sum % 10;
         carry_in = sum / 10;
-        i++;
     }
 
-    int final_carry_to_send = local_carry + carry_in;
+    int final_carry_to_send = carry_in;
 
     if (rank < p - 1)
     {
@@ -174,32 +162,27 @@ int main(int argc, char** argv)
 
     if (rank == 0)
     {
-        // 1. Primim transportul final de la ultimul proces
         int final_carry = 0;
-        if (p > 1) // Doar dacă avem mai mult de 1 proces
+        if (p > 1)
         {
-            // Primim de la ultimul proces (p-1) pe tag-ul 1
             MPI_Recv(&final_carry, 1, MPI_INT, p - 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
-        else // Cazul special p=1 (P0 este și ultimul proces)
+        else
         {
             final_carry = final_carry_to_send;
         }
 
-        // 2. Adăugăm transportul la rezultat
         if (final_carry > 0)
         {
             N_3.push_back(final_carry);
         }
 
 
-        // Singurul lucru rămas este să curățăm zerourile finale (din padding)
         while (N_3.size() > 1 && N_3.back() == 0)
         {
             N_3.pop_back();
         }
 
-        // Scriem rezultatul
         // write_number("test1/N_3_paralel.txt", N_3);
 
         // write_number("test2/N_3_paralel.txt", N_3);
