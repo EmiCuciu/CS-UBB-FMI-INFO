@@ -98,8 +98,8 @@ void generateRandomNumber(int n, const string& filename) {
 
 int main()
 {
-    generateRandomNumber(100, "test3/N_1.txt");
-    generateRandomNumber(100000, "test3/N_2.txt");
+    // generateRandomNumber(100, "test3/N_1.txt");
+    // generateRandomNumber(100000, "test3/N_2.txt");
 
     vector<int> N_1, N_2, N_3;
 
@@ -108,12 +108,12 @@ int main()
     // read_number("test1/N_2.txt", N_2);
 
     //? Test2
-    // read_number("test2/N_1.txt", N_1);
-    // read_number("test2/N_2.txt", N_2);
+    read_number("test2/N_1.txt", N_1);
+    read_number("test2/N_2.txt", N_2);
 
     //? Test3
-    read_number("test3/N_1.txt", N_1);
-    read_number("test3/N_2.txt", N_2);
+    // read_number("test3/N_1.txt", N_1);
+    // read_number("test3/N_2.txt", N_2);
 
     int n = max(N_1.size(), N_2.size());
     int carry = 0;
@@ -135,8 +135,8 @@ int main()
     }
 
     // write_number("test1/N_3.txt", N_3);
-    // write_number("test2/N_3.txt", N_3);
-    write_number("test3/N_3.txt", N_3);
+    write_number("test2/N_3.txt", N_3);
+    // write_number("test3/N_3.txt", N_3);
 
     // compareFiles("test1/N_3.txt", "test1/RezultatCorect.txt");
 

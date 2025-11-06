@@ -94,16 +94,16 @@ int main(int argc, char** argv)
         int N_padded = 0;
 
         //? Test1
-        // read_number("test1/N_1.txt", N_1);
-        // read_number("test1/N_2.txt", N_2);
+        // read_number("v2_data/test1/N_1.txt", N_1);
+        // read_number("v2_data/test1/N_2.txt", N_2);
 
         //? Test2
-        // read_number("test2/N_1.txt", N_1);
-        // read_number("test2/N_2.txt", N_2);
+        read_number("v2_data/test2/N_1.txt", N_1);
+        read_number("v2_data/test2/N_2.txt", N_2);
 
         //? Test3
-        read_number("test3/N_1.txt", N_1);
-        read_number("test3/N_2.txt", N_2);
+        // read_number("v2_data/test3/N_1.txt", N_1);
+        // read_number("v2_data/test3/N_2.txt", N_2);
 
         int n1 = N_1.size();
         int n2 = N_2.size();
@@ -183,15 +183,15 @@ int main(int argc, char** argv)
             N_3.pop_back();
         }
 
-        // write_number("test1/N_3_paralel.txt", N_3);
+        // write_number("v2_data/test1/N_3_paralel.txt", N_3);
 
-        // write_number("test2/N_3_paralel.txt", N_3);
+        write_number("v2_data/test2/N_3_paralel.txt", N_3);
 
-        write_number("test3/N_3_paralel.txt", N_3);
+        // write_number("v2_data/test3/N_3_paralel.txt", N_3);
 
-        // compareFiles("test1/N_3.txt", "test1/N_3_paralel.txt");
-        // compareFiles("test2/N_3.txt", "test2/N_3_paralel.txt");
-        compareFiles("test3/N_3.txt", "test3/N_3_paralel.txt");
+        // compareFiles("v2_data/test1/N_3.txt", "v2_data/test1/N_3_paralel.txt");
+        compareFiles("v2_data/test2/N_3.txt", "v2_data/test2/N_3_paralel.txt");
+        // compareFiles("v2_data/test3/N_3.txt", "v2_data/test3/N_3_paralel.txt");
     }
 
     MPI_Finalize();
