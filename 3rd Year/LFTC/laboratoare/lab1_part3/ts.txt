@@ -9,4 +9,5 @@ Poz_TS	Atom_lexical	Tip
 6	"Primul numar: "	CONST_STRING
 7	"Al doilea numar: "	CONST_STRING
 8	0	CONST_INT
-9	"CMMDC : "	CONST_STRING
+9	corect	ID
+10	"CMMDC : "	CONST_STRING
