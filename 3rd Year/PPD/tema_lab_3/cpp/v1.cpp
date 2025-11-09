@@ -1,10 +1,38 @@
 #include <mpi/mpi.h>
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 using namespace std;
+
+void read_number(const string& filename, vector<int>& number)
+{
+    ifstream in(filename);
+    int n;
+    in >> n;
+    number.resize(n);
+    for (int i = 0; i < n; i++)
+    {
+        in >> number[i];
+    }
+    in.close();
+
+    reverse(number.begin(), number.end());
+}
+
+void write_number(const string& filename, const vector<int>& number)
+{
+    ofstream out(filename);
+    out << number.size() << "\n";
+    for (int i = number.size() - 1; i >= 0; --i)
+    {
+        out << number[i];
+        if (i > 0) out << " ";
+    }
+    out << "\n";
+    out.close();
+}
 
 bool compareFiles(const string& file1, const string& file2)
 {
@@ -16,7 +44,6 @@ bool compareFiles(const string& file1, const string& file2)
     }
 
     string line1, line2;
-
     vector<string> lines1, lines2;
 
     while (getline(f1, line1))
@@ -47,52 +74,41 @@ bool compareFiles(const string& file1, const string& file2)
     }
 
     cout << "Sunt identice" << endl;
-
     return true;
 }
 
-
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     MPI_Init(&argc, &argv);
 
-    int myId, numProcesses;
-    MPI_Comm_rank(MPI_COMM_WORLD, &myId);
+    int rank, numProcesses;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &numProcesses);
 
     const int MASTER = 0;
+    vector<int> N_1, N_2, N_3;
 
-    if (myId == MASTER) {
-        cout << "[MASTER] Am intrat in Task" << myId << endl << flush;
+    if (rank == MASTER)
+    {
+        //? Test1
+        // read_number("v1_data/test1/N_1.txt", N_1);
+        // read_number("v1_data/test1/N_2.txt", N_2);
 
-        // ifstream fin1("v1_data/test1/N_1.txt");
-        // ifstream fin2("v1_data/test1/N_2.txt");
-        // ofstream fout("v1_data/test1/N_3_paralel.txt");
+        //? Test2
+        read_number("v1_data/test2/N_1.txt", N_1);
+        read_number("v1_data/test2/N_2.txt", N_2);
 
+        //? Test3
+        // read_number("v1_data/test3/N_1.txt", N_1);
+        // read_number("v1_data/test3/N_2.txt", N_2);
 
-        // ifstream fin1("v1_data/test2/N_1.txt");
-        // ifstream fin2("v1_data/test2/N_2.txt");
-        // ofstream fout("v1_data/test2/N_3_paralel.txt");
+        int n1 = N_1.size();
+        int n2 = N_2.size();
+        int N = max(n1, n2);
 
-
-        ifstream fin1("v1_data/test3/N_1.txt");
-        ifstream fin2("v1_data/test3/N_2.txt");
-        ofstream fout("v1_data/test3/N_3_paralel.txt");
-
-        if (!fin1 || !fin2) {
-            cerr << "Nu am putut deschide fisierele de intrare!" << endl;
-            MPI_Finalize();
-            return 1;
-        }
-
-        int N1, N2;
-        fin1 >> N1;
-        fin2 >> N2;
-        int N = max(N1, N2);
-
-        // Read and reverse numbers (least significant digit first)
-        vector<int> num1(N, 0), num2(N, 0);
-        for (int i = 0; i < N1; ++i) fin1 >> num1[N1 - 1 - i];
-        for (int i = 0; i < N2; ++i) fin2 >> num2[N2 - 1 - i];
+        N_1.resize(N, 0);
+        N_2.resize(N, 0);
+        N_3.resize(N + 1, 0);
 
         int segSize = N / (numProcesses - 1);
         int rest = N % (numProcesses - 1);
@@ -100,14 +116,16 @@ int main(int argc, char** argv) {
         int start = 0;
         int id_proces_curent = 1;
 
-        while (start < N) {
+        while (start < N)
+        {
             int len = segSize + (id_proces_curent <= rest ? 1 : 0);
             int end = start + len;
 
             vector<int> seg1(len), seg2(len);
-            for (int i = 0; i < len; ++i) {
-                seg1[i] = num1[start + i];
-                seg2[i] = num2[start + i];
+            for (int i = 0; i < len; ++i)
+            {
+                seg1[i] = N_1[start + i];
+                seg2[i] = N_2[start + i];
             }
 
             MPI_Send(&start, 1, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
@@ -115,25 +133,22 @@ int main(int argc, char** argv) {
             MPI_Send(seg1.data(), len, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
             MPI_Send(seg2.data(), len, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
 
-            cout << "[MASTER] Trimitem segmentul [" << start << "," << end << "] catre Task " << id_proces_curent << endl << flush;
 
             start = end;
             id_proces_curent++;
             if (id_proces_curent == numProcesses) id_proces_curent = 1;
         }
 
-        for (int id = 1; id < numProcesses; ++id) {
-            cout << "[MASTER] Trimitem semnal de terminare in Task " << id << endl << flush;
+        for (int id = 1; id < numProcesses; ++id)
+        {
             int dummy = 0;
             MPI_Send(&dummy, 1, MPI_INT, id, 0, MPI_COMM_WORLD);
             MPI_Send(&dummy, 1, MPI_INT, id, 0, MPI_COMM_WORLD);
         }
 
-        // Collect results in order
-        vector<int> N_3(N + 1, 0);
         int segments_received = 0;
-
-        while (segments_received < N) {
+        while (segments_received < N)
+        {
             int seg_start, seg_end;
             MPI_Status status;
 
@@ -146,47 +161,45 @@ int main(int argc, char** argv) {
             MPI_Get_count(&stat, MPI_INT, &elements_available);
 
             vector<int> result(elements_available);
-            MPI_Recv(result.data(), elements_available, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Recv(result.data(), elements_available, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD,
+                     MPI_STATUS_IGNORE);
 
-            // Store results in correct position
-            for (int i = 0; i < result.size(); ++i) {
+            for (int i = 0; i < result.size(); ++i)
+            {
                 N_3[seg_start + i] = result[i];
             }
 
             segments_received += (seg_end - seg_start);
         }
 
-        // Remove leading zeros
-        int actual_size = N_3.size();
-        while (actual_size > 1 && N_3[actual_size - 1] == 0) {
-            actual_size--;
+        while (N_3.size() > 1 && N_3.back() == 0)
+        {
+            N_3.pop_back();
         }
-        N_3.resize(actual_size);
 
-        fout << actual_size << "\n";
-        for (int i = actual_size - 1; i >= 0; --i) {
-            fout << N_3[i];
-            if (i > 0) fout << " ";
-        }
-        fout << "\n";
+        //? Test1
+        // write_number("v1_data/test1/N_3_paralel.txt", N_3);
+        // compareFiles("v1_data/test1/N_3.txt", "v1_data/test1/N_3_paralel.txt");
 
-        fin1.close();
-        fin2.close();
-        fout.close();
-        cout << "Inchidere program.\n" << flush;
+        //? Test2
+        write_number("v1_data/test2/N_3_paralel.txt", N_3);
+        compareFiles("v1_data/test2/N_3.txt", "v1_data/test2/N_3_paralel.txt");
 
-    } else {
+        // ? Test3
+        // write_number("v1_data/test3/N_3_paralel.txt", N_3);
+        // compareFiles("v1_data/test3/N_3.txt", "v1_data/test3/N_3_paralel.txt");
+    }
+    else
+    {
         int carry = 0;
-        while (true) {
-            cout << "[TASK " << myId << "] Am intrat in Task" << myId << endl << flush;
-            MPI_Status status;
+        while (true)
+        {
             int start, end;
-
-            MPI_Recv(&start, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD, &status);
+            MPI_Recv(&start, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             MPI_Recv(&end, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-            if (start >= end) {
-                cout << "[TASK " << myId << "] termina executia." << endl << flush;
+            if (start >= end)
+            {
                 break;
             }
 
@@ -197,20 +210,25 @@ int main(int argc, char** argv) {
             MPI_Recv(seg2.data(), len, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
             static bool first_segment = true;
-            if (first_segment && myId > 1) {
-                MPI_Recv(&carry, 1, MPI_INT, myId - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            if (first_segment && rank > 1)
+            {
+                MPI_Recv(&carry, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 first_segment = false;
             }
 
-            for (int i = 0; i < len; ++i) {
-                int s = seg1[i] + seg2[i] + carry;
-                result[i] = s % 10;
-                carry = s / 10;
+            for (int i = 0; i < len; ++i)
+            {
+                int sum = seg1[i] + seg2[i] + carry;
+                result[i] = sum % 10;
+                carry = sum / 10;
             }
 
-            if (myId < numProcesses - 1) {
-                MPI_Send(&carry, 1, MPI_INT, myId + 1, 0, MPI_COMM_WORLD);
-            } else {
+            if (rank < numProcesses - 1)
+            {
+                MPI_Send(&carry, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
+            }
+            else
+            {
                 if (carry > 0)
                     result.push_back(carry);
             }
@@ -219,13 +237,8 @@ int main(int argc, char** argv) {
             MPI_Send(&start, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
             MPI_Send(&end, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
             MPI_Send(result.data(), result_len, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
-            cout << "[TASK " << myId << "] Trimite noile valori catre MASTER." << endl << flush;
         }
     }
-
-    // compareFiles("v1_data/test1/N_3.txt", "v1_data/test1/N_3_paralel.txt");
-    // compareFiles("v1_data/test2/N_3.txt", "v1_data/test2/N_3_paralel.txt");
-    compareFiles("v1_data/test3/N_3.txt", "v1_data/test3/N_3_paralel.txt");
 
     MPI_Finalize();
     return 0;
