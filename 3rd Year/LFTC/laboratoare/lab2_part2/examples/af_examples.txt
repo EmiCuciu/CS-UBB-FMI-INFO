@@ -1,0 +1,36 @@
+#include<iostream>
+
+int main()
+{
+    int zecimal;
+    zecimal <- 9876;
+
+    int octal_val;
+    octal_val <- 0771;
+
+    int hex_val;
+    hex_val <- 0xCAFE;
+
+    int bin_val;
+    bin_val <- 0b101010;
+
+    int zero_val;
+    zero_val <- 0;
+
+    float pi_val;
+    pi_val <- 3.14159;
+
+    word nume;
+    nume <- "TestComplet";
+
+    string propozitie;
+    propozitie <- "Doamne apara si \"pazeste\"!";
+
+    loop (zecimal > 0)
+    {
+        speak << hex_val;
+        zecimal <- zecimal - 1;
+    }
+
+    return 0;
+}

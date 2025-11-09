@@ -1,0 +1,1 @@
+#include <iostream> int main(){speak<<"etc";int a;int b;int r;speak<<"Primul numar: ";hear>>a;speak<<"Al doilea numar: ";hear>>b;loop(b != 0){r<-a%b;a<-b;b<-r;}speak<<"CMMDC : "<<a;return 0;}

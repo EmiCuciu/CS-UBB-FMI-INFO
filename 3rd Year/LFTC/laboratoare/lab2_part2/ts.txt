@@ -1,0 +1,20 @@
+Poz_TS	Atom_lexical	Tip
+---------------------------------
+0	iostream	ID
+1	zecimal	ID
+2	9876	CONST_INT
+3	octal_val	ID
+4	0771	CONST_INT
+5	hex_val	ID
+6	0xCAFE	CONST_INT
+7	bin_val	ID
+8	0b101010	CONST_INT
+9	zero_val	ID
+10	0	CONST_INT
+11	pi_val	ID
+12	3.14159	CONST_FLOAT
+13	nume	ID
+14	"TestComplet"	CONST_STRING
+15	propozitie	ID
+16	"Doamne apara si \"pazeste\"!"	CONST_STRING
+17	1	CONST_INT
