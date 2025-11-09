@@ -133,28 +133,27 @@ int main(int argc, char** argv)
 
     MPI_Scatter(N_2.data(), chunk_size, MPI_INT, local_N_2.data(), chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
 
-    int carry_in = 0;
+    int carry = 0;
     if (rank > 0)
     {
-        MPI_Recv(&carry_in, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);    // primim carry de la procesul anterior
+        MPI_Recv(&carry, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        // primim carry de la procesul anterior
     }
 
     for (int i = 0; i < chunk_size; i++)
     {
-        int sum = local_N_1[i] + local_N_2[i] + carry_in;
+        int sum = local_N_1[i] + local_N_2[i] + carry;
         local_result[i] = sum % 10;
-        carry_in = sum / 10;
+        carry = sum / 10;
     }
-
-    int final_carry_to_send = carry_in;
 
     if (rank < p - 1)
     {
-        MPI_Send(&final_carry_to_send, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
+        MPI_Send(&carry, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
     }
     else if (rank == p - 1)
     {
-        MPI_Send(&final_carry_to_send, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+        MPI_Send(&carry, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
     }
 
 
@@ -163,14 +162,9 @@ int main(int argc, char** argv)
     if (rank == 0)
     {
         int final_carry = 0;
-        if (p > 1)
-        {
-            MPI_Recv(&final_carry, 1, MPI_INT, p - 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        }
-        else
-        {
-            final_carry = final_carry_to_send;
-        }
+
+        MPI_Recv(&final_carry, 1, MPI_INT, p - 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
 
         if (final_carry > 0)
         {
