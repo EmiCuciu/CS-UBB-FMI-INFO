@@ -1,38 +1,11 @@
 #include <mpi/mpi.h>
 #include <algorithm>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
-void read_number(const string& filename, vector<int>& number)
-{
-    ifstream in(filename);
-    int n;
-    in >> n;
-    number.resize(n);
-    for (int i = 0; i < n; i++)
-    {
-        in >> number[i];
-    }
-    in.close();
-
-    reverse(number.begin(), number.end());
-}
-
-void write_number(const string& filename, const vector<int>& number)
-{
-    ofstream out(filename);
-    out << number.size() << "\n";
-    for (int i = number.size() - 1; i >= 0; --i)
-    {
-        out << number[i];
-        if (i > 0) out << " ";
-    }
-    out << "\n";
-    out.close();
-}
 
 bool compareFiles(const string& file1, const string& file2)
 {
@@ -80,164 +53,164 @@ bool compareFiles(const string& file1, const string& file2)
 int main(int argc, char** argv)
 {
     MPI_Init(&argc, &argv);
-
-    int rank, numProcesses;
+    int rank, p;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &numProcesses);
+    MPI_Comm_size(MPI_COMM_WORLD, &p);
 
-    const int MASTER = 0;
-    vector<int> N_1, N_2, N_3;
+    auto start = chrono::high_resolution_clock::now();
 
-    if (rank == MASTER)
+    if (rank == 0)
     {
         //? Test1
-        // read_number("v1_data/test1/N_1.txt", N_1);
-        // read_number("v1_data/test1/N_2.txt", N_2);
+        // ifstream in1("v1_data/test1/N_1.txt");
+        // ifstream in2("v1_data/test1/N_2.txt");
 
         //? Test2
-        read_number("v1_data/test2/N_1.txt", N_1);
-        read_number("v1_data/test2/N_2.txt", N_2);
+        // ifstream in1("v1_data/test2/N_1.txt");
+        // ifstream in2("v1_data/test2/N_2.txt");
 
         //? Test3
-        // read_number("v1_data/test3/N_1.txt", N_1);
-        // read_number("v1_data/test3/N_2.txt", N_2);
+        ifstream in1("v1_data/test3/N_1.txt");
+        ifstream in2("v1_data/test3/N_2.txt");
 
-        int n1 = N_1.size();
-        int n2 = N_2.size();
-        int N = max(n1, n2);
+        int n1, n2;
+        in1 >> n1;
+        in2 >> n2;
 
-        N_1.resize(N, 0);
-        N_2.resize(N, 0);
-        N_3.resize(N + 1, 0);
+        int N_max = max(n1, n2);
 
-        int segSize = N / (numProcesses - 1);
-        int rest = N % (numProcesses - 1);
+        int chunk_size = N_max / (p - 1);
+        int rest = N_max % (p - 1);
 
-        int start = 0;
         int id_proces_curent = 1;
+        int cifre_citite = 0;
 
-        while (start < N)
+        while (cifre_citite < N_max && id_proces_curent < p)
         {
-            int len = segSize + (id_proces_curent <= rest ? 1 : 0);
-            int end = start + len;
-
-            vector<int> seg1(len), seg2(len);
-            for (int i = 0; i < len; ++i)
+            int current_chunk = chunk_size;
+            if (id_proces_curent <= rest)
             {
-                seg1[i] = N_1[start + i];
-                seg2[i] = N_2[start + i];
+                current_chunk++;
             }
 
-            MPI_Send(&start, 1, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
-            MPI_Send(&end, 1, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
-            MPI_Send(seg1.data(), len, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
-            MPI_Send(seg2.data(), len, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
+            vector<int> chunk_N_1(current_chunk);
+            vector<int> chunk_N_2(current_chunk);
 
+            for (int i = 0; i < current_chunk; i++)
+            {
+                if (cifre_citite + i < n1)
+                {
+                    in1 >> chunk_N_1[i];
+                }
+                else
+                {
+                    chunk_N_1[i] = 0; // Padding
+                }
 
-            start = end;
+                if (cifre_citite + i < n2)
+                {
+                    in2 >> chunk_N_2[i];
+                }
+                else
+                {
+                    chunk_N_2[i] = 0; // Padding
+                }
+            }
+
+            reverse(chunk_N_1.begin(), chunk_N_1.end());
+            reverse(chunk_N_2.begin(), chunk_N_2.end());
+
+            MPI_Send(&current_chunk, 1, MPI_INT, id_proces_curent, 0, MPI_COMM_WORLD);
+
+            MPI_Send(chunk_N_1.data(), current_chunk, MPI_INT, id_proces_curent, 1, MPI_COMM_WORLD);
+
+            MPI_Send(chunk_N_2.data(), current_chunk, MPI_INT, id_proces_curent, 2, MPI_COMM_WORLD);
+
+            cifre_citite += current_chunk;
             id_proces_curent++;
-            if (id_proces_curent == numProcesses) id_proces_curent = 1;
         }
 
-        for (int id = 1; id < numProcesses; ++id)
+        in1.close();
+        in2.close();
+
+        // ofstream out("v1_data/test1/N_3_paralel.txt");
+        // ofstream out("v1_data/test2/N_3_paralel.txt");
+        ofstream out("v1_data/test3/N_3_paralel.txt");
+
+        vector<int> all_results;
+
+        for (int i = 1; i < p; i++)
         {
-            int dummy = 0;
-            MPI_Send(&dummy, 1, MPI_INT, id, 0, MPI_COMM_WORLD);
-            MPI_Send(&dummy, 1, MPI_INT, id, 0, MPI_COMM_WORLD);
+            int result_size;
+            MPI_Recv(&result_size, 1, MPI_INT, i, 3, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+            vector<int> partial_result(result_size);
+            MPI_Recv(partial_result.data(), result_size, MPI_INT, i, 4, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+            all_results.insert(all_results.end(), partial_result.begin(), partial_result.end());
         }
 
-        int segments_received = 0;
-        while (segments_received < N)
+        while (all_results.size() > 1 && all_results.back() == 0)
         {
-            int seg_start, seg_end;
-            MPI_Status status;
-
-            MPI_Recv(&seg_start, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-            MPI_Recv(&seg_end, 1, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-            MPI_Status stat;
-            int elements_available;
-            MPI_Probe(status.MPI_SOURCE, 0, MPI_COMM_WORLD, &stat);
-            MPI_Get_count(&stat, MPI_INT, &elements_available);
-
-            vector<int> result(elements_available);
-            MPI_Recv(result.data(), elements_available, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD,
-                     MPI_STATUS_IGNORE);
-
-            for (int i = 0; i < result.size(); ++i)
-            {
-                N_3[seg_start + i] = result[i];
-            }
-
-            segments_received += (seg_end - seg_start);
+            all_results.pop_back();
         }
 
-        while (N_3.size() > 1 && N_3.back() == 0)
+        out << all_results.size() << "\n";
+
+        for (int i = all_results.size() - 1; i >= 0; --i)
         {
-            N_3.pop_back();
+            out << all_results[i] << " ";
         }
 
-        //? Test1
-        // write_number("v1_data/test1/N_3_paralel.txt", N_3);
+        out.close();
+
         // compareFiles("v1_data/test1/N_3.txt", "v1_data/test1/N_3_paralel.txt");
+        // compareFiles("v1_data/test2/N_3.txt", "v1_data/test2/N_3_paralel.txt");
+        compareFiles("v1_data/test3/N_3.txt", "v1_data/test3/N_3_paralel.txt");
 
-        //? Test2
-        write_number("v1_data/test2/N_3_paralel.txt", N_3);
-        compareFiles("v1_data/test2/N_3.txt", "v1_data/test2/N_3_paralel.txt");
-
-        // ? Test3
-        // write_number("v1_data/test3/N_3_paralel.txt", N_3);
-        // compareFiles("v1_data/test3/N_3.txt", "v1_data/test3/N_3_paralel.txt");
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+        cout << duration << endl;
     }
     else
     {
+        int chunk_size;
+        MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        vector<int> local_N_1(chunk_size);
+        vector<int> local_N_2(chunk_size);
+
+        MPI_Recv(local_N_1.data(), chunk_size, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(local_N_2.data(), chunk_size, MPI_INT, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
         int carry = 0;
-        while (true)
+        if (rank > 1)
         {
-            int start, end;
-            MPI_Recv(&start, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            MPI_Recv(&end, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-            if (start >= end)
-            {
-                break;
-            }
-
-            int len = end - start;
-            vector<int> seg1(len), seg2(len), result(len);
-
-            MPI_Recv(seg1.data(), len, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            MPI_Recv(seg2.data(), len, MPI_INT, MASTER, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-            static bool first_segment = true;
-            if (first_segment && rank > 1)
-            {
-                MPI_Recv(&carry, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                first_segment = false;
-            }
-
-            for (int i = 0; i < len; ++i)
-            {
-                int sum = seg1[i] + seg2[i] + carry;
-                result[i] = sum % 10;
-                carry = sum / 10;
-            }
-
-            if (rank < numProcesses - 1)
-            {
-                MPI_Send(&carry, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
-            }
-            else
-            {
-                if (carry > 0)
-                    result.push_back(carry);
-            }
-
-            int result_len = result.size();
-            MPI_Send(&start, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
-            MPI_Send(&end, 1, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
-            MPI_Send(result.data(), result_len, MPI_INT, MASTER, 0, MPI_COMM_WORLD);
+            MPI_Recv(&carry, 1, MPI_INT, rank - 1, 5, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
+
+        vector<int> local_result(chunk_size);
+        for (int i = 0; i < chunk_size; i++)
+        {
+            int sum = local_N_1[i] + local_N_2[i] + carry;
+            local_result[i] = sum % 10;
+            carry = sum / 10;
+        }
+
+
+        if (rank < p - 1)
+        {
+            MPI_Send(&carry, 1, MPI_INT, rank + 1, 5, MPI_COMM_WORLD);
+        }
+
+        if (rank == p - 1 && carry > 0)
+        {
+            local_result.push_back(carry);
+        }
+
+        int result_size = local_result.size();
+        MPI_Send(&result_size, 1, MPI_INT, 0, 3, MPI_COMM_WORLD);
+        MPI_Send(local_result.data(), result_size, MPI_INT, 0, 4, MPI_COMM_WORLD);
     }
 
     MPI_Finalize();

@@ -1,5 +1,6 @@
 #include <mpi/mpi.h>
 #include <algorithm>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -85,6 +86,8 @@ int main(int argc, char** argv)
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &p);
 
+    auto start = chrono::high_resolution_clock::now();
+
     vector<int> N_1, N_2, N_3;
 
     int chunk_size = 0;
@@ -98,12 +101,12 @@ int main(int argc, char** argv)
         // read_number("v2_data/test1/N_2.txt", N_2);
 
         //? Test2
-        read_number("v2_data/test2/N_1.txt", N_1);
-        read_number("v2_data/test2/N_2.txt", N_2);
+        // read_number("v2_data/test2/N_1.txt", N_1);
+        // read_number("v2_data/test2/N_2.txt", N_2);
 
         //? Test3
-        // read_number("v2_data/test3/N_1.txt", N_1);
-        // read_number("v2_data/test3/N_2.txt", N_2);
+        read_number("v2_data/test3/N_1.txt", N_1);
+        read_number("v2_data/test3/N_2.txt", N_2);
 
         int n1 = N_1.size();
         int n2 = N_2.size();
@@ -179,13 +182,17 @@ int main(int argc, char** argv)
 
         // write_number("v2_data/test1/N_3_paralel.txt", N_3);
 
-        write_number("v2_data/test2/N_3_paralel.txt", N_3);
+        // write_number("v2_data/test2/N_3_paralel.txt", N_3);
 
-        // write_number("v2_data/test3/N_3_paralel.txt", N_3);
+        write_number("v2_data/test3/N_3_paralel.txt", N_3);
+
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+        cout << duration << endl;
 
         // compareFiles("v2_data/test1/N_3.txt", "v2_data/test1/N_3_paralel.txt");
-        compareFiles("v2_data/test2/N_3.txt", "v2_data/test2/N_3_paralel.txt");
-        // compareFiles("v2_data/test3/N_3.txt", "v2_data/test3/N_3_paralel.txt");
+        // compareFiles("v2_data/test2/N_3.txt", "v2_data/test2/N_3_paralel.txt");
+        compareFiles("v2_data/test3/N_3.txt", "v2_data/test3/N_3_paralel.txt");
     }
 
     MPI_Finalize();
