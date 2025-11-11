@@ -44,8 +44,5 @@ ATOM_CODES = {
 KEYWORDS = {"int", "float", "word", "loop", "maybe", "else", "forloop", "hear", "speak", "return", "#include", "main", "double", "string"}
 OPERATORS = {"+", "-", "*", "/", "%", "<", "<=", ">", ">=", "==", "!=", "<-", "<<", ">>"}
 DELIMITERS = {"(", ")", "{", "}", ";", ","}
-MULTI_OPS = {op for op in OPERATORS if len(op) > 1}
 
-# sortam operatorii si delimitatorii descrescator dupa lungime pentru a evita ambiguitatile la tokenizare,
-# de exemplu sa nu interpretam "<=" ca "<" si "="
-SORTED_OPS_AND_DELIMS = sorted(list(OPERATORS | DELIMITERS | KEYWORDS | {"<~library~>"}), key=len, reverse=True)
+SORTED_op_del_key = sorted(list(OPERATORS | DELIMITERS | KEYWORDS | {"<~library~>"}), key=len, reverse=True)

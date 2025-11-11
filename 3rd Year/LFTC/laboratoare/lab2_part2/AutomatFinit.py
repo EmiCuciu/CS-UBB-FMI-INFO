@@ -120,7 +120,7 @@ class AutomatFinit:
 
         for symbol in secventa:
             if (current_state, symbol) not in self.transitions:
-                return False  # Tranzitie nedefinita
+                return False
             current_state = self.transitions[(current_state, symbol)]
 
         return current_state in self.final_states
@@ -136,12 +136,12 @@ class AutomatFinit:
 
         for symbol in secventa:
             if (current_state, symbol) not in self.transitions:
-                break  # Oprim la prima tranzitie nedefinita
+                break
 
             current_state = self.transitions[(current_state, symbol)]
             current_prefix += symbol
 
             if current_state in self.final_states:
-                longest_prefix = current_prefix  # Actualizam doar cand ajungem intr-o stare finala
+                longest_prefix = current_prefix
 
         return longest_prefix
