@@ -1,0 +1,30 @@
+#include <iostream>
+
+int main()
+{
+    int 9numar;
+
+    speak << "etc";
+    int a;
+    int b;
+    int r;
+    speak << "Primul numar: ";
+    hear >> a;
+    speak << "Al doilea numar: ";
+    hear >> b;
+
+    speak << "Acesta este un string neterminat;
+
+    loop (b != 0)
+    {
+        r <- a % b;
+        a <- b;
+        b <- r;
+    }
+
+    int corect;
+    corect <- 12.34.56;
+
+    speak << "CMMDC : " << a;
+    return 0;
+}
