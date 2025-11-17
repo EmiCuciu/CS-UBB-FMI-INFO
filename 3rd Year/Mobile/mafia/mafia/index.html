@@ -25,6 +25,23 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Load Google Maps API with callback to know when it's ready
+      window.googleMapsLoaded = false;
+      window.googleMapsCallback = function() {
+        window.googleMapsLoaded = true;
+        console.log('Google Maps API loaded successfully!');
+        // Dispatch event for components waiting for maps
+        window.dispatchEvent(new Event('google-maps-loaded'));
+      };
+
+      const GOOGLE_MAPS_KEY = 'AIzaSyDHNwHAfU2vitgm5B7pB5hpinZSU5cnosg';
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_KEY}&libraries=places&callback=googleMapsCallback`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -64,6 +64,18 @@ export const deleteMafiot = (id: string): Promise<void> =>
         'deleteMafiot'
     );
 
+export const getPhoto = async (mafiotId: string): Promise<string | null> => {
+    try {
+        log('getPhoto - started', mafiotId);
+        const response = await axios.get(`${mafiotUrl}/${mafiotId}/photo`, getConfig());
+        log('getPhoto - succeeded');
+        return response.data.photo;
+    } catch (err) {
+        log('getPhoto - failed', err);
+        return null;
+    }
+};
+
 export interface MessageData {
     event: string;
     payload: {

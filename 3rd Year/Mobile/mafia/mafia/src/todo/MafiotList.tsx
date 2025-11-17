@@ -22,14 +22,80 @@ import {
     IonSelectOption, IonGrid, IonRow,
     IonCol, IonCard, IonImg, IonCardHeader, IonCardTitle, IonCardContent,
 } from '@ionic/react';
-import {add, logOut, wifi, cloudOffline, trash} from 'ionicons/icons';
+import {add, logOut, wifi, cloudOffline, trash, location} from 'ionicons/icons';
 import { getLogger } from '../core';
 import { MafiotContext } from './MafiotProvider';
 import { AuthContext } from '../auth';
 import { useNetwork } from '../core';
-import { useFilesystem } from "../camera/useFilesystem";
+import { photoStorage } from '../camera/photoStorage';
+import { MafiotProps } from './MafiotProps';
+import { LocationViewer } from '../location';
 
 const log = getLogger('MafiotList');
+
+// Component to load and display photo from filesystem
+const MafiotPhoto: React.FC<{ mafiot: MafiotProps }> = ({ mafiot }) => {
+    const [photoData, setPhotoData] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (mafiot.photoPath) {
+            photoStorage.loadPhoto(mafiot.photoPath, mafiot.id)
+                .then(data => {
+                    setPhotoData(data);
+                    setLoading(false);
+                })
+                .catch(() => {
+                    setLoading(false);
+                });
+        } else {
+            setLoading(false);
+        }
+    }, [mafiot.photoPath, mafiot.id]);
+
+    if (loading) {
+        return (
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+                fontSize: '24px',
+                color: '#999'
+            }}>
+                Loading...
+            </div>
+        );
+    }
+
+    if (photoData) {
+        return (
+            <IonImg
+                src={`data:image/jpeg;base64,${photoData}`}
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain'
+                }}
+            />
+        );
+    }
+
+    return (
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+            fontSize: '48px',
+            color: '#ccc'
+        }}>
+            📷
+        </div>
+    );
+};
 
 const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
     const {
@@ -48,40 +114,11 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
     const { logout, username } = useContext(AuthContext);
     const networkStatus = useNetwork();
     const [disableInfiniteScroll, setDisableInfiniteScroll] = useState(false);
-    const {readFile} = useFilesystem();
-    const [photosMap, setPhotosMap] = useState<{ [key: string]: string }>({});
+    const [showLocationViewer, setShowLocationViewer] = useState(false);
+    const [selectedMafiot, setSelectedMafiot] = useState<MafiotProps | null>(null);
 
     log('render', 'username:', username);
 
-
-    useEffect(() => {
-        const loadPhotos = async () => {
-            if (!mafiots) return;
-
-            const photoPromises = mafiots.map(async (mafiot) => {
-                if (mafiot.photo) {
-                    try {
-                        const data = await readFile(mafiot.photo);
-                        return {id: mafiot.id!, photo: `data:image/jpeg;base64,${data}`};
-                    } catch (error) {
-                        log('Error loading photo:', error);
-                        return {id: mafiot.id!, photo: undefined};
-                    }
-                }
-                return {id: mafiot.id!, photo: undefined};
-            });
-
-            const photos = await Promise.all(photoPromises);
-            const photoMap = photos.reduce((acc, {id, photo}) => {
-                if (photo) acc[id] = photo;
-                return acc;
-            }, {} as { [key: string]: string });
-
-            setPhotosMap(photoMap);
-        };
-
-        loadPhotos();
-    }, [mafiots, readFile]);
 
 
     const handleLoadMore = async (e: CustomEvent<void>) => {
@@ -120,6 +157,13 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                 log('Failed to delete mafiot', error);
                 alert('Eroare la ștergerea mafiotului!');
             }
+        }
+    };
+
+    const handleShowLocation = (mafiot: MafiotProps) => {
+        if (mafiot.latitude && mafiot.longitude) {
+            setSelectedMafiot(mafiot);
+            setShowLocationViewer(true);
         }
     };
 
@@ -218,34 +262,24 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                                             backgroundColor: '#202020',
                                             overflow: 'hidden'
                                         }}>
-                                            {photosMap[mafiot.id!] ? (
-                                                <IonImg
-                                                    src={photosMap[mafiot.id!]}
-                                                    style={{
-                                                        width: '100%',
-                                                        height: '100%',
-                                                        objectFit: 'contain'
-                                                    }}
-                                                />
-                                            ) : (
-                                                <div style={{
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    fontSize: '48px',
-                                                    color: '#ccc'
-                                                }}>
-                                                    📷
-                                                </div>
-                                            )}
+                                            <MafiotPhoto mafiot={mafiot} />
                                         </div>
                                         <IonCardHeader>
                                             <IonCardTitle>{mafiot.nume} {mafiot.prenume}</IonCardTitle>
                                         </IonCardHeader>
                                         <IonCardContent style={{flex: 1}}>
                                             <p><strong>Balanță:</strong> {mafiot.balanta} $</p>
+                                            {mafiot.latitude && mafiot.longitude && (
+                                                <IonButton
+                                                    expand="block"
+                                                    color="primary"
+                                                    onClick={() => handleShowLocation(mafiot)}
+                                                    style={{marginTop: '10px'}}
+                                                >
+                                                    <IonIcon slot="start" icon={location}/>
+                                                    View Location
+                                                </IonButton>
+                                            )}
                                             <IonButton
                                                 expand="block"
                                                 color="danger"
@@ -285,6 +319,20 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                         <IonIcon icon={add} />
                     </IonFabButton>
                 </IonFab>
+
+                {selectedMafiot && selectedMafiot.latitude && selectedMafiot.longitude && (
+                    <LocationViewer
+                        isOpen={showLocationViewer}
+                        onClose={() => {
+                            setShowLocationViewer(false);
+                            setSelectedMafiot(null);
+                        }}
+                        latitude={selectedMafiot.latitude}
+                        longitude={selectedMafiot.longitude}
+                        title={`${selectedMafiot.nume} ${selectedMafiot.prenume}`}
+                        locationName={selectedMafiot.locationName}
+                    />
+                )}
             </IonContent>
         </IonPage>
     );

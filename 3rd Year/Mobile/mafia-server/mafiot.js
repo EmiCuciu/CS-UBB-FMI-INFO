@@ -1,6 +1,12 @@
 import Router from 'koa-router';
 import dataStore from 'nedb-promise';
 import { broadcast } from './wss.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export class MafiotStore {
     constructor({ filename, autoload }) {
@@ -29,6 +35,12 @@ export class MafiotStore {
 }
 
 const mafiotStore = new MafiotStore({ filename: './db/mafiots.json', autoload: true });
+
+// Ensure photos directory exists
+const PHOTOS_DIR = path.join(__dirname, 'poze-db');
+if (!fs.existsSync(PHOTOS_DIR)) {
+    fs.mkdirSync(PHOTOS_DIR, { recursive: true });
+}
 
 export const mafiotRouter = new Router();
 
@@ -94,9 +106,27 @@ mafiotRouter.post('/', async (ctx) => {
     const mafiot = ctx.request.body;
 
     try {
-        mafiot.userId = userId;
-        const newMafiot = await mafiotStore.insert(mafiot);
+        // Separate photo from mafiot object
+        const { photo, ...mafiotData } = mafiot;
+
+        mafiotData.userId = userId;
+        const newMafiot = await mafiotStore.insert(mafiotData);
         const normalized = normalizeMafiot(newMafiot);
+
+        // Save photo separately if provided
+        if (photo) {
+            const photoFilename = `${normalized.id}.jpg`;
+            const photoPath = path.join(PHOTOS_DIR, photoFilename);
+
+            // Remove data URL prefix if present
+            const base64Data = photo.replace(/^data:image\/\w+;base64,/, '');
+            fs.writeFileSync(photoPath, base64Data, 'base64');
+
+            // Update mafiot with photo filename
+            await mafiotStore.update({ _id: newMafiot._id }, { $set: { photoPath: photoFilename } });
+            normalized.photoPath = photoFilename;
+        }
+
         ctx.response.body = normalized;
         ctx.response.status = 201;
 
@@ -122,7 +152,24 @@ mafiotRouter.put('/:id', async (ctx) => {
             return;
         }
 
-        await mafiotStore.update({ _id: mafiotId }, { $set: mafiot });
+        // Separate photo from mafiot object
+        const { photo, ...mafiotData } = mafiot;
+
+        await mafiotStore.update({ _id: mafiotId }, { $set: mafiotData });
+
+        // Save photo separately if provided
+        if (photo) {
+            const photoFilename = `${mafiotId}.jpg`;
+            const photoPath = path.join(PHOTOS_DIR, photoFilename);
+
+            // Remove data URL prefix if present
+            const base64Data = photo.replace(/^data:image\/\w+;base64,/, '');
+            fs.writeFileSync(photoPath, base64Data, 'base64');
+
+            // Update mafiot with photo filename
+            await mafiotStore.update({ _id: mafiotId }, { $set: { photoPath: photoFilename } });
+        }
+
         const updatedMafiot = await mafiotStore.findOne({ _id: mafiotId });
         const normalized = normalizeMafiot(updatedMafiot);
         ctx.response.body = normalized;
@@ -155,6 +202,14 @@ mafiotRouter.delete('/:id', async (ctx) => {
         return;
     }
 
+    // Delete photo if exists
+    if (mafiot.photoPath) {
+        const photoPath = path.join(PHOTOS_DIR, mafiot.photoPath);
+        if (fs.existsSync(photoPath)) {
+            fs.unlinkSync(photoPath);
+        }
+    }
+
     await mafiotStore.remove({ _id: mafiotId });
 
     // Broadcast delete to user's connections
@@ -162,3 +217,39 @@ mafiotRouter.delete('/:id', async (ctx) => {
 
     ctx.status = 204;
 });
+
+// GET photo
+mafiotRouter.get('/:id/photo', async (ctx) => {
+    const userId = ctx.state.user._id;
+    const mafiotId = ctx.params.id;
+
+    try {
+        const mafiot = await mafiotStore.findOne({ _id: mafiotId, userId });
+        if (!mafiot) {
+            ctx.response.body = { error: 'Mafiot not found' };
+            ctx.response.status = 404;
+            return;
+        }
+
+        if (!mafiot.photoPath) {
+            ctx.response.body = { error: 'No photo available' };
+            ctx.response.status = 404;
+            return;
+        }
+
+        const photoPath = path.join(PHOTOS_DIR, mafiot.photoPath);
+        if (!fs.existsSync(photoPath)) {
+            ctx.response.body = { error: 'Photo file not found' };
+            ctx.response.status = 404;
+            return;
+        }
+
+        const photoData = fs.readFileSync(photoPath, 'base64');
+        ctx.response.body = { photo: photoData };
+        ctx.response.status = 200;
+    } catch (err) {
+        ctx.response.body = { error: err.message };
+        ctx.response.status = 500;
+    }
+});
+

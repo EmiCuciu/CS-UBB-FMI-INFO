@@ -1,0 +1,67 @@
+nohup: ignoring input
+Server running on http://localhost:3000
+WebSocket active on ws://localhost:3000
+POST /api/auth/login => 201, 8ms
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 2ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 1ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 2ms
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 2ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 2ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 3ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 1ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 2ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 1ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 1ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 2ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 0ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 1ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 1ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 4ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 1ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 1ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 1ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 2ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 1ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 2ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 1ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 0ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 2ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 4ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 4ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 2ms
+WebSocket connection closed
+New WebSocket connection - awaiting authorization
+GET /api/mafiot?page=1&limit=5 => 200, 1ms
+WebSocket authorized for user: emicuciu
+GET /api/mafiot/11tfqz9KmKg4gz7l/photo => 404, 1ms
+GET /api/mafiot/d4SqmZJBknSkFc4R/photo => 404, 2ms
+GET /api/mafiot/fNlpF2m3XxaaZ72I/photo => 404, 1ms
+WebSocket connection closed

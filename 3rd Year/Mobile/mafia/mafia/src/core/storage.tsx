@@ -22,7 +22,8 @@ export const storageService = {
         const updatedMap = new Map(stored.map(m => [m.id, m]));
 
         mafiots.forEach(mafiot => {
-            updatedMap.set(mafiot.id, mafiot);
+            const { photo: _photo, ...mafiotWithoutPhoto } = mafiot;
+            updatedMap.set(mafiot.id, mafiotWithoutPhoto);
         });
 
         const updatedList = Array.from(updatedMap.values());

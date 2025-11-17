@@ -14,8 +14,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["@capacitor/google-maps"]
   },
-  "include": ["src"],
+  "include": ["src", "src/capacitor-google-maps.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

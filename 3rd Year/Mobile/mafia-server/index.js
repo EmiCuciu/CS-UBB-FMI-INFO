@@ -18,7 +18,10 @@ initWss(wss);
 app.use(cors());
 app.use(timingLogger);
 app.use(exceptionHandler);
-app.use(bodyParser());
+app.use(bodyParser({
+    jsonLimit: '50mb',  // Increase limit for photo uploads
+    formLimit: '50mb'
+}));
 
 const prefix = '/api';
 
