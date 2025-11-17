@@ -3,4 +3,5 @@ export interface MafiotProps {
     nume : string;
     prenume : string;
     balanta : string;
+    photo? : string;
 }
