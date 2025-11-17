@@ -1,0 +1,21 @@
+#include <iostream>
+
+int main()
+{
+    speak << "etc";
+    int a;
+    int b;
+    int r;
+    speak << "Primul numar: ";
+    hear >> a;
+    speak << "Al doilea numar: ";
+    hear >> b;
+    cattimp (b != 0 ) {
+        r <- a % b;
+        a <- b;
+        b <- r;
+    } sfcattimp
+    speak << "CMMDC : " << a;
+
+    return 0;
+}

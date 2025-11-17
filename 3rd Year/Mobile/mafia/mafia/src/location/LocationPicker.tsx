@@ -107,10 +107,10 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
                             zIndex: 1000,
                         }}
                     >
-                        <div style={{ fontSize: '12px', color: '#666' }}>
+                        <div style={{ fontSize: '12px', color: '#000000' }}>
                             Selected Location:
                         </div>
-                        <div style={{ fontSize: '14px', fontWeight: 'bold' }}>
+                        <div style={{ fontSize: '14px', fontWeight: 'bold' , color:'#101010' }}>
                             {selectedPosition.lat.toFixed(6)}, {selectedPosition.lng.toFixed(6)}
                         </div>
                     </div>

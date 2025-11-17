@@ -29,6 +29,7 @@ ales ca subset al unui limbaj existent.
 <instr_if>           ::= "maybe" "(" <expresie> ")" "{" <lista_instructiuni> "}" "else" "{" <lista_instructiuni> "}"
 <instr_while>        ::= "loop" "(" <expresie> ")" "{" <lista_instructiuni> "}"
 <instr_for>          ::= "forloop" "(" <expresie> ")" "{" <lista_instructiuni> "}"
+<instr_mycattimp>    ::= "cattimp" "(" <expresie> ")" "executa" "{" <lista_instructiuni> "}" "sfcattimp"
 
 <expresie>           ::= <operand> | <operand> <operatie> <expresie>
 <operand>            ::= ID | CONST

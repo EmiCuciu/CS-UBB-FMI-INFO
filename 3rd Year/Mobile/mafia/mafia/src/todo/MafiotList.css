@@ -1,0 +1,173 @@
+/* Card animations with stagger effect */
+.mafiot-card-animated {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Stagger animation delays for cards */
+.mafiot-card-animated:nth-child(1) { animation-delay: 0.1s; }
+.mafiot-card-animated:nth-child(2) { animation-delay: 0.15s; }
+.mafiot-card-animated:nth-child(3) { animation-delay: 0.2s; }
+.mafiot-card-animated:nth-child(4) { animation-delay: 0.25s; }
+.mafiot-card-animated:nth-child(5) { animation-delay: 0.3s; }
+.mafiot-card-animated:nth-child(6) { animation-delay: 0.35s; }
+.mafiot-card-animated:nth-child(n+7) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Card hover effect */
+.mafiot-card-animated {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mafiot-card-animated:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Search/Filter animation */
+.filter-container {
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Searchbar with glow effect */
+ion-searchbar {
+    --background: var(--ion-color-light);
+    transition: all 0.3s ease;
+}
+
+ion-searchbar.searchbar-has-focus {
+    animation: searchbarGlow 0.5s ease-out;
+}
+
+@keyframes searchbarGlow {
+    0% {
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(66, 140, 255, 0.6));
+    }
+    100% {
+        filter: drop-shadow(0 0 0 transparent);
+    }
+}
+
+/* Pending operations badge pulse */
+.pending-badge-animated {
+    animation: pulseBadge 2s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 46, 14, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 46, 14, 0);
+    }
+}
+
+/* Loading spinner enhancement */
+ion-loading {
+    --backdrop-opacity: 0.8;
+}
+
+/* Fab button animation */
+ion-fab-button {
+    animation: rotateFadeIn 0.6s ease-out;
+    transition: transform 0.3s ease;
+}
+
+ion-fab-button:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+@keyframes rotateFadeIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* Grid animation container */
+.mafiots-grid-animated {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Delete animation */
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.deleting {
+    animation: fadeOutScale 0.4s ease-out forwards;
+}
+
+/* Network status icon animation */
+.network-icon-animated {
+    animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Infinite scroll animation */
+ion-infinite-scroll-content {
+    animation: fadeIn 0.3s ease-out;
+}
+

@@ -22,7 +22,7 @@ import {
     IonSelectOption, IonGrid, IonRow,
     IonCol, IonCard, IonImg, IonCardHeader, IonCardTitle, IonCardContent,
 } from '@ionic/react';
-import {add, logOut, wifi, cloudOffline, trash, location} from 'ionicons/icons';
+import {add, logOut, wifi, cloudOffline, trash, location, person} from 'ionicons/icons';
 import { getLogger } from '../core';
 import { MafiotContext } from './MafiotProvider';
 import { AuthContext } from '../auth';
@@ -30,6 +30,9 @@ import { useNetwork } from '../core';
 import { photoStorage } from '../camera/photoStorage';
 import { MafiotProps } from './MafiotProps';
 import { LocationViewer } from '../location';
+import { MafiotInfoModal } from './MafiotInfoModal';
+import './mafiot-photo-frame.css';
+import './MafiotList.css';
 
 const log = getLogger('MafiotList');
 
@@ -116,6 +119,8 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
     const [disableInfiniteScroll, setDisableInfiniteScroll] = useState(false);
     const [showLocationViewer, setShowLocationViewer] = useState(false);
     const [selectedMafiot, setSelectedMafiot] = useState<MafiotProps | null>(null);
+    const [showInfoModal, setShowInfoModal] = useState(false);
+    const [selectedMafiotPhoto, setSelectedMafiotPhoto] = useState<string | null>(null);
 
     log('render', 'username:', username);
 
@@ -167,6 +172,26 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
         }
     };
 
+    const handleShowInfo = async (e: React.MouseEvent, mafiot: MafiotProps) => {
+        e.stopPropagation();
+        setSelectedMafiot(mafiot);
+
+        // Load photo if available
+        if (mafiot.photoPath) {
+            try {
+                const photoData = await photoStorage.loadPhoto(mafiot.photoPath, mafiot.id);
+                setSelectedMafiotPhoto(photoData);
+            } catch (error) {
+                log('Error loading photo for modal:', error);
+                setSelectedMafiotPhoto(null);
+            }
+        } else {
+            setSelectedMafiotPhoto(null);
+        }
+
+        setShowInfoModal(true);
+    };
+
     return (
         <IonPage>
             <IonHeader>
@@ -177,9 +202,9 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                     </IonTitle>
                     <IonButtons slot="end">
                         {networkStatus.connected ? (
-                            <IonIcon icon={wifi} color="success" style={{marginRight: '10px', fontSize: '24px'}}/>
+                            <IonIcon icon={wifi} color="success" className="network-icon-animated" style={{marginRight: '10px', fontSize: '24px'}}/>
                         ) : (
-                            <IonIcon icon={cloudOffline} color="danger"
+                            <IonIcon icon={cloudOffline} color="danger" className="network-icon-animated"
                                      style={{marginRight: '10px', fontSize: '24px'}}/>
                         )}
                         <IonButton onClick={handleLogout}>
@@ -187,7 +212,7 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                         </IonButton>
                     </IonButtons>
                 </IonToolbar>
-                <IonToolbar>
+                <IonToolbar className="filter-container">
                     <IonSearchbar
                         value={searchText}
                         onIonInput={(e) => setSearchText?.(e.detail.value || '')}
@@ -195,7 +220,7 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                         debounce={300}
                     />
                 </IonToolbar>
-                <IonToolbar>
+                <IonToolbar className="filter-container">
                     <IonSelect
                         value={balanceFilter}
                         placeholder="Filter by balance"
@@ -228,10 +253,10 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                 {pendingOperations && pendingOperations.length > 0 && (
                     <div style={{
                         padding: '10px',
-                        backgroundColor: '#fff3cd',
+                        backgroundColor: '#ff2e0e',
                         color: '#856404',
                         textAlign: 'center'
-                    }}>
+                    }} className="pending-badge-animated">
                         <IonChip>
                             <IonLabel>{pendingOperations.length} pending operation(s)</IonLabel>
                         </IonChip>
@@ -239,10 +264,10 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                 )}
 
                 {mafiots && (
-                    <IonGrid>
+                    <IonGrid className="mafiots-grid-animated">
                         <IonRow>
                             {mafiots.map((mafiot) => (
-                                <IonCol size="12" sizeMd="6" sizeLg="4" key={mafiot.id}>
+                                <IonCol size="12" sizeMd="6" sizeLg="4" key={mafiot.id} className="mafiot-card-animated">
                                     <IonCard
                                         button
                                         onClick={() => history.push(`/mafiot/${mafiot.id}`)}
@@ -253,27 +278,31 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                                             minHeight: '400px'
                                         }}
                                     >
-                                        <div style={{
-                                            width: '100%',
-                                            height: '300px',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            backgroundColor: '#202020',
-                                            overflow: 'hidden'
-                                        }}>
+                                        <div className="mafiot-photo-frame">
                                             <MafiotPhoto mafiot={mafiot} />
                                         </div>
                                         <IonCardHeader>
                                             <IonCardTitle>{mafiot.nume} {mafiot.prenume}</IonCardTitle>
                                         </IonCardHeader>
                                         <IonCardContent style={{flex: 1}}>
-                                            <p><strong>Balanță:</strong> {mafiot.balanta} $</p>
+                                            <IonButton
+                                                expand="block"
+                                                color="success"
+                                                onClick={(e) => handleShowInfo(e, mafiot)}
+                                                style={{marginTop: '10px'}}
+                                            >
+                                                <IonIcon slot="start" icon={person}/>
+                                                Detalii
+                                            </IonButton>
+
                                             {mafiot.latitude && mafiot.longitude && (
                                                 <IonButton
                                                     expand="block"
                                                     color="primary"
-                                                    onClick={() => handleShowLocation(mafiot)}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleShowLocation(mafiot);
+                                                    }}
                                                     style={{marginTop: '10px'}}
                                                 >
                                                     <IonIcon slot="start" icon={location}/>
@@ -333,6 +362,17 @@ const MafiotList: React.FC<RouteComponentProps> = ({ history }) => {
                         locationName={selectedMafiot.locationName}
                     />
                 )}
+
+                <MafiotInfoModal
+                    isOpen={showInfoModal}
+                    onClose={() => {
+                        setShowInfoModal(false);
+                        setSelectedMafiot(null);
+                        setSelectedMafiotPhoto(null);
+                    }}
+                    mafiot={selectedMafiot}
+                    photoData={selectedMafiotPhoto}
+                />
             </IonContent>
         </IonPage>
     );

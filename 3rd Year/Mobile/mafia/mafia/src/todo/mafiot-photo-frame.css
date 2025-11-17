@@ -1,0 +1,48 @@
+.mafiot-photo-frame {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* subtle grey highlight instead of purple; uses ionic grey variables as fallback */
+  background:
+    radial-gradient(circle at 35% 20%, rgba(102, 102, 102, 0.12), transparent 55%),
+    linear-gradient(135deg, #05030a, #090013, #050008);
+  box-shadow:
+    0 0 16px rgba(102, 102, 102, 0.45),
+    0 0 32px rgba(0, 0, 0, 0.95);
+  transition:
+    box-shadow 200ms ease-out,
+    transform 200ms ease-out,
+    filter 200ms ease-out;
+}
+
+/* stronger hover so the effect is more visible on images */
+.mafiot-photo-frame:hover {
+  box-shadow:
+    0 0 28px rgba(255, 255, 255, 0.75),
+    0 0 48px rgba(0, 0, 0, 1);
+  transform: translateY(-3px) scale(1.04);
+  filter: brightness(1.06) contrast(1.04);
+}
+
+/* ensure the image fits nicely inside the frame */
+.mafiot-photo-frame img,
+.mafiot-photo-frame ion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* accessibility: focus state similar to hover */
+.mafiot-photo-frame:focus {
+  outline: none;
+  box-shadow:
+    0 0 20px rgba(66, 66, 66, 0.6),
+    0 0 36px rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px) scale(1.03);
+}

@@ -45,8 +45,11 @@ void add_to_fip(int code, int ts_pos = -1) {
 "hear"      { add_to_fip(HEAR); }
 "speak"     { add_to_fip(SPEAK); }
 "return"    { add_to_fip(RETURN); }
+"cattimp"   { add_to_fip(CATTIMP); }
+"executa"   { add_to_fip(EXECUTA); }
+"sfcattimp" { add_to_fip(SFCATTIMP); }
 
-"<"[^>]+">" {
+"<"[^\n>]+">" {
                 int pos = ts.insert(yytext, "LIBRARY");
                 add_to_fip(LIBRARY, pos);
             }

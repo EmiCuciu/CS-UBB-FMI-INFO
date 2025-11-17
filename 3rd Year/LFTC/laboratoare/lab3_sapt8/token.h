@@ -46,7 +46,10 @@ enum AtomCode {
     COMMA = 37, // ,
     RETURN = 38,
     SQ_LBRACKET = 39, // [
-    SQ_RBRACKET = 40 // ]
+    SQ_RBRACKET = 40, // ]
+    CATTIMP = 41,
+    EXECUTA = 42,
+    SFCATTIMP = 43
 };
 
 #endif //LAB3_SAPT8_TOKEN_H

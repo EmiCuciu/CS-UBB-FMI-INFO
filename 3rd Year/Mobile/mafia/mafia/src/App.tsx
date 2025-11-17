@@ -6,12 +6,6 @@ import { MafiotProvider } from './todo/MafiotProvider';
 import { AuthProvider } from './auth/AuthProvider';
 import { Login } from './auth/Login';
 import { PrivateRoute } from './auth/PrivateRoute';
-import { cleanupStorage } from './core/cleanupStorage';
-
-// Make cleanup utility available in console for debugging
-if (typeof window !== 'undefined') {
-    (window as any).cleanupStorage = cleanupStorage;
-}
 
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';

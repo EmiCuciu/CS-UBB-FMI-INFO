@@ -1,17 +1,14 @@
 Pos_TS	Atom_lexical	Tip
 ------------------------------
 0	<iostream>	LIBRARY
-1	<< "etc";
-    int a;
-    int b;
-    int r;
-    speak << "Primul numar: ";
-    hear >	LIBRARY
-2	a	ID
-3	<< "Al doilea numar: ";
-    hear >	LIBRARY
-4	b	ID
-5	0	CONST_INT
+1	9	CONST_INT
+2	numar	ID
+3	"etc"	CONST_STRING
+4	a	ID
+5	b	ID
 6	r	ID
-7	"CMMDC : "	CONST_STRING
-8	10	CONST_INT
+7	"Primul numar: "	CONST_STRING
+8	"Al doilea numar: "	CONST_STRING
+9	0	CONST_INT
+10	corect	ID
+11	"CMMDC : "	CONST_STRING
