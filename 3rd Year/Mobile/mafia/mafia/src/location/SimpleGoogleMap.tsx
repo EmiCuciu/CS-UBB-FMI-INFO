@@ -108,6 +108,7 @@ export const SimpleGoogleMap: React.FC<SimpleMapProps> = ({
                 console.log('SimpleGoogleMap: Map created successfully!');
             } catch (error) {
                 console.error('SimpleGoogleMap: Error creating map:', error);
+                alert('Failed to load the map. Please try again later.'); // Enhanced error handling
             }
         };
 
@@ -118,10 +119,14 @@ export const SimpleGoogleMap: React.FC<SimpleMapProps> = ({
             // Cleanup
             if (markerInstanceRef.current) {
                 markerInstanceRef.current.setMap(null);
+                markerInstanceRef.current = null; // Ensure marker reference is cleared
             }
-            mapInstanceRef.current = null;
+            if (mapInstanceRef.current) {
+                google.maps.event.clearInstanceListeners(mapInstanceRef.current); // Clear all listeners
+                mapInstanceRef.current = null; // Ensure map reference is cleared
+            }
         };
-    }, [latitude, longitude, zoom, marker?.lat, marker?.lng, marker?.draggable, onMapClick]);
+    }, [latitude, longitude, zoom, JSON.stringify(marker), onMapClick]); // Optimized dependencies
 
     // Update marker position when prop changes
     useEffect(() => {
@@ -144,4 +149,3 @@ export const SimpleGoogleMap: React.FC<SimpleMapProps> = ({
         />
     );
 };
-
