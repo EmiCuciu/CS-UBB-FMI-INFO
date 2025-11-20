@@ -6,8 +6,12 @@
 {"nume":"Corleone","prenume":"Vito","balanta":"999999","photoPath":"KfWAmCrdO9ebM8zC.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"KfWAmCrdO9ebM8zC"}
 {"nume":"Cuciurean","prenume":"Emilian","balanta":"99999","photoPath":"Lrn4G98WBDmykvH6.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"Lrn4G98WBDmykvH6","latitude":46.762560644250776,"longitude":23.588333129882812}
 {"nume":"Brasi","prenume":"Luca","balanta":"79876","photoPath":"VgYlGPTI5ZLC9dMM.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"VgYlGPTI5ZLC9dMM"}
-{"nume":"Nelu","prenume":"Motanelu","balanta":"INFINIT","photoPath":"ZoS0KzYk0LRi9UPI.jpg","userId":"Ng3mQWEDxfm6krib","_id":"ZoS0KzYk0LRi9UPI","latitude":46.76235924074418,"longitude":23.5982584892273}
+{"nume":"a","prenume":"a","balanta":"a","photoPath":"XedsUOLsDf1cFhMS.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"XedsUOLsDf1cFhMS"}
+{"nume":"a","prenume":"a","balanta":"a","photoPath":"YisQSSsnVbcW8Lgg.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"YisQSSsnVbcW8Lgg"}
+{"nume":"Nelu","prenume":"Motanelu","balanta":"INFINIT","photoPath":"ZoS0KzYk0LRi9UPI.jpg","userId":"Ng3mQWEDxfm6krib","_id":"ZoS0KzYk0LRi9UPI","latitude":46.7889506247494,"longitude":23.643169396972663}
 {"nume":"Clemenza","prenume":"Peter","balanta":"67867","photoPath":"fMtm5HfeyhLWZHHg.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"fMtm5HfeyhLWZHHg"}
 {"nume":"Corleone","prenume":"Michael","balanta":"89898998","photoPath":"fwIz48norXhQjSEO.jpg","userId":"MT8HUuxpPyiMCs5M","_id":"fwIz48norXhQjSEO"}
 {"nume":"Barzini","prenume":"Emilio","balanta":"665678","photoPath":"jkNrG8YMiRXEoi4Z.jpg","userId":"Ng3mQWEDxfm6krib","_id":"jkNrG8YMiRXEoi4Z","latitude":46.761091,"longitude":23.5790653}
 {"nume":"Sollozzo","prenume":"Virgil","balanta":"124125125","photoPath":"ptZpOgz7IDKSpC0M.jpg","userId":"Ng3mQWEDxfm6krib","_id":"ptZpOgz7IDKSpC0M","latitude":46.761602157371314,"longitude":23.6088724309326}
+{"$$deleted":true,"_id":"XedsUOLsDf1cFhMS"}
+{"$$deleted":true,"_id":"YisQSSsnVbcW8Lgg"}
