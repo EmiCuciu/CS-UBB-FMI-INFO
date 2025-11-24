@@ -10,12 +10,13 @@ int main()
     hear >> a;
     speak << "Al doilea numar: ";
     hear >> b;
-    cattimp (b != 0 ) {
+    cattimp (b != 0 ) executa {
         r <- a % b;
         a <- b;
         b <- r;
     } sfcattimp
-    speak << "CMMDC : " << a;
+    speak << "CMMDC : ";
+    speak << a;
 
     return 0;
 }

@@ -580,24 +580,16 @@ char *yytext;
 #include <string>
 #include <vector>
 #include "HashSymbolTable.h"
-#include "token.h"
-
+#include "parser.tab.h"
 
 extern HashSymbolTable ts;
 extern std::vector<std::pair<int,int>> fip;
 
-extern int yylineno;    // current line number
-
-
 void add_to_fip(int code, int ts_pos = -1) {
-    // -1 : poz default pentru tokenii care nu apar in TS
     fip.push_back({code, ts_pos});
 }
-#line 597 "lex.yy.c"
-/* yywrap() : Flex apeleaza automat cand ajunge EOF. return 1 => succes, return => exista alte fisiere de procesat (scanner-ul continua)*/
-/* Ne spune sa nu cautam functia yywrap() la final */
-/* Flex va urmari automat numarul liniei in 'yylineno' */
-#line 601 "lex.yy.c"
+#line 592 "lex.yy.c"
+#line 593 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -814,11 +806,10 @@ YY_DECL
 		}
 
 	{
-#line 31 "scanner.l"
+#line 20 "scanner.l"
 
 
-
-#line 822 "lex.yy.c"
+#line 813 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -887,256 +878,261 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 34 "scanner.l"
-{ add_to_fip(INCLUDE); }
+#line 22 "scanner.l"
+{ add_to_fip(INCLUDE); return INCLUDE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 "scanner.l"
-{ add_to_fip(MAIN); }
+#line 23 "scanner.l"
+{ add_to_fip(MAIN); return MAIN; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 36 "scanner.l"
-{ add_to_fip(INT); }
+#line 24 "scanner.l"
+{ add_to_fip(INT); return INT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 37 "scanner.l"
-{ add_to_fip(DOUBLE); }
+#line 25 "scanner.l"
+{ add_to_fip(DOUBLE); return DOUBLE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 38 "scanner.l"
-{ add_to_fip(FLOAT); }
+#line 26 "scanner.l"
+{ add_to_fip(FLOAT); return FLOAT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 39 "scanner.l"
-{ add_to_fip(STRING); }
+#line 27 "scanner.l"
+{ add_to_fip(STRING); return STRING; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 40 "scanner.l"
-{ add_to_fip(WORD); }
+#line 28 "scanner.l"
+{ add_to_fip(WORD); return WORD; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "scanner.l"
-{ add_to_fip(MAYBE); }
+#line 29 "scanner.l"
+{ add_to_fip(MAYBE); return MAYBE; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 "scanner.l"
-{ add_to_fip(ELSE); }
+#line 30 "scanner.l"
+{ add_to_fip(ELSE); return ELSE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 43 "scanner.l"
-{ add_to_fip(LOOP); }
+#line 31 "scanner.l"
+{ add_to_fip(LOOP); return LOOP; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 44 "scanner.l"
-{ add_to_fip(FORLOOP); }
+#line 32 "scanner.l"
+{ add_to_fip(FORLOOP); return FORLOOP; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 45 "scanner.l"
-{ add_to_fip(HEAR); }
+#line 33 "scanner.l"
+{ add_to_fip(HEAR); return HEAR; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 46 "scanner.l"
-{ add_to_fip(SPEAK); }
+#line 34 "scanner.l"
+{ add_to_fip(SPEAK); return SPEAK; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 47 "scanner.l"
-{ add_to_fip(RETURN); }
+#line 35 "scanner.l"
+{ add_to_fip(RETURN); return RETURN; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 48 "scanner.l"
-{ add_to_fip(CATTIMP); }
+#line 36 "scanner.l"
+{ add_to_fip(CATTIMP); return CATTIMP; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 49 "scanner.l"
-{ add_to_fip(EXECUTA); }
+#line 37 "scanner.l"
+{ add_to_fip(EXECUTA); return EXECUTA; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 50 "scanner.l"
-{ add_to_fip(SFCATTIMP); }
+#line 38 "scanner.l"
+{ add_to_fip(SFCATTIMP); return SFCATTIMP; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 52 "scanner.l"
+#line 40 "scanner.l"
 {
                 int pos = ts.insert(yytext, "LIBRARY");
                 add_to_fip(LIBRARY, pos);
+                return LIBRARY;
             }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 57 "scanner.l"
-{ add_to_fip(OP_ASSIGN); }
+#line 46 "scanner.l"
+{ add_to_fip(OP_ASSIGN); return OP_ASSIGN; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 58 "scanner.l"
-{ add_to_fip(OP_OUT); }
+#line 47 "scanner.l"
+{ add_to_fip(OP_OUT); return OP_OUT; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 59 "scanner.l"
-{ add_to_fip(OP_IN); }
+#line 48 "scanner.l"
+{ add_to_fip(OP_IN); return OP_IN; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 60 "scanner.l"
-{ add_to_fip(OP_LTE); }
+#line 49 "scanner.l"
+{ add_to_fip(OP_LTE); return OP_LTE; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 61 "scanner.l"
-{ add_to_fip(OP_GTE); }
+#line 50 "scanner.l"
+{ add_to_fip(OP_GTE); return OP_GTE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 62 "scanner.l"
-{ add_to_fip(OP_EQ); }
+#line 51 "scanner.l"
+{ add_to_fip(OP_EQ); return OP_EQ; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 63 "scanner.l"
-{ add_to_fip(OP_NE); }
+#line 52 "scanner.l"
+{ add_to_fip(OP_NE); return OP_NE; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 64 "scanner.l"
-{ add_to_fip(OP_ADD); }
+#line 53 "scanner.l"
+{ add_to_fip(OP_ADD); return OP_ADD; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 65 "scanner.l"
-{ add_to_fip(OP_SUB); }
+#line 54 "scanner.l"
+{ add_to_fip(OP_SUB); return OP_SUB; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 66 "scanner.l"
-{ add_to_fip(OP_MUL); }
+#line 55 "scanner.l"
+{ add_to_fip(OP_MUL); return OP_MUL; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 67 "scanner.l"
-{ add_to_fip(OP_DIV); }
+#line 56 "scanner.l"
+{ add_to_fip(OP_DIV); return OP_DIV; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 68 "scanner.l"
-{ add_to_fip(OP_MOD); }
+#line 57 "scanner.l"
+{ add_to_fip(OP_MOD); return OP_MOD; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 69 "scanner.l"
-{ add_to_fip(OP_LT); }
+#line 58 "scanner.l"
+{ add_to_fip(OP_LT); return OP_LT; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 70 "scanner.l"
-{ add_to_fip(OP_GT); }
+#line 59 "scanner.l"
+{ add_to_fip(OP_GT); return OP_GT; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 71 "scanner.l"
-{ add_to_fip(LPARANTEZ); }
+#line 60 "scanner.l"
+{ add_to_fip(LPARANTEZ); return LPARANTEZ; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 72 "scanner.l"
-{ add_to_fip(RPARANTEZ); }
+#line 61 "scanner.l"
+{ add_to_fip(RPARANTEZ); return RPARANTEZ; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 73 "scanner.l"
-{ add_to_fip(LBRACKET); }
+#line 62 "scanner.l"
+{ add_to_fip(LBRACKET); return LBRACKET; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 74 "scanner.l"
-{ add_to_fip(RBRACKET); }
+#line 63 "scanner.l"
+{ add_to_fip(RBRACKET); return RBRACKET; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 75 "scanner.l"
-{ add_to_fip(SEMICOLON); }
+#line 64 "scanner.l"
+{ add_to_fip(SEMICOLON); return SEMICOLON; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 76 "scanner.l"
-{ add_to_fip(COMMA); }
+#line 65 "scanner.l"
+{ add_to_fip(COMMA); return COMMA; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 77 "scanner.l"
-{ add_to_fip(SQ_LBRACKET); }
+#line 66 "scanner.l"
+{ add_to_fip(SQ_LBRACKET); return SQ_LBRACKET; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 78 "scanner.l"
-{ add_to_fip(SQ_RBRACKET); }
+#line 67 "scanner.l"
+{ add_to_fip(SQ_RBRACKET); return SQ_RBRACKET; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 82 "scanner.l"
+#line 69 "scanner.l"
 {
     int pos = ts.insert(yytext, "ID");
     add_to_fip(ID, pos);
+    return ID;
 }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 89 "scanner.l"
+#line 75 "scanner.l"
 {
     int pos = ts.insert(yytext, "CONST_INT");
     add_to_fip(CONST_INT, pos);
+    return CONST_INT;
 }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 96 "scanner.l"
+#line 81 "scanner.l"
 {
     fprintf(stderr, "Eroare Lexicala [Linia %d]: Constanta float invalida: %s\n", yylineno, yytext);
 }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 100 "scanner.l"
+#line 85 "scanner.l"
 {
     int pos = ts.insert(yytext, "CONST_FLOAT");
     add_to_fip(CONST_FLOAT, pos);
+    return CONST_FLOAT;
 }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 107 "scanner.l"
+#line 91 "scanner.l"
 {
     int pos = ts.insert(yytext, "CONST_STRING");
     add_to_fip(CONST_STRING, pos);
+    return CONST_STRING;
 }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 112 "scanner.l"
+#line 97 "scanner.l"
 {
     fprintf(stderr, "Eroare Lexicala [Linia %d]: String neterminat.\n", yylineno);
 }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 116 "scanner.l"
+#line 101 "scanner.l"
 {
 
 }
@@ -1144,24 +1140,24 @@ YY_RULE_SETUP
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 120 "scanner.l"
+#line 105 "scanner.l"
 {
 
 }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 125 "scanner.l"
+#line 110 "scanner.l"
 {
     fprintf(stderr, "Eroare Lexicala [Linia %d]: Caracter necunoscut: %s\n", yylineno, yytext);
 }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 129 "scanner.l"
+#line 114 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 1165 "lex.yy.c"
+#line 1161 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2178,8 +2174,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 129 "scanner.l"
+#line 114 "scanner.l"
 
-
-HashSymbolTable ts;
-std::vector<std::pair<int, int>>fip;

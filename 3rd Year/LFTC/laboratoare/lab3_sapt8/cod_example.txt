@@ -16,9 +16,10 @@ int main()
         a <- b;
         b <- r;
     }
-    speak << "CMMDC : " << a;
+    speak << "CMMDC : ";
+    speak << a;
 
-    int a[] <- [10];
+    int array[];
 
     return 0;
 }
