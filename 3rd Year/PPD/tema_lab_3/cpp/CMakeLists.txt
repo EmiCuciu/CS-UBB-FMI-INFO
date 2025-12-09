@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(cpp main.cpp
         v2.cpp
         v1.cpp
+        send-recv.cpp
+        scatter-gather.cpp
 )

@@ -1,12 +1,4 @@
 Pos_TS	Atom_lexical	Tip
 ------------------------------
 0	<iostream>	LIBRARY
-1	"etc"	CONST_STRING
-2	a	ID
-3	b	ID
-4	r	ID
-5	"Primul numar: "	CONST_STRING
-6	"Al doilea numar: "	CONST_STRING
-7	0	CONST_INT
-8	"CMMDC : "	CONST_STRING
-9	array	ID
+1	9	CONST_INT
