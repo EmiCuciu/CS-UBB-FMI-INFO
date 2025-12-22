@@ -14,6 +14,39 @@
         android:layout_height="wrap_content"
         android:padding="12dp">
 
+        <!-- Profile Photo -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/photoCard"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#3a3a3a"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/profilePhotoPlaceholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤"
+                    android:textSize="24sp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/profilePhotoImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"/>
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <TextView
             android:id="@+id/nameText"
             android:layout_width="0dp"
@@ -25,8 +58,9 @@
             android:ellipsize="end"
             tools:text="Vito Corleone"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/photoCard"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -37,7 +71,7 @@
             android:textSize="13sp"
             android:textColor="#999999"
             app:layout_constraintTop_toBottomOf="@id/nameText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/nameText"
             android:layout_marginTop="4dp"/>
 
         <TextView

@@ -1,5 +1,6 @@
 package com.example.mafia.data.remote
 
+import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,10 +44,15 @@ object RetrofitClient {
         .writeTimeout(30, TimeUnit.SECONDS)
         .build()
 
+    // Configure Gson to serialize null values (important for photo deletion)
+    private val gson = GsonBuilder()
+        .serializeNulls() // ✅ This ensures profilePhoto: null is sent to server
+        .create()
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
     val authApi: AuthApi = retrofit.create(AuthApi::class.java)

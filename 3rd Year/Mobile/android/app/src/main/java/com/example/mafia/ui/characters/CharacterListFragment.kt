@@ -1,7 +1,10 @@
 package com.example.mafia.ui.characters
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +39,7 @@ import com.example.mafia.data.remote.WebSocketManager
 import com.example.mafia.databinding.FragmentCharacterListBinding
 import com.example.mafia.utils.NetworkConnectivityObserver
 import com.example.mafia.utils.NotificationHelper
+import com.example.mafia.utils.ShakeDetector
 import com.example.mafia.worker.SyncCharactersWorker
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
@@ -56,6 +60,11 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
     private lateinit var authDataStore: AuthDataStore
     private var networkSnackbar: Snackbar? = null
     private var lastNetworkStatus: Boolean? = null  // Track last network status to avoid duplicate notifications
+
+    // Sensor components - LAB REQUIREMENT: Sensors (3p)
+    private var sensorManager: SensorManager? = null
+    private var accelerometer: Sensor? = null
+    private var shakeDetector: ShakeDetector? = null
 
     companion object {
         private const val TAG = "CharacterListFragment"
@@ -97,7 +106,30 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         setupMenu()
         setupWebSocket()
         setupNetworkMonitoring()
+        setupSensorDetection()
         requestNotificationPermission()
+    }
+
+    /**
+     * Setup shake detection using accelerometer sensor
+     * LAB REQUIREMENT: Sensors (3p)
+     */
+    private fun setupSensorDetection() {
+        sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+        if (accelerometer != null) {
+            shakeDetector = ShakeDetector {
+                // On shake detected - refresh the character list
+                requireActivity().runOnUiThread {
+                    Toast.makeText(context, "Shake detected! Refreshing list...", Toast.LENGTH_SHORT).show()
+                    viewModel.refreshCharacters()
+                }
+            }
+            Log.d(TAG, "Shake detector initialized successfully")
+        } else {
+            Log.w(TAG, "Accelerometer sensor not available on this device")
+        }
     }
 
     /**
@@ -263,6 +295,14 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         }
     }
 
+    /**
+     * Navigate to camera to take a photo
+     * LAB REQUIREMENT: Camera (3p)
+     */
+    private fun navigateToCamera() {
+        findNavController().navigate(R.id.action_characterListFragment_to_cameraFragment)
+    }
+
     private fun setupMenu() {
         val menuHost: MenuHost = requireActivity()
 
@@ -288,7 +328,8 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
             characterId = null,
             characterName = null,
-            characterBalance = 0f
+            characterBalance = 0f,
+            characterProfilePhoto = null
         )
         findNavController().navigate(action)
     }
@@ -297,7 +338,8 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
             characterId = character.id,
             characterName = character.name,
-            characterBalance = character.balance.toFloat()
+            characterBalance = character.balance.toFloat(),
+            characterProfilePhoto = character.profilePhoto
         )
         findNavController().navigate(action)
     }
@@ -370,6 +412,30 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         Log.e(TAG, "WebSocket error: $error")
         requireActivity().runOnUiThread {
             Toast.makeText(context, "Connection error: $error", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Register sensor listener
+        shakeDetector?.let { detector ->
+            accelerometer?.let { sensor ->
+                sensorManager?.registerListener(
+                    detector,
+                    sensor,
+                    SensorManager.SENSOR_DELAY_NORMAL
+                )
+                Log.d(TAG, "Shake detector registered")
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Unregister sensor listener to save battery
+        shakeDetector?.let { detector ->
+            sensorManager?.unregisterListener(detector)
+            Log.d(TAG, "Shake detector unregistered")
         }
     }
 

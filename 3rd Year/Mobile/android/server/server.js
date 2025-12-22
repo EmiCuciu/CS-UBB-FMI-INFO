@@ -19,11 +19,13 @@ const clients = new Map();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' })); // Increase limit for Base64 photos
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // JSON file paths
 const USERS_DB = path.join(__dirname, 'db', 'users.json');
 const MAFIOTS_DB = path.join(__dirname, 'db', 'mafiots.json');
+const PHOTOS_DB = path.join(__dirname, 'db', 'photos.json');
 
 // Ensure db directory exists
 if (!fs.existsSync(path.join(__dirname, 'db'))) {
@@ -73,6 +75,86 @@ function writeMafiotsDB(mafiots) {
     } catch (error) {
         console.error('Error writing mafiots DB:', error);
     }
+}
+
+function readPhotosDB() {
+    try {
+        if (!fs.existsSync(PHOTOS_DB)) {
+            fs.writeFileSync(PHOTOS_DB, JSON.stringify({ photos: [] }));
+            return { photos: [] };
+        }
+        const data = fs.readFileSync(PHOTOS_DB, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading photos DB:', error);
+        return { photos: [] };
+    }
+}
+
+function writePhotosDB(photosData) {
+    try {
+        fs.writeFileSync(PHOTOS_DB, JSON.stringify(photosData, null, 2));
+    } catch (error) {
+        console.error('Error writing photos DB:', error);
+    }
+}
+
+function savePhoto(characterId, photoBase64) {
+    if (!photoBase64) {
+        console.log(`⚠️  savePhoto called with null/undefined for character: ${characterId}`);
+        return null;
+    }
+
+    console.log(`💾 Saving photo for character: ${characterId}, size: ${photoBase64.length} chars`);
+
+    const photosData = readPhotosDB();
+    const photoId = generateId();
+
+    const photoEntry = {
+        id: photoId,
+        characterId: characterId,
+        data: photoBase64,
+        createdAt: new Date().toISOString()
+    };
+
+    // Remove old photo for this character if exists
+    const oldCount = photosData.photos.length;
+    photosData.photos = photosData.photos.filter(p => p.characterId !== characterId);
+    const removedCount = oldCount - photosData.photos.length;
+    if (removedCount > 0) {
+        console.log(`🗑️  Removed ${removedCount} old photo(s) for character: ${characterId}`);
+    }
+
+    // Add new photo
+    photosData.photos.push(photoEntry);
+    writePhotosDB(photosData);
+
+    console.log(`✅ Photo saved successfully! Total photos in DB: ${photosData.photos.length}`);
+    return photoId;
+}
+
+function getPhoto(characterId) {
+    const photosData = readPhotosDB();
+    const photo = photosData.photos.find(p => p.characterId === characterId);
+    return photo ? photo.data : null;
+}
+
+function deletePhoto(characterId) {
+    const photosData = readPhotosDB();
+    const beforeCount = photosData.photos.length;
+    const photoExists = photosData.photos.find(p => p.characterId === characterId);
+
+    if (photoExists) {
+        console.log(`🗑️  deletePhoto: Found photo for character ${characterId}, deleting...`);
+    } else {
+        console.log(`⚠️  deletePhoto: No photo found for character ${characterId}`);
+    }
+
+    photosData.photos = photosData.photos.filter(p => p.characterId !== characterId);
+    const afterCount = photosData.photos.length;
+
+    writePhotosDB(photosData);
+    console.log(`✅ deletePhoto: ${beforeCount} → ${afterCount} photos in DB`);
 }
 
 function generateId() {
@@ -225,8 +307,17 @@ app.get('/api/characters', verifyToken, (req, res) => {
     const mafiots = readMafiotsDB();
     const userMafiots = mafiots.filter(m => m.userId === username);
 
-    console.log(`Fetching characters for user: ${username}, count: ${userMafiots.length}`);
-    res.json(userMafiots);
+    // Attach photos from photos.json
+    const userMafiotsWithPhotos = userMafiots.map(mafiot => {
+        const photoData = getPhoto(mafiot._id);
+        return {
+            ...mafiot,
+            profilePhoto: photoData
+        };
+    });
+
+    console.log(`Fetching characters for user: ${username}, count: ${userMafiotsWithPhotos.length}`);
+    res.json(userMafiotsWithPhotos);
 });
 
 // Get character by ID
@@ -243,13 +334,22 @@ app.get('/api/characters/:id', verifyToken, (req, res) => {
         return res.status(403).json({ error: 'Access denied' });
     }
 
-    res.json(mafiot);
+    // Attach photo
+    const photoData = getPhoto(mafiot._id);
+    const mafiotWithPhoto = {
+        ...mafiot,
+        profilePhoto: photoData
+    };
+
+    res.json(mafiotWithPhoto);
 });
 
 // Create character
 app.post('/api/characters', verifyToken, (req, res) => {
-    const { name, balance } = req.body;
+    const { name, balance, profilePhoto } = req.body;
     const username = req.user.username;
+
+    console.log(`📸 CREATE Character - profilePhoto received: ${profilePhoto ? 'YES (' + profilePhoto.substring(0, 50) + '...)' : 'NO (null/undefined)'}`);
 
     if (!name) {
         return res.status(400).json({ error: 'Name is required' });
@@ -260,28 +360,43 @@ app.post('/api/characters', verifyToken, (req, res) => {
         _id: generateId(),
         name,
         balance: balance || 0,
-        userId: username
+        userId: username,
+        profilePhoto: null // We don't store photo in mafiots.json anymore
     };
 
     mafiots.push(newMafiot);
     writeMafiotsDB(mafiots);
 
+    // Save photo separately in photos.json
+    if (profilePhoto) {
+        savePhoto(newMafiot._id, profilePhoto);
+    }
+
     console.log(`Character created: ${name} by ${username}`);
+
+    // Get the photo for broadcasting
+    const photoData = getPhoto(newMafiot._id);
+    const mafiotWithPhoto = {
+        ...newMafiot,
+        profilePhoto: photoData
+    };
 
     // Broadcast to all connected clients of this user
     broadcastToUser(username, {
         type: 'character_created',
-        character: newMafiot
+        character: mafiotWithPhoto
     });
 
-    res.status(201).json(newMafiot);
+    res.status(201).json(mafiotWithPhoto);
 });
 
 // Update character
 app.put('/api/characters/:id', verifyToken, (req, res) => {
     const { id } = req.params;
-    const { name, balance } = req.body;
+    const { name, balance, profilePhoto } = req.body;
     const username = req.user.username;
+
+    console.log(`📸 UPDATE Character ${id} - profilePhoto received: ${profilePhoto !== undefined ? (profilePhoto ? 'YES (' + profilePhoto.substring(0, 50) + '...)' : 'NULL (explicit)') : 'UNDEFINED (not sent)'}`);
 
     const mafiots = readMafiotsDB();
     const index = mafiots.findIndex(m => m._id === id);
@@ -297,20 +412,37 @@ app.put('/api/characters/:id', verifyToken, (req, res) => {
     mafiots[index] = {
         ...mafiots[index],
         name: name !== undefined ? name : mafiots[index].name,
-        balance: balance !== undefined ? balance : mafiots[index].balance
+        balance: balance !== undefined ? balance : mafiots[index].balance,
+        profilePhoto: null // Keep null in mafiots.json
     };
 
     writeMafiotsDB(mafiots);
 
+    // Update photo in photos.json
+    if (profilePhoto !== undefined) {
+        if (profilePhoto === null) {
+            deletePhoto(id);
+        } else {
+            savePhoto(id, profilePhoto);
+        }
+    }
+
     console.log(`Character updated: ${id} by ${username}`);
+
+    // Get the updated photo
+    const photoData = getPhoto(id);
+    const mafiotWithPhoto = {
+        ...mafiots[index],
+        profilePhoto: photoData
+    };
 
     // Broadcast to all connected clients of this user
     broadcastToUser(username, {
         type: 'character_updated',
-        character: mafiots[index]
+        character: mafiotWithPhoto
     });
 
-    res.json(mafiots[index]);
+    res.json(mafiotWithPhoto);
 });
 
 // Delete character
@@ -331,6 +463,9 @@ app.delete('/api/characters/:id', verifyToken, (req, res) => {
 
     mafiots.splice(index, 1);
     writeMafiotsDB(mafiots);
+
+    // Delete photo from photos.json
+    deletePhoto(id);
 
     console.log(`Character deleted: ${id} by ${username}`);
 

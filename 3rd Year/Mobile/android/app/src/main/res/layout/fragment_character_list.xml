@@ -79,6 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="12dp"/>
 
+
     <TextView
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"

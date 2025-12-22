@@ -27,7 +27,15 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_characterListFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.mafia.ui.camera.CameraFragment"
+        android:label="Take Photo" />
 
     <fragment
         android:id="@+id/characterDetailFragment"
@@ -47,6 +55,14 @@
             android:name="characterBalance"
             android:defaultValue="0.0"
             app:argType="float" />
+        <argument
+            android:name="characterProfilePhoto"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_characterDetailFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
 
 </navigation>

@@ -29,7 +29,7 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
         repository = CharacterRepository(characterDao, RetrofitClient.characterApi, application.applicationContext)
     }
 
-    fun createCharacter(name: String, balance: Double) {
+    fun createCharacter(name: String, balance: Double, profilePhoto: String? = null) {
         if (name.isBlank()) {
             _error.value = "Name is required"
             return
@@ -39,7 +39,11 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
         _error.value = null
 
         viewModelScope.launch {
-            val character = Character(name = name, balance = balance)
+            val character = Character(
+                name = name,
+                balance = balance,
+                profilePhoto = profilePhoto
+            )
             val result = repository.createCharacter(character)
             _isLoading.value = false
 
@@ -51,17 +55,24 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    fun updateCharacter(id: String, name: String, balance: Double) {
+    fun updateCharacter(id: String, name: String, balance: Double, profilePhoto: String? = null) {
         if (name.isBlank()) {
             _error.value = "Name is required"
             return
         }
 
+        android.util.Log.d("CharacterDetailVM", "📤 Updating character $id with profilePhoto = ${if (profilePhoto == null) "NULL" else "BASE64"}")
+
         _isLoading.value = true
         _error.value = null
 
         viewModelScope.launch {
-            val character = Character(id = id, name = name, balance = balance)
+            val character = Character(
+                id = id,
+                name = name,
+                balance = balance,
+                profilePhoto = profilePhoto
+            )
             val result = repository.updateCharacter(character)
             _isLoading.value = false
 
