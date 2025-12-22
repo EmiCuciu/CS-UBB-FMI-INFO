@@ -7,7 +7,7 @@ import com.example.mafia.data.model.Character
 @Dao
 interface CharacterDao {
 
-    @Query("SELECT * FROM characters ORDER BY name ASC")
+    @Query("SELECT * FROM characters WHERE syncAction != 'DELETE' ORDER BY name ASC")
     fun getAllCharacters(): LiveData<List<Character>>
 
     @Query("SELECT * FROM characters WHERE id = :id")
@@ -28,7 +28,22 @@ interface CharacterDao {
     @Query("DELETE FROM characters")
     suspend fun deleteAll()
 
+    @Query("DELETE FROM characters WHERE pendingSync = 0")
+    suspend fun deleteSyncedCharacters()
+
     @Query("DELETE FROM characters WHERE id = :id")
     suspend fun deleteById(id: String)
+
+    // Offline-first sync queries
+    @Query("SELECT * FROM characters WHERE pendingSync = 1")
+    suspend fun getPendingSyncCharacters(): List<Character>
+
+    @Query("SELECT * FROM characters WHERE pendingSync = 1 AND syncAction = :action")
+    suspend fun getPendingSyncByAction(action: String): List<Character>
+
+    @Query("UPDATE characters SET pendingSync = 0, syncAction = 'NONE' WHERE id = :id")
+    suspend fun markSynced(id: String)
 }
+
+
 

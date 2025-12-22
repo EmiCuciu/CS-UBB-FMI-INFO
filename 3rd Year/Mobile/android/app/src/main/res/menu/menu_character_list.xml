@@ -8,6 +8,7 @@
         android:title="Add Character"
         app:showAsAction="ifRoom" />
 
+
     <item
         android:id="@+id/action_logout"
         android:title="Logout"

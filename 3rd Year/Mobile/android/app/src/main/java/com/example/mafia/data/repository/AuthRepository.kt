@@ -2,11 +2,14 @@ package com.example.mafia.data.repository
 
 import android.content.Context
 import android.util.Log
+import com.example.mafia.data.datastore.AuthDataStore
 import com.example.mafia.data.model.LoginRequest
 import com.example.mafia.data.model.User
 import com.example.mafia.data.remote.AuthApi
 import com.example.mafia.data.remote.RetrofitClient
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.withContext
 
 class AuthRepository(
@@ -14,23 +17,34 @@ class AuthRepository(
     private val authApi: AuthApi
 ) {
 
-    private val sharedPreferences = context.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+    private val authDataStore = AuthDataStore(context)
 
-    fun saveToken(token: String) {
-        sharedPreferences.edit().putString("token", token).apply()
+    /**
+     * Observe token changes as Flow
+     */
+    val tokenFlow: Flow<String?> = authDataStore.tokenFlow
+
+    /**
+     * Observe username changes as Flow
+     */
+    val usernameFlow: Flow<String?> = authDataStore.usernameFlow
+
+    suspend fun saveToken(token: String, username: String) {
+        authDataStore.saveToken(token)
+        authDataStore.saveUsername(username)
         RetrofitClient.setToken(token)
     }
 
-    fun getToken(): String? {
-        return sharedPreferences.getString("token", null)
+    suspend fun getToken(): String? {
+        return authDataStore.tokenFlow.firstOrNull()
     }
 
-    fun clearToken() {
-        sharedPreferences.edit().remove("token").apply()
+    suspend fun clearToken() {
+        authDataStore.clearAuth()
         RetrofitClient.setToken(null)
     }
 
-    fun isLoggedIn(): Boolean {
+    suspend fun isLoggedIn(): Boolean {
         return getToken() != null
     }
 
@@ -39,7 +53,7 @@ class AuthRepository(
             val response = authApi.login(LoginRequest(username, password))
             if (response.isSuccessful) {
                 response.body()?.let { loginResponse ->
-                    saveToken(loginResponse.token)
+                    saveToken(loginResponse.token, username)
                     Result.success(loginResponse.token)
                 } ?: Result.failure(Exception("Empty response"))
             } else {
@@ -56,7 +70,7 @@ class AuthRepository(
             val response = authApi.register(User(username, password))
             if (response.isSuccessful) {
                 response.body()?.let { loginResponse ->
-                    saveToken(loginResponse.token)
+                    saveToken(loginResponse.token, username)
                     Result.success(loginResponse.token)
                 } ?: Result.failure(Exception("Empty response"))
             } else {
@@ -68,8 +82,10 @@ class AuthRepository(
         }
     }
 
-    fun logout() {
+    suspend fun logout() {
         clearToken()
     }
 }
+
+
 

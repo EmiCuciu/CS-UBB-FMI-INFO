@@ -24,7 +24,7 @@ class CharacterListViewModel(application: Application) : AndroidViewModel(applic
 
     init {
         val characterDao = AppDatabase.getDatabase(application).characterDao()
-        repository = CharacterRepository(characterDao, RetrofitClient.characterApi)
+        repository = CharacterRepository(characterDao, RetrofitClient.characterApi, application.applicationContext)
         characters = repository.allCharacters
 
         refreshCharacters()
@@ -47,11 +47,10 @@ class CharacterListViewModel(application: Application) : AndroidViewModel(applic
     fun deleteCharacter(character: Character) {
         viewModelScope.launch {
             val result = repository.deleteCharacter(character)
-            result.onSuccess {
-                refreshCharacters()
-            }.onFailure { exception ->
+            result.onFailure { exception ->
                 _error.value = exception.message ?: "Failed to delete character"
             }
+            // No refresh needed - Room LiveData updates automatically
         }
     }
 
@@ -62,6 +61,26 @@ class CharacterListViewModel(application: Application) : AndroidViewModel(applic
     fun clearLocalData() {
         viewModelScope.launch {
             repository.clearAllLocalData()
+        }
+    }
+
+    /**
+     * Insert/update character from WebSocket
+     * Marks as synced (not pending)
+     */
+    fun insertFromWebSocket(character: Character) {
+        viewModelScope.launch {
+            repository.insertFromWebSocket(character)
+        }
+    }
+
+    /**
+     * Delete character from WebSocket
+     * Only deletes if not pending sync locally
+     */
+    fun deleteFromWebSocket(characterId: String) {
+        viewModelScope.launch {
+            repository.deleteFromWebSocket(characterId)
         }
     }
 }

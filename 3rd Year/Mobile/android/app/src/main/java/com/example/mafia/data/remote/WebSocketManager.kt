@@ -14,7 +14,7 @@ class WebSocketManager private constructor() {
 
     companion object {
         private const val TAG = "WebSocketManager"
-        private const val WS_URL = "ws://10.131.0.219:3000"
+        private const val WS_URL = "ws://192.168.0.130:3000"
 
         @Volatile
         private var instance: WebSocketManager? = null

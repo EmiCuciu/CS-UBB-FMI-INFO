@@ -21,10 +21,12 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         // Check if user is already logged in
-        if (authRepository.isLoggedIn()) {
-            authRepository.getToken()?.let {
-                RetrofitClient.setToken(it)
-                _authState.value = AuthState.Authenticated
+        viewModelScope.launch {
+            if (authRepository.isLoggedIn()) {
+                authRepository.getToken()?.let {
+                    RetrofitClient.setToken(it)
+                    _authState.value = AuthState.Authenticated
+                }
             }
         }
     }
@@ -68,8 +70,10 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun logout() {
-        authRepository.logout()
-        _authState.value = AuthState.Unauthenticated
+        viewModelScope.launch {
+            authRepository.logout()
+            _authState.value = AuthState.Unauthenticated
+        }
     }
 
     sealed class AuthState {

@@ -1,6 +1,5 @@
 package com.example.mafia.data.remote
 
-import android.content.Context
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-   private const val BASE_URL = "http://10.131.0.219:3000/api/" // WiFi IP address with port 3000
+    private const val BASE_URL = "http://192.168.0.130:3000/api/" // WiFi IP address with port 3000
 
     private var token: String? = null
 

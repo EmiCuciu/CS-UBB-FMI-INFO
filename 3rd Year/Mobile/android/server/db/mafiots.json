@@ -4,5 +4,59 @@
     "name": "Vito Corleone",
     "balance": 99999,
     "userId": "emicuciu"
+  },
+  {
+    "_id": "1ffowr6lh45",
+    "name": "Michael Corleone",
+    "balance": 98722,
+    "userId": "emicuciu"
+  },
+  {
+    "_id": "r4v0rih6ai",
+    "name": "guaa",
+    "balance": 999,
+    "userId": "ana"
+  },
+  {
+    "_id": "pfgaspfepx",
+    "name": "Ion",
+    "balance": 258,
+    "userId": "ana"
+  },
+  {
+    "_id": "plt7xadimc",
+    "name": "oana",
+    "balance": 123,
+    "userId": "ana"
+  },
+  {
+    "_id": "642x87j2drd",
+    "name": "Tu",
+    "balance": 66,
+    "userId": "test"
+  },
+  {
+    "_id": "tmpyb7nh2lp",
+    "name": "online",
+    "balance": 4399,
+    "userId": "test"
+  },
+  {
+    "_id": "ws74u9xp9c",
+    "name": "asd",
+    "balance": 312,
+    "userId": "test"
+  },
+  {
+    "_id": "zusejc612v7",
+    "name": "Awe",
+    "balance": 21,
+    "userId": "test"
+  },
+  {
+    "_id": "0wvlveqddijl",
+    "name": "online-added",
+    "balance": 336663,
+    "userId": "test"
   }
 ]

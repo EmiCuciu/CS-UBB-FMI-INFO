@@ -26,7 +26,7 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
 
     init {
         val characterDao = AppDatabase.getDatabase(application).characterDao()
-        repository = CharacterRepository(characterDao, RetrofitClient.characterApi)
+        repository = CharacterRepository(characterDao, RetrofitClient.characterApi, application.applicationContext)
     }
 
     fun createCharacter(name: String, balance: Double) {

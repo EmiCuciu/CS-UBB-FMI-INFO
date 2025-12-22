@@ -1,3 +1,4 @@
 <resources>
+    <string name="welcome_message">Welcome, %1$s</string>
     <string name="app_name">Mafia</string>
 </resources>

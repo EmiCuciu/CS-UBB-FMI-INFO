@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="#1a1a1a">
 
-    <!-- Header with username and logout -->
+    <!-- Header with username and logout - COMPACT -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="8dp"
         android:background="#2a2a2a"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,16 +25,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Welcome, User"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="#d4af37"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:text="Logout"
+            android:textSize="12sp"
             android:textColor="#1a1a1a"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             app:backgroundTint="#d4af37"
             app:cornerRadius="8dp"/>
 
@@ -53,7 +61,7 @@
             android:id="@+id/charactersRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
+            android:padding="4dp"
             android:clipToPadding="false"
             tools:listitem="@layout/item_character"/>
 
@@ -66,9 +74,10 @@
         android:src="@android:drawable/ic_input_add"
         app:tint="#1a1a1a"
         app:backgroundTint="#d4af37"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        android:layout_margin="12dp"/>
 
     <TextView
         android:id="@+id/emptyView"

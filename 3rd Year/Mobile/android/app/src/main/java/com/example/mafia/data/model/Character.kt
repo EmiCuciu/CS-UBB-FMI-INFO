@@ -12,6 +12,10 @@ data class Character(
 
     val name: String,
     val balance: Double,
-    val userId: String = ""
+    val userId: String = "",
+
+    // Offline-first sync fields
+    val pendingSync: Boolean = false,  // True if needs to be synced to server
+    val syncAction: String = "NONE"    // NONE, CREATE, UPDATE, DELETE
 )
 

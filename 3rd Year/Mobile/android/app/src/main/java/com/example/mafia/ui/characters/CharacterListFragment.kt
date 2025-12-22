@@ -1,23 +1,45 @@
 package com.example.mafia.ui.characters
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.mafia.R
+import com.example.mafia.data.datastore.AuthDataStore
 import com.example.mafia.data.model.Character
 import com.example.mafia.data.remote.RetrofitClient
 import com.example.mafia.data.remote.WebSocketManager
 import com.example.mafia.databinding.FragmentCharacterListBinding
-import com.example.mafia.utils.JwtUtils
+import com.example.mafia.utils.NetworkConnectivityObserver
+import com.example.mafia.utils.NotificationHelper
+import com.example.mafia.worker.SyncCharactersWorker
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
 
@@ -28,8 +50,27 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
     private lateinit var adapter: CharacterAdapter
     private val webSocketManager = WebSocketManager.getInstance()
 
+    // New components for lab assignment
+    private lateinit var networkObserver: NetworkConnectivityObserver
+    private lateinit var notificationHelper: NotificationHelper
+    private lateinit var authDataStore: AuthDataStore
+    private var networkSnackbar: Snackbar? = null
+    private var lastNetworkStatus: Boolean? = null  // Track last network status to avoid duplicate notifications
+
     companion object {
         private const val TAG = "CharacterListFragment"
+    }
+
+    // Permission launcher for notifications (Android 13+)
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            Log.d(TAG, "Notification permission granted")
+        } else {
+            Log.d(TAG, "Notification permission denied")
+            Toast.makeText(context, "Notifications disabled", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onCreateView(
@@ -44,13 +85,116 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize new components
+        networkObserver = NetworkConnectivityObserver(requireContext())
+        notificationHelper = NotificationHelper(requireContext())
+        authDataStore = AuthDataStore(requireContext())
+
         setupUsername()
         setupRecyclerView()
         setupObservers()
         setupListeners()
         setupMenu()
         setupWebSocket()
+        setupNetworkMonitoring()
+        requestNotificationPermission()
     }
+
+    /**
+     * Request notification permission for Android 13+
+     */
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    Log.d(TAG, "Notification permission already granted")
+                }
+
+                else -> {
+                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        }
+    }
+
+    /**
+     * Setup network connectivity monitoring
+     */
+    private fun setupNetworkMonitoring() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            networkObserver.observeNetworkStatus().collectLatest { status ->
+                Log.d(TAG, "Network status received: isConnected=${status.isConnected}, hasInternet=${status.hasInternet}, type=${status.networkType}")
+
+                // Update UI based on network status
+                updateNetworkStatusUI(status)
+
+                // Show notification ONLY when network status changes
+                val currentStatus = status.hasInternet
+                Log.d(TAG, "Comparing status: last=$lastNetworkStatus, current=$currentStatus")
+
+                if (lastNetworkStatus != currentStatus) {
+                    Log.d(TAG, "Network status CHANGED! Showing notification for: isConnected=$currentStatus")
+                    try {
+                        notificationHelper.showNetworkStatusNotification(currentStatus)
+                        Log.d(TAG, "Network notification triggered successfully")
+                    } catch (e: Exception) {
+                        Log.e(TAG, "Failed to show network notification", e)
+                    }
+                    lastNetworkStatus = currentStatus
+                } else {
+                    Log.d(TAG, "Network status unchanged, skipping notification")
+                }
+
+                // Trigger IMMEDIATE sync when network is restored
+                if (status.hasInternet && lastNetworkStatus == false) {
+                    Log.d(TAG, "Internet RESTORED - triggering immediate sync")
+
+                    // Enqueue immediate one-time sync work
+                    val constraints = Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.CONNECTED)
+                        .build()
+
+                    val immediateWork = OneTimeWorkRequestBuilder<SyncCharactersWorker>()
+                        .setConstraints(constraints)
+                        .build()
+
+                    WorkManager.getInstance(requireContext())
+                        .enqueueUniqueWork(
+                            "immediate_sync_on_reconnect",
+                            ExistingWorkPolicy.REPLACE,
+                            immediateWork
+                        )
+
+                    Log.d(TAG, "Immediate sync work enqueued successfully")
+                }
+            }
+        }
+    }
+
+    /**
+     * Update UI to show network status
+     */
+    private fun updateNetworkStatusUI(status: NetworkConnectivityObserver.NetworkStatus) {
+        if (!status.hasInternet) {
+            networkSnackbar = Snackbar.make(
+                binding.root,
+                "No internet connection - Working offline",
+                Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                setAction("Retry") {
+                    viewModel.refreshCharacters()
+                }
+                show()
+            }
+        } else {
+            networkSnackbar?.dismiss()
+            networkSnackbar = null
+        }
+    }
+
 
     private fun setupWebSocket() {
         // Add this fragment as a listener
@@ -64,9 +208,12 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
     }
 
     private fun setupUsername() {
-        val token = RetrofitClient.getToken()
-        val username = token?.let { JwtUtils.decodeToken(it) }
-        binding.usernameLabel.text = "Welcome, ${username ?: "User"}"
+        // Observe username from DataStore
+        viewLifecycleOwner.lifecycleScope.launch {
+            authDataStore.usernameFlow.collectLatest { username ->
+                binding.usernameLabel.text = getString(R.string.welcome_message, username ?: "User")
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -108,7 +255,7 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         }
 
         binding.addButton.setOnClickListener {
-            navigateToCharacterDetail(null)
+            navigateToCharacterDetail()
         }
 
         binding.logoutButton.setOnClickListener {
@@ -127,7 +274,7 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.action_add_character -> {
-                        navigateToCharacterDetail(null)
+                        navigateToCharacterDetail()
                         true
                     }
                     else -> false
@@ -136,7 +283,7 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    private fun navigateToCharacterDetail(character: Character?) {
+    private fun navigateToCharacterDetail() {
         // Only navigate for adding new characters
         val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
             characterId = null,
@@ -173,42 +320,53 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         // Clear local database
         viewModel.clearLocalData()
 
-        // Clear authentication token from SharedPreferences
-        val sharedPreferences = requireContext().getSharedPreferences("auth_prefs", android.content.Context.MODE_PRIVATE)
-        sharedPreferences.edit().remove("token").apply()
+        // Cancel background sync work
+        WorkManager.getInstance(requireContext()).cancelUniqueWork(SyncCharactersWorker.WORK_NAME)
 
-        // Clear authentication token from RetrofitClient
-        RetrofitClient.clearToken()
+        // Clear authentication from DataStore
+        viewLifecycleOwner.lifecycleScope.launch {
+            authDataStore.clearAuth()
+            RetrofitClient.clearToken()
 
-        Toast.makeText(context, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            // Cancel all notifications
+            notificationHelper.cancelAllNotifications()
 
-        // Navigate to login and clear back stack
-        findNavController().navigate(R.id.action_characterListFragment_to_loginFragment)
+            Toast.makeText(context, "Logged out successfully", Toast.LENGTH_SHORT).show()
+
+            // Navigate to login and clear back stack
+            findNavController().navigate(R.id.action_characterListFragment_to_loginFragment)
+        }
     }
 
     // WebSocket listener implementations
     override fun onCharacterCreated(character: Character) {
         Log.d(TAG, "WebSocket: Character created - ${character.name}")
         requireActivity().runOnUiThread {
-            viewModel.refreshCharacters()
+            // Insert from WebSocket - mark as synced (not pending)
+            viewModel.insertFromWebSocket(character)
+            notificationHelper.showCharacterUpdateNotification(character.name, "created")
         }
     }
 
     override fun onCharacterUpdated(character: Character) {
         Log.d(TAG, "WebSocket: Character updated - ${character.name}")
         requireActivity().runOnUiThread {
-            viewModel.refreshCharacters()
+            // Update from WebSocket - mark as synced (not pending)
+            viewModel.insertFromWebSocket(character)
+            notificationHelper.showCharacterUpdateNotification(character.name, "updated")
         }
     }
 
     override fun onCharacterDeleted(characterId: String) {
         Log.d(TAG, "WebSocket: Character deleted - $characterId")
         requireActivity().runOnUiThread {
-            viewModel.refreshCharacters()
+            // Delete from WebSocket - but keep if pending locally
+            viewModel.deleteFromWebSocket(characterId)
         }
     }
 
     override fun onConnectionError(error: String) {
+
         Log.e(TAG, "WebSocket error: $error")
         requireActivity().runOnUiThread {
             Toast.makeText(context, "Connection error: $error", Toast.LENGTH_SHORT).show()
@@ -221,4 +379,3 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
         _binding = null
     }
 }
-

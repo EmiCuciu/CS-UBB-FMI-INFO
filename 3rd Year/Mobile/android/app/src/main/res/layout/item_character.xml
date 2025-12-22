@@ -4,44 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
+    app:cardElevation="2dp"
     app:cardBackgroundColor="#2a2a2a">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/nameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#d4af37"
+            android:singleLine="true"
+            android:ellipsize="end"
             tools:text="Vito Corleone"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             android:id="@+id/balanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Balance: "
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:textColor="#999999"
             app:layout_constraintTop_toBottomOf="@id/nameText"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="4dp"/>
 
         <TextView
             android:id="@+id/balanceText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:textColor="#ffffff"
             tools:text="$1,000,000"
             app:layout_constraintTop_toTopOf="@id/balanceLabel"
@@ -51,8 +54,8 @@
 
         <ImageButton
             android:id="@+id/deleteButton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@android:drawable/ic_menu_delete"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="#ff6b6b"
