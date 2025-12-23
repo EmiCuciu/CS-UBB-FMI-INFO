@@ -1,0 +1,7 @@
+ 1338  javac src/main/java/com/example/*.java
+ 1348  ./run_process.sh run_java.sh 10 4 1 result.csv
+ 1349  ./run_process.sh run_java.sh 10 8 1 result.csv
+ 1350  ./run_process.sh run_java.sh 10 16 1 result.csv
+ 1351  ./run_process.sh run_java.sh 10 4 2 result.csv
+ 1352  ./run_process.sh run_java.sh 10 8 2 result.csv
+ 1353  ./run_process.sh run_java.sh 10 16 2 result.csv

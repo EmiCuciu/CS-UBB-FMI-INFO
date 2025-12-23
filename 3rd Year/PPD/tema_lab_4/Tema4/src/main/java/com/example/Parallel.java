@@ -44,7 +44,7 @@ public class Parallel {
             fileDistribution.add(new ArrayList<>());
         }
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             String filename = PATH + "proiect" + i + ".txt";
             int target = (i - 1) % p_r;
             fileDistribution.get(target).add(filename);
@@ -57,6 +57,8 @@ public class Parallel {
             Producer producer = new Producer(fileForThread, queue);
             Thread t = new Thread(producer);
             producerThreads.add(t);
+
+            queue.registerProducer();
             t.start();
         }
 
@@ -67,14 +69,10 @@ public class Parallel {
             t.start();
         }
 
-        //barrier for producers , asteptam sa termine readerii
+        // Asteptam sa termine toate thread-urile (producatorii si consumatorii au rulat concurent).
         for (Thread t : producerThreads) {
             t.join();
         }
-
-        //? anuntam ca am terminat de citit, altfel consumer se afla in starvation
-        queue.setProducersFinished();
-
 
         for (Thread t : consumerThreads) {
             t.join();

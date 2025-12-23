@@ -4,7 +4,20 @@ public class MyQueue {
     private MyNode head = null;
     private MyNode tail = null;
 
-    private boolean producersFinished = false;
+    private int activeProducers = 0;
+
+    public synchronized void registerProducer() {
+        activeProducers++;
+    }
+
+    public synchronized void producerFinished() {
+        if (activeProducers <= 0) {
+            activeProducers = 0;
+        } else {
+            activeProducers--;
+        }
+        this.notifyAll();
+    }
 
     public synchronized void add(Pair p) {
         MyNode newNode = new MyNode(p.id, p.nota, null);
@@ -23,15 +36,16 @@ public class MyQueue {
 
     public synchronized Pair remove() {
         while (head == null) {
-            // daca coada e goala si nu s-a dat semnal de stop la producerFinished
-            if (producersFinished) {
+            // coada e vida; putem opri doar daca nu mai exista producatori activi
+            if (activeProducers == 0) {
                 return null;
             }
 
             try {
                 this.wait();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
+                return null;
             }
         }
 
@@ -45,10 +59,5 @@ public class MyQueue {
         }
 
         return result;
-    }
-
-    public synchronized void setProducersFinished(){
-        this.producersFinished = true;
-        this.notifyAll();
     }
 }

@@ -17,22 +17,26 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-        for (var filename : filenames) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-                String line;
+        try {
+            for (var filename : filenames) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+                    String line;
 
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    int id = Integer.parseInt(parts[0]);
-                    int nota = Integer.parseInt(parts[1]);
+                    while ((line = reader.readLine()) != null) {
+                        String[] parts = line.split(",");
+                        int id = Integer.parseInt(parts[0]);
+                        int nota = Integer.parseInt(parts[1]);
 
-                    Pair p = new Pair(id, nota);
+                        Pair p = new Pair(id, nota);
 
-                    queue.add(p);
+                        queue.add(p);
+                    }
+                } catch (IOException e) {
+                    System.err.println("Eroare la citire in thread-ul producer: " + filename);
                 }
-            } catch (IOException e) {
-                System.err.println("Eroare la citire in thread-ul producer: " + filename);
             }
+        } finally {
+            queue.producerFinished();
         }
     }
 }
