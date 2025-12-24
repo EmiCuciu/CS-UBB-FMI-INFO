@@ -27,7 +27,7 @@ public class MyQueue {
             tail = newNode;
         }
         else {
-            tail.next = newNode;
+            tail.next = newNode; // adaugam nodul la sfarsit
             tail = newNode;
         }
 

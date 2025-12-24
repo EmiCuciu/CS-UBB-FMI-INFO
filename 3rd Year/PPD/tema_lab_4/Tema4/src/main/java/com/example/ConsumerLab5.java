@@ -1,6 +1,5 @@
 package com.example;
 
-/// Worker pentru Lab 5 - foloseste BoundedQueue si FineGrainedLinkedList
 public class ConsumerLab5 implements Runnable {
     private final BoundedQueue queue;
     private final FineGrainedLinkedList linkedList;

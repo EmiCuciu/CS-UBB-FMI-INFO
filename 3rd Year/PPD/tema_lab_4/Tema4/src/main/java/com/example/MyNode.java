@@ -15,12 +15,4 @@ public class MyNode {
         this.next = next;
         this.lock = new ReentrantLock();
     }
-
-    // Constructor pentru noduri santinela (fara lock)
-    public MyNode(int id, int nota, MyNode next, boolean isSentinel) {
-        this.id = id;
-        this.nota = nota;
-        this.next = next;
-        this.lock = isSentinel ? null : new ReentrantLock();
-    }
 }

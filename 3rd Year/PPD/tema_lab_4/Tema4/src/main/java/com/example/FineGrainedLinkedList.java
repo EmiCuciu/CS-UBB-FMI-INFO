@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Fine-Grained Synchronization - Sincronizare la nivel de nod
- * Lista inlantuita cu santinele (head si tail sentinel)
- */
 public class FineGrainedLinkedList {
     private final MyNode head;
     private final MyNode tail;
 
     public FineGrainedLinkedList() {
-        // Cream noduri santinela
         head = new MyNode(Integer.MIN_VALUE, 0, null);
         tail = new MyNode(Integer.MAX_VALUE, 0, null);
         head.next = tail;

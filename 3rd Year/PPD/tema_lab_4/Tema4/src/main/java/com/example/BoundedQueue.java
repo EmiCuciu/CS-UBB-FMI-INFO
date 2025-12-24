@@ -4,10 +4,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Coada cu capacitate limitata folosind variabile conditionale
- * (Condition variables) pentru producer-consumer pattern
- */
 public class BoundedQueue {
     private MyNode head = null;
     private MyNode tail = null;
@@ -46,9 +42,6 @@ public class BoundedQueue {
         }
     }
 
-    /**
-     * Adauga element in coada (blocking daca e plina)
-     */
     public void add(Pair p) throws InterruptedException {
         lock.lock();
         try {
@@ -91,10 +84,11 @@ public class BoundedQueue {
                     return null;
                 }
 
-                // Asteptam sa apara elemente
+                // Asteptam sa apara elemente , daca mai sunt producatori
                 notEmpty.await();
             }
 
+            // Extragem elementul din capul cozii
             Pair result = new Pair(head.id, head.nota);
             head = head.next;
 

@@ -1,6 +1,5 @@
 package com.example;
 
-/// Worker pentru Lab 4
 public class Consumer implements Runnable {
     private final MyQueue queue;
     private final MyLinkedList linkedList;
