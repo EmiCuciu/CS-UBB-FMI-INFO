@@ -10,6 +10,10 @@ import java.io.IOException;
 public class MyLinkedList {
     private MyNode head = null;
 
+    public MyNode getHead() {
+        return head;
+    }
+
     public synchronized void addNota(int id, int nota) {
         MyNode current = head;
 

@@ -1,5 +1,8 @@
 package com.example;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,11 +81,56 @@ public class Parallel {
             t.join();
         }
 
-        linkedList.printToFile(PATH + "rezultate_paralel.txt");
-
         long endTime = System.currentTimeMillis();
 
-        System.out.println(endTime - startTime);
+        // Salvare sortată descrescător (ca la Secvential și Lab 5)
+        printToFileSorted(linkedList, PATH + "rezultate_paralel.txt");
 
+        System.out.println(endTime - startTime);
+    }
+
+    /**
+     * Salvează lista în fișier, sortată descrescător după notă
+     */
+    private static void printToFileSorted(MyLinkedList list, String filename) {
+        // Colectăm toate nodurile într-o listă
+        List<StudentRecord> records = new ArrayList<>();
+        MyNode current = list.getHead();
+
+        while (current != null) {
+            records.add(new StudentRecord(current.id, current.nota));
+            current = current.next;
+        }
+
+        // Sortăm descrescător după notă (apoi după id pentru stabilitate)
+        records.sort((a, b) -> {
+            if (a.nota != b.nota) {
+                return Integer.compare(b.nota, a.nota); // Descrescător după notă
+            }
+            return Integer.compare(a.id, b.id); // Crescător după id (stabilitate)
+        });
+
+        // Scriem în fișier
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (StudentRecord record : records) {
+                writer.write(record.id + "," + record.nota);
+                writer.newLine();
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException("Failed to write to file: " + filename, ex);
+        }
+    }
+
+    /**
+     * Clasă auxiliară pentru sortare
+     */
+    private static class StudentRecord {
+        final int id;
+        final int nota;
+
+        StudentRecord(int id, int nota) {
+            this.id = id;
+            this.nota = nota;
+        }
     }
 }

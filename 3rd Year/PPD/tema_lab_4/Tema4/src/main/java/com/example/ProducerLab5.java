@@ -5,12 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-/// Reader pentru Lab 4
-public class Producer implements Runnable {
+/// Reader pentru Lab 5 - foloseste BoundedQueue cu variabile conditionale
+public class ProducerLab5 implements Runnable {
     private final List<String> filenames;
-    private final MyQueue queue;
+    private final BoundedQueue queue;
 
-    public Producer(List<String> filenames, MyQueue queue) {
+    public ProducerLab5(List<String> filenames, BoundedQueue queue) {
         this.filenames = filenames;
         this.queue = queue;
     }
@@ -33,6 +33,10 @@ public class Producer implements Runnable {
                     }
                 } catch (IOException e) {
                     System.err.println("Eroare la citire in thread-ul producer: " + filename);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.err.println("Producer interrupted");
+                    return;
                 }
             }
         } finally {
@@ -40,3 +44,4 @@ public class Producer implements Runnable {
         }
     }
 }
+
