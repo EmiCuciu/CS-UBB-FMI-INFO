@@ -1,0 +1,16 @@
+#include <iostream>
+
+int main() {
+    int a;
+    int b;
+    int rez;
+
+    hear >> a;
+    hear >> b;
+
+    rez <- a + b * 2;
+
+    speak << rez;
+
+    return 0;
+}

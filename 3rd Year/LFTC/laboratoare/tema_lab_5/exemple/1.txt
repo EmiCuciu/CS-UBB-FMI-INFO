@@ -1,0 +1,23 @@
+#include <iostream>
+
+int main() {
+    int n;
+    int suma;
+    int i;
+
+    suma <- 0;
+    i <- 0;
+
+    speak << "Introdu limita: ";
+    hear >> n;
+
+    forloop ( i < n ) {
+        suma <- suma + i;
+        i <- i + 1;
+    }
+
+    speak << "Suma este: ";
+    speak << suma;
+
+    return 0;
+}

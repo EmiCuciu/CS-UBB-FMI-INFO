@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+    float temperatura;
+    hear >> temperatura;
+
+    maybe ( temperatura > 25.0 ) {
+        speak << "Este cald";
+    } else {
+        maybe ( temperatura < 10.0 ) {
+            speak << "Este frig";
+        } else {
+            speak << "Este placut";
+        }
+    }
+
+    return 0;
+}

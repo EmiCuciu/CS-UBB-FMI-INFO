@@ -1,0 +1,11 @@
+#include <iostream>
+
+int main() {
+    int x;
+    x <- 10;
+
+    maybe ( x > 5 )
+        x <- 0;
+
+    return 0;
+}

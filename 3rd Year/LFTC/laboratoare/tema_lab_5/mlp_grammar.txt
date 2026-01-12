@@ -1,0 +1,23 @@
+program -> header main_block
+header -> #include <iostream>
+main_block -> int main ( ) { stmt_list }
+stmt_list -> stmt stmt_list | epsilon
+stmt -> type ID ;
+stmt -> ID <- expr ;
+stmt -> hear >> ID ;
+stmt -> speak << output_content ;
+stmt -> maybe ( condition ) { stmt_list } else_part
+stmt -> loop ( condition ) { stmt_list }
+stmt -> forloop ( condition ) { stmt_list }
+stmt -> cattimp ( condition ) executa { stmt_list } sfcattimp
+stmt -> return expr ;
+else_part -> else { stmt_list } | epsilon
+type -> int | float | double | string | word
+output_content -> ID | CONST
+condition -> expr rel_op expr
+rel_op -> < | > | == | != | <= | >=
+expr -> term expr_prime
+expr_prime -> + term expr_prime | - term expr_prime | epsilon
+term -> factor term_prime
+term_prime -> * factor term_prime | / factor term_prime | % factor term_prime | epsilon
+factor -> ( expr ) | ID | CONST

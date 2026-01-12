@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+    int a;
+    int b;
+    int c;
+    int rezultat;
+
+    hear >> a;
+    hear >> b;
+    hear >> c;
+
+    rezultat <- (a + b) * (c - 2);
+
+    speak << rezultat;
+
+    return 0;
+}

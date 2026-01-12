@@ -1,0 +1,24 @@
+#include <iostream>
+
+int main() {
+    int a;
+    float b;
+    hear >> a;
+    b <- a + 10;
+
+    maybe ( a > b ) {
+        speak << a;
+    } else {
+        speak << b;
+    }
+
+    loop ( a < 50 ) {
+        a <- a + 1;
+    }
+
+    cattimp ( b != 0 ) executa {
+        speak << a;
+    } sfcattimp
+
+    return 0;
+}
