@@ -28,15 +28,12 @@ class Grammar:
 
                     for alt in alternatives:
                         symbols = alt.strip().split()
-                        # Tratare epsilon explicit
                         if symbols == ['epsilon']:
                             symbols = ['epsilon']
                         self.productions[lhs].append(symbols)
 
-                        # Colectare potentiale terminale
                         for s in symbols:
                             if s != 'epsilon':
                                 self.terminals.add(s)
 
-        # Tot ce apare in dreapta si nu e in stanga este terminal
         self.terminals = self.terminals - self.non_terminals

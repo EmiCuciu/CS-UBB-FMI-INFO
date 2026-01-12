@@ -6,45 +6,31 @@ stmt -> type ID ;
 type -> int
 stmt_list -> stmt stmt_list
 stmt -> type ID ;
-type -> float
+type -> int
 stmt_list -> stmt stmt_list
-stmt -> hear >> ID ;
+stmt -> type ID ;
+type -> int
 stmt_list -> stmt stmt_list
 stmt -> ID <- expr ;
 expr -> term expr_prime
-term -> factor term_prime
-factor -> ID
-term_prime -> epsilon
-expr_prime -> + term expr_prime
 term -> factor term_prime
 factor -> CONST
 term_prime -> epsilon
 expr_prime -> epsilon
 stmt_list -> stmt stmt_list
-stmt -> maybe ( condition ) { stmt_list } else_part
-condition -> expr rel_op expr
+stmt -> ID <- expr ;
 expr -> term expr_prime
 term -> factor term_prime
-factor -> ID
-term_prime -> epsilon
-expr_prime -> epsilon
-rel_op -> >
-expr -> term expr_prime
-term -> factor term_prime
-factor -> ID
+factor -> CONST
 term_prime -> epsilon
 expr_prime -> epsilon
 stmt_list -> stmt stmt_list
 stmt -> speak << output_content ;
-output_content -> ID
-stmt_list -> epsilon
-else_part -> else { stmt_list }
+output_content -> CONST
 stmt_list -> stmt stmt_list
-stmt -> speak << output_content ;
-output_content -> ID
-stmt_list -> epsilon
+stmt -> hear >> ID ;
 stmt_list -> stmt stmt_list
-stmt -> loop ( condition ) { stmt_list }
+stmt -> forloop ( condition ) { stmt_list }
 condition -> expr rel_op expr
 expr -> term expr_prime
 term -> factor term_prime
@@ -54,7 +40,18 @@ expr_prime -> epsilon
 rel_op -> <
 expr -> term expr_prime
 term -> factor term_prime
-factor -> CONST
+factor -> ID
+term_prime -> epsilon
+expr_prime -> epsilon
+stmt_list -> stmt stmt_list
+stmt -> ID <- expr ;
+expr -> term expr_prime
+term -> factor term_prime
+factor -> ID
+term_prime -> epsilon
+expr_prime -> + term expr_prime
+term -> factor term_prime
+factor -> ID
 term_prime -> epsilon
 expr_prime -> epsilon
 stmt_list -> stmt stmt_list
@@ -70,23 +67,11 @@ term_prime -> epsilon
 expr_prime -> epsilon
 stmt_list -> epsilon
 stmt_list -> stmt stmt_list
-stmt -> cattimp ( condition ) executa { stmt_list } sfcattimp
-condition -> expr rel_op expr
-expr -> term expr_prime
-term -> factor term_prime
-factor -> ID
-term_prime -> epsilon
-expr_prime -> epsilon
-rel_op -> !=
-expr -> term expr_prime
-term -> factor term_prime
-factor -> CONST
-term_prime -> epsilon
-expr_prime -> epsilon
+stmt -> speak << output_content ;
+output_content -> CONST
 stmt_list -> stmt stmt_list
 stmt -> speak << output_content ;
 output_content -> ID
-stmt_list -> epsilon
 stmt_list -> stmt stmt_list
 stmt -> return expr ;
 expr -> term expr_prime

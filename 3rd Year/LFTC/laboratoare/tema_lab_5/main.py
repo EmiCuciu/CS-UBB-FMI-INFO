@@ -58,23 +58,21 @@ def simple_lexer(filename):
 def ruleaza_test(nume_test, fisier_gramatica, fisier_input, foloseste_lexer=True):
     print(f"\n Rulare: {nume_test}")
     try:
-        # 1. Incarcam gramatica
         g = Grammar(fisier_gramatica)
         parser = LL1Parser(g)
 
-        # 2. Pregatim input-ul (Raw pentru g1, Lexer pentru MLP)
         if foloseste_lexer:
             seq = simple_lexer(fisier_input)
         else:
             with open(fisier_input, 'r') as f:
                 seq = f.read().strip().split()
 
-        # 3. Parsam
         result = parser.parse(seq)
         print(" SECVENTA ACCEPTATA")
 
         # 4. Scriem rezultatul in fisier (optional, doar pt MLP principal)
         if "program.txt" in fisier_input:
+        # if "exemple/1.txt" in fisier_input:
             with open("arbore_mlp.txt", "w") as f:
                 for line in result: f.write(line + "\n")
             print("   (Arborele salvat in arbore_mlp.txt)")
@@ -85,18 +83,18 @@ def ruleaza_test(nume_test, fisier_gramatica, fisier_input, foloseste_lexer=True
 
 # --- Main Simplificat ---
 if __name__ == "__main__":
-    # Test 1: Partea 1 (Gramatica simpla de la curs)
+    # Test 1: Partea 1
     ruleaza_test("Partea 1 - Gramatica Expresii", "g1.txt", "seq.txt", foloseste_lexer=False)
 
-    # Test 2: Partea 2 (Programul tau principal)
-    # ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "program.txt")
+    # Test 2: Partea 2
+    ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "program.txt")
     # ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/1.txt")
-    ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/3_simplu.txt")
+    # ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/3_simplu.txt")
 
-    # Test 3: Exemplu de eroare (Optional, ca sa vezi ca detecteaza greseli)
-    ruleaza_test("Test Eroare Sintactica", "mlp_grammar.txt", "exemple/eroare_sintactica.txt")
+    # Test 3: Exemplu de eroare
+    # ruleaza_test("Test Eroare Sintactica", "mlp_grammar.txt", "exemple/eroare_sintactica.txt")
 
 
-    # Test 4: Exemplu de GRAMATICA gresita (Non-LL1) - DEMONSTREAZA VALIDAREA
+    # Test 4: Exemplu de GRAMATICA gresita (Non-LL1)
     #
-    ruleaza_test("Test Conflict LL(1) (Gramatica Gresita)", "rau/mlp_grammar_BAD.txt", "program.txt")
+    # ruleaza_test("Test Conflict LL(1) (Gramatica Gresita)", "rau/mlp_grammar_BAD.txt", "program.txt")

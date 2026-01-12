@@ -110,7 +110,7 @@ class LL1Parser:
         if lhs not in self.table: self.table[lhs] = {}
         if term in self.table[lhs]:
             if self.table[lhs][term] != rhs:
-                # Aici asiguram verificarea stricta ceruta de tema
+                # Aici verificam daca avem Conflict
                 raise Exception(f"Conflict LL(1) la M[{lhs}, {term}]: {self.table[lhs][term]} vs {rhs}")
         self.table[lhs][term] = rhs
 
@@ -123,7 +123,6 @@ class LL1Parser:
         idx = 0
         output = []
 
-        # Afisare pentru debug/urmarire
         # print(f"Start Parsare. Secventa: {w}")
 
         while stack:
