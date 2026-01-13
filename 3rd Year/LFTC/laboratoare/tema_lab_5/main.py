@@ -71,8 +71,8 @@ def ruleaza_test(nume_test, fisier_gramatica, fisier_input, foloseste_lexer=True
         print(" SECVENTA ACCEPTATA")
 
         # 4. Scriem rezultatul in fisier (optional, doar pt MLP principal)
-        if "program.txt" in fisier_input:
-        # if "exemple/1.txt" in fisier_input:
+        # if "program.txt" in fisier_input:
+        if "exemple/1.txt" in fisier_input:
             with open("arbore_mlp.txt", "w") as f:
                 for line in result: f.write(line + "\n")
             print("   (Arborele salvat in arbore_mlp.txt)")
@@ -88,13 +88,13 @@ if __name__ == "__main__":
 
     # Test 2: Partea 2
     ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "program.txt")
-    # ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/1.txt")
-    # ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/3_simplu.txt")
+    ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/1.txt")
+    ruleaza_test("Partea 2 - Program MLP Corect", "mlp_grammar.txt", "exemple/3_simplu.txt")
 
     # Test 3: Exemplu de eroare
-    # ruleaza_test("Test Eroare Sintactica", "mlp_grammar.txt", "exemple/eroare_sintactica.txt")
+    ruleaza_test("Test Eroare Sintactica", "mlp_grammar.txt", "exemple/eroare_sintactica.txt")
 
 
     # Test 4: Exemplu de GRAMATICA gresita (Non-LL1)
-    #
-    # ruleaza_test("Test Conflict LL(1) (Gramatica Gresita)", "rau/mlp_grammar_BAD.txt", "program.txt")
+
+    ruleaza_test("Test Conflict LL(1) (Gramatica Gresita)", "rau/mlp_grammar_BAD.txt", "program.txt")

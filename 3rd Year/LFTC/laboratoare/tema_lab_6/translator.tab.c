@@ -537,9 +537,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    37,    37,    37,    53,    52,    72,    73,    77,    85,
-      86,    90,    91,    92,    96,   107,   116,   131,   138,   145,
-     152,   157,   164,   169,   171,   178
+       0,    37,    37,    37,    52,    51,    71,    72,    76,    84,
+      85,    89,    90,    91,    95,   105,   114,   129,   134,   141,
+     148,   153,   160,   165,   167,   173
 };
 #endif
 
@@ -1133,7 +1133,6 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 37 "translator.y"
       {
-        // Fix pentru linker modern (evita warning-uri executable stack)
         emit("section .note.GNU-stack noalloc noexec nowrite progbits");
 
         emit("section .data");
@@ -1143,11 +1142,11 @@ yyreduce:
         emit("section .bss");
         for(int i=0; i<10; i++) emit("    t%d resd 1", i);
       }
-#line 1147 "translator.tab.c"
+#line 1146 "translator.tab.c"
     break;
 
   case 4: /* $@2: %empty  */
-#line 53 "translator.y"
+#line 52 "translator.y"
       {
         emit("");
         emit("section .text");
@@ -1158,42 +1157,41 @@ yyreduce:
         emit("    push rbp");
         emit("    mov rbp, rsp");
       }
-#line 1162 "translator.tab.c"
+#line 1161 "translator.tab.c"
     break;
 
   case 5: /* main_block: INT MAIN LPAREN RPAREN LBRACE decl_list $@2 stmt_list RBRACE  */
-#line 64 "translator.y"
+#line 63 "translator.y"
       {
         emit("    mov rax, 0");
         emit("    pop rbp");
         emit("    ret");
       }
-#line 1172 "translator.tab.c"
+#line 1171 "translator.tab.c"
     break;
 
   case 8: /* decl: INT ID SEMICOLON  */
-#line 78 "translator.y"
+#line 77 "translator.y"
       {
         emit("    %s resd 1", (yyvsp[-1].str_val));
         free((yyvsp[-1].str_val));
       }
-#line 1181 "translator.tab.c"
+#line 1180 "translator.tab.c"
     break;
 
   case 14: /* assign_stmt: ID ASSIGN expr SEMICOLON  */
-#line 97 "translator.y"
+#line 96 "translator.y"
       {
         emit("    ; %s <- expr", (yyvsp[-3].str_val));
-        // Daca expr este memorie/temp ([rel ...]) sau numar (10)
         emit("    mov eax, %s", (yyvsp[-1].str_val));
         emit("    mov [rel %s], eax", (yyvsp[-3].str_val));
         free((yyvsp[-3].str_val)); free((yyvsp[-1].str_val));
       }
-#line 1193 "translator.tab.c"
+#line 1191 "translator.tab.c"
     break;
 
   case 15: /* io_stmt: HEAR OP_IN ID SEMICOLON  */
-#line 108 "translator.y"
+#line 106 "translator.y"
       {
         emit("    ; hear >> %s", (yyvsp[-1].str_val));
         emit("    lea rdi, [rel format_in]");
@@ -1202,11 +1200,11 @@ yyreduce:
         emit("    call scanf");
         free((yyvsp[-1].str_val));
       }
-#line 1206 "translator.tab.c"
+#line 1204 "translator.tab.c"
     break;
 
   case 16: /* io_stmt: SPEAK OP_OUT expr SEMICOLON  */
-#line 117 "translator.y"
+#line 115 "translator.y"
       {
         emit("    ; speak << expr");
         emit("    lea rdi, [rel format_out]");
@@ -1218,83 +1216,80 @@ yyreduce:
         emit("    call printf");
         free((yyvsp[-1].str_val));
       }
-#line 1222 "translator.tab.c"
+#line 1220 "translator.tab.c"
     break;
 
   case 18: /* expr: expr PLUS term  */
-#line 139 "translator.y"
+#line 135 "translator.y"
       {
         (yyval.str_val) = new_temp();
-        emit("    mov eax, %s", (yyvsp[-2].str_val)); // incarca stanga
-        emit("    add eax, %s", (yyvsp[0].str_val)); // aduna dreapta (fie [rel t0], fie 5)
-        emit("    mov %s, eax", (yyval.str_val)); // salveaza
+        emit("    mov eax, %s", (yyvsp[-2].str_val));
+        emit("    add eax, %s", (yyvsp[0].str_val));
+        emit("    mov %s, eax", (yyval.str_val));
       }
-#line 1233 "translator.tab.c"
+#line 1231 "translator.tab.c"
     break;
 
   case 19: /* expr: expr MINUS term  */
-#line 146 "translator.y"
+#line 142 "translator.y"
       {
         (yyval.str_val) = new_temp();
         emit("    mov eax, %s", (yyvsp[-2].str_val));
         emit("    sub eax, %s", (yyvsp[0].str_val));
         emit("    mov %s, eax", (yyval.str_val));
       }
-#line 1244 "translator.tab.c"
+#line 1242 "translator.tab.c"
     break;
 
   case 20: /* expr: term  */
-#line 153 "translator.y"
+#line 149 "translator.y"
       { (yyval.str_val) = (yyvsp[0].str_val); }
-#line 1250 "translator.tab.c"
+#line 1248 "translator.tab.c"
     break;
 
   case 21: /* term: term MULT factor  */
-#line 158 "translator.y"
+#line 154 "translator.y"
       {
         (yyval.str_val) = new_temp();
         emit("    mov eax, %s", (yyvsp[-2].str_val));
         emit("    imul eax, %s", (yyvsp[0].str_val));
         emit("    mov %s, eax", (yyval.str_val));
       }
-#line 1261 "translator.tab.c"
+#line 1259 "translator.tab.c"
     break;
 
   case 22: /* term: factor  */
-#line 165 "translator.y"
+#line 161 "translator.y"
       { (yyval.str_val) = (yyvsp[0].str_val); }
-#line 1267 "translator.tab.c"
+#line 1265 "translator.tab.c"
     break;
 
   case 23: /* factor: LPAREN expr RPAREN  */
-#line 170 "translator.y"
+#line 166 "translator.y"
       { (yyval.str_val) = (yyvsp[-1].str_val); }
-#line 1273 "translator.tab.c"
+#line 1271 "translator.tab.c"
     break;
 
   case 24: /* factor: ID  */
-#line 172 "translator.y"
+#line 168 "translator.y"
       {
-        // Variabilele: le formatam explicit ca referinte la memorie
         char* ref = (char*)malloc(30);
         sprintf(ref, "[rel %s]", (yyvsp[0].str_val));
         (yyval.str_val) = ref;
       }
-#line 1284 "translator.tab.c"
+#line 1281 "translator.tab.c"
     break;
 
   case 25: /* factor: CONST_INT  */
-#line 179 "translator.y"
+#line 174 "translator.y"
       {
-        // Constantele: raman string-uri simple ("10", "2")
-        // FARA [rel ...] in jur
         (yyval.str_val) = strdup((yyvsp[0].str_val));
       }
-#line 1294 "translator.tab.c"
+#line 1289 "translator.tab.c"
     break;
 
 
-#line 1298 "translator.tab.c"
+#line 1293 "translator.tab.c"
 
       default: break;
     }
@@ -1487,7 +1482,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 186 "translator.y"
+#line 179 "translator.y"
 
 
 char* new_temp() {
