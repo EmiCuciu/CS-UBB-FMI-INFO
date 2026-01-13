@@ -537,9 +537,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    37,    37,    37,    51,    50,    70,    71,    75,    83,
-      84,    88,    89,    90,    94,   107,   116,   131,   137,   150,
-     161,   166,   177,   182,   184,   191
+       0,    37,    37,    37,    53,    52,    72,    73,    77,    85,
+      86,    90,    91,    92,    96,   107,   116,   131,   138,   145,
+     152,   157,   164,   169,   171,   178
 };
 #endif
 
@@ -1133,7 +1133,9 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 37 "translator.y"
       {
-        emit("section .note.GNU-stack noalloc noexec nowrite progbits"); // Fix linker warning
+        // Fix pentru linker modern (evita warning-uri executable stack)
+        emit("section .note.GNU-stack noalloc noexec nowrite progbits");
+
         emit("section .data");
         emit("    format_in db \"%%d\", 0");
         emit("    format_out db \"Rezultat: %%d\", 10, 0");
@@ -1141,11 +1143,11 @@ yyreduce:
         emit("section .bss");
         for(int i=0; i<10; i++) emit("    t%d resd 1", i);
       }
-#line 1145 "translator.tab.c"
+#line 1147 "translator.tab.c"
     break;
 
   case 4: /* $@2: %empty  */
-#line 51 "translator.y"
+#line 53 "translator.y"
       {
         emit("");
         emit("section .text");
@@ -1156,36 +1158,34 @@ yyreduce:
         emit("    push rbp");
         emit("    mov rbp, rsp");
       }
-#line 1160 "translator.tab.c"
+#line 1162 "translator.tab.c"
     break;
 
   case 5: /* main_block: INT MAIN LPAREN RPAREN LBRACE decl_list $@2 stmt_list RBRACE  */
-#line 62 "translator.y"
+#line 64 "translator.y"
       {
         emit("    mov rax, 0");
         emit("    pop rbp");
         emit("    ret");
       }
-#line 1170 "translator.tab.c"
+#line 1172 "translator.tab.c"
     break;
 
   case 8: /* decl: INT ID SEMICOLON  */
-#line 76 "translator.y"
+#line 78 "translator.y"
       {
         emit("    %s resd 1", (yyvsp[-1].str_val));
         free((yyvsp[-1].str_val));
       }
-#line 1179 "translator.tab.c"
+#line 1181 "translator.tab.c"
     break;
 
   case 14: /* assign_stmt: ID ASSIGN expr SEMICOLON  */
-#line 95 "translator.y"
+#line 97 "translator.y"
       {
         emit("    ; %s <- expr", (yyvsp[-3].str_val));
-        // Aici $3 poate fi [rel t0], [rel var] sau constanta "10"
-        if ((yyvsp[-1].str_val)[0] == '[') emit("    mov eax, %s", (yyvsp[-1].str_val));
-        else emit("    mov eax, %s", (yyvsp[-1].str_val)); // Constanta directa
-
+        // Daca expr este memorie/temp ([rel ...]) sau numar (10)
+        emit("    mov eax, %s", (yyvsp[-1].str_val));
         emit("    mov [rel %s], eax", (yyvsp[-3].str_val));
         free((yyvsp[-3].str_val)); free((yyvsp[-1].str_val));
       }
@@ -1211,8 +1211,8 @@ yyreduce:
         emit("    ; speak << expr");
         emit("    lea rdi, [rel format_out]");
 
-        if ((yyvsp[-1].str_val)[0] == '[') emit("    mov esi, %s", (yyvsp[-1].str_val)); // Memorie
-        else emit("    mov esi, %s", (yyvsp[-1].str_val));          // Constanta
+        // ESI primeste valoarea de afisat
+        emit("    mov esi, %s", (yyvsp[-1].str_val));
 
         emit("    xor rax, rax");
         emit("    call printf");
@@ -1222,92 +1222,79 @@ yyreduce:
     break;
 
   case 18: /* expr: expr PLUS term  */
-#line 138 "translator.y"
+#line 139 "translator.y"
       {
         (yyval.str_val) = new_temp();
-        // Operand stanga
-        if ((yyvsp[-2].str_val)[0] == '[') emit("    mov eax, %s", (yyvsp[-2].str_val));
-        else emit("    mov eax, %s", (yyvsp[-2].str_val)); // E constanta, nu punem [rel ...]
-
-        // Operand dreapta
-        if ((yyvsp[0].str_val)[0] == '[') emit("    add eax, %s", (yyvsp[0].str_val));
-        else emit("    add eax, %s", (yyvsp[0].str_val)); // E constanta, ADD EAX, 5 e valid
-
-        emit("    mov %s, eax", (yyval.str_val));
+        emit("    mov eax, %s", (yyvsp[-2].str_val)); // incarca stanga
+        emit("    add eax, %s", (yyvsp[0].str_val)); // aduna dreapta (fie [rel t0], fie 5)
+        emit("    mov %s, eax", (yyval.str_val)); // salveaza
       }
-#line 1239 "translator.tab.c"
+#line 1233 "translator.tab.c"
     break;
 
   case 19: /* expr: expr MINUS term  */
-#line 151 "translator.y"
+#line 146 "translator.y"
       {
         (yyval.str_val) = new_temp();
-        if ((yyvsp[-2].str_val)[0] == '[') emit("    mov eax, %s", (yyvsp[-2].str_val));
-        else emit("    mov eax, %s", (yyvsp[-2].str_val));
-
-        if ((yyvsp[0].str_val)[0] == '[') emit("    sub eax, %s", (yyvsp[0].str_val));
-        else emit("    sub eax, %s", (yyvsp[0].str_val));
-
+        emit("    mov eax, %s", (yyvsp[-2].str_val));
+        emit("    sub eax, %s", (yyvsp[0].str_val));
         emit("    mov %s, eax", (yyval.str_val));
       }
-#line 1254 "translator.tab.c"
+#line 1244 "translator.tab.c"
     break;
 
   case 20: /* expr: term  */
-#line 162 "translator.y"
+#line 153 "translator.y"
       { (yyval.str_val) = (yyvsp[0].str_val); }
-#line 1260 "translator.tab.c"
+#line 1250 "translator.tab.c"
     break;
 
   case 21: /* term: term MULT factor  */
-#line 167 "translator.y"
+#line 158 "translator.y"
       {
         (yyval.str_val) = new_temp();
-        if ((yyvsp[-2].str_val)[0] == '[') emit("    mov eax, %s", (yyvsp[-2].str_val));
-        else emit("    mov eax, %s", (yyvsp[-2].str_val));
-
-        if ((yyvsp[0].str_val)[0] == '[') emit("    imul eax, %s", (yyvsp[0].str_val));
-        else emit("    imul eax, %s", (yyvsp[0].str_val));
-
+        emit("    mov eax, %s", (yyvsp[-2].str_val));
+        emit("    imul eax, %s", (yyvsp[0].str_val));
         emit("    mov %s, eax", (yyval.str_val));
       }
-#line 1275 "translator.tab.c"
+#line 1261 "translator.tab.c"
     break;
 
   case 22: /* term: factor  */
-#line 178 "translator.y"
+#line 165 "translator.y"
       { (yyval.str_val) = (yyvsp[0].str_val); }
-#line 1281 "translator.tab.c"
+#line 1267 "translator.tab.c"
     break;
 
   case 23: /* factor: LPAREN expr RPAREN  */
-#line 183 "translator.y"
+#line 170 "translator.y"
       { (yyval.str_val) = (yyvsp[-1].str_val); }
-#line 1287 "translator.tab.c"
+#line 1273 "translator.tab.c"
     break;
 
   case 24: /* factor: ID  */
-#line 185 "translator.y"
+#line 172 "translator.y"
       {
-        // Variabilele le marcam explicit ca referinte la memorie
+        // Variabilele: le formatam explicit ca referinte la memorie
         char* ref = (char*)malloc(30);
         sprintf(ref, "[rel %s]", (yyvsp[0].str_val));
         (yyval.str_val) = ref;
       }
-#line 1298 "translator.tab.c"
+#line 1284 "translator.tab.c"
     break;
 
   case 25: /* factor: CONST_INT  */
-#line 192 "translator.y"
+#line 179 "translator.y"
       {
-        // Constantele raman string-uri simple ("10", "2")
+        // Constantele: raman string-uri simple ("10", "2")
+        // FARA [rel ...] in jur
         (yyval.str_val) = strdup((yyvsp[0].str_val));
       }
-#line 1307 "translator.tab.c"
+#line 1294 "translator.tab.c"
     break;
 
 
-#line 1311 "translator.tab.c"
+#line 1298 "translator.tab.c"
 
       default: break;
     }
@@ -1500,7 +1487,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 198 "translator.y"
+#line 186 "translator.y"
 
 
 char* new_temp() {

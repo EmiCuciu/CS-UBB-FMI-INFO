@@ -35,7 +35,8 @@ void emit(const char* format, ...);
 
 program
     : {
-        emit("section .note.GNU-stack noalloc noexec nowrite progbits"); // Fix linker warning
+        emit("section .note.GNU-stack noalloc noexec nowrite progbits");
+
         emit("section .data");
         emit("    format_in db \"%%d\", 0");
         emit("    format_out db \"Rezultat: %%d\", 10, 0");
@@ -94,10 +95,7 @@ assign_stmt
     : ID ASSIGN expr SEMICOLON
       {
         emit("    ; %s <- expr", $1);
-        // Aici $3 poate fi [rel t0], [rel var] sau constanta "10"
-        if ($3[0] == '[') emit("    mov eax, %s", $3);
-        else emit("    mov eax, %s", $3); // Constanta directa
-
+        emit("    mov eax, %s", $3);
         emit("    mov [rel %s], eax", $1);
         free($1); free($3);
       }
@@ -118,8 +116,8 @@ io_stmt
         emit("    ; speak << expr");
         emit("    lea rdi, [rel format_out]");
 
-        if ($3[0] == '[') emit("    mov esi, %s", $3); // Memorie
-        else emit("    mov esi, %s", $3);          // Constanta
+        // ESI primeste valoarea de afisat
+        emit("    mov esi, %s", $3);
 
         emit("    xor rax, rax");
         emit("    call printf");
@@ -131,31 +129,20 @@ return_stmt
     : RETURN CONST_INT SEMICOLON
     ;
 
-/* --- CORECTIILE SUNT AICI MAI JOS --- */
 
 expr
     : expr PLUS term
       {
         $$ = new_temp();
-        // Operand stanga
-        if ($1[0] == '[') emit("    mov eax, %s", $1);
-        else emit("    mov eax, %s", $1); // E constanta, nu punem [rel ...]
-
-        // Operand dreapta
-        if ($3[0] == '[') emit("    add eax, %s", $3);
-        else emit("    add eax, %s", $3); // E constanta, ADD EAX, 5 e valid
-
+        emit("    mov eax, %s", $1);
+        emit("    add eax, %s", $3);
         emit("    mov %s, eax", $$);
       }
     | expr MINUS term
       {
         $$ = new_temp();
-        if ($1[0] == '[') emit("    mov eax, %s", $1);
-        else emit("    mov eax, %s", $1);
-
-        if ($3[0] == '[') emit("    sub eax, %s", $3);
-        else emit("    sub eax, %s", $3);
-
+        emit("    mov eax, %s", $1);
+        emit("    sub eax, %s", $3);
         emit("    mov %s, eax", $$);
       }
     | term
@@ -166,12 +153,8 @@ term
     : term MULT factor
       {
         $$ = new_temp();
-        if ($1[0] == '[') emit("    mov eax, %s", $1);
-        else emit("    mov eax, %s", $1);
-
-        if ($3[0] == '[') emit("    imul eax, %s", $3);
-        else emit("    imul eax, %s", $3);
-
+        emit("    mov eax, %s", $1);
+        emit("    imul eax, %s", $3);
         emit("    mov %s, eax", $$);
       }
     | factor
@@ -183,14 +166,12 @@ factor
       { $$ = $2; }
     | ID
       {
-        // Variabilele le marcam explicit ca referinte la memorie
         char* ref = (char*)malloc(30);
         sprintf(ref, "[rel %s]", $1);
         $$ = ref;
       }
     | CONST_INT
       {
-        // Constantele raman string-uri simple ("10", "2")
         $$ = strdup($1);
       }
     ;
