@@ -35,29 +35,8 @@
     "profilePhoto": null
   },
   {
-    "_id": "642x87j2drd",
-    "name": "Tu",
-    "balance": 66,
-    "userId": "test",
-    "profilePhoto": null
-  },
-  {
-    "_id": "ws74u9xp9c",
-    "name": "asd",
-    "balance": 312,
-    "userId": "test",
-    "profilePhoto": null
-  },
-  {
     "_id": "zusejc612v7",
     "name": "Awe",
-    "balance": 21,
-    "userId": "test",
-    "profilePhoto": null
-  },
-  {
-    "_id": "ektj5qndxu6",
-    "name": "Oo",
     "balance": 22,
     "userId": "test",
     "profilePhoto": null

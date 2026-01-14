@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
 // Extension property to create DataStore instance
@@ -73,25 +74,17 @@ class AuthDataStore(private val context: Context) {
      * Get token synchronously (for compatibility with existing code)
      */
     suspend fun getToken(): String? {
-        var token: String? = null
-        context.authDataStore.data.map { preferences ->
+        return context.authDataStore.data.map { preferences ->
             preferences[TOKEN_KEY]
-        }.collect {
-            token = it
-        }
-        return token
+        }.firstOrNull()
     }
 
     /**
      * Get username synchronously
      */
     suspend fun getUsername(): String? {
-        var username: String? = null
-        context.authDataStore.data.map { preferences ->
+        return context.authDataStore.data.map { preferences ->
             preferences[USERNAME_KEY]
-        }.collect {
-            username = it
-        }
-        return username
+        }.firstOrNull()
     }
 }

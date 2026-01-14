@@ -167,7 +167,11 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
                 val currentStatus = status.hasInternet
                 Log.d(TAG, "Comparing status: last=$lastNetworkStatus, current=$currentStatus")
 
-                if (lastNetworkStatus != currentStatus) {
+                // Capture transition BEFORE mutating lastNetworkStatus
+                val wasOffline = (lastNetworkStatus == false)
+                val statusChanged = (lastNetworkStatus != currentStatus)
+
+                if (statusChanged) {
                     Log.d(TAG, "Network status CHANGED! Showing notification for: isConnected=$currentStatus")
                     try {
                         notificationHelper.showNetworkStatusNotification(currentStatus)
@@ -175,32 +179,24 @@ class CharacterListFragment : Fragment(), WebSocketManager.WebSocketListener {
                     } catch (e: Exception) {
                         Log.e(TAG, "Failed to show network notification", e)
                     }
-                    lastNetworkStatus = currentStatus
                 } else {
                     Log.d(TAG, "Network status unchanged, skipping notification")
                 }
 
-                // Trigger IMMEDIATE sync when network is restored
-                if (status.hasInternet && lastNetworkStatus == false) {
-                    Log.d(TAG, "Internet RESTORED - triggering immediate sync")
+                // Trigger IMMEDIATE sync when network is restored (offline -> online)
+                if (currentStatus && wasOffline) {
+                    Log.d(TAG, "===== INTERNET RESTORED - TRIGGERING IMMEDIATE SYNC =====")
+                    Log.d(TAG, "Previous state: offline → Current state: online")
 
-                    // Enqueue immediate one-time sync work
-                    val constraints = Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.CONNECTED)
-                        .build()
+                    SyncCharactersWorker.triggerImmediateSync(requireContext())
 
-                    val immediateWork = OneTimeWorkRequestBuilder<SyncCharactersWorker>()
-                        .setConstraints(constraints)
-                        .build()
+                    Log.d(TAG, "✓ Immediate sync triggered")
+                    Log.d(TAG, "===== WORKMANAGER WILL START SYNC INSTANTLY =====")
+                }
 
-                    WorkManager.getInstance(requireContext())
-                        .enqueueUniqueWork(
-                            "immediate_sync_on_reconnect",
-                            ExistingWorkPolicy.REPLACE,
-                            immediateWork
-                        )
-
-                    Log.d(TAG, "Immediate sync work enqueued successfully")
+                // Update lastNetworkStatus LAST
+                if (statusChanged) {
+                    lastNetworkStatus = currentStatus
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.example.mafia.data.remote
 
+import android.os.Build
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -10,7 +11,27 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val BASE_URL = "http://192.168.0.130:3000/api/" // WiFi IP address with port 3000
+    // Emulator uses 10.0.2.2 to access host machine
+    // Real device uses actual WiFi IP
+    private const val HOST_IP = "10.99.138.25"  // Your laptop's hotspot IP
+    private const val EMULATOR_IP = "10.0.2.2"   // Special IP for Android Emulator
+    private const val PORT = "3000"
+
+    private fun getBaseUrl(): String {
+        val host = if (isEmulator()) EMULATOR_IP else HOST_IP
+        return "http://$host:$PORT/api/"
+    }
+
+    private fun isEmulator(): Boolean {
+        return (Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic")
+                || "google_sdk" == Build.PRODUCT)
+    }
 
     private var token: String? = null
 
@@ -50,7 +71,7 @@ object RetrofitClient {
         .create()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(getBaseUrl())
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()

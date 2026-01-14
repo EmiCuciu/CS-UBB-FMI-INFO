@@ -1,5 +1,6 @@
 package com.example.mafia.data.remote
 
+import android.os.Build
 import android.util.Log
 import com.example.mafia.data.model.Character
 import com.google.gson.Gson
@@ -14,7 +15,25 @@ class WebSocketManager private constructor() {
 
     companion object {
         private const val TAG = "WebSocketManager"
-        private const val WS_URL = "ws://192.168.0.130:3000"
+        private const val HOST_IP = "10.99.138.25"  // Your laptop's hotspot IP
+        private const val EMULATOR_IP = "10.0.2.2"   // Special IP for Android Emulator
+        private const val PORT = "3000"
+
+        private fun getWebSocketUrl(): String {
+            val host = if (isEmulator()) EMULATOR_IP else HOST_IP
+            return "ws://$host:$PORT"
+        }
+
+        private fun isEmulator(): Boolean {
+            return (Build.FINGERPRINT.startsWith("generic")
+                    || Build.FINGERPRINT.startsWith("unknown")
+                    || Build.MODEL.contains("google_sdk")
+                    || Build.MODEL.contains("Emulator")
+                    || Build.MODEL.contains("Android SDK built for x86")
+                    || Build.MANUFACTURER.contains("Genymotion")
+                    || Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic")
+                    || "google_sdk" == Build.PRODUCT)
+        }
 
         @Volatile
         private var instance: WebSocketManager? = null
@@ -49,6 +68,9 @@ class WebSocketManager private constructor() {
             return
         }
 
+        val wsUrl = getWebSocketUrl()
+        Log.d(TAG, "Connecting to WebSocket: $wsUrl")
+
         val client = OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -56,7 +78,7 @@ class WebSocketManager private constructor() {
             .build()
 
         val request = Request.Builder()
-            .url(WS_URL)
+            .url(wsUrl)
             .build()
 
         webSocket = client.newWebSocket(request, object : okhttp3.WebSocketListener() {
