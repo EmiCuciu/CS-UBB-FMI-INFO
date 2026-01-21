@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Upload Status Colors -->
+    <color name="status_pending">#FF9800</color>
+    <color name="status_submitting">#2196F3</color>
+    <color name="status_submitted">#4CAF50</color>
+    <color name="status_failed">#F44336</color>
+</resources>

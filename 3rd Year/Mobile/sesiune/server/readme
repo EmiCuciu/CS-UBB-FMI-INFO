@@ -1,0 +1,49 @@
+Audit Depozit
+
+Pentru a gestiona stocul intr-un depozit, o companie a proiectat un sistem client-server pentru auditarea inventarului.
+
+Stocul scriptic (teoretic) este trimis de server catre clienti prin web socket (ws://localhost:3000).
+Cand o aplicatie client se conecteaza prin web socket, serverul trimite lista de produse in format JSON:
+[{ code, name, quantity }] unde `code` este numar (cod produs), `name` este sir de caractere, iar `quantity` este stocul din sistem.
+De ex. [{"code": 1, "name": "Produs A", "quantity": 10}, {"code": 2, "name": "Produs B", "quantity": 5}].
+
+Serverul permite aplicatiei client sa trimita rezultatele auditului (numaratoarea faptica), via POST /audit,
+un element avand proprietatile: { code, counted, zone } reprezentand codul produsului,
+cantitatea numarata fizic de utilizator (counted) si zona din depozit unde s-a facut numaratoarea.
+
+Dezvoltati o aplicatie client mobila dupa cum urmeaza.
+
+1. La prima pornire, aplicatia permite utilizatorului sa introduca zona in care efectueaza auditul (zone)
+si sa declanseze un buton "Set Zone". Zona va fi salvata local, iar in sesiunile de lucru urmatoare
+nu se va putea modifica [1p].
+
+2. La pornire, dupa ce zona a fost stabilita, aplicatia verifica daca lista de inventar a fost primita de la
+server in sesiunile de lucru anterioare. Daca lista n-a fost primita anterior, aplicatia se conecteaza
+prin web socket pentru a primi datele. Pana cand primeste lista, aplicatia prezinta un progress
+indicator (loading) [1p].
+
+3. Aplicatia persista local lista de produse si valorile numarate (auditate) de utilizator.
+La repornirea aplicatiei, interfata va afisa lista si valorile introduse anterior [1p].
+
+4. O lista prezinta produsele din inventar, un element din lista afisand:
+numele produsului (name), stocul scriptic (quantity - primit de la server) si un text nemodificabil
+reprezentand stocul faptic (counted) introdus de utilizator - daca a fost introdus [1p].
+
+5. Cand utilizatorul selecteaza (face click pe) un element din lista, textul care reprezinta stocul faptic (counted)
+va fi inlocuit cu un element de intrare care-i va permite utilizatorului sa introduca un numar.
+Dupa introducerea valorii si confirmarea ei (prin enter sau un buton), se va afisa din nou un text readonly [1p].
+
+6. Utilizatorul poate filtra lista, optand pentru afisarea tuturor elementelor, sau doar a celor cu discrepante
+(unde stocul scriptic `quantity` este diferit de stocul faptic `counted` introdus de utilizator) [1p].
+
+7. Cand utilizatorul declanseaza un buton 'Audit Complete' (prezentat sub lista), aplicatia va trimite rezultatele
+executand in paralel operatii POST /audit, pentru fiecare element la care s-a introdus o valoare (counted),
+incluzand in corpul cererii { code, counted, zone } [1p].
+
+8. Daca anumite operatii POST esueaza (de ex. cantitate negativa), utilizatorul va fi informat prin prezentarea
+valorii respective cu font rosu. Butonul 'Audit Complete' poate fi declansat de mai multe ori si va trimite
+la server elementele care n-au fost trimise anterior sau cele pentru care trimiterea a esuat [1p].
+
+9. Atunci cand operatiile POST sunt in curs de executie, un indicator de progres va fi prezentat de catre
+elementul din lista pentru care se incearca trimiterea catre server. Toate erorile IO (lipsa conectivitate,
+server indisponibil) vor fi raportate utilizatorului folosind notificari globale [1p].

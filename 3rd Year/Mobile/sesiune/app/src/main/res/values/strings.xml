@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Audit Depozit</string>
+    <string name="enter_zone">Enter your zone</string>
+    <string name="zone_hint">Zone name</string>
+    <string name="set_zone">Set Zone</string>
+    <string name="zone_label">Zone: %1$s</string>
+    <string name="show_all">Show All</string>
+    <string name="show_discrepancies">Show Discrepancies</string>
+    <string name="audit_complete">Audit Complete</string>
+    <string name="product_name">Product Name</string>
+    <string name="stock_label">Stock: %1$d</string>
+    <string name="not_counted">Not counted</string>
+    <string name="counted_label">Counted: %1$d</string>
+    <string name="counted_success">Counted: %1$d ✓</string>
+    <string name="enter_counted_title">Enter counted quantity for %1$s</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_enter_zone">Please enter a zone</string>
+    <string name="no_products_to_submit">No products to submit</string>
+    <string name="network_error">Network error: %1$s</string>
+    <string name="connection_failed">Failed to connect to server: %1$s</string>
+    <string name="receive_failed">Failed to receive products: %1$s</string>
+</resources>
+
