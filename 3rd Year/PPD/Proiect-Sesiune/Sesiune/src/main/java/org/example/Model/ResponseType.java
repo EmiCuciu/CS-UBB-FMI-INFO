@@ -1,0 +1,13 @@
+package org.example.Model;
+
+public enum ResponseType {
+    SEATS_AVAILABLE,
+    SEATS_OCCUPIED,
+    PAYMENT_SUCCESS,
+    SHOW_NOT_FOUND,
+    INVALID_SEATS,
+    CLIENT_HAS_PENDING_RESERVATION,
+    NO_RESERVATION_FOUND,
+    RESERVATION_EXPIRED,
+    DB_ERROR
+}
