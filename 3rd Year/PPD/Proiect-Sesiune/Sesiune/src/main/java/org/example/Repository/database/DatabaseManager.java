@@ -242,6 +242,7 @@ public class DatabaseManager {
             stmt.setInt(3, seats.size());
             stmt.executeUpdate();
 
+            // Obtinem ID-ul generat
             ResultSet rs = stmt.getGeneratedKeys();
             int saleId = rs.next() ? rs.getInt(1) : -1;
 

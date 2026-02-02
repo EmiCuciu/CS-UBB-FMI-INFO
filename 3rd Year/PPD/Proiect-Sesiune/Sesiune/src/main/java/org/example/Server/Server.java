@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class Server {
-    private final ExecutorService threadPool;
-    private final ScheduledExecutorService scheduler;
-    private final ConcertHall hall;
-    private final VerificationService verificationService;
+    private final ExecutorService threadPool;              // 8 workers
+    private final ScheduledExecutorService scheduler;     // 2 threads (verificare + cleanup)
+    private final ConcertHall hall;                       // Business logic
+    private final VerificationService verificationService; // Verificare consistență
     private final int verificationIntervalSeconds;
-    private volatile boolean running = true;
+    private volatile boolean running = true;              // Flag pentru clienți
     private List<Client> clients = new ArrayList<>();
 
     public Server(ConcertHall hall, int verificationIntervalSeconds) {

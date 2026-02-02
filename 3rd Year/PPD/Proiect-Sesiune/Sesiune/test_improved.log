@@ -1,0 +1,518 @@
+nohup: ignoring input
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :run
+
+╔════════════════════════════════════════════════════════╗
+║      CONCERT HALL TICKET SALES SYSTEM                 ║
+║      Client-Server with Concurrency & Thread Pool     ║
+╚════════════════════════════════════════════════════════╝
+
+Initializing database...
+Connected to SQLite database: shows.db
+Database schema initialized.
+Test data already exists, skipping insertion.
+Initializing ConcertHall...
+════════════════════════════════════════
+ConcertHall loaded from DB:
+  - Shows: 3
+    • Concert Rock (S1): 60/100 seats sold, price=100.0
+    • Opera Clasică (S2): 52/100 seats sold, price=200.0
+    • Spectacol Jazz (S3): 55/100 seats sold, price=150.0
+  - Total balance: 24650.0 RON
+════════════════════════════════════════
+
+
+════════════════════════════════════════
+Server started.
+  - ThreadPool size: 8 workers
+  - Verification interval: 5s
+  - T_max (reservation timeout): 10s
+  - Server runtime: 180s (3 minutes)
+════════════════════════════════════════
+
+Starting 10 clients...
+Client 1 started.
+Client 3 started.
+Client 2 started.
+Client 4 started.
+Client 5 started.
+Client 6 started.
+Client 7 started.
+Client 8 started.
+Client 9 started.
+
+════════════════════════════════════════
+System running.
+Client 10 started.
+  - 10 clients generating requests every 2s
+  - ThreadPool: 8 workers
+  - Verification interval: 5s
+  - Server will shutdown in 180s (3 minutes)
+════════════════════════════════════════
+
+Client 1 requesting: show=S1, seats=[36, 61]
+Client 2 requesting: show=S1, seats=[14]
+Client 9 requesting: show=S2, seats=[72, 78]
+Client 10 requesting: show=S1, seats=[2]
+Client 6 requesting: show=S3, seats=[80, 49, 63]
+Client 4 requesting: show=S2, seats=[21, 71, 91, 11]
+Client 7 requesting: show=S1, seats=[65, 37, 11]
+Client 5 requesting: show=S3, seats=[41, 9, 26, 93, 14]
+Client 3 requesting: show=S3, seats=[64, 5, 22, 89]
+Client 8 requesting: show=S3, seats=[80, 32, 51, 6]
+Client 6: seats OCCUPIED - Seats already occupied: [63]
+Client 9: seats OCCUPIED - Seats already occupied: [72]
+Client 2: seats OCCUPIED - Seats already occupied: [14]
+Client 1: seats OCCUPIED - Seats already occupied: [36, 61]
+Client 4: seats OCCUPIED - Seats already occupied: [21, 11]
+Client 7: seats OCCUPIED - Seats already occupied: [65, 11]
+Client 5: seats OCCUPIED - Seats already occupied: [9, 26]
+Client 3: seats OCCUPIED - Seats already occupied: [22]
+Client 8: payment SUCCESS, amount=600.0 RON
+Client 10: payment SUCCESS, amount=100.0 RON
+Client 6 requesting: show=S3, seats=[80, 48, 82]
+Client 1 requesting: show=S3, seats=[72, 41, 61, 29]
+Client 9 requesting: show=S1, seats=[76, 78]
+Client 2 requesting: show=S3, seats=[19, 21]
+Client 6: seats OCCUPIED - Seats already occupied: [80, 48]
+Client 1: seats OCCUPIED - Seats already occupied: [72, 61, 29]
+Client 9: seats OCCUPIED - Seats already occupied: [78]
+Client 7 requesting: show=S2, seats=[45, 62]
+Client 5 requesting: show=S2, seats=[81, 99, 39]
+Client 4 requesting: show=S3, seats=[50]
+Client 3 requesting: show=S3, seats=[99]
+Client 7: seats OCCUPIED - Seats already occupied: [62]
+Client 5: seats OCCUPIED - Seats already occupied: [81, 99, 39]
+Client 4: payment SUCCESS, amount=150.0 RON
+Client 8 requesting: show=S1, seats=[19, 72, 42, 77]
+Client 3: payment SUCCESS, amount=150.0 RON
+Client 8: seats OCCUPIED - Seats already occupied: [19, 72, 77]
+Client 10 requesting: show=S2, seats=[82, 71]
+Client 10: seats OCCUPIED - Seats already occupied: [82]
+Client 2: payment SUCCESS, amount=300.0 RON
+Client 6 requesting: show=S2, seats=[84, 53, 55, 29, 62]
+Client 9 requesting: show=S3, seats=[18, 23]
+Client 1 requesting: show=S2, seats=[35, 75, 92, 94]
+Client 1: seats OCCUPIED - Seats already occupied: [35, 92, 94]
+Client 6: seats OCCUPIED - Seats already occupied: [84, 53, 62]
+Client 9: seats OCCUPIED - Seats already occupied: [18]
+Client 7 requesting: show=S1, seats=[52, 24]
+Client 5 requesting: show=S2, seats=[86, 12, 63]
+Client 7: seats OCCUPIED - Seats already occupied: [52, 24]
+Client 5: seats OCCUPIED - Seats already occupied: [86]
+Client 4 requesting: show=S2, seats=[84]
+Client 4: seats OCCUPIED - Seats already occupied: [84]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 8 requesting: show=S1, seats=[32, 67, 4, 27, 63]
+Client 3 requesting: show=S3, seats=[53]
+Client 8: seats OCCUPIED - Seats already occupied: [32, 67, 4]
+Client 10 requesting: show=S2, seats=[16, 4, 21, 28, 45]
+Client 10: seats OCCUPIED - Seats already occupied: [16, 21, 28]
+Client 2 requesting: show=S2, seats=[82, 38, 40, 93, 62]
+Client 2: seats OCCUPIED - Seats already occupied: [82, 40, 93, 62]
+Client 1 requesting: show=S3, seats=[2, 28]
+Client 6 requesting: show=S1, seats=[86, 6, 23, 71, 44]
+Client 9 requesting: show=S2, seats=[32, 38, 77, 13]
+Client 1: seats OCCUPIED - Seats already occupied: [2, 28]
+Client 6: seats OCCUPIED - Seats already occupied: [86, 6]
+Client 9: seats OCCUPIED - Seats already occupied: [32]
+Client 5 requesting: show=S1, seats=[85, 69, 26, 77]
+Client 7 requesting: show=S1, seats=[16, 100, 21, 62, 78]
+Client 5: seats OCCUPIED - Seats already occupied: [85, 69, 26, 77]
+Client 7: seats OCCUPIED - Seats already occupied: [16, 100, 78]
+Client 4 requesting: show=S2, seats=[75, 31]
+Client 4: seats OCCUPIED - Seats already occupied: [31]
+Client 3: payment SUCCESS, amount=150.0 RON
+Client 8 requesting: show=S1, seats=[64, 4, 39, 93]
+Client 8: seats OCCUPIED - Seats already occupied: [64, 4]
+Client 10 requesting: show=S1, seats=[50, 100, 10, 75, 14]
+Client 10: seats OCCUPIED - Seats already occupied: [100, 10, 14]
+Client 2 requesting: show=S1, seats=[88]
+Client 2: seats OCCUPIED - Seats already occupied: [88]
+Client 6 requesting: show=S2, seats=[4, 38, 27, 76, 47]
+Client 9 requesting: show=S2, seats=[81, 83, 22, 39, 45]
+Client 6: seats OCCUPIED - Seats already occupied: [47]
+Client 9: seats OCCUPIED - Seats already occupied: [81, 39]
+Client 1 requesting: show=S3, seats=[66, 9]
+Client 1: seats OCCUPIED - Seats already occupied: [66, 9]
+Client 5 requesting: show=S2, seats=[12]
+Client 7 requesting: show=S1, seats=[20, 62, 78, 46]
+Client 7: seats OCCUPIED - Seats already occupied: [20, 78, 46]
+Client 4 requesting: show=S3, seats=[3, 100, 69, 56]
+Client 4: seats OCCUPIED - Seats already occupied: [100, 69, 56]
+Client 5: payment SUCCESS, amount=200.0 RON
+Client 3 requesting: show=S2, seats=[50, 23, 93, 78]
+Client 3: seats OCCUPIED - Seats already occupied: [93]
+Client 8 requesting: show=S1, seats=[80, 98, 83, 54, 62]
+Client 8: seats OCCUPIED - Seats already occupied: [98, 83]
+Client 10 requesting: show=S3, seats=[45]
+Client 10: seats OCCUPIED - Seats already occupied: [45]
+Client 2 requesting: show=S2, seats=[48, 21, 27, 46]
+Client 2: seats OCCUPIED - Seats already occupied: [48, 21, 46]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 9 requesting: show=S2, seats=[41, 58]
+Client 6 requesting: show=S3, seats=[34, 21, 43, 44, 95]
+Client 9: seats OCCUPIED - Seats already occupied: [41, 58]
+Client 1 requesting: show=S2, seats=[39, 87, 75]
+Client 6: seats OCCUPIED - Seats already occupied: [34, 21]
+Client 1: seats OCCUPIED - Seats already occupied: [39]
+Client 7 requesting: show=S2, seats=[20, 36, 22, 58, 27]
+Client 7: seats OCCUPIED - Seats already occupied: [36, 58]
+Client 4 requesting: show=S1, seats=[18, 24]
+Client 4: seats OCCUPIED - Seats already occupied: [18, 24]
+Client 5 requesting: show=S1, seats=[47]
+Client 5: seats OCCUPIED - Seats already occupied: [47]
+Client 3 requesting: show=S2, seats=[98, 72, 60, 29]
+Client 3: seats OCCUPIED - Seats already occupied: [72, 60]
+Client 8 requesting: show=S1, seats=[40]
+Client 8 requesting: show=S2, seats=[42]
+Client 8: execution error - java.lang.NullPointerException: Cannot invoke "java.util.Set.removeAll(java.util.Collection)" because the return value of "java.util.Map.get(Object)" is null
+Client 10 requesting: show=S3, seats=[86, 90, 43, 44, 12]
+Client 10: seats OCCUPIED - Seats already occupied: [86, 90, 12]
+Client 2 requesting: show=S2, seats=[50, 67, 20, 73, 15]
+Client 2: seats OCCUPIED - Seats already occupied: [67, 73]
+Client 9 requesting: show=S3, seats=[65, 83, 21]
+Client 1 requesting: show=S2, seats=[64, 43]
+Client 6 requesting: show=S1, seats=[32, 48, 89]
+Client 9: seats OCCUPIED - Seats already occupied: [83, 21]
+Client 6: seats OCCUPIED - Seats already occupied: [32]
+Client 1: seats OCCUPIED - Seats already occupied: [64, 43]
+Client 7 requesting: show=S3, seats=[87, 58]
+Client 7: seats OCCUPIED - Seats already occupied: [58]
+Client 8: payment SUCCESS, amount=200.0 RON
+Client 4 requesting: show=S2, seats=[82]
+Client 4: seats OCCUPIED - Seats already occupied: [82]
+Client 5 requesting: show=S1, seats=[12]
+Client 5: execution error - java.lang.NullPointerException: Cannot invoke "java.util.Set.removeAll(java.util.Collection)" because the return value of "java.util.Map.get(Object)" is null
+Client 5 requesting: show=S1, seats=[49, 70, 47]
+Client 5: seats OCCUPIED - Seats already occupied: [49, 70, 47]
+Client 3 requesting: show=S2, seats=[7, 24, 56, 27]
+Client 3: seats OCCUPIED - Seats already occupied: [56]
+Client 10 requesting: show=S2, seats=[33, 68, 36, 100]
+Client 10: seats OCCUPIED - Seats already occupied: [36]
+Client 2 requesting: show=S1, seats=[37, 88]
+Client 2: seats OCCUPIED - Seats already occupied: [88]
+Client 6 requesting: show=S1, seats=[18]
+Client 9 requesting: show=S1, seats=[80, 99]
+Client 1 requesting: show=S2, seats=[84, 21, 25, 47]
+Client 6: seats OCCUPIED - Seats already occupied: [18]
+Client 9: seats OCCUPIED - Seats already occupied: [99]
+Client 1: seats OCCUPIED - Seats already occupied: [84, 21, 47]
+Client 7 requesting: show=S3, seats=[54]
+Client 7: seats OCCUPIED - Seats already occupied: [54]
+Client 8 requesting: show=S2, seats=[69, 57, 28, 62]
+Client 8: seats OCCUPIED - Seats already occupied: [57, 28, 62]
+Client 4 requesting: show=S3, seats=[49]
+Client 5 requesting: show=S3, seats=[18, 74, 76]
+Client 5: seats OCCUPIED - Seats already occupied: [18, 74]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 3 requesting: show=S2, seats=[20, 60]
+Client 3: seats OCCUPIED - Seats already occupied: [60]
+Client 4: payment SUCCESS, amount=150.0 RON
+Client 10 requesting: show=S1, seats=[80, 70, 88, 57, 46]
+Client 10: seats OCCUPIED - Seats already occupied: [70, 88, 57, 46]
+Client 2 requesting: show=S2, seats=[69, 5, 14]
+Client 2: seats OCCUPIED - Seats already occupied: [14]
+Client 6 requesting: show=S2, seats=[26, 47]
+Client 9 requesting: show=S2, seats=[58]
+Client 1 requesting: show=S3, seats=[54, 78]
+Client 6: seats OCCUPIED - Seats already occupied: [47]
+Client 9: seats OCCUPIED - Seats already occupied: [58]
+Client 1: seats OCCUPIED - Seats already occupied: [54, 78]
+Client 7 requesting: show=S2, seats=[51, 84, 61, 14]
+Client 7: seats OCCUPIED - Seats already occupied: [84, 61, 14]
+Client 8 requesting: show=S2, seats=[17, 66, 20, 69]
+Client 8: seats OCCUPIED - Seats already occupied: [66]
+Client 5 requesting: show=S3, seats=[37, 87, 27]
+Client 5: seats OCCUPIED - Seats already occupied: [27]
+Client 3 requesting: show=S2, seats=[93]
+Client 3: seats OCCUPIED - Seats already occupied: [93]
+Client 4 requesting: show=S3, seats=[16, 6, 7, 62]
+Client 4: seats OCCUPIED - Seats already occupied: [16, 6]
+Client 10 requesting: show=S1, seats=[90]
+Client 10: seats OCCUPIED - Seats already occupied: [90]
+Client 2 requesting: show=S1, seats=[19, 51, 95]
+Client 2: seats OCCUPIED - Seats already occupied: [19, 95]
+Client 6 requesting: show=S1, seats=[83, 39, 55, 27]
+Client 6: seats OCCUPIED - Seats already occupied: [83]
+Client 1 requesting: show=S2, seats=[96, 67, 41, 10]
+Client 9 requesting: show=S2, seats=[45]
+Client 1: seats OCCUPIED - Seats already occupied: [67, 41]
+Client 7 requesting: show=S2, seats=[3, 25, 57, 27]
+Client 7: seats OCCUPIED - Seats already occupied: [3, 57]
+Client 8 requesting: show=S3, seats=[82, 26]
+Client 8: seats OCCUPIED - Seats already occupied: [26]
+Client 9: payment SUCCESS, amount=200.0 RON
+Client 5 requesting: show=S1, seats=[9, 25, 58]
+Client 5: seats OCCUPIED - Seats already occupied: [25, 58]
+Client 3 requesting: show=S1, seats=[17]
+Client 4 requesting: show=S1, seats=[64, 96, 50, 59, 95]
+Client 4: seats OCCUPIED - Seats already occupied: [64, 96, 95]
+Client 3: payment SUCCESS, amount=100.0 RON
+Client 10 requesting: show=S3, seats=[59]
+Client 10: seats OCCUPIED - Seats already occupied: [59]
+Client 2 requesting: show=S1, seats=[12]
+Client 2: execution error - java.lang.NullPointerException: Cannot invoke "java.util.Set.removeAll(java.util.Collection)" because the return value of "java.util.Map.get(Object)" is null
+Client 2 requesting: show=S3, seats=[4, 91, 46, 94]
+Client 2: seats OCCUPIED - Seats already occupied: [4, 94]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 6 requesting: show=S3, seats=[19, 20, 42, 76, 61]
+Client 6: seats OCCUPIED - Seats already occupied: [19, 20, 42, 61]
+Client 1 requesting: show=S3, seats=[35, 43, 14]
+Client 1: seats OCCUPIED - Seats already occupied: [35]
+Client 7 requesting: show=S1, seats=[53, 92]
+Client 7: seats OCCUPIED - Seats already occupied: [53, 92]
+Client 8 requesting: show=S2, seats=[66]
+Client 8: seats OCCUPIED - Seats already occupied: [66]
+Client 9 requesting: show=S3, seats=[58, 77]
+Client 9: seats OCCUPIED - Seats already occupied: [58, 77]
+Client 5 requesting: show=S1, seats=[17, 35, 52, 56, 29]
+Client 5: seats OCCUPIED - Seats already occupied: [17, 35, 52, 29]
+Client 4 requesting: show=S2, seats=[67, 79]
+Client 4: seats OCCUPIED - Seats already occupied: [67]
+Client 3 requesting: show=S1, seats=[16, 98, 54]
+Client 3: seats OCCUPIED - Seats already occupied: [16, 98]
+Client 10 requesting: show=S1, seats=[73, 91, 94]
+Client 10: seats OCCUPIED - Seats already occupied: [73, 91]
+Client 2 requesting: show=S3, seats=[36, 25, 27]
+Client 2: seats OCCUPIED - Seats already occupied: [27]
+Client 6 requesting: show=S2, seats=[1, 11, 63]
+Client 1 requesting: show=S2, seats=[2, 36, 85]
+Client 6: seats OCCUPIED - Seats already occupied: [1, 11]
+Client 1: seats OCCUPIED - Seats already occupied: [2, 36]
+Client 7 requesting: show=S1, seats=[80, 99, 20, 5, 38]
+Client 7: seats OCCUPIED - Seats already occupied: [99, 20]
+Client 8 requesting: show=S2, seats=[82, 100, 21, 47]
+Client 8: seats OCCUPIED - Seats already occupied: [82, 21, 47]
+Client 9 requesting: show=S2, seats=[50, 9, 10]
+Client 9: seats OCCUPIED - Seats already occupied: [9]
+Client 5 requesting: show=S3, seats=[81, 17, 75]
+Client 5: seats OCCUPIED - Seats already occupied: [81, 17]
+Client 4 requesting: show=S3, seats=[55, 40]
+Client 4: seats OCCUPIED - Seats already occupied: [40]
+Client 3 requesting: show=S2, seats=[62]
+Client 3: seats OCCUPIED - Seats already occupied: [62]
+Client 10 requesting: show=S3, seats=[50, 68, 89, 74, 95]
+Client 10: seats OCCUPIED - Seats already occupied: [50, 68, 74]
+Client 2 requesting: show=S2, seats=[90]
+Client 2: seats OCCUPIED - Seats already occupied: [90]
+Client 1 requesting: show=S2, seats=[64, 34, 43]
+Client 6 requesting: show=S2, seats=[38, 12]
+Client 6: seats OCCUPIED - Seats already occupied: [12]
+Client 1: seats OCCUPIED - Seats already occupied: [64, 43]
+Client 7 requesting: show=S3, seats=[64, 21, 39, 73, 12]
+Client 7: seats OCCUPIED - Seats already occupied: [21, 39, 73, 12]
+Client 8 requesting: show=S1, seats=[51, 58, 92, 93, 94]
+Client 8: seats OCCUPIED - Seats already occupied: [58, 92]
+Client 9 requesting: show=S3, seats=[16, 56, 8]
+Client 9: seats OCCUPIED - Seats already occupied: [16, 56, 8]
+Client 5 requesting: show=S1, seats=[18, 90, 42]
+Client 5: seats OCCUPIED - Seats already occupied: [18, 90]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 4 requesting: show=S1, seats=[97, 21, 5, 30, 95]
+Client 4: seats OCCUPIED - Seats already occupied: [97, 95]
+Client 3 requesting: show=S1, seats=[64, 100, 53, 40, 78]
+Client 3: seats OCCUPIED - Seats already occupied: [64, 100, 53, 78]
+Client 10 requesting: show=S3, seats=[26]
+Client 10: seats OCCUPIED - Seats already occupied: [26]
+Client 2 requesting: show=S2, seats=[100, 62]
+Client 2: seats OCCUPIED - Seats already occupied: [62]
+Client 6 requesting: show=S2, seats=[28, 94, 63]
+Client 1 requesting: show=S2, seats=[53, 55, 77, 47, 95]
+Client 6: seats OCCUPIED - Seats already occupied: [28, 94]
+Client 1: seats OCCUPIED - Seats already occupied: [53, 47, 95]
+Client 7 requesting: show=S2, seats=[73, 76, 93, 63]
+Client 7: seats OCCUPIED - Seats already occupied: [73, 93]
+Client 8 requesting: show=S2, seats=[67, 51, 41, 12, 77]
+Client 8: seats OCCUPIED - Seats already occupied: [67, 41, 12]
+Client 9 requesting: show=S3, seats=[82, 5]
+Client 5 requesting: show=S1, seats=[81, 18, 50, 56, 44]
+Client 5: seats OCCUPIED - Seats already occupied: [18]
+Client 4 requesting: show=S3, seats=[69, 45, 94]
+Client 4: seats OCCUPIED - Seats already occupied: [69, 45, 94]
+Client 9: payment SUCCESS, amount=300.0 RON
+Client 3 requesting: show=S3, seats=[88, 8]
+Client 3: seats OCCUPIED - Seats already occupied: [88, 8]
+Client 10 requesting: show=S3, seats=[3, 94]
+Client 10: seats OCCUPIED - Seats already occupied: [94]
+Client 2 requesting: show=S1, seats=[66, 30]
+Client 2: seats OCCUPIED - Seats already occupied: [66]
+Client 6 requesting: show=S2, seats=[69]
+Client 1 requesting: show=S1, seats=[70, 73, 74]
+Client 1: seats OCCUPIED - Seats already occupied: [70, 73]
+Client 7 requesting: show=S2, seats=[97]
+Client 7: execution error - java.lang.NullPointerException: Cannot invoke "java.util.Set.removeAll(java.util.Collection)" because the return value of "java.util.Map.get(Object)" is null
+Client 7 requesting: show=S1, seats=[35, 10, 78, 15]
+Client 7: seats OCCUPIED - Seats already occupied: [35, 10, 78]
+Client 8 requesting: show=S3, seats=[1, 82, 42, 76, 92]
+Client 8: seats OCCUPIED - Seats already occupied: [82, 42, 92]
+Client 5 requesting: show=S3, seats=[66, 6, 42, 94]
+Client 5: seats OCCUPIED - Seats already occupied: [66, 6, 42, 94]
+Client 4 requesting: show=S3, seats=[69, 71, 26]
+Client 4: seats OCCUPIED - Seats already occupied: [69, 26]
+Client 9 requesting: show=S2, seats=[67, 23, 77]
+Client 9: seats OCCUPIED - Seats already occupied: [67]
+Client 3 requesting: show=S3, seats=[64, 33, 34, 83]
+Client 3: seats OCCUPIED - Seats already occupied: [33, 34, 83]
+Client 10 requesting: show=S3, seats=[18, 84, 53, 55, 74]
+Client 10: seats OCCUPIED - Seats already occupied: [18, 53, 74]
+Client 2 requesting: show=S3, seats=[80, 81, 99, 70, 59]
+Client 2: seats OCCUPIED - Seats already occupied: [80, 81, 99, 59]
+
+[VERIFICATION] Running consistency check...
+Client 6: payment SUCCESS, amount=200.0 RON
+[VERIFICATION] Result: CORECT
+Client 1 requesting: show=S3, seats=[96, 85, 89, 12, 47]
+Client 1: seats OCCUPIED - Seats already occupied: [85, 12, 47]
+Client 7 requesting: show=S3, seats=[21]
+Client 7: seats OCCUPIED - Seats already occupied: [21]
+Client 8 requesting: show=S2, seats=[38, 55]
+Client 5 requesting: show=S2, seats=[98, 55, 23, 78]
+Client 5: execution error - java.lang.NullPointerException: Cannot invoke "java.util.Set.removeAll(java.util.Collection)" because the return value of "java.util.Map.get(Object)" is null
+Client 5 requesting: show=S2, seats=[65, 70, 24]
+Client 5: seats OCCUPIED - Seats already occupied: [70]
+Client 8: payment SUCCESS, amount=400.0 RON
+Client 4 requesting: show=S1, seats=[52, 58, 91, 46, 95]
+Client 4: seats OCCUPIED - Seats already occupied: [52, 58, 91, 46, 95]
+Client 9 requesting: show=S2, seats=[85, 12]
+Client 9: seats OCCUPIED - Seats already occupied: [12]
+Client 3 requesting: show=S1, seats=[32, 100]
+Client 3: seats OCCUPIED - Seats already occupied: [32, 100]
+Client 10 requesting: show=S1, seats=[43]
+Client 10: seats OCCUPIED - Seats already occupied: [43]
+Client 2 requesting: show=S2, seats=[64, 70, 93, 46]
+Client 2: seats OCCUPIED - Seats already occupied: [64, 70, 93, 46]
+Client 6 requesting: show=S3, seats=[98, 57, 14]
+Client 1 requesting: show=S1, seats=[3]
+Client 7 requesting: show=S1, seats=[61]
+Client 7: seats OCCUPIED - Seats already occupied: [61]
+Client 1: payment SUCCESS, amount=100.0 RON
+Client 5 requesting: show=S1, seats=[48, 70, 23, 42, 14]
+Client 5: seats OCCUPIED - Seats already occupied: [70, 14]
+Client 6: payment SUCCESS, amount=450.0 RON
+Client 8 requesting: show=S1, seats=[35, 53, 9]
+Client 8: seats OCCUPIED - Seats already occupied: [35, 53]
+Client 4 requesting: show=S2, seats=[96, 51, 61]
+Client 4: seats OCCUPIED - Seats already occupied: [61]
+Client 9 requesting: show=S3, seats=[17, 98, 70, 39, 30]
+Client 9: seats OCCUPIED - Seats already occupied: [17, 98, 39, 30]
+Client 3 requesting: show=S3, seats=[54, 56, 25]
+Client 3: seats OCCUPIED - Seats already occupied: [54, 56]
+Client 10 requesting: show=S3, seats=[83, 56]
+Client 10: seats OCCUPIED - Seats already occupied: [83, 56]
+Client 2 requesting: show=S3, seats=[7, 71, 75, 93]
+Client 7 requesting: show=S1, seats=[16, 1, 52, 60, 95]
+Client 7: seats OCCUPIED - Seats already occupied: [16, 1, 52, 95]
+Client 1 requesting: show=S3, seats=[17, 19, 39, 45]
+Client 1: seats OCCUPIED - Seats already occupied: [17, 19, 39, 45]
+Client 5 requesting: show=S2, seats=[56, 29, 13, 93]
+Client 5: seats OCCUPIED - Seats already occupied: [56, 93]
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 6 requesting: show=S1, seats=[38, 60, 28, 29, 13]
+Client 6: seats OCCUPIED - Seats already occupied: [28, 29]
+Client 8 requesting: show=S3, seats=[48, 50, 37, 88]
+Client 8: seats OCCUPIED - Seats already occupied: [48, 50, 88]
+Client 2: payment SUCCESS, amount=600.0 RON
+Client 4 requesting: show=S1, seats=[22, 40, 14]
+Client 4: seats OCCUPIED - Seats already occupied: [22, 14]
+Client 9 requesting: show=S3, seats=[21, 71]
+Client 9: seats OCCUPIED - Seats already occupied: [21, 71]
+Client 3 requesting: show=S3, seats=[69, 43]
+Client 3: seats OCCUPIED - Seats already occupied: [69]
+Client 10 requesting: show=S3, seats=[67, 6, 58]
+Client 10: seats OCCUPIED - Seats already occupied: [67, 6, 58]
+Client 7 requesting: show=S1, seats=[32, 80, 86, 26, 12]
+Client 7: seats OCCUPIED - Seats already occupied: [32, 86, 26]
+Client 1 requesting: show=S1, seats=[37, 46]
+Client 1: seats OCCUPIED - Seats already occupied: [46]
+Client 5 requesting: show=S3, seats=[22]
+Client 5: seats OCCUPIED - Seats already occupied: [22]
+Client 6 requesting: show=S2, seats=[96, 81, 35, 52]
+Client 6: seats OCCUPIED - Seats already occupied: [81, 35, 52]
+Client 8 requesting: show=S3, seats=[5, 38]
+Client 8: seats OCCUPIED - Seats already occupied: [5, 38]
+Client 2 requesting: show=S3, seats=[96, 71, 40, 44, 77]
+Client 2: seats OCCUPIED - Seats already occupied: [71, 40, 77]
+Client 4 requesting: show=S3, seats=[67, 22, 76, 62]
+Client 4: seats OCCUPIED - Seats already occupied: [67, 22]
+Client 9 requesting: show=S1, seats=[52, 70, 87]
+Client 9: seats OCCUPIED - Seats already occupied: [52, 70]
+Client 3 requesting: show=S2, seats=[48, 80, 34, 66, 40]
+Client 3: seats OCCUPIED - Seats already occupied: [48, 80, 66, 40]
+Client 10 requesting: show=S2, seats=[66, 83, 89, 59, 46]
+Client 10: seats OCCUPIED - Seats already occupied: [66, 89, 59, 46]
+Client 7 requesting: show=S3, seats=[95]
+Client 1 requesting: show=S3, seats=[19, 21, 75]
+Client 1: seats OCCUPIED - Seats already occupied: [19, 21, 75]
+Client 5 requesting: show=S1, seats=[98, 3, 86, 57, 44]
+Client 5: seats OCCUPIED - Seats already occupied: [98, 3, 86, 57]
+Client 6 requesting: show=S3, seats=[78]
+Client 6: seats OCCUPIED - Seats already occupied: [78]
+Client 8 requesting: show=S3, seats=[17, 76]
+Client 8: seats OCCUPIED - Seats already occupied: [17]
+Client 2 requesting: show=S2, seats=[20, 87, 42, 77]
+Client 2: seats OCCUPIED - Seats already occupied: [42]
+Client 4 requesting: show=S1, seats=[20]
+Client 4: seats OCCUPIED - Seats already occupied: [20]
+Client 9 requesting: show=S1, seats=[18, 38]
+Client 9: seats OCCUPIED - Seats already occupied: [18]
+Client 3 requesting: show=S2, seats=[50, 35, 3, 9, 61]
+Client 3: seats OCCUPIED - Seats already occupied: [35, 3, 9, 61]
+Client 10 requesting: show=S2, seats=[52]
+Client 10: seats OCCUPIED - Seats already occupied: [52]
+Client 7: payment SUCCESS, amount=150.0 RON
+
+[VERIFICATION] Running consistency check...
+[VERIFICATION] Result: CORECT
+Client 1 requesting: show=S3, seats=[96, 65, 20]
+Client 1: seats OCCUPIED - Seats already occupied: [20]
+Client 5 requesting: show=S3, seats=[96, 49, 36, 44, 30]
+Client 5: seats OCCUPIED - Seats already occupied: [49, 30]
+Client 6 requesting: show=S2, seats=[80, 56]
+Client 6: seats OCCUPIED - Seats already occupied: [80, 56]
+Client 8 requesting: show=S3, seats=[16]
+Client 8: seats OCCUPIED - Seats already occupied: [16]
+Client 2 requesting: show=S2, seats=[3]
+Client 2: seats OCCUPIED - Seats already occupied: [3]
+Client 4 requesting: show=S3, seats=[36, 84, 53, 15]
+Client 4: seats OCCUPIED - Seats already occupied: [53]
+Client 9 requesting: show=S3, seats=[98, 34, 51, 23]
+Client 9: seats OCCUPIED - Seats already occupied: [98, 34, 51]
+Client 3 requesting: show=S2, seats=[52, 30]
+Client 3: seats OCCUPIED - Seats already occupied: [52, 30]
+Client 10 requesting: show=S2, seats=[16, 58]
+Client 10: seats OCCUPIED - Seats already occupied: [16, 58]
+Client 7 requesting: show=S3, seats=[85]
+Client 7: seats OCCUPIED - Seats already occupied: [85]
+Client 1 requesting: show=S1, seats=[96, 52, 58, 29, 47]
+Client 1: seats OCCUPIED - Seats already occupied: [96, 52, 58, 29, 47]
+Client 5 requesting: show=S3, seats=[76, 30]
+Client 5: seats OCCUPIED - Seats already occupied: [30]
+Client 6 requesting: show=S3, seats=[84]
+Client 8 requesting: show=S3, seats=[96]
+Client 2 requesting: show=S1, seats=[63]
+Client 4 requesting: show=S3, seats=[23, 15]
+Client 9 requesting: show=S3, seats=[1, 41, 13, 29]
+Client 9: seats OCCUPIED - Seats already occupied: [13, 29]
+Client 3 requesting: show=S3, seats=[34, 40, 11]
+Client 3: seats OCCUPIED - Seats already occupied: [34, 40, 11]
+Client 10 requesting: show=S3, seats=[86, 28, 47]
+Client 10: seats OCCUPIED - Seats already occupied: [86, 28, 47]
+Client 7 requesting: show=S2, seats=[60]
+Client 7: seats OCCUPIED - Seats already occupied: [60]
+Client 2: payment SUCCESS, amount=100.0 RON

@@ -21,7 +21,7 @@ public class VerificationService {
         try {
             DatabaseManager db = hall.getDb();
 
-            // ── 1. Recompută sold seats din DB ──
+            // ── 1. Verificare SEATS: DB vs Memory ──
             Map<Integer, Set<Integer>> dbSeats = db.loadSoldSeats();
             Map<Integer, Set<Integer>> memorySeats = hall.getSoldSeats();
             boolean seatsMatch = dbSeats.equals(memorySeats);
@@ -43,13 +43,15 @@ public class VerificationService {
                 }
             }
 
-            // ── 2. Recompută balance din DB ──
+            // ── 2. Verificare BALANCE: DB vs Memory ──
             double dbBalance = db.loadTotalBalance();
             double memoryBalance = hall.getTotalBalance();
             boolean balanceMatch = Math.abs(dbBalance - memoryBalance) < 0.01;
 
             // ── 3. Cross-check: sold seats vs sales log ──
+            // ── 3. Verificare SALES CONSISTENCY ──
             List<Sale> sales = db.loadSales();
+            // 3.1: Pentru fiecare show, sumează nr_tickets din sales
             Map<Integer, Integer> seatCountPerShow = new HashMap<>();
             double totalFromSales = 0.0;
 
@@ -60,6 +62,7 @@ public class VerificationService {
                 }
             }
 
+            // 3.2: Compară cu nr locuri efectiv vândute
             boolean salesConsistent = true;
             for (Map.Entry<Integer, Integer> entry : seatCountPerShow.entrySet()) {
                 int showId = entry.getKey();
@@ -73,9 +76,10 @@ public class VerificationService {
                 }
             }
 
-            // ── 4. Verifică că totalul din sales = balance ──
+            // 3.3: Verifică că SUM(sales.total_amount) == totalBalance
             boolean salesTotalMatch = Math.abs(totalFromSales - memoryBalance) < 0.01;
 
+            // ── 4. Rezultat Final ──
             boolean allCorrect = seatsMatch && balanceMatch && salesConsistent && salesTotalMatch;
 
             if (!allCorrect) {

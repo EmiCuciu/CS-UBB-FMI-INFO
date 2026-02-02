@@ -17,7 +17,7 @@ public class ConcertHall {
     private final Map<Integer, Set<Integer>> soldSeats = new ConcurrentHashMap<>();
     private final Map<Integer, Set<Integer>> reservedSeats = new ConcurrentHashMap<>();  // Locuri rezervate temporar
     private final Map<Integer, Reservation> pendingReservations = new ConcurrentHashMap<>();
-    private volatile double totalBalance = 0.0;
+    private volatile double totalBalance = 0.0;     // volatile pentru vizibilitate intre thread-uri
 
     private final int maxSeats;
 
@@ -174,10 +174,16 @@ public class ConcertHall {
             if (!toRemove.isEmpty()) {
                 for (int clientId : toRemove) {
                     Reservation res = pendingReservations.remove(clientId);
-                    reservedSeats.get(res.getShowId()).removeAll(res.getSeats());  // Eliberează locurile
-                    cleanReservation(res);
-                    System.out.println("[CLEANUP] Expired reservation removed: client=" + clientId +
-                                     ", sale=" + res.getSaleId() + ", seats=" + res.getSeats());
+                    if (res != null) {
+                        // Eliberează locurile rezervate
+                        Set<Integer> reserved = reservedSeats.get(res.getShowId());
+                        if (reserved != null) {
+                            reserved.removeAll(res.getSeats());
+                        }
+                        cleanReservation(res);
+                        System.out.println("[CLEANUP] Expired reservation removed: client=" + clientId +
+                                         ", sale=" + res.getSaleId() + ", seats=" + res.getSeats());
+                    }
                 }
             }
 
