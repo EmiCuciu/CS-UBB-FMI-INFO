@@ -6,10 +6,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.*;
 
-/**
- * Client care se conectează la server prin socket
- * Rulează independent și trimite cereri la fiecare 2 secunde
- */
 public class ClientMain {
     private static final String SERVER_HOST = "localhost";
     private static final int SERVER_PORT = 8080;
@@ -31,7 +27,6 @@ public class ClientMain {
         output.flush();
         input = new ObjectInputStream(socket.getInputStream());
 
-        // Trimite ID-ul clientului
         output.writeInt(clientId);
         output.flush();
 
@@ -44,7 +39,6 @@ public class ClientMain {
 
         while (running) {
             try {
-                // Generează cerere aleatorie
                 int showId = random.nextInt(1, 4);  // S1=1, S2=2, S3=3
                 int numSeats = random.nextInt(1, 6);  // 1-5 bilete
                 List<Integer> seats = generateRandomSeats(numSeats);
@@ -52,20 +46,15 @@ public class ClientMain {
                 System.out.println("Client " + clientId + " requesting: show=S" +
                     showId + ", seats=" + seats);
 
-                // Creează request
                 Request request = new Request(RequestType.PURCHASE, showId, seats);
 
-                // Trimite request
                 output.writeObject(request);
                 output.flush();
 
-                // Așteaptă răspuns
                 Response response = (Response) input.readObject();
 
-                // Afișează răspuns
                 logResponse(response);
 
-                // Sleep 2 secunde
                 Thread.sleep(2000);
 
             } catch (EOFException e) {

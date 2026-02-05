@@ -10,10 +10,6 @@ import java.net.*;
 import java.sql.SQLException;
 import java.util.concurrent.*;
 
-/**
- * Server Principal cu Socket pentru conexiuni client-server reale
- * Rulează pe port 8080 și acceptă conexiuni de la clienți remote
- */
 public class ServerMain {
     private static final int PORT = 8080;
     private static final int MAX_CLIENTS = 50;

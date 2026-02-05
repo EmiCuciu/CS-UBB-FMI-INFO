@@ -6,10 +6,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
-/**
- * Handler pentru fiecare client conectat
- * Procesează cererile clientului într-un thread separat din pool
- */
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private final ConcertHall hall;
@@ -27,19 +23,15 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            // Inițializează stream-uri
             output = new ObjectOutputStream(clientSocket.getOutputStream());
             output.flush();
             input = new ObjectInputStream(clientSocket.getInputStream());
 
-            // Primește ID-ul clientului
             clientId = input.readInt();
             System.out.println("[CLIENT " + clientId + "] Connected and authenticated.");
 
-            // Procesează cereri în loop
             while (!clientSocket.isClosed()) {
                 try {
-                    // Citește cererea
                     Request request = (Request) input.readObject();
 
                     if (request == null) {
@@ -50,20 +42,16 @@ public class ClientHandler implements Runnable {
                         request.getType() + " - Show " + request.getShowId() +
                         ", Seats: " + request.getSeats());
 
-                    // Măsoară timpul de procesare
                     long startTime = System.currentTimeMillis();
 
-                    // Procesează cererea
                     Response response = processRequest(request);
 
                     long responseTime = System.currentTimeMillis() - startTime;
 
-                    // Înregistrează metricile
                     boolean success = response.getType() == ResponseType.PAYMENT_SUCCESS ||
                                      response.getType() == ResponseType.SEATS_AVAILABLE;
                     metrics.recordRequest(responseTime, success);
 
-                    // Trimite răspunsul
                     output.writeObject(response);
                     output.flush();
 
@@ -101,7 +89,6 @@ public class ClientHandler implements Runnable {
     }
 
     private Response handlePurchase(Request request) {
-        // Step 1: Check & Reserve
         Response reserveResponse = hall.checkAndReserve(
             request.getShowId(),
             request.getSeats(),
@@ -112,7 +99,6 @@ public class ClientHandler implements Runnable {
             return reserveResponse;
         }
 
-        // Step 2: Simulează delay procesare plată
         try {
             Thread.sleep((long)(Math.random() * 1500 + 500)); // 0.5-2s
         } catch (InterruptedException e) {
@@ -120,7 +106,6 @@ public class ClientHandler implements Runnable {
             return new Response(ResponseType.DB_ERROR, "Payment interrupted");
         }
 
-        // Step 3: Process payment
         return hall.processPayment(clientId);
     }
 

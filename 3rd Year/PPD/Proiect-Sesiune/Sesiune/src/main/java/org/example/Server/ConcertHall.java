@@ -78,20 +78,20 @@ public class ConcertHall {
                 return new Response(ResponseType.SEATS_OCCUPIED, "Seats already occupied: " + occupiedRequested);
             }
 
-            // Client are deja o rezervare activă?
+            // Client are deja o rezervare activa?
             if (pendingReservations.containsKey(clientId)) {
                 return new Response(ResponseType.CLIENT_HAS_PENDING_RESERVATION,
                     "Client already has a pending reservation");
             }
 
-            // ── Rezervare in-memory ──
+            //  Rezervare in-memory
             Reservation res = new Reservation(showId, requestedSeats, clientId, System.currentTimeMillis());
             reservedSeats.get(showId).addAll(requestedSeats);
 
-            // ── Rezervare in DB ──
+            //  Rezervare in DB
             try {
                 int saleId = db.insertReservation(showId, requestedSeats);
-                res.setSaleId(saleId);  // link între in-memory și DB
+                res.setSaleId(saleId);  // link intre in-memory si DB
                 pendingReservations.put(clientId, res);
             } catch (SQLException e) {
                 // Rollback in-memory
@@ -130,24 +130,24 @@ public class ConcertHall {
                 return new Response(ResponseType.RESERVATION_EXPIRED, "Reservation expired (T_max=10s)");
             }
 
-            // Confirm vânzare
+            // Confirm vanzare
             Show show = shows.get(res.getShowId());
             double amount = res.getSeats().size() * show.getPricePerTicket();
 
-            // ── Update in-memory ──
+            // Update in-memory
             reservedSeats.get(res.getShowId()).removeAll(res.getSeats());
             soldSeats.get(res.getShowId()).addAll(res.getSeats());
             totalBalance += amount;
 
-            // ── Update DB ──
+            //  Update DB
             try {
                 db.confirmPayment(res.getSaleId(), amount);
             } catch (SQLException e) {
-                // Rollback in-memory (critical!)
+                // Rollback in-memory
                 soldSeats.get(res.getShowId()).removeAll(res.getSeats());
                 reservedSeats.get(res.getShowId()).addAll(res.getSeats());
                 totalBalance -= amount;
-                pendingReservations.put(clientId, res);  // restaurează rezervarea
+                pendingReservations.put(clientId, res);  // restaureaza rezervarea
                 return new Response(ResponseType.DB_ERROR, "Database error: " + e.getMessage());
             }
 
@@ -158,7 +158,6 @@ public class ConcertHall {
         }
     }
 
-    // CLEANING expired reservations (apelat periodic din Server)
     public void cleanExpiredReservations() {
         lock.lock();
         try {
@@ -201,7 +200,7 @@ public class ConcertHall {
     }
 
     public Map<Integer, Set<Integer>> getSoldSeats() {
-        // Return deep copy pentru a evita modificări externe
+        // Return deep copy pentru a evita modificari externe
         Map<Integer, Set<Integer>> copy = new HashMap<>();
         for (Map.Entry<Integer, Set<Integer>> e : soldSeats.entrySet()) {
             copy.put(e.getKey(), new HashSet<>(e.getValue()));

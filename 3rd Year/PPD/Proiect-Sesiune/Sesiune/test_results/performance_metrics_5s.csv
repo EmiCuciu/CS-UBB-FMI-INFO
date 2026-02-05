@@ -1,2 +1,2 @@
 timestamp,avg_response_time_ms,throughput_req_per_sec,success_rate_percent,total_requests,successful_requests,failed_requests
-190,184.33,4.43,14.37,842,121,721
+190,199.43,4.41,15.99,838,134,704

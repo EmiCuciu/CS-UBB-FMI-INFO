@@ -3,9 +3,6 @@ package org.example.Model;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Request trimis de client către server
- */
 public class Request implements Serializable {
     private static final long serialVersionUID = 1L;
 

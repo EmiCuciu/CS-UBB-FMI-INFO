@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Metrici de performanță pentru măsurarea timpilor de răspuns și throughput
- */
 public class PerformanceMetrics implements Serializable {
     private static final long serialVersionUID = 1L;
 
