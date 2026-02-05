@@ -4,7 +4,7 @@ import org.example.Model.*;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
+import java.util.concurrent.*;
 
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
@@ -13,11 +13,13 @@ public class ClientHandler implements Runnable {
     private ObjectInputStream input;
     private ObjectOutputStream output;
     private int clientId;
+    private final ExecutorService taskExecutor;
 
     public ClientHandler(Socket socket, ConcertHall hall, PerformanceMetrics metrics) {
         this.clientSocket = socket;
         this.hall = hall;
         this.metrics = metrics;
+        this.taskExecutor = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -44,7 +46,25 @@ public class ClientHandler implements Runnable {
 
                     long startTime = System.currentTimeMillis();
 
-                    Response response = processRequest(request);
+                    final Request finalRequest = request;
+                    Future<Response> futureResponse = taskExecutor.submit(() -> processRequest(finalRequest));
+
+                    Response response;
+                    try {
+                        response = futureResponse.get(15, TimeUnit.SECONDS);
+                    } catch (TimeoutException e) {
+                        System.err.println("[CLIENT " + clientId + "] Request timeout after 15s!");
+                        response = new Response(ResponseType.DB_ERROR, "Request timeout");
+                        futureResponse.cancel(true);
+                    } catch (InterruptedException e) {
+                        System.err.println("[CLIENT " + clientId + "] Request interrupted!");
+                        response = new Response(ResponseType.DB_ERROR, "Request interrupted");
+                        Thread.currentThread().interrupt();
+                        futureResponse.cancel(true);
+                    } catch (ExecutionException e) {
+                        System.err.println("[CLIENT " + clientId + "] Execution error: " + e.getCause());
+                        response = new Response(ResponseType.DB_ERROR, "Execution error: " + e.getCause().getMessage());
+                    }
 
                     long responseTime = System.currentTimeMillis() - startTime;
 
@@ -119,6 +139,17 @@ public class ClientHandler implements Runnable {
 
     private void cleanup() {
         System.out.println("[CLIENT " + clientId + "] Disconnected.");
+
+        if (taskExecutor != null && !taskExecutor.isShutdown()) {
+            taskExecutor.shutdown();
+            try {
+                if (!taskExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
+                    taskExecutor.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                taskExecutor.shutdownNow();
+            }
+        }
 
         try {
             if (input != null) input.close();

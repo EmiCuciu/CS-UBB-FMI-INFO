@@ -131,10 +131,6 @@ public class ClientMain {
         }
     }
 
-    public void stop() {
-        running = false;
-    }
-
     public static void main(String[] args) {
         if (args.length < 1) {
             System.err.println("Usage: java ClientMain <clientId>");
