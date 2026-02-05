@@ -24,7 +24,6 @@ public class ConcertHall {
     public ConcertHall(int maxSeats, DatabaseManager db) throws SQLException {
         this.maxSeats = maxSeats;
         this.db = db;
-        // Hidratare din DB
         loadFromDatabase();
     }
 
@@ -33,6 +32,7 @@ public class ConcertHall {
         for (Show s : loadedShows) {
             shows.put(s.getId(), s);
             soldSeats.put(s.getId(), new HashSet<>());  // inițializare goală
+            reservedSeats.put(s.getId(), new HashSet<>());  // rezervări active
         }
 
         // Load sold seats (doar PAID)
@@ -54,9 +54,6 @@ public class ConcertHall {
         System.out.println("════════════════════════════════════════\n");
     }
 
-    // ═══════════════════════════════════════════════════════════
-    // OPERAȚIE 1: Check & Reserve (apelat din ClientTask)
-    // ═══════════════════════════════════════════════════════════
     public Response checkAndReserve(int showId, List<Integer> requestedSeats, int clientId) {
         lock.lock();
         try {
@@ -70,10 +67,11 @@ public class ConcertHall {
                 return new Response(ResponseType.INVALID_SEATS, "Seats must be between 1 and " + maxSeats);
             }
 
-            // Check availability
+            // Check availability (sold + reserved)
             Set<Integer> occupied = soldSeats.get(showId);
+            Set<Integer> reserved = reservedSeats.get(showId);
             List<Integer> occupiedRequested = requestedSeats.stream()
-                .filter(occupied::contains)
+                .filter(seat -> occupied.contains(seat) || reserved.contains(seat))
                 .toList();
 
             if (!occupiedRequested.isEmpty()) {
@@ -88,6 +86,7 @@ public class ConcertHall {
 
             // ── Rezervare in-memory ──
             Reservation res = new Reservation(showId, requestedSeats, clientId, System.currentTimeMillis());
+            reservedSeats.get(showId).addAll(requestedSeats);
 
             // ── Rezervare in DB ──
             try {
@@ -105,16 +104,13 @@ public class ConcertHall {
                 return new Response(ResponseType.DB_ERROR, "Database error: " + e.getMessage());
             }
 
-            return new Response(ResponseType.SEATS_AVAILABLE, requestedSeats);
+            return new Response(ResponseType.SEATS_AVAILABLE, (java.io.Serializable) requestedSeats);
 
         } finally {
             lock.unlock();
         }
     }
 
-    // ═══════════════════════════════════════════════════════════
-    // OPERAȚIE 2: Process Payment (apelat din ClientTask)
-    // ═══════════════════════════════════════════════════════════
     public Response processPayment(int clientId) {
         lock.lock();
         try {
@@ -126,6 +122,10 @@ public class ConcertHall {
 
             if (res.isExpired(10_000)) {  // T_max = 10s
                 // Clean expired reservation
+                Set<Integer> reserved = reservedSeats.get(res.getShowId());
+                if (reserved != null) {
+                    reserved.removeAll(res.getSeats());
+                }
                 cleanReservation(res);
                 return new Response(ResponseType.RESERVATION_EXPIRED, "Reservation expired (T_max=10s)");
             }
@@ -135,6 +135,7 @@ public class ConcertHall {
             double amount = res.getSeats().size() * show.getPricePerTicket();
 
             // ── Update in-memory ──
+            reservedSeats.get(res.getShowId()).removeAll(res.getSeats());
             soldSeats.get(res.getShowId()).addAll(res.getSeats());
             totalBalance += amount;
 
@@ -144,6 +145,7 @@ public class ConcertHall {
             } catch (SQLException e) {
                 // Rollback in-memory (critical!)
                 soldSeats.get(res.getShowId()).removeAll(res.getSeats());
+                reservedSeats.get(res.getShowId()).addAll(res.getSeats());
                 totalBalance -= amount;
                 pendingReservations.put(clientId, res);  // restaurează rezervarea
                 return new Response(ResponseType.DB_ERROR, "Database error: " + e.getMessage());
@@ -156,9 +158,7 @@ public class ConcertHall {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════
     // CLEANING expired reservations (apelat periodic din Server)
-    // ═══════════════════════════════════════════════════════════
     public void cleanExpiredReservations() {
         lock.lock();
         try {
@@ -200,9 +200,6 @@ public class ConcertHall {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════
-    // GETTERS pentru verificare (thread-safe prin lock extern)
-    // ═══════════════════════════════════════════════════════════
     public Map<Integer, Set<Integer>> getSoldSeats() {
         // Return deep copy pentru a evita modificări externe
         Map<Integer, Set<Integer>> copy = new HashMap<>();

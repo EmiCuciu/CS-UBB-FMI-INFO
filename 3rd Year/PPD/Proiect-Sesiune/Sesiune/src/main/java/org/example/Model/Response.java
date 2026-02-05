@@ -1,12 +1,15 @@
 package org.example.Model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Response {
-    private ResponseType type;
-    private Object data;
+public class Response implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    public Response(ResponseType type, Object data) {
+    private ResponseType type;
+    private Serializable data;
+
+    public Response(ResponseType type, Serializable data) {
         this.type = type;
         this.data = data;
     }
@@ -19,11 +22,11 @@ public class Response {
         this.type = type;
     }
 
-    public Object getData() {
+    public Serializable getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(Serializable data) {
         this.data = data;
     }
 

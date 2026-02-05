@@ -15,6 +15,11 @@ public class DatabaseManager {
     private final ReentrantLock dbLock = new ReentrantLock();
 
     public DatabaseManager() throws SQLException {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("SQLite JDBC driver not found", e);
+        }
         connection = DriverManager.getConnection(DB_URL);
         connection.setAutoCommit(false);
         System.out.println("Connected to SQLite database: shows.db");

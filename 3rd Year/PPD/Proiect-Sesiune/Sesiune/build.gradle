@@ -25,3 +25,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// Fat JAR with all dependencies
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'org.example.Server.ServerMain'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
