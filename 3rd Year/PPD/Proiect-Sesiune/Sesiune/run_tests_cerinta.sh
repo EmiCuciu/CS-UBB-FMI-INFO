@@ -27,9 +27,7 @@ mkdir -p test_results
 # ============================================================
 
 echo ""
-echo "════════════════════════════════════════════════════════"
 echo "  TEST 1: 10 clienți, verificare 5s"
-echo "════════════════════════════════════════════════════════"
 echo ""
 
 rm -f shows.db verification_5s.txt performance_metrics_5s.csv
@@ -78,9 +76,7 @@ mv -f verification_5s.txt test_results/ 2>/dev/null
 mv -f performance_metrics_5s.csv test_results/ 2>/dev/null
 
 echo ""
-echo "════════════════════════════════════════════════════════"
 echo "  TEST 1 RESULTS (5s verification)"
-echo "════════════════════════════════════════════════════════"
 
 if [ -f "test_results/verification_5s.txt" ]; then
     NUM_VERIFICATIONS=$(wc -l < test_results/verification_5s.txt)
@@ -102,7 +98,6 @@ if [ -f "test_results/performance_metrics_5s.csv" ]; then
     done
 fi
 
-echo "════════════════════════════════════════════════════════"
 
 # Pauză între teste
 sleep 5
@@ -112,9 +107,7 @@ sleep 5
 # ============================================================
 
 echo ""
-echo "════════════════════════════════════════════════════════"
 echo "  TEST 2: 10 clienți, verificare 10s"
-echo "════════════════════════════════════════════════════════"
 echo ""
 
 rm -f shows.db verification_10s.txt performance_metrics_10s.csv
@@ -163,9 +156,7 @@ mv -f verification_10s.txt test_results/ 2>/dev/null
 mv -f performance_metrics_10s.csv test_results/ 2>/dev/null
 
 echo ""
-echo "════════════════════════════════════════════════════════"
 echo "  TEST 2 RESULTS (10s verification)"
-echo "════════════════════════════════════════════════════════"
 
 if [ -f "test_results/verification_10s.txt" ]; then
     NUM_VERIFICATIONS=$(wc -l < test_results/verification_10s.txt)
@@ -193,27 +184,7 @@ echo "════════════════════════�
 # SUMAR FINAL
 # ============================================================
 
-echo ""
-echo ""
-echo "╔════════════════════════════════════════════════════════╗"
-echo "║         TESTE COMPLETATE CONFORM CERINȚĂ               ║"
-echo "╚════════════════════════════════════════════════════════╝"
-echo ""
-echo "Rezultate salvate în: test_results/"
-echo ""
-echo "Fișiere generate:"
-echo "  ✓ test_results/verification_5s.txt"
-echo "  ✓ test_results/performance_metrics_5s.csv"
-echo "  ✓ test_results/test_5s_server.log"
-echo "  ✓ test_results/test_5s_client_*.log (10 fișiere)"
-echo ""
-echo "  ✓ test_results/verification_10s.txt"
-echo "  ✓ test_results/performance_metrics_10s.csv"
-echo "  ✓ test_results/test_10s_server.log"
-echo "  ✓ test_results/test_10s_client_*.log (10 fișiere)"
-echo ""
-echo "════════════════════════════════════════════════════════"
-echo ""
+
 echo "Comparație 5s vs 10s:"
 echo ""
 
