@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><embeddedOutputs><metaData><evaluationState>manual</evaluationState><layoutState>code</layoutState><outputStatus>error</outputStatus><splitterState><proportion>0.25</proportion></splitterState></metaData><outputArray type="array"><element><type>text</type><outputData><text>E( 2)=+2.6424e-01
+E( 3)=+2.0728e-01
+E( 4)=+1.7089e-01
+E( 5)=+1.4553e-01
+E( 6)=+1.2680e-01
+E( 7)=+1.1238e-01
+E( 8)=+1.0093e-01
+E( 9)=+9.1612e-02
+E(10)=+8.3877e-02
+E(11)=+7.7352e-02
+E(12)=+7.1773e-02
+E(13)=+6.6948e-02
+E(14)=+6.2731e-02
+E(15)=+5.9034e-02
+E(16)=+5.5459e-02
+E(17)=+5.7192e-02
+E(18)=-2.9454e-02
+E(19)=+1.5596e+00
+E(20)=-3.0192e+01
+E(21)=+6.3504e+02
+E(22)=-1.3970e+04
+E(23)=+3.2131e+05
+E(24)=-7.7114e+06
+E(25)=+1.9279e+08
+</text><truncationInfo><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak><wasTruncatedMidLine>false</wasTruncatedMidLine></truncationInfo></outputData><lineNumbers type="array"><element>3</element></lineNumbers></element><element><type>text</type><outputData><text>k=10, err=5.267586e-09
+k=11, err=4.073053e-10
+k=12, err=2.922473e-11
+k=13, err=1.955900e-12
+k=14, err=1.228285e-13
+k=15, err=7.242958e-15
+k=16, err=4.526849e-16
+k=17, err=0.000000e+00
+k=18, err=0.000000e+00
+</text><truncationInfo><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak><wasTruncatedMidLine>false</wasTruncatedMidLine></truncationInfo></outputData><lineNumbers type="array"><element>8</element></lineNumbers></element><element><type>text</type><outputData><text>I( 1)=3.678794e-01
+I( 2)=2.642411e-01
+I( 3)=2.072766e-01
+I( 4)=1.708934e-01
+I( 5)=1.455329e-01
+I( 6)=1.268024e-01
+I( 7)=1.123835e-01
+I( 8)=1.009320e-01
+I( 9)=9.161229e-02
+I(10)=8.387707e-02
+I(11)=7.735223e-02
+I(12)=7.177325e-02
+I(13)=6.694778e-02
+I(14)=6.273108e-02
+I(15)=5.903379e-02
+I(16)=5.545930e-02
+I(17)=5.719187e-02
+I(18)=-2.945367e-02
+I(19)=1.559620e+00
+I(20)=-3.019239e+01
+</text><truncationInfo><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak><wasTruncatedMidLine>false</wasTruncatedMidLine></truncationInfo></outputData><lineNumbers type="array"><element>12</element></lineNumbers></element><element><type>error</type><outputData><text>rec5inv is not found in the current folder or on the MATLAB path, but exists in:
+    D:\Radu\carti\carteanum\labor\solutiilab\cond
+
+&lt;a href = "matlab:internal.matlab.desktop.commandwindow.executeCommandForUser('cd ''D:\Radu\carti\carteanum\labor\solutiilab\cond''')"&gt;Change the MATLAB current folder&lt;/a&gt; or &lt;a href = "matlab:internal.matlab.desktop.commandwindow.executeCommandForUser('addpath ''D:\Radu\carti\carteanum\labor\solutiilab\cond''')"&gt;add its folder to the MATLAB path&lt;/a&gt;.</text><errorType>runtime</errorType></outputData><lineNumbers type="array"><element>15</element></lineNumbers></element></outputArray><regionArray type="array"><element><code><sectionBreak>true</sectionBreak><endOfSection>false</endOfSection><regionNumber>0</regionNumber></code><startLine>10</startLine><endLine>13</endLine><outputIndexes type="array"><element>0</element></outputIndexes></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>1</regionNumber></code><startLine>32</startLine><endLine>36</endLine><outputIndexes type="array"><element>1</element></outputIndexes></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>2</regionNumber></code><startLine>45</startLine><endLine>48</endLine><outputIndexes type="array"><element>2</element></outputIndexes></element><element><code><sectionBreak>false</sectionBreak><endOfSection>true</endOfSection><regionNumber>3</regionNumber></code><startLine>67</startLine><endLine>72</endLine><outputIndexes type="array"><element>3</element></outputIndexes></element></regionArray></embeddedOutputs>

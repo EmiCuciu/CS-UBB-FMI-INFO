@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Target="../mathml/eqn1.mml" Type="http://www.w3.org/TR/MathML2/"/>
+  <Relationship Id="rId2" Target="../mathml/eqn2.mml" Type="http://www.w3.org/TR/MathML2/"/>
+  <Relationship Id="rId3" Target="../mathml/eqn3.mml" Type="http://www.w3.org/TR/MathML2/"/>
+  <Relationship Id="rId4" Target="../mathml/eqn4.mml" Type="http://www.w3.org/TR/MathML2/"/>
+  <Relationship Id="rId5" Target="../mathml/eqn5.mml" Type="http://www.w3.org/TR/MathML2/"/>
+</Relationships>

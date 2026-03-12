@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><documentation release="21a"><function><title>cexcondsist</title><syntaxes><syntax>[b,db,cn,err] = cexcondsist(H)</syntax></syntaxes><purpose>cexcondsist - Counterexample for worst case conditioning of a systemBrief summary of this function.</purpose><description>&lt;div class = rtcContent&gt;&lt;div  style = 'margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; text-align: left; '&gt;&lt;span style=' font-family: monospace;'&gt;H&lt;/span&gt;&lt;span&gt; - matrix&lt;/span&gt;&lt;/div&gt;&lt;div  style = 'margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; text-align: left; '&gt;&lt;span style=' font-family: monospace;'&gt;b&lt;/span&gt;&lt;span&gt; - rhs&lt;/span&gt;&lt;/div&gt;&lt;div  style = 'margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; text-align: left; '&gt;&lt;span style=' font-family: monospace;'&gt;db&lt;/span&gt;&lt;span&gt; - perturbed rhs&lt;/span&gt;&lt;/div&gt;&lt;div  style = 'margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; text-align: left; '&gt;&lt;span style=' font-family: monospace;'&gt;cn&lt;/span&gt;&lt;span&gt; - condition number&lt;/span&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;!-- 
+##### SOURCE BEGIN #####
+% 
+% |H| - matrix
+% 
+% |b| - rhs
+% 
+% |db| - perturbed rhs
+% 
+% |cn| - condition number
+##### SOURCE END #####
+--&gt;
+&lt;/div&gt;</description><descriptionText>H - matrix
+b - rhs
+db - perturbed rhs
+cn - condition number</descriptionText></function></documentation>

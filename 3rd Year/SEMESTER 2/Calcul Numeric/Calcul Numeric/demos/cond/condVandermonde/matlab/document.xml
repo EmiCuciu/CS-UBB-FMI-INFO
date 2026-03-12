@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="title"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Condiționarea matricei Vandermonde</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Matricea Vandermonde </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>V_n(t)=(v_{ij})</w:t></w:r></w:customXml><w:r><w:t>, unde </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>t</w:t></w:r></w:customXml><w:r><w:t> este un vector fixat, de lungime </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>n</w:t></w:r></w:customXml><w:r><w:t>, are elementele </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>v_{ij}=t_{j}^{i-1}</w:t></w:r></w:customXml><w:r><w:t>, </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>i,j=1,\dots,n</w:t></w:r></w:customXml><w:r><w:t>.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Considerăm două cazuri</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>Cazul 1</w:t></w:r><w:r><w:t>. Elemente echidistate în [-1,1], </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>t_{j}=-1+\frac{2(j-1)}{n-1},\quad j=1,\dots,n</w:t></w:r></w:customXml><w:r><w:t>. În acest caz avem estimarea teoretică </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\mathrm{cond}_{\infty}(V_n(t))=\frac{1}{\pi}e^{-\frac{\pi}{4}}e^{n\left(\frac{\pi}{4}+\frac{1}{2}\ln 2\right)</w:t></w:r></w:customXml><w:r><w:t>.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[warning off
+fprintf(' n    cond_inf     cond.estimate    theoretical\n')
+for n=[10,20,40,80]
+    t=linspace(-1,1,n);
+    V=vander(t); 
+    et=1/pi*exp(-pi/4)*exp(n*(pi/4+1/2*log(2)));
+    x=[n, norm(V,inf)*norm(inv(V),inf), condest(V), et];
+    fprintf('%3d  %e  %e     %e\n',x)
+end
+warning on]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>Cazul 2</w:t></w:r><w:r><w:t>. </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>t_{j}=\frac{1}{j},\quad j=1,\dots,n</w:t></w:r></w:customXml><w:r><w:t>: </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\mathrm{cond}_{\infty}(V_n(t))&gt;n^{n+1}</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[warning off
+fprintf(' n    cond_inf     cond.estimate     theoretical\n')
+for n=10:15
+    t=1./(1:n);
+    V=vander(t);
+    x=[n, norm(V,inf)*norm(inv(V),inf), condest(V), n^(n+1)];
+    fprintf('%3d  %e   %e    %e\n',x)
+end
+warning on]]></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t></w:t></w:r></w:p></w:body></w:document>

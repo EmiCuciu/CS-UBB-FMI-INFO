@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>cexcondsist</w:t></w:r><w:r><w:t> - Counterexample for worst case conditioning of a systemBrief summary of this function.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>H</w:t></w:r><w:r><w:t> - matrix</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>b</w:t></w:r><w:r><w:t> - rhs</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>db</w:t></w:r><w:r><w:t> - perturbed rhs</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>cn</w:t></w:r><w:r><w:t> - condition number</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[function [b,db,cn,err] = cexcondsist(H)
+A=H'*H;
+[V,L]=eig(A); L=diag(L);
+[ln,pn]=max(L); [l1,p1]=min(L);
+x=V(:,pn); dx=V(:,p1);
+cn=ln/l1;
+b=A*x; db=A*dx;
+err=norm(dx)/norm(x)-cn*norm(db)/norm(b);
+end]]></w:t></w:r></w:p></w:body></w:document>
