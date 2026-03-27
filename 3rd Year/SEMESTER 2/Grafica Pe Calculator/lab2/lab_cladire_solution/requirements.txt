@@ -1,0 +1,4 @@
+moderngl>=5.10.0
+pyglet>=2.0.10
+numpy>=1.26.0
+pyrr>=0.10.3
