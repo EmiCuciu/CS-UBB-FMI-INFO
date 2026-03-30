@@ -1,3 +1,5 @@
+clc; clear; close all;
+
 function number_info(x)
     if isa(x, 'single')
         disp('Simpla precizie 32bits');
