@@ -1,20 +1,22 @@
-function [z, ni] = Gauss_Seidel_sparse(A, b, x0, err, nitmax)
-    if nargin < 5, nitmax = 100; end
-    if nargin < 4, err = 1e-5; end
-    if nargin < 3, x0 = zeros(length(b), 1); end
+function [x, ni] = Gauss_Seidel_sparse(A, b, x0, err, nitmax)
+    if nargin < 5, nitmax = 1000; end
+    if nargin < 4, err = 1e-8; end
+    if nargin < 3, x0 = zeros(size(b)); end 
 
-    x = x0;
-    M = tril(A); % tril mentine structura rara
+    x = x0(:);
+    
+    M = tril(A); 
     N = M - A;
 
     for i = 1:nitmax
-       xn = M \ (N * x + b);
-       if norm(xn - x, inf) < err * norm(xn, inf)
-          z = xn;
+       x0 = x;
+       x = M \ (N * x0 + b);
+       
+       if norm(x - x0, inf) < err
           ni = i;
           return;
        end
-       x = xn;
     end
-    error('Numarul maxim de iteratii a fost depasit in Gauss-Seidel');
+    ni = nitmax;
+    warning('Gauss-Seidel: numarul maxim de iteratii a fost depasit');
 end
