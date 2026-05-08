@@ -1,11 +1,8 @@
-"""src/model.py — Loader .obj care returnează un Mesh compatibil cu shaderele noastre
-
-Format vertex intern: position(3) + normal(3) + uv(2) + tangent(3) = 11 floats
-"""
-
 import math
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+
 from src.mesh import Mesh, _compute_tangents
 
 

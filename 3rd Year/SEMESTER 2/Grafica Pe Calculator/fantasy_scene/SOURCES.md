@@ -33,7 +33,3 @@ Toate texturile sunt **generate procedural în cod** (src/texture.py):
   - Lighting: https://learnopengl.com/Lighting/Basic-Lighting
 - [docs.gl](https://docs.gl) — referință funcții OpenGL
 - OpenGL 3.3 Core Profile Specification
-
-## Cod propriu
-Toată implementarea (shaderele GLSL, geometriile procedurale, sistemul de iluminare,
-camera, instanced rendering pentru iarbă, animația vântului) a fost scrisă de student.

@@ -1,8 +1,7 @@
-"""src/mesh.py — VAO/VBO/EBO wrapper + geometrii procedurale"""
-
-from OpenGL.GL import *
-import numpy as np
 import math
+
+import numpy as np
+from OpenGL.GL import *
 
 
 class Mesh:

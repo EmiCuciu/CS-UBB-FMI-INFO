@@ -1,8 +1,7 @@
-"""src/camera.py — Cameră liberă WASD + mouse look"""
-
-import glm
-import glfw
 import math
+
+import glfw
+from pyglm import glm
 
 
 class Camera:

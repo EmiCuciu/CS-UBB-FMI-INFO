@@ -1,9 +1,8 @@
-"""src/texture.py — Încărcare texturi și normal maps"""
+from pathlib import Path
 
+import numpy as np
 from OpenGL.GL import *
 from PIL import Image
-import numpy as np
-from pathlib import Path
 
 
 def load_texture(path, wrap=GL_REPEAT, flip=True):

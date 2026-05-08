@@ -1,26 +1,19 @@
-"""src/scene.py — Scena principală: obiecte, iluminare, render
-
-Prioritate modele:
-  1. assets/models/*.obj  (generate de Blender)
-  2. geometrii procedurale din mesh.py (fallback automat)
-"""
-
-from OpenGL.GL import *
-import glm
 import math
-import numpy as np
 from pathlib import Path
 
-from src.shader  import Shader
-from src.camera  import Camera
-from src.model   import load_obj_single, load_obj_by_material
-from src.texture import (generate_grass_texture, generate_mushroom_cap_texture,
-                          generate_bark_texture, generate_bark_normal_map,
-                          generate_flower_texture, generate_ground_texture,
-                          generate_solid_color, _generate_flat_normal)
-from src.mesh    import (make_cylinder, make_sphere, make_plane,
-                          make_quad, make_grass_blade, make_rock)
+import numpy as np
+from OpenGL.GL import *
+from pyglm import glm
 
+from src.camera import Camera
+from src.mesh import (make_cylinder, make_sphere, make_plane,
+                      make_quad, make_grass_blade, make_rock)
+from src.model import load_obj_single, load_obj_by_material
+from src.shader import Shader
+from src.texture import (generate_grass_texture, generate_mushroom_cap_texture,
+                         generate_bark_texture, generate_bark_normal_map,
+                         generate_ground_texture,
+                         _generate_flat_normal)
 
 MODELS_DIR = Path("assets/models")
 

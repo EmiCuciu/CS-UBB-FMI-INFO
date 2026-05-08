@@ -1,8 +1,7 @@
-"""src/shader.py — Compilare, linking și gestionare shadere GLSL"""
-
-from OpenGL.GL import *
 from pathlib import Path
-import glm
+
+from pyglm import glm
+from OpenGL.GL import *
 
 
 class Shader:

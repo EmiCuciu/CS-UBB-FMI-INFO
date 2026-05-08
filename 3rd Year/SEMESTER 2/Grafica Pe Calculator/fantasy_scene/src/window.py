@@ -1,9 +1,8 @@
-"""src/window.py — GLFW window + OpenGL context"""
+import time
+from pathlib import Path
 
 import glfw
 from OpenGL.GL import *
-import time
-from pathlib import Path
 
 
 class Window:
@@ -128,7 +127,6 @@ class Window:
 
     def _screenshot(self):
         from PIL import Image
-        import numpy as np
         glPixelStorei(GL_PACK_ALIGNMENT, 1)
         data = glReadPixels(0, 0, self.width, self.height, GL_RGB, GL_UNSIGNED_BYTE)
         img = Image.frombytes("RGB", (self.width, self.height), data)
