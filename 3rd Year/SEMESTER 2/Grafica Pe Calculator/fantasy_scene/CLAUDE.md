@@ -100,15 +100,17 @@ Studentul va preda:
 - Soare: rotație lentă a direcției dirLight în scene.py
 
 ## Cerințe temă bifate
-- [ ] Scenă 3D completă fantasy
-- [ ] Ciuperci, pomi, iarbă, flori
-- [ ] Texturi colorate procedurale
-- [ ] Normal map pe trunchiuri de copac
-- [ ] Iluminare: ambient + directional + point light
-- [ ] Cameră liberă interactivă
-- [ ] Fog atmosferic
-- [ ] Animație vânt pe iarbă
-- [ ] Screenshot cu F5
+- [x] Scenă 3D completă fantasy
+- [x] Ciuperci, pomi, iarbă, flori
+- [x] Texturi colorate procedurale
+- [x] Normal map pe trunchiuri de copac
+- [x] Iluminare: ambient + directional + 3× point light (licurici)
+- [x] Cameră liberă interactivă
+- [x] Fog atmosferic dinamic zi/noapte
+- [x] Animație vânt pe iarbă
+- [x] Screenshot cu F5
+- [x] Cer procedurale cu ciclu zi/noapte
+- [x] Licurici animați (3 sfere emissive + point lights)
 
 ## Cum rulez
 ```bash

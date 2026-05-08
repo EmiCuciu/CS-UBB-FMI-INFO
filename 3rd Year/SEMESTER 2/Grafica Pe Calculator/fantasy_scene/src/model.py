@@ -58,6 +58,51 @@ def load_obj(path) -> list[Mesh]:
     return meshes
 
 
+def load_obj_by_material(path) -> dict:
+    """
+    Încarcă OBJ splitând după directive usemtl.
+    Returnează dict: material_name → Mesh.
+    """
+    path = Path(path)
+    if not path.exists():
+        print(f"[WARN] .obj lipsă: {path}")
+        return {}
+
+    positions = []
+    normals   = []
+    uvs       = []
+    groups    = {}
+    cur_mat   = "default"
+
+    with open(path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = line.split()
+            tag   = parts[0]
+            if tag == "v":
+                positions.append([float(x) for x in parts[1:4]])
+            elif tag == "vn":
+                normals.append([float(x) for x in parts[1:4]])
+            elif tag == "vt":
+                uvs.append([float(x) for x in parts[1:3]])
+            elif tag == "usemtl":
+                cur_mat = parts[1] if len(parts) > 1 else "default"
+            elif tag == "f":
+                groups.setdefault(cur_mat, []).append(_parse_face(parts[1:]))
+
+    result = {}
+    for mat_name, faces in groups.items():
+        mesh = _build_mesh(faces, positions, normals, uvs)
+        if mesh is not None:
+            result[mat_name] = mesh
+
+    if result:
+        print(f"[OK] Încărcat: {path.name} — {len(result)} material(e): {', '.join(result)}")
+    return result
+
+
 def load_obj_single(path) -> "Mesh | None":
     """Returnează un singur Mesh (join toate grupurile din .obj)."""
     path = Path(path)

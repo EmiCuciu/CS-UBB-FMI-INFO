@@ -13,12 +13,11 @@ from pathlib import Path
 
 from src.shader  import Shader
 from src.camera  import Camera
-from src.model   import load_obj_single
+from src.model   import load_obj_single, load_obj_by_material
 from src.texture import (generate_grass_texture, generate_mushroom_cap_texture,
                           generate_bark_texture, generate_bark_normal_map,
                           generate_flower_texture, generate_ground_texture,
-                          generate_sky_texture, generate_solid_color,
-                          _generate_flat_normal)
+                          generate_solid_color, _generate_flat_normal)
 from src.mesh    import (make_cylinder, make_sphere, make_plane,
                           make_quad, make_grass_blade, make_rock)
 
@@ -52,26 +51,23 @@ class Scene:
         self.sky_shader   = Shader("shaders/sky.vert",   "shaders/sky.frag")
 
         print("Modele:")
-        self.mesh_mushroom, self._mushroom_obj = _load_or(
-            "mushroom.obj",
-            lambda: make_cylinder(radius=0.18, height=0.9, segments=16)
-        )
-        if not self._mushroom_obj:
+        self._mush_meshes = load_obj_by_material(MODELS_DIR / "mushroom.obj")
+        if not self._mush_meshes:
+            print("  → fallback procedural pentru mushroom.obj")
+            self.mesh_mushroom      = make_cylinder(radius=0.18, height=0.9, segments=16)
             self.mesh_mushroom_cap  = make_sphere(radius=0.55, stacks=16, slices=16)
             self.mesh_mushroom_spot = make_sphere(radius=0.06, stacks=6, slices=8)
 
-        self.mesh_tree, self._tree_obj = _load_or(
-            "tree.obj",
-            lambda: make_cylinder(radius=0.22, height=2.2, segments=12, top_radius=0.12)
-        )
-        if not self._tree_obj:
+        self._tree_meshes = load_obj_by_material(MODELS_DIR / "tree.obj")
+        if not self._tree_meshes:
+            print("  → fallback procedural pentru tree.obj")
+            self.mesh_tree  = make_cylinder(radius=0.22, height=2.2, segments=12, top_radius=0.12)
             self.mesh_crown = make_sphere(radius=1.0, stacks=14, slices=14)
 
-        self.mesh_flower, self._flower_obj = _load_or(
-            "flower.obj",
-            lambda: make_cylinder(radius=0.03, height=0.8, segments=8)
-        )
-        if not self._flower_obj:
+        self._flower_meshes = load_obj_by_material(MODELS_DIR / "flower.obj")
+        if not self._flower_meshes:
+            print("  → fallback procedural pentru flower.obj")
+            self.mesh_flower = make_cylinder(radius=0.03, height=0.8, segments=8)
             self.mesh_petal  = make_sphere(radius=0.12, stacks=8, slices=8)
             self.mesh_center = make_sphere(radius=0.12, stacks=8, slices=8)
 
@@ -98,6 +94,15 @@ class Scene:
         self.tex_petals    = [generate_solid_color(230,80,120), generate_solid_color(255,150,50),
                               generate_solid_color(180,80,220), generate_solid_color(80,160,220)]
 
+        self.tex_firefly_colors = [
+            generate_solid_color(255, 220,  80),
+            generate_solid_color( 80, 220, 255),
+            generate_solid_color(200,  80, 255),
+        ]
+        self.mesh_firefly  = make_sphere(radius=0.07, stacks=6, slices=6)
+        self._firefly_pos  = [(0.0, 1.2, 0.0)] * 3
+        self._firefly_emit = [(1.0, 1.0, 0.6), (0.6, 1.0, 1.0), (1.0, 0.6, 1.0)]
+
         self._build_grass_instances(count=800, spread=12.0)
 
         print("\nScenă încărcată ✓")
@@ -112,18 +117,25 @@ class Scene:
     # ── Render ─────────────────────────────────────────────────────────────────
 
     def render(self):
-        t = (math.sin(self.time * 0.05) + 1) * 0.5
-        glClearColor(0.18 + t*0.1, 0.32 + t*0.1, 0.55 + t*0.1, 1.0)
+        glClearColor(0.0, 0.0, 0.0, 1.0)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         view = self.camera.get_view()
         proj = self.camera.get_projection()
+
+        # Cer procedurale (fullscreen quad, fără depth write)
+        glDepthMask(GL_FALSE)
+        self.sky_shader.use()
+        self.sky_shader.set_float("time", self.time)
+        self.mesh_quad.draw()
+        glDepthMask(GL_TRUE)
 
         sh = self.shader
         sh.use()
         sh.set_mat4("view", view)
         sh.set_mat4("projection", proj)
         sh.set_vec3("viewPos", tuple(self.camera.position))
+        sh.set_bool("useEmissive", False)
         self._set_lighting(sh)
         self._render_scene(sh)
 
@@ -132,6 +144,7 @@ class Scene:
         gs.set_mat4("view", view)
         gs.set_mat4("projection", proj)
         gs.set_vec3("viewPos", tuple(self.camera.position))
+        gs.set_bool("useEmissive", False)
         self._set_lighting(gs)
         gs.set_float("time", self.time)
         self._render_grass(gs)
@@ -139,17 +152,37 @@ class Scene:
     # ── Lighting ───────────────────────────────────────────────────────────────
 
     def _set_lighting(self, sh):
-        angle = self.time * 0.02
-        sh.set_vec3("ambient",               (0.35, 0.32, 0.40))
-        sh.set_vec3("dirLight.direction",    (math.cos(angle), -0.8, math.sin(angle)))
-        sh.set_vec3("dirLight.color",        (1.0, 0.95, 0.85))
-        sh.set_float("dirLight.intensity",   1.0)
-        sh.set_vec3("pointLight.position",   (0.0, 1.5, 0.0))
-        sh.set_vec3("pointLight.color",      (1.0, 0.4, 0.1))
-        sh.set_float("pointLight.intensity", 1.5)
-        sh.set_float("pointLight.linear",    0.09)
-        sh.set_float("pointLight.quadratic", 0.032)
-        sh.set_vec3("fogColor",  (0.55, 0.65, 0.80))
+        t = (math.sin(self.time * 0.05) + 1) * 0.5   # 0=noapte, 1=zi
+        sun_angle = self.time * 0.02
+
+        # Ambient dinamic zi/noapte
+        amb = 0.15 + t * 0.25
+        sh.set_vec3("ambient", (amb * 0.95, amb * 0.90, amb + 0.05))
+
+        # Soare cu intensitate dinamică
+        sh.set_vec3("dirLight.direction",  (math.cos(sun_angle), -0.8, math.sin(sun_angle)))
+        sh.set_vec3("dirLight.color",      (1.0, 0.95, 0.85))
+        sh.set_float("dirLight.intensity", 0.4 + t * 0.7)
+
+        # 3 licurici animați în jurul scenei
+        a = self.time
+        self._firefly_pos = [
+            ( math.cos(a * 0.7) * 3.0,        1.2 + math.sin(a * 0.9) * 0.3,  math.sin(a * 0.7) * 3.0),
+            ( math.cos(a * 0.5 + 2.1) * 4.0,  0.8 + math.sin(a * 1.1) * 0.4,  math.sin(a * 0.5 + 2.1) * 2.5),
+            ( math.cos(a * 0.9 + 4.2) * 2.5,  1.5 + math.sin(a * 0.7) * 0.5,  math.sin(a * 0.9 + 4.2) * 4.0),
+        ]
+        self._firefly_emit = [(1.0, 1.0, 0.6), (0.6, 1.0, 1.0), (1.0, 0.6, 1.0)]
+        firefly_colors_gl  = [(1.0, 0.85, 0.3), (0.3, 0.85, 1.0), (0.85, 0.3, 1.0)]
+
+        for i, (pos, col) in enumerate(zip(self._firefly_pos, firefly_colors_gl)):
+            sh.set_vec3(f"pointLights[{i}].position",   pos)
+            sh.set_vec3(f"pointLights[{i}].color",      col)
+            sh.set_float(f"pointLights[{i}].intensity", 2.5)
+            sh.set_float(f"pointLights[{i}].linear",    0.30)
+            sh.set_float(f"pointLights[{i}].quadratic", 0.44)
+
+        # Fog dinamic zi/noapte
+        sh.set_vec3("fogColor",  (0.30 + t*0.25, 0.32 + t*0.32, 0.45 + t*0.35))
         sh.set_float("fogNear",  18.0)
         sh.set_float("fogFar",   60.0)
 
@@ -183,8 +216,11 @@ class Scene:
                         (1.2,0,3.5,0.85),(-3.0,0,-1.0,1.1),(3.8,0,-2.0,0.6)]
         for px,py,pz,sc in positions_sc:
             m = glm.scale(glm.translate(glm.mat4(1.0), glm.vec3(px,py,pz)), glm.vec3(sc))
-            if self._mushroom_obj:
-                self._draw(sh, self.mesh_mushroom, m, self.tex_cap)
+            if self._mush_meshes:
+                self._draw(sh, self._mush_meshes.get('MushroomStem.007'), m, self.tex_stem)
+                self._draw(sh, self._mush_meshes.get('MushroomCap.007'),  m, self.tex_cap)
+                for idx in range(35, 40):
+                    self._draw(sh, self._mush_meshes.get(f'MushroomSpot.0{idx}'), m, self.tex_white)
             else:
                 self._draw(sh, self.mesh_mushroom, m, self.tex_stem)
                 cap_m = glm.scale(glm.translate(m, glm.vec3(0, 1.26, 0)), glm.vec3(1.0, 0.65, 1.0))
@@ -199,8 +235,10 @@ class Scene:
                  (0,0,-8,1.3),(-9,0,0,0.9),(9,0,1,1.0),(4,0,-9,0.75)]
         for px,py,pz,sc in trees:
             m = glm.scale(glm.translate(glm.mat4(1.0), glm.vec3(px,py,pz)), glm.vec3(sc))
-            if self._tree_obj:
-                self._draw(sh, self.mesh_tree, m, self.tex_bark, self.tex_bark_nmap, shininess=8.0)
+            if self._tree_meshes:
+                self._draw(sh, self._tree_meshes.get('TreeTrunk.007'), m, self.tex_bark, self.tex_bark_nmap, shininess=8.0)
+                for j, ckey in enumerate(['TreeCrown0.007', 'TreeCrown1.007', 'TreeCrown2.007']):
+                    self._draw(sh, self._tree_meshes.get(ckey), m, self.tex_green[j], shininess=12.0)
             else:
                 self._draw(sh, self.mesh_tree, m, self.tex_bark, self.tex_bark_nmap, shininess=8.0)
                 for j,(cx,cy,cz) in enumerate([(0,0,0),(0.2,0,0.1),(-0.15,0,0.2)]):
@@ -214,8 +252,13 @@ class Scene:
                    (0.5,0,-2.0),(2.0,0,-3.5),(-3.5,0,2.5),(4.5,0,2.0)]
         for i,(px,py,pz) in enumerate(flowers):
             m = glm.translate(glm.mat4(1.0), glm.vec3(px,py,pz))
-            if self._flower_obj:
-                self._draw(sh, self.mesh_flower, m, self.tex_petals[i % 4])
+            if self._flower_meshes:
+                self._draw(sh, self._flower_meshes.get('FlowerStem.007'), m, self.tex_green[0])
+                self._draw(sh, self._flower_meshes.get('FlowerLeaf.007'), m, self.tex_green[1])
+                self._draw(sh, self._flower_meshes.get('FlowerCenter.007'), m, self.tex_center, shininess=64.0)
+                petal_tex = self.tex_petals[i % 4]
+                for j in range(6):
+                    self._draw(sh, self._flower_meshes.get(f'Petal{j}.007'), m, petal_tex)
             else:
                 self._draw(sh, self.mesh_flower, m, generate_solid_color(50,150,40))
                 for j in range(6):
@@ -232,6 +275,14 @@ class Scene:
             m = glm.scale(glm.rotate(glm.translate(glm.mat4(1.0), glm.vec3(px,0,pz)),
                                      float(i), glm.vec3(0,1,0)), glm.vec3(sc, sc*0.6, sc))
             self._draw(sh, self.mesh_rock, m, self.tex_rock)
+
+        # Licurici (sfere emissive)
+        for i, pos in enumerate(self._firefly_pos):
+            m = glm.translate(glm.mat4(1.0), glm.vec3(*pos))
+            sh.set_bool("useEmissive", True)
+            sh.set_vec3("emissiveColor", self._firefly_emit[i])
+            self._draw(sh, self.mesh_firefly, m, self.tex_firefly_colors[i])
+        sh.set_bool("useEmissive", False)
 
     def _render_grass(self, gs):
         gs.set_mat4("model", glm.mat4(1.0))

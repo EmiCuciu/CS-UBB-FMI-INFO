@@ -10,9 +10,17 @@
 | numpy | 1.26.4 | BSD | Buffere de date numerice |
 
 ## Modele 3D
-Toate geometriile sunt generate **procedural în cod** (src/mesh.py):
-- Cilindri, sfere, plane — algoritmi matematici proprii
-- Nu s-au folosit modele .obj din surse externe
+Fișierele `.obj` din `assets/models/` au fost generate cu **scripturi Python în Blender**
+(Blender Python API — `bpy`):
+- `mushroom.obj` — ciupercă (picior cilindric + pălărie sferică cu spoturi)
+- `tree.obj` — copac (trunchi conic + coroană sferică stratificată)
+- `flower.obj` — floare (tijă + petale radiale)
+- `grass_blade.obj` — fir de iarbă curbat
+- `rock.obj` — piatră neregulată
+- `ground.obj` — teren plat
+
+Geometriile procedurale de rezervă (fallback) sunt implementate în `src/mesh.py`.
+Nu s-au utilizat modele descărcate din surse externe.
 
 ## Texturi
 Toate texturile sunt **generate procedural în cod** (src/texture.py):
