@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="title"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Condiționarea rădăcinilor ecuațiilor algebrice</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Studiul condiționării</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Să se studieze teoretic şi experimental condiţionarea problemei determinării rădăcinilor ecuaţiei polinomiale</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>x^n+a_1x^{n-1}+a_2x^{n-2}+\cdots+a_n=0,</w:t></w:r></w:customXml><w:r><w:t> (1)</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>cunoscându-se coeficienţii. Se va scrie o rutină pentru calculul numărului de condiţionare al fiecărei rădăcini şi se va studia grafic efectul perturbării fiecărui coeficient cu o variabilă aleatoare normală cu media 0 şi dispersia </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>10^{-10}</w:t></w:r></w:customXml><w:r><w:t>. Aplicaţie pentru ecuaţiile</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="true"/></w:customXmlPr><w:r><w:t>(x-1)(x-2)\dots(x-n)=0</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>şi (1) pentru rădăcinile </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>x_k = 2^{-k}</w:t></w:r></w:customXml><w:r><w:t>. Se va lua ca exemplu practic pentru testare </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>n = 20</w:t></w:r></w:customXml><w:r><w:t>. Ce se întâmplă dacă perturbaţia urmează legea uniformă?</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Vezi funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>condpol</w:t></w:r><w:r><w:t>.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Verificare </w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[format long
+n=20;
+p=poly(1:n);
+roots(p)]]></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Să utilizăm funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>condpol</w:t></w:r><w:r><w:t> la exemplul lui Wilkinson:</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[close all
+format short g
+xi=1:n;
+nc=condpol(poly(xi),xi);
+[ncs,i]=sort(nc');
+disp([ncs,i])]]></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Vom studia acum influenţa unor perturbaţii mici normale şi respectiv uniforme asupra rădăcinilor polinomului lui Wilkinson.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>wilkinson</w:t></w:r><w:r><w:t> studiază efectul unor perturbații aleatoare normale asupra  polinomului lui Wilkinson </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\prod_{k=1}^n(x-k)</w:t></w:r></w:customXml><w:r><w:t>. Perturbațiile au media 0 și dispersia </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>10^{-10}</w:t></w:r></w:customXml><w:r><w:t>.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>wilkinsonu</w:t></w:r><w:r><w:t> studiază efectul unor perturbații aleatoare cu distribuția uniformă pe intervalul </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>[0, 10^{-10}]</w:t></w:r></w:customXml><w:r><w:t> asupra polinomului lui Wilkinson.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Studiul grafic al efectul perturbaţiilor asupra rădăcinilor polinomului lui Wilkinson.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[subplot(1,2,1)
+wilkinson(20)
+title('normal')
+subplot(1,2,2)
+wilkinsonu(20)
+title('uniform')]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Funcții utilizate</w:t></w:r></w:p><w:p><mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"><mc:Choice Requires="R2018b"><w:pPr><w:pStyle w:val="heading2"/><w:jc w:val="left"/></w:pPr></mc:Choice><mc:Fallback><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr></mc:Fallback></mc:AlternateContent><w:r><w:t>Funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>condpol</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[function nc=condpol(p,xi)
+%CONDPOL conditionarea unei ecuatii polinomiale p(x)=0
+%apel nc=condpol(p,xi)
+%p - coeficienti
+%xi - radacinile
+
+if nargin<2
+    xi=roots(p);
+end
+n=length(p)-1;
+dp=(n:-1:1).*p(1:end-1); %derivata;
+nc=1./(abs(xi.*polyval(dp,xi))).*(polyval(abs(p(2:end)),abs(xi)));
+end]]></w:t></w:r></w:p><w:p><mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"><mc:Choice Requires="R2018b"><w:pPr><w:pStyle w:val="heading2"/><w:jc w:val="left"/></w:pPr></mc:Choice><mc:Fallback><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr></mc:Fallback></mc:AlternateContent><w:r><w:t>Funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>wilkinson</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Perturbație normală </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\mu=0</w:t></w:r></w:customXml><w:r><w:t> și </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\sigma=10^{-10}</w:t></w:r></w:customXml><w:r><w:t> pentru </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\prod_{k=1}^{n}(x-k)</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[function wilkinson(n)
+%WILKINSON perturbatie normala pentru \_prod_{k=1}^{n}(x-k)
+
+p=poly(1:n);
+h=plot(1:n,zeros(1,n),'.');
+set(h,'Markersize',15);
+hold on
+for k=1:1000
+    r=randn(1,n+1);
+    pr=p.*(1+1e-10*r);
+    z=roots(pr);
+    h2=plot(z,'k.');
+    set(h2,'Markersize',4)
+end
+axis equal
+end]]></w:t></w:r></w:p><w:p><mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"><mc:Choice Requires="R2018b"><w:pPr><w:pStyle w:val="heading2"/><w:jc w:val="left"/></w:pPr></mc:Choice><mc:Fallback><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr></mc:Fallback></mc:AlternateContent><w:r><w:t>Funcția </w:t></w:r><w:r><w:rPr><w:rFonts w:cs="monospace"/></w:rPr><w:t>wilkinsonu</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Perturbație uniformă </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>U\left[ 0, 10^{-10} \right]</w:t></w:r></w:customXml><w:r><w:t>pentru </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\prod_{k=1}^{n}(x-k)</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[function wilkinsonu(n)
+p=poly(1:n);
+h=plot(1:n,zeros(1,n),'.');
+set(h,'Markersize',15);
+hold on
+for k=1:1000
+    r=(1e-10)*rand(1,n+1);
+    pr=p+r.*p; %.*(1+1e-10*r);
+    z=roots(pr);
+    h2=plot(z,'k.');
+    set(h2,'Markersize',4)
+end
+axis equal
+end]]></w:t></w:r></w:p></w:body></w:document>

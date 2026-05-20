@@ -1,0 +1,86 @@
+Problema 1
+Să se analizeze metoda lui Cramer şi eliminarea gaussiană din
+punct de vedere al complexităţii (unitatea de măsură va fi numărul de operaţii
+flotante - flops) ı̂n cazurile n = 2 şi n = 3.
+
+Cramer vs Eliminare Gaussiana
+
+n=2:
+
+Cramer:
+    determinant = ad-bc => 2 inmultiri si o scadere = 3 flops
+
+    pentru 3 determinanti = 3 flops * 3 = 9 flops
+
+    - ca sa aflam necunoscutele:
+        -x1 = det1/det si 
+        -x2 = det2/det          => + 2 flops de impartire
+
+    total = 9 + 2 = 11 flops
+
+Eliminare Gaussiana:
+    - calculul multiplicatorului m21 = a21/a11 => 1 flop
+
+    - a22 = a22 - m21*a12 => 2 flops
+
+    - b2 = b2 - m21*b1 => 2 flos
+
+    - x2 = b2/a22 => 1 flop
+
+    - x1 = (b1-a12x2)/a11 = 3 flops
+
+    total = 9 flops
+
+(a b c)
+(d e f)
+(g h i)
+n=3:
+
+Cramer:
+    1 determinant: (a*e*i) + (d*h*c) + (g*b*f) - (g*e*c) - (h*f*a) - (i*d*b)
+                    => 5 (+ sau -) + 12 *
+                    => 17 flops
+
+    avem 4 determinanti => 4*17 = 68 flops
+
+    calculul x1,x2,x3 => 3 impartiri
+
+    total = 71 flops
+
+Eliminare Gaussiana:
+    eliminare pe prima coloana:
+    m21 = a21/a11 => 1 flop
+    m31 = a31/a11 => 1 flop
+
+    pentru actualizarea liniilor 2,3 (4 elemente ramase) =>
+        a_nou = a_vechi - m*a_sus => 2 flops
+
+        2 flops * 4 = 8 flops
+
+    pentru actualizarea termenilor b => 4 flops
+
+total prima coloana = 2 + 8 + 4 = 14 flops
+
+    eliminare pe a doua coloana:
+    m32 = a32/a21 => 1 flop
+
+    actualizre a33:
+        a33 = a33_vechi - m32*a23 => 2 flops
+
+    actualizre b3:
+        b3 = b3_vechi * m32*b2 => 2 flops
+
+total a doua coloana = 5 flops
+    
+
+    substitutii:
+        x3 = b3/a33 => 1 flop
+
+        x2 = (b2-a23*x3)/a22 => 3 flops
+
+        x1 = (b1-a12x2-a13x3)/a11 = 5 flops
+
+total substitutii = 9
+
+
+total_total = 14+5+9 = 28

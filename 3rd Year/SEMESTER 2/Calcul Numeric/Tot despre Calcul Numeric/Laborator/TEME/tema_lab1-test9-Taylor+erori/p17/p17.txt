@@ -1,0 +1,17 @@
+Fenomenul:
+    Matematic, $cosh^2(x) - sinh^2(x) = 1
+    Dar pe calculator, la valori mari ale lui x ([-2pi,2pi]) daca dam zoom la o scara foarte mare (10^-12),
+     graficul e haotic la marginile intervalului
+
+-> cosh(x) - sinh(x) = e^-x
+-> cosh(x) + sinh(x) = e^x
+
+- la limita scadem acel 1 ca sa vedem zgomotul in jurul lui 0
+
+Cauza:
+    Pentru val mari x, calculatorul scade doua numere mari si aproape identice. Cifrele la fel se anuleaza reciproc
+     si raman doar erorile de rotunjire => Anulare Catastrofica
+
+Remediu:
+    Evitam scaderea de numere foarte mari, rescriem formula astfel:
+                (cosh(x)-sinh(x))*(cosh(x)+sinh(x)) = e^-x * e^x

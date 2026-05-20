@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="title"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Condiționarea unui sistem</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Fie sistemul</w:t></w:r><w:r><w:t> </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>Ax=b</w:t></w:r></w:customXml><w:r><w:t>, unde </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/><w:attr w:name="encoding" w:val="mathml"/><w:attr w:name="relationshipId" w:val="rId1"/></w:customXmlPr><w:r><w:t>A=\left\lbrack \begin{array}{cccc}
+10 &amp; 7 &amp; 8 &amp; 7\\
+7 &amp; 5 &amp; 6 &amp; 5\\
+8 &amp; 6 &amp; 10 &amp; 9\\
+7 &amp; 5 &amp; 9 &amp; 10
+\end{array}\right\rbrack</w:t></w:r></w:customXml><w:r><w:t>, </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/><w:attr w:name="encoding" w:val="mathml"/><w:attr w:name="relationshipId" w:val="rId2"/></w:customXmlPr><w:r><w:t>b=\left\lbrack \begin{array}{c}
+32\\
+23\\
+33\\
+31
+\end{array}\right\rbrack</w:t></w:r></w:customXml><w:r><w:t>cu soluția </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/><w:attr w:name="encoding" w:val="mathml"/><w:attr w:name="relationshipId" w:val="rId3"/></w:customXmlPr><w:r><w:t>x=\left\lbrack \begin{array}{c}
+1\\
+1\\
+1\\
+1
+\end{array}\right\rbrack</w:t></w:r></w:customXml><w:r><w:t>. </w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Exemplul este datorat lui Wilson.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[A=[10, 7, 8, 7; 7, 5, 6,5; 8, 6, 10, 9; 7,5,9, 10];
+b=[32; 23; 33; 31];
+xe = A\b]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Perturbăm membrul drept, </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/><w:attr w:name="encoding" w:val="mathml"/><w:attr w:name="relationshipId" w:val="rId4"/></w:customXmlPr><w:r><w:t>b_p ={\left\lbrack \begin{array}{cccc}
+32\ldotp 1 &amp; 22\ldotp 9 &amp; 33\ldotp 1 &amp; 30\ldotp 9
+\end{array}\right\rbrack }^T</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[bp=[32.1; 22.9; 33.1; 30.9];
+xp1=A\bp
+eri1=norm(b-bp)/norm(b);
+ero1=norm(xe-xp1)/norm(xe);
+ero1/eri1]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Perturbăm matricea, </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/><w:attr w:name="encoding" w:val="mathml"/><w:attr w:name="relationshipId" w:val="rId5"/></w:customXmlPr><w:r><w:t>A_p =\left\lbrack \begin{array}{cccc}
+10 &amp; 7 &amp; 8\ldotp 1 &amp; 7\ldotp 2\\
+7\ldotp 08 &amp; 5\ldotp 04 &amp; 6 &amp; 5\\
+8 &amp; 5\ldotp 98 &amp; 9\ldotp 89 &amp; 9\\
+6\ldotp 99 &amp; 4\ldotp 99 &amp; 9 &amp; 9\ldotp 98
+\end{array}\right\rbrack</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[Ap=[10, 7, 8.1, 7.2; 7.08, 5.04, 6, 5; 8, 5.98, 9.89, 9;...
+    6.99, 4.99, 9, 9.98];
+xp2=Ap\b
+eri2=norm(A-Ap)/norm(A);
+ero2=norm(xe-xp2)/norm(xe);
+ero2/eri2]]></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Raportul mare dintre eroarea relativă la ieșire și eroarea relativă la intrare se explică prin numărul de condiționare </w:t></w:r><w:customXml w:element="equation"><w:customXmlPr><w:attr w:name="displayStyle" w:val="false"/></w:customXmlPr><w:r><w:t>\mathrm{cond}A=\|A\|\left\|A^{-1}\right\|</w:t></w:r></w:customXml></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[cond(A)]]></w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Matricea A este o matrice "simpatică"</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[det(A)
+inv(A)]]></w:t></w:r></w:p></w:body></w:document>
