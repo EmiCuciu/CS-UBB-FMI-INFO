@@ -213,11 +213,6 @@ def plot_confusion_matrices(models, X_test, y_test):
 
 
 def plot_roc_curves(models, X_test, y_test):
-    """
-    Curba ROC reprezinta rata True Positive vs rata False Positive la
-    diferite praguri de clasificare. AUC (Area Under Curve) aproape de
-    1.0 indica un model excelent, AUC = 0.5 inseamna clasificare aleatoare.
-    """
     fig, ax = plt.subplots(figsize=(7, 5))
 
     colors = ["royalblue", "darkorange", "forestgreen"]
@@ -241,11 +236,6 @@ def plot_roc_curves(models, X_test, y_test):
 
 
 def plot_feature_importance(rf_model, feature_names):
-    """
-    Feature importance in RF masoara cat de mult contribuie fiecare
-    variabila la reducerea impuritatii (Gini) in arbori. Valorile mai
-    mari indica predictori mai importanti pentru clasificare.
-    """
     importances = rf_model.feature_importances_
     indices = np.argsort(importances)[::-1]   # sortare descrescatoare
 
@@ -270,12 +260,6 @@ def plot_feature_importance(rf_model, feature_names):
 
 
 def save_best_model(models, df_metrics, scaler):
-    """
-    Salveaza cel mai bun model (dupa AUC-ROC) si scaler-ul ca fisiere .pkl.
-
-    Fisierele .pkl sunt incarcate ulterior de app.py (Streamlit) pentru
-    a face predictii pe date noi introduse de utilizator.
-    """
     best_name = df_metrics.loc[df_metrics["ROC-AUC"].idxmax(), "Model"]
     best_model = models[best_name]
 
