@@ -14,7 +14,7 @@ def load_model():
     """
     @st.cache_resource asigura ca fisierele sunt incarcate o singura data
     """
-    model  = joblib.load("models/best_model.pkl")
+    model = joblib.load("models/best_model.pkl")
     scaler = joblib.load("models/scaler.pkl")
     return model, scaler
 
@@ -24,11 +24,7 @@ try:
 except FileNotFoundError:
     model_loaded  = False
 
-# ─────────────────────────────────────────────────────────────────────────────
-# TITLU SI DESCRIERE
-# ─────────────────────────────────────────────────────────────────────────────
-
-st.title("🩺 Sistem de Predictie a Riscului de Diabet")
+st.title("Sistem de Predictie a Riscului de Diabet")
 st.markdown(
     "Introduceti valorile analizelor medicale si apasati **Analizeaza** "
     "pentru a obtine o estimare a riscului de diabet."
@@ -37,18 +33,14 @@ st.markdown("---")
 
 if not model_loaded:
     st.error(
-        "⚠️ Modelul nu a fost gasit. "
+        "Modelul nu a fost gasit. "
         "Rulati mai intai **train.py** pentru a genera fisierele din `models/`."
     )
     st.stop()
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FORMULAR DE INTRODUCERE DATE
-# ─────────────────────────────────────────────────────────────────────────────
 
 st.subheader("Date medicale")
 
-# Impartim in 2 coloane pentru un layout mai aerisit
 col1, col2 = st.columns(2)
 
 with col1:
@@ -120,57 +112,42 @@ with col2:
 
 st.markdown("---")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PREDICTIE
-# ─────────────────────────────────────────────────────────────────────────────
+if st.button("Analizeaza", use_container_width=True, type="primary"):
 
-if st.button("🔍 Analizeaza", use_container_width=True, type="primary"):
-
-    # Construim vectorul de input in ordinea features din train.py:
-    # [Glucose, BloodPressure, SkinThickness, Insulin, BMI, DPF, Age]
     input_data = np.array([[glucose, blood_pressure, skin_thickness,
                             insulin, bmi, dpf, age]])
 
-    # Aplicam acelasi scaler folosit la antrenare
     input_scaled = scaler.transform(input_data)
 
-    # Obtinem predictia si probabilitatile
-    prediction   = model.predict(input_scaled)[0]           # 0 sau 1
-    proba        = model.predict_proba(input_scaled)[0]     # [prob_0, prob_1]
-    risk_pct     = round(proba[1] * 100, 1)                 # % risc diabet
-    safe_pct     = round(proba[0] * 100, 1)                 # % fara risc
+    prediction = model.predict(input_scaled)[0]         # 0 sau 1
+    proba = model.predict_proba(input_scaled)[0]        # [prob_0, prob_1]
+    risk_pct = round(proba[1] * 100, 1)                 # % risc diabet
+    safe_pct = round(proba[0] * 100, 1)                 # % fara risc
 
     st.markdown("### Rezultat")
 
     if prediction == 0:
-        # ── Rezultat negativ (sanatos) ────────────────────────────────────
         st.success(
-            f"✅ **Fara risc semnificativ de diabet**\n\n"
+            f"**Fara risc semnificativ de diabet**\n\n"
             f"Probabilitate estimata de diabet: **{risk_pct}%**"
         )
         st.progress(int(risk_pct), text=f"Risc: {risk_pct}%")
         st.info(
-            "ℹ️ Modelul Random Forest estimeaza ca valorile introduse "
+            "Modelul Random Forest estimeaza ca valorile introduse "
             "nu indica un risc semnificativ de diabet. "
-            "Aceasta predictie are scop informativ — consultati un medic "
-            "pentru un diagnostic oficial."
         )
     else:
-        # ── Rezultat pozitiv (risc diabet) ───────────────────────────────
         st.error(
-            f"⚠️ **Risc ridicat de diabet**\n\n"
+            f"**Risc de diabet**\n\n"
             f"Probabilitate estimata de diabet: **{risk_pct}%**"
         )
         st.progress(int(risk_pct), text=f"Risc: {risk_pct}%")
         st.warning(
-            "⚕️ Modelul Random Forest estimeaza un risc ridicat de diabet "
+            "Modelul Random Forest estimeaza un risc ridicat de diabet "
             "pe baza valorilor introduse. "
-            "Va recomandam sa consultati un medic specialist pentru "
-            "investigatii suplimentare si un diagnostic oficial."
         )
 
-    # ── Detalii suplimentare ──────────────────────────────────────────────
-    with st.expander("📊 Detalii predictie"):
+    with st.expander("Detalii predictie"):
         st.write(f"**Model folosit:** Random Forest (100 arbori de decizie)")
         st.write(f"**Probabilitate clasa 0 (Sanatos):** {safe_pct}%")
         st.write(f"**Probabilitate clasa 1 (Diabetic):** {risk_pct}%")
@@ -185,13 +162,5 @@ if st.button("🔍 Analizeaza", use_container_width=True, type="primary"):
             "Varsta (ani)"               : age,
         })
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FOOTER
-# ─────────────────────────────────────────────────────────────────────────────
 
 st.markdown("---")
-st.caption(
-    "Proiect realizat pe setul de date **Pima Indians Diabetes Database** (PIDD). "
-    "Model: Random Forest antrenat cu scikit-learn. "
-    "Aceasta aplicatie are scop exclusiv educational."
-)
