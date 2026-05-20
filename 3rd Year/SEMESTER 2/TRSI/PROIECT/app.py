@@ -25,10 +25,6 @@ except FileNotFoundError:
     model_loaded  = False
 
 st.title("Sistem de Predictie a Riscului de Diabet")
-st.markdown(
-    "Introduceti valorile analizelor medicale si apasati **Analizeaza** "
-    "pentru a obtine o estimare a riscului de diabet."
-)
 st.markdown("---")
 
 if not model_loaded:
