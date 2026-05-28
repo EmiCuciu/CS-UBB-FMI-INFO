@@ -1,0 +1,8 @@
+EXAMEN: 4 probleme
+
+Sisteme Liniare
+Sisteme Neliniare
+Integrare Numerica	(Quadruaturi)
+Interpolare		
+
+(adica cam toata materia)

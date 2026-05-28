@@ -1,0 +1,67 @@
+%  f(x) = alpha*exp(beta*x) + gamma*x
+%  Interpoland punctele (1,10), (2,12), (3,18)
+%
+%  Se cauta parametrii [alpha, beta, gamma] rezolvand sistemul neliniar:
+%    F1: alpha*exp(  beta) +   gamma - 10 = 0
+%    F2: alpha*exp(2*beta) + 2*gamma - 12 = 0
+%    F3: alpha*exp(3*beta) + 3*gamma - 18 = 0
+%
+%  Jacobianul:
+%    [ exp(beta)     alpha*exp(beta)       1 ]
+%    [ exp(2*beta)   2*alpha*exp(2*beta)   2 ]
+%    [ exp(3*beta)   3*alpha*exp(3*beta)   3 ]
+
+clear; clc; format long;
+
+x_dat = [1, 2, 3];
+y_dat = [10, 12, 18];
+
+F = @(v) [ 
+    v(1)*exp(  v(2)) +   v(3) - y_dat(1);
+    v(1)*exp(2*v(2)) + 2*v(3) - y_dat(2);
+    v(1)*exp(3*v(2)) + 3*v(3) - y_dat(3) 
+    ];
+
+J = @(v) [
+    exp(  v(2)),   v(1)*exp(  v(2)), 1 ;
+    exp(2*v(2)), 2*v(1)*exp(2*v(2)), 2 ;
+    exp(3*v(2)), 3*v(1)*exp(3*v(2)), 3 
+    ];
+
+ea = 1e-10;
+er = 0;
+nmax = 100;
+v0 = [5; 0.5; 1];    
+
+fprintf('Aproximatie initiala: alpha=%.3f, beta=%.3f, gamma=%.3f\n\n', ...
+    v0(1), v0(2), v0(3));
+
+[v_sol, ni] = Newton(F, J, v0, ea, er, nmax);
+
+fprintf('Convergenta in %d iteratii.\n\n', ni);
+fprintf('Parametrii gasiti:\n');
+fprintf('  alpha = %20.15f\n', v_sol(1));
+fprintf('  beta  = %20.15f\n', v_sol(2));
+fprintf('  gamma = %20.15f\n', v_sol(3));
+fprintf('  ||F(v)||_inf = %.4e\n', norm(F(v_sol), inf));
+
+%% --- Verificare in punctele date ---
+fprintf('\nVerificare interpolare:\n');
+fprintf('%6s  %10s  %14s  %12s\n', 'x', 'y_dat', 'f(x)', 'eroare');
+model = @(x) v_sol(1)*exp(v_sol(2)*x) + v_sol(3)*x;
+for k = 1:3
+    fxk = model(x_dat(k));
+    fprintf('%6d  %10.6f  %14.10f  %12.4e\n', ...
+        x_dat(k), y_dat(k), fxk, abs(fxk - y_dat(k)));
+end
+
+%% --- Grafic ---
+x_fine = linspace(0.5, 3.5, 500);
+figure('Name','Model interpolat - Problema 2');
+plot(x_fine, model(x_fine), 'b-', 'LineWidth', 2); hold on;
+plot(x_dat, y_dat, 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r');
+xlabel('x'); ylabel('f(x)');
+title(sprintf('f(x) = %.4f \\cdot e^{%.4f x} + (%.4f) \\cdot x', ...
+    v_sol(1), v_sol(2), v_sol(3)));
+legend('Model f(x)', 'Date interpolate', 'Location', 'northwest');
+grid on; hold off;
