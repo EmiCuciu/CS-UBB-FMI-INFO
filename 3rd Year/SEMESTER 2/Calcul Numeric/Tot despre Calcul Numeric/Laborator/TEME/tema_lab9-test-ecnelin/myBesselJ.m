@@ -19,7 +19,7 @@ for i = 1:numel(x)
     current_val = term;
 
     for m = 0:500
-        term        = -term * hx2 / ((m+1) * (m+n+1));
+        term = -term * hx2 / ((m+1) * (m+n+1));
         current_val = current_val + term;
         if abs(term) < 1e-15 * abs(current_val)
             break;
