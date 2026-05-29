@@ -6,3 +6,7 @@ Integrare Numerica	(Quadruaturi)
 Interpolare		
 
 (adica cam toata materia)
+
+Flux de invatare:
+
+Citit slides -> Citit Laboratoare + demos -> Probleme obligatorii
