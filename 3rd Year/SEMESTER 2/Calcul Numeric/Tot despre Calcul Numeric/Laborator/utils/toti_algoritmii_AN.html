@@ -1,0 +1,125 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.wrap{padding:.5rem 0 1rem}
+.sec{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:1.4rem 0 .4rem;padding-left:4px;border-top:.5px solid var(--color-border-tertiary);padding-top:.8rem}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:.25rem}
+thead tr{border-bottom:.5px solid var(--color-border-secondary)}
+thead th{padding:6px 10px;text-align:left;font-weight:500;color:var(--color-text-secondary);font-size:11px}
+tbody tr{border-bottom:.5px solid var(--color-border-tertiary)}
+tbody tr:last-child{border-bottom:none}
+td{padding:7px 10px;vertical-align:top;line-height:1.45}
+td:first-child{color:var(--color-text-primary)}
+td:nth-child(2){color:var(--color-text-secondary);font-size:12px}
+td:nth-child(3){white-space:nowrap}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px}
+.c1{background:var(--color-background-info);color:var(--color-text-info)}
+.c2{background:var(--color-background-success);color:var(--color-text-success)}
+.c3{background:var(--color-background-warning);color:var(--color-text-warning)}
+.c4{background:var(--color-background-danger);color:var(--color-text-danger)}
+.note{font-size:11px;color:var(--color-text-tertiary);margin-top:1px}
+</style>
+<h2 class="sr-only">Toți algoritmii din cursul de Analiză Numerică, organizați pe domenii</h2>
+<div class="wrap">
+
+<div class="sec">C1 — Aproximare funcții</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Idee</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Formula lui Taylor</td><td>Aproximare locală prin polinom de grad n</td><td><span class="badge c1">Aprox</span></td></tr>
+<tr><td>Aproximare Padé</td><td>Aproximare rațională p(x)/q(x) din seria Taylor</td><td><span class="badge c1">Aprox</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C2 — Erori și aritmetică în virgulă flotantă</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Idee</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>sin/cos cu reducere de argument</td><td>Reducere la intervalul mic înainte de evaluare</td><td><span class="badge c3">Stabil</span></td></tr>
+<tr><td>Condiționarea unei ecuații algebrice</td><td>κ = sensibilitatea rădăcinilor la perturbații coeficienți</td><td><span class="badge c3">Analiză</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C3–C5 — Sisteme liniare (metode directe)</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Condiție pe A</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Substituție înainte / înapoi</td><td>A triunghiulară inf./sup. <div class="note">O(n²)</div></td><td><span class="badge c1">Direct</span></td></tr>
+<tr><td>Eliminare gaussiană → LU</td><td>A generală pătrată <div class="note">~⅔n³</div></td><td><span class="badge c1">Direct</span></td></tr>
+<tr><td>Descompunere LUP</td><td>A generală + pivotare parțială <div class="note">stabil numeric</div></td><td><span class="badge c1">Direct</span></td></tr>
+<tr><td>Descompunere Cholesky</td><td>A simetrică/hermitian pozitiv definită <div class="note">~⅓n³, de 2× mai rapid</div></td><td><span class="badge c1">Direct</span></td></tr>
+<tr><td>Algoritmul lui Thomas</td><td>A tridiagonală <div class="note">O(n), optimal</div></td><td><span class="badge c3">Special</span></td></tr>
+<tr><td>LU sparse / spdiags</td><td>A rară sau bandă <div class="note">memorie proporțională cu nnz(A)</div></td><td><span class="badge c3">Special</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C5 — Sisteme liniare (metode iterative)</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Condiție / proprietate</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Jacobi</td><td>A diagonal dominantă; actualizare simultană</td><td><span class="badge c2">Iterativ</span></td></tr>
+<tr><td>Gauss-Seidel</td><td>A diagonal dominantă; mai rapid decât Jacobi</td><td><span class="badge c2">Iterativ</span></td></tr>
+<tr><td>SOR (relaxare succesivă)</td><td>A pozitiv definită, 0&lt;ω&lt;2; ω optim din ρ(T_J)</td><td><span class="badge c2">Iterativ</span></td></tr>
+<tr><td>Rafinare iterativă</td><td>Orice A; îmbunătățește precizia soluției directe</td><td><span class="badge c2">Iterativ</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C6 — Interpolare</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Idee</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Lagrange clasic</td><td>Polinom prin n+1 puncte via polinoame fundamentale ℓᵢ</td><td><span class="badge c1">Interp</span></td></tr>
+<tr><td>Lagrange baricentric</td><td>Formă stabilă numerică a Lagrange: evită Runge</td><td><span class="badge c1">Interp</span></td></tr>
+<tr><td>Newton (diferențe divizate)</td><td>Tabelă triunghiulară; ușor de actualizat cu nod nou</td><td><span class="badge c1">Interp</span></td></tr>
+<tr><td>Hermite (metoda lui Powell)</td><td>Interpolează f și f'; noduri duble în tabela Newton</td><td><span class="badge c1">Interp</span></td></tr>
+<tr><td>Spline cubic complet</td><td>Condiții la capete: s'(a)=f'(a), s'(b)=f'(b)</td><td><span class="badge c3">Spline</span></td></tr>
+<tr><td>Spline cu derivate secunde</td><td>Condiții la capete: s''(a) și s''(b) date</td><td><span class="badge c3">Spline</span></td></tr>
+<tr><td>Spline natural</td><td>s''(a)=s''(b)=0</td><td><span class="badge c3">Spline</span></td></tr>
+<tr><td>Spline de Boor (B-spline)</td><td>Bază locală; stabilă numeric</td><td><span class="badge c3">Spline</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C7 — Aproximare (cele mai mici pătrate)</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Idee</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>CMMP discretă</td><td>Minimizare Σ(f(xᵢ)-p(xᵢ))²; sistem normal X'Xc=X'y</td><td><span class="badge c1">Aprox</span></td></tr>
+<tr><td>CMMP continuă (polinoame Cebîșev)</td><td>Minimizare ∫(f-p)²w dx; ortogonalitate</td><td><span class="badge c1">Aprox</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C8 — Integrare numerică</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Idee</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Trapez / Simpson (Newton-Cotes)</td><td>Integrare polinom de interpolare pe noduri echidistante</td><td><span class="badge c1">NC</span></td></tr>
+<tr><td>Romberg</td><td>Extrapolarea Richardson a trapezului; tabelă R(k,j)</td><td><span class="badge c1">NC</span></td></tr>
+<tr><td>Cuadratură adaptivă (adquad2)</td><td>Subdivide intervalul unde eroarea e mare</td><td><span class="badge c3">Adaptiv</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C8 — Cuadraturi de tip Gauss</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Funcție pondere w(x) / interval</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Gauss-Legendre</td><td>w=1, [-1,1]; noduri = rădăcini Legendre</td><td><span class="badge c2">Gauss</span></td></tr>
+<tr><td>Gauss-Cebîșev #1</td><td>w=1/√(1-x²), [-1,1]</td><td><span class="badge c2">Gauss</span></td></tr>
+<tr><td>Gauss-Cebîșev #2</td><td>w=√(1-x²), [-1,1]</td><td><span class="badge c2">Gauss</span></td></tr>
+<tr><td>Gauss-Laguerre</td><td>w=e⁻ˣ, [0,∞)</td><td><span class="badge c2">Gauss</span></td></tr>
+<tr><td>Gauss-Hermite</td><td>w=e⁻ˣ², (-∞,∞)</td><td><span class="badge c2">Gauss</span></td></tr>
+<tr><td>Gauss-Jacobi</td><td>w=(1-x)^α(1+x)^β, [-1,1]</td><td><span class="badge c2">Gauss</span></td></tr>
+</tbody>
+</table>
+
+<div class="sec">C9 — Ecuații neliniare</div>
+<table>
+<thead><tr><th style="width:32%">Algoritmul</th><th style="width:48%">Convergență</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td>Metoda secantei</td><td>Superlineară (~1.618); nu necesită derivată</td><td><span class="badge c4">Neliniar</span></td></tr>
+<tr><td>Newton (scalar)</td><td>Pătratică; necesită f'(x)</td><td><span class="badge c4">Neliniar</span></td></tr>
+<tr><td>Newton (sisteme)</td><td>Pătratică; necesită jacobian J(x)</td><td><span class="badge c4">Neliniar</span></td></tr>
+<tr><td>Metoda aproximațiilor succesive</td><td>Liniară; x=g(x) cu |g'|&lt;1</td><td><span class="badge c4">Neliniar</span></td></tr>
+</tbody>
+</table>
+
+</div>

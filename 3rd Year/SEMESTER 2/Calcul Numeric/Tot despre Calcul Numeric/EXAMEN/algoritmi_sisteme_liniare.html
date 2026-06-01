@@ -1,0 +1,147 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.wrap{padding:1rem 0}
+.section-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:1.5rem 0 .5rem;padding-left:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{border-bottom:1px solid var(--color-border-secondary)}
+thead th{padding:8px 12px;text-align:left;font-weight:500;color:var(--color-text-secondary);font-size:12px}
+tbody tr{border-bottom:.5px solid var(--color-border-tertiary)}
+tbody tr:last-child{border-bottom:none}
+td{padding:9px 12px;vertical-align:top;color:var(--color-text-primary)}
+td:first-child{font-weight:500}
+td:nth-child(2){color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.b-direct{background:var(--color-background-info);color:var(--color-text-info)}
+.b-iter{background:var(--color-background-success);color:var(--color-text-success)}
+.b-special{background:var(--color-background-warning);color:var(--color-text-warning)}
+.note{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+</style>
+<h2 class="sr-only">Tabel algoritmi pentru rezolvarea sistemelor liniare, organizat pe tipul matricei A</h2>
+<div class="wrap">
+  <div class="section-label">Metode directe — C4</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:34%">Tipul matricei A</th>
+        <th style="width:38%">Algoritmul</th>
+        <th style="width:28%">Tip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Triunghiulară inferioară</td>
+        <td>Substituție înainte (forward substitution)</td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+      <tr>
+        <td>Triunghiulară superioară</td>
+        <td>Substituție înapoi (backward substitution)</td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+      <tr>
+        <td>Generală pătrată</td>
+        <td>Eliminare gaussiană → descompunere LU
+          <div class="note">∼ ²⁄₃ m³ operații</div>
+        </td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+      <tr>
+        <td>Generală pătrată (cu pivotare)</td>
+        <td>Descompunere LUP (PA = LU)
+          <div class="note">Pivotare parțială pe coloană — stabilă numeric</div>
+        </td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+      <tr>
+        <td>Simetrică / hermitian pozitiv definită</td>
+        <td>Descompunere Cholesky (A = LL* = R*R)
+          <div class="note">∼ ¹⁄₃ m³ operații — de 2× mai rapid decât LU</div>
+        </td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+      <tr>
+        <td>Dreptunghiulară (m ≠ n)</td>
+        <td>Cele mai mici pătrate via QR
+          <div class="note">Sistem supradeterminat sau subdeterminat</div>
+        </td>
+        <td><span class="badge b-direct">Direct</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Matrice cu structură specială — C5 sparse/bandă</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:34%">Tipul matricei A</th>
+        <th style="width:38%">Algoritmul</th>
+        <th style="width:28%">Tip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tridiagonală</td>
+        <td>Algoritmul lui Thomas (LU specializat)
+          <div class="note">∼ O(n) operații — optimal</div>
+        </td>
+        <td><span class="badge b-special">Specializat</span></td>
+      </tr>
+      <tr>
+        <td>Rară (sparse)</td>
+        <td>Stocare sparse + operatori \
+          <div class="note">MATLAB: sparse(i,j,x,m,n); nnz() pentru număr de nenule</div>
+        </td>
+        <td><span class="badge b-special">Specializat</span></td>
+      </tr>
+      <tr>
+        <td>Bandă (lățime mică)</td>
+        <td>LU sparse / Thomas generalizat
+          <div class="note">Evită umplerea (fill-in) în afara benzii</div>
+        </td>
+        <td><span class="badge b-special">Specializat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Metode iterative staționale — sistemeMetIt + C5</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:34%">Tipul matricei A</th>
+        <th style="width:38%">Algoritmul</th>
+        <th style="width:28%">Tip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Diagonal dominantă pe linii / coloane</td>
+        <td>Jacobi  (M = D, N = L+U)
+          <div class="note">Convergență garantată; actualizare simultană</div>
+        </td>
+        <td><span class="badge b-iter">Iterativ</span></td>
+      </tr>
+      <tr>
+        <td>Diagonal dominantă pe linii / coloane</td>
+        <td>Gauss-Seidel  (M = D−L, N = U)
+          <div class="note">Mai rapid decât Jacobi; folosește valorile noi imediat</div>
+        </td>
+        <td><span class="badge b-iter">Iterativ</span></td>
+      </tr>
+      <tr>
+        <td>Pozitiv definită + 0 &lt; ω &lt; 2</td>
+        <td>SOR — relaxare succesivă  (M = D/ω − L)
+          <div class="note">ω optim = 2/(1+√(1−ρ(T_J)²)); convergență garantată (Ostrowski-Reich)</div>
+        </td>
+        <td><span class="badge b-iter">Iterativ</span></td>
+      </tr>
+      <tr>
+        <td>Orice A (rafinare soluție)</td>
+        <td>Rafinare iterativă
+          <div class="note">Îmbunătățește precizia soluției obținute prin o metodă directă</div>
+        </td>
+        <td><span class="badge b-iter">Iterativ</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
