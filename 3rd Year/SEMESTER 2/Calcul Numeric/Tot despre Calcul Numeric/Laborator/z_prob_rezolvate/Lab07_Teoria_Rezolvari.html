@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab07 — Interpolare Lagrange: Teorie + Rezolvări pe Foaie</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --red:#8a1a1a;--red-bg:#fce8e8;--red-b:#e89090;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --bd:rgba(0,0,0,0.11);--sb:230px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --red:#f0a0a0;--red-bg:#280808;--red-b:#581818;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+/* SIDEBAR */
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:3px}#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-hd{padding:1.1rem 1rem 0.8rem;border-bottom:1px solid var(--bd);margin-bottom:.4rem}
+.sb-hd h1{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-hd p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.85rem 1rem .2rem}
+.sb-a{display:block;padding:.27rem 1rem .27rem 1.35rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:2rem;font-size:12px}
+/* MAIN */
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+.part-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;border-radius:4px;background:var(--bg3);color:var(--text3);margin-bottom:.6rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;color:var(--text);margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+/* CARDS */
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}.red{border-color:var(--red-b);background:var(--red-bg)}
+.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}
+.red .badge{color:var(--red)}.purple .badge{color:var(--purple)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+/* FORMULA */
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14.5px;padding:13px 14px}
+/* STEPS */
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:10px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+/* TABLE */
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12.5px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:12px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+/* 2col */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:620px){.g2{grid-template-columns:1fr}}
+/* DIVIDER */
+.pdiv{border:none;border-top:3px solid var(--bd);margin:3rem 0 2.5rem}
+/* ALGO box */
+.algo{background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:1rem 1.25rem;margin:.8rem 0;font-family:var(--mono);font-size:13px;line-height:1.9}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab07 — Lagrange</h1><p>Teorie + Rezolvări pe Foaie</p></div>
+  <div class="sb-pt">Teorie</div>
+  <a class="sb-a" href="#t-clasic">Forma Clasică Lagrange</a>
+  <a class="sb-a" href="#t-eroare">Eroarea de Interpolare</a>
+  <a class="sb-a" href="#t-baric">Forma Baricentrică</a>
+  <a class="sb-a" href="#t-cheb">Noduri Chebyshev</a>
+  <div class="sb-pt">Probleme</div>
+  <a class="sb-a" href="#p1">Prob 1 — Evaluare PIL</a>
+  <a class="sb-a" href="#p2">Prob 2 — Polinoame fund.</a>
+  <a class="sb-a" href="#p3">Prob 3 — Grafic f + Lmf</a>
+  <a class="sb-a" href="#p4">Prob 4 — Aproximare f(x)</a>
+  <a class="sb-a sb-a2" href="#p4a">4a — exp(x²−1)</a>
+  <a class="sb-a sb-a2" href="#p4b">4b — √115</a>
+  <a class="sb-a sb-a2" href="#p4c">4c — sin/cos 5°</a>
+  <a class="sb-a sb-a2" href="#p4d">4d — Populația SUA</a>
+  <a class="sb-a" href="#p5">Prob 5 — Baricentric</a>
+  <a class="sb-a sb-a2" href="#p5gen">5a — Caz general</a>
+  <a class="sb-a sb-a2" href="#p5cheb">5b,c — Chebyshev</a>
+  <div class="sb-pt">Contraexemple</div>
+  <a class="sb-a" href="#runge">Runge + Bernstein</a>
+</nav>
+
+<main id="main">
+
+<!-- ===================================================
+     TEORIE
+     =================================================== -->
+<div class="part-badge">Teorie</div>
+
+<section id="t-clasic">
+<h2>Forma Clasică a Interpolării Lagrange</h2>
+
+<div class="cd blue">
+  <span class="badge">Definiție — Polinomul de Interpolare Lagrange (PIL)</span>
+  <h4>Problema: date m+1 noduri distincte și valorile f</h4>
+  <p>Fie x₀, x₁, ..., x_m ∈ [a,b] distincte și f(x₀), ..., f(x_m). Există un <span class="key">unic polinom L_mf ∈ P_m</span> cu:</p>
+  <code class="fm">(L_m f)(x_k) = f(x_k),  k = 0, 1, ..., m</code>
+  <p>Dat de formula:</p>
+  <code class="fm fmc">(L_m f)(x) = Σ_{k=0}^m f(x_k) · ℓ_k(x)</code>
+</div>
+
+<div class="g2">
+<div class="cd">
+  <span class="badge">Polinoamele fundamentale ℓ_k</span>
+  <h4>Proprietatea Kronecker</h4>
+  <code class="fm">ℓ_k(x) = ∏_{j=0, j≠k}^m (x-x_j)/(x_k-x_j)
+
+ℓ_k(x_j) = δ_kj = { 1, j=k
+                    { 0, j≠k</code>
+  <p class="note">Grad(ℓ_k) = m. Suma Σℓ_k(x) = 1 (partiție a unității).</p>
+</div>
+<div class="cd">
+  <span class="badge">Complexitate</span>
+  <h4>Costuri computaționale</h4>
+  <code class="fm">Evaluare ℓ_k(x):
+  2(m-1) înmulțiri
+  1 împărțire
+  2m scăderi
+
+Total (L_m f)(x):
+  O(m²) operații per punct
+
+Actualizare nod nou:
+  recalculare completă!</code>
+</div>
+</div>
+</section>
+
+<section id="t-eroare">
+<h2>Eroarea de Interpolare</h2>
+
+<div class="cd green">
+  <span class="badge">Teorema — Restul R_m f</span>
+  <h4>Formula erorii exacte</h4>
+  <p>Dacă f ∈ C^{m+1}[α,β], pentru orice x ∃ξ ∈ (α,β):</p>
+  <code class="fm fmc">R_m f(x) = f(x) - (L_m f)(x) = u_m(x)/(m+1)! · f^{(m+1)}(ξ)</code>
+  <p>unde u_m(x) = (x-x₀)(x-x₁)···(x-x_m) și α=min{x,x₀,...,x_m}, β=max{...}</p>
+</div>
+
+<div class="g2">
+<div class="cd amber">
+  <span class="badge">Marginea erorii</span>
+  <h4>Estimare practică</h4>
+  <code class="fm">|R_m f(x)| ≤ M_{m+1}/(m+1)! · |u_m(x)|
+
+M_{m+1} = max_{[a,b]} |f^{(m+1)}(x)|</code>
+  <p class="note">Valabilă chiar dacă nu cunoaștem ξ exact.</p>
+</div>
+<div class="cd">
+  <span class="badge">Logică de gândire</span>
+  <h4>Cum să calculezi eroarea</h4>
+  <ol class="steps">
+    <li>Identifică f^{(m+1)}(x) — derivata de ordin m+1</li>
+    <li>Estimează M_{m+1} = max|f^{(m+1)}| pe intervalul relevant</li>
+    <li>Calculează |u_m(x)| = ∏|x-x_k|</li>
+    <li>Aplică formula: |err| ≤ M/(m+1)! · |u_m|</li>
+  </ol>
+</div>
+</div>
+</section>
+
+<section id="t-baric">
+<h2>Forma Baricentrică</h2>
+
+<div class="cd purple">
+  <span class="badge">Ideea cheie — de ce baricentrică?</span>
+  <h4>Dezavantajele formei clasice</h4>
+  <p>Forma clasică: O(m²) per evaluare, instabilă numeric, actualizare completă la nod nou. <span class="key">Soluția</span>: se rescrie cu ponderi independente de x.</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Construcție Pas cu Pas</span>
+  <h4>De la clasic la baricentric</h4>
+  <ol class="steps">
+    <li>Definim ℓ(x) = (x-x₀)(x-x₁)···(x-x_m) → ℓ_j(x) = ℓ(x)/(x-x_j)</li>
+    <li>Ponderi baricentrice: w_j = 1/∏_{k≠j}(x_j-x_k) = 1/ℓ'(x_j)</li>
+    <li>Forma I (îmbunătățită): p(x) = ℓ(x)·Σ_j [w_j/(x-x_j)]·f_j</li>
+    <li>Interpolând constanta 1: 1 = ℓ(x)·Σ_j [w_j/(x-x_j)]</li>
+    <li>Împărțind: ℓ(x) se simplifică → Forma II (baricentrică):</li>
+  </ol>
+  <code class="fm fmc">p(x) = [ Σ_j w_j/(x-x_j) · f_j ] / [ Σ_j w_j/(x-x_j) ]</code>
+</div>
+
+<div class="g2">
+<div class="cd green">
+  <span class="badge">Avantaje Forma Baricentrică</span>
+  <h4>De ce e mai bună</h4>
+  <code class="fm">Calculul w_j: O(m²) o singura dată
+Evaluare p(x): O(m) per punct
+Nod nou xm+1:
+  fiecare w_j /= (x_j - x_{m+1})
+  calculezi w_{m+1}
+  cost: O(m)</code>
+</div>
+<div class="cd green">
+  <span class="badge">Caz special xx(i) = x(j)</span>
+  <h4>Evitarea împărțirii la 0</h4>
+  <code class="fm">if xx(i) == x(j):
+    p(xx(i)) = f(j)  ← direct!
+
+(termenii w_j/(xx-x_j) → ∞
+ dar se simplifica corect)</code>
+  <p class="note">Implementarea trebuie să trateze explicit acest caz.</p>
+</div>
+</div>
+</section>
+
+<section id="t-cheb">
+<h2>Noduri Chebyshev — Ponderi Explicite</h2>
+
+<div class="cd amber">
+  <span class="badge">Motivație</span>
+  <h4>De ce Chebyshev? → Minimizarea ‖u_m‖∞</h4>
+  <p>Eroarea: |R_mf| ≤ M_{m+1}/(m+1)! · |u_m(x)|. Nodurile Chebyshev minimizează max|u_m(x)| pe [-1,1].</p>
+  <code class="fm">min ‖u_m‖∞ = 1/2^m  (atins de T̃_{m+1}: polinomul Chebyshev monic)</code>
+</div>
+
+<div class="g2">
+<div class="cd blue">
+  <span class="badge">Chebyshev Speta I</span>
+  <h4>Noduri + ponderi baricentrice</h4>
+  <code class="fm">x_k = cos((2k+1)π/(2m+2))  pe [-1,1]
+k = 0, 1, ..., m
+
+w_k = (-1)^k · sin((2k+1)π/(2m+2))
+
+Pe [a,b]: x̃_k = (a+b)/2 + (b-a)/2·x_k</code>
+  <p class="note">Nu include capetele ±1.</p>
+</div>
+<div class="cd blue">
+  <span class="badge">Chebyshev Speta II</span>
+  <h4>Noduri + ponderi baricentrice</h4>
+  <code class="fm">x_k = cos(kπ/m)  pe [-1,1]
+k = 0, 1, ..., m
+
+δ_k = ½ dacă k=0 sau k=m, altfel 1
+w_k = (-1)^k · δ_k
+
+Pe [a,b]: x̃_k = (a+b)/2 + (b-a)/2·x_k</code>
+  <p class="note">Include capetele ±1. Optim pentru FFT (chebfun).</p>
+</div>
+</div>
+</section>
+
+<!-- ===================================================
+     PROBLEME
+     =================================================== -->
+<hr class="pdiv">
+<div class="part-badge">Probleme — Rezolvare pe Foaie</div>
+
+<section id="p1">
+<h2>Problema 1 — Rutina de evaluare PIL (my_lagrange_eval)</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Implementați evaluarea PIL când se dau punctele, nodurile și valorile</h4>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Algoritmul — Pseudocod</span>
+  <h4>Complexitate O(m²) per punct</h4>
+  <div class="algo">Intrare: x[0..m], y[0..m], puncte xx[0..n-1]
+Ieșire:  yy[0..n-1] = (L_m f)(xx[i])
+
+Pentru fiecare xx[i]:
+  s ← 0
+  Pentru k = 0 până la m:
+    ℓk ← 1
+    Pentru j = 0 până la m (j ≠ k):
+      ℓk ← ℓk * (xx[i] - x[j]) / (x[k] - x[j])
+    s ← s + y[k] * ℓk
+  yy[i] ← s</div>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Exemplu numeric — pe foaie</span>
+  <h4>f(x) = sin(x), noduri x₀=0, x₁=π/4, x₂=π/2 (m=2), evaluare x=π/6</h4>
+  <ol class="steps">
+    <li>Valori: f(0)=0, f(π/4)=√2/2≈0.7071, f(π/2)=1</li>
+    <li>ℓ₀(π/6) = (π/6−π/4)(π/6−π/2) / (0−π/4)(0−π/2) = (−π/12)(−π/3) / (−π/4)(−π/2) = (π²/36)/(π²/8) = 8/36 = 2/9 ≈ 0.2222</li>
+    <li>ℓ₁(π/6) = (π/6−0)(π/6−π/2) / (π/4−0)(π/4−π/2) = (π/6)(−π/3) / (π/4)(−π/4) = (−π²/18)/(−π²/16) = 16/18 = 8/9 ≈ 0.8889</li>
+    <li>ℓ₂(π/6) = (π/6−0)(π/6−π/4) / (π/2−0)(π/2−π/4) = (π/6)(−π/12) / (π/2)(π/4) = (−π²/72)/(π²/8) = −1/9 ≈ −0.1111</li>
+    <li>Verificare: 2/9 + 8/9 + (−1/9) = 9/9 = 1 ✓</li>
+  </ol>
+  <code class="fm">(L₂f)(π/6) = 0·(2/9) + (√2/2)·(8/9) + 1·(−1/9)
+             = 0 + 4√2/9 − 1/9
+             = (4√2 − 1)/9
+             ≈ (5.6569 − 1)/9
+             ≈ 4.6569/9
+             ≈ 0.5174
+
+sin(π/6) = 0.5000  →  eroare ≈ 0.0174</code>
+</div>
+</section>
+
+<section id="p2">
+<h2>Problema 2 — Polinoamele Fundamentale</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Reprezentați grafic ℓ_k pentru grad dat și noduri date</h4>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Logică de gândire</span>
+  <h4>Proprietăți cheie ale ℓ_k</h4>
+  <ol class="steps">
+    <li>ℓ_k are grad m (m+1 noduri → m factori la numărător)</li>
+    <li>ℓ_k(x_j) = δ_kj → la nodul propriu valoarea e 1, la celelalte e 0</li>
+    <li>Suma Σ_k ℓ_k(x) = 1 pentru orice x (partiție a unității)</li>
+    <li>Evaluează ℓ_k pe o grilă fină cu my_lagrange_basis, plotează</li>
+  </ol>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Exemplu pe foaie — m=2, x₀=−1, x₁=0, x₂=1</span>
+  <h4>Calculul formulelor explicite</h4>
+  <code class="fm">ℓ₀(x) = (x−0)(x−1) / ((−1−0)(−1−1)) = x(x−1) / (−1)(−2) = x(x−1)/2
+
+ℓ₁(x) = (x−(−1))(x−1) / (0−(−1))(0−1) = (x+1)(x−1) / (1)(−1) = −(x²−1) = 1−x²
+
+ℓ₂(x) = (x−(−1))(x−0) / (1−(−1))(1−0) = x(x+1) / (2)(1) = x(x+1)/2
+
+Verificare în x=0.5:
+  ℓ₀(0.5) = (0.5)(−0.5)/2 = −0.125
+  ℓ₁(0.5) = 1−0.25 = 0.75
+  ℓ₂(0.5) = (0.5)(1.5)/2 = 0.375
+  Suma = −0.125 + 0.75 + 0.375 = 1.0 ✓</code>
+</div>
+</section>
+
+<section id="p3">
+<h2>Problema 3 — Grafic f și L_mf</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Plot f și L_mf pe același grafic pentru diverse grade m</h4>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Strategia</span>
+  <h4>Ce observăm pe grafic</h4>
+  <ol class="steps">
+    <li>Alege f cunoscută (sin, 1/(1+x²), eˣ)</li>
+    <li>Generează noduri uniforme sau Chebyshev</li>
+    <li>Evaluează L_mf pe o grilă fină (500+ puncte)</li>
+    <li>Plot f cu linie neagră groasă, L_mf cu culori diferite per m</li>
+    <li>Mărește m → observi convergența (sau divergența la Runge!)</li>
+  </ol>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Nota despre Runge</span>
+  <h4>De ce e importantă alegerea nodurilor</h4>
+  <p>Pentru f(x)=1/(1+x²) pe [−5,5], interpolarea cu noduri <span class="key">uniforme diverge</span> la margini (|x|>3.633). Cu noduri <span class="key">Chebyshev convergează</span> uniform.</p>
+  <code class="fm">Noduri uniforme m=16:  max|err| >> 1  (divergenta!)
+Noduri Chebyshev m=16: max|err| < 10^{-6}  (convergenta!)</code>
+</div>
+</section>
+
+<section id="p4">
+<h2>Problema 4 — Aproximarea lui f(x)</h2>
+
+<section id="p4a">
+<h3>4a — f(x) = exp(x²−1), aproxima f(1.25)</h3>
+
+<div class="cd">
+  <span class="badge">Date problemă</span>
+  <h4>Noduri: x = 1.0, 1.1, 1.2, 1.3, 1.4</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>k</th><th>x_k</th><th>f(x_k) = e^{x²−1}</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>1.0</td><td>e⁰ = 1.0000000</td></tr>
+        <tr><td>1</td><td>1.1</td><td>e^{0.21} = 1.2336781</td></tr>
+        <tr><td>2</td><td>1.2</td><td>e^{0.44} = 1.5527072</td></tr>
+        <tr><td>3</td><td>1.3</td><td>e^{0.69} = 1.9937155</td></tr>
+        <tr><td>4</td><td>1.4</td><td>e^{0.96} = 2.6117019</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Rezolvare pe foaie — m=1 (interpolarea liniară ca exemplu)</span>
+  <h4>L₁f(1.25) cu x₀=1.2, x₁=1.3</h4>
+  <ol class="steps">
+    <li>ℓ₀(1.25) = (1.25−1.3)/(1.2−1.3) = (−0.05)/(−0.1) = 0.5</li>
+    <li>ℓ₁(1.25) = (1.25−1.2)/(1.3−1.2) = 0.05/0.1 = 0.5</li>
+    <li>L₁f(1.25) = f(1.2)·0.5 + f(1.3)·0.5 = (1.5527+1.9937)/2 = 1.7732</li>
+    <li>Exact: f(1.25) = e^{1.5625−1} = e^{0.5625} = 1.7551...</li>
+    <li>Eroare: |1.7732 − 1.7551| ≈ 0.018</li>
+  </ol>
+</div>
+
+<div class="cd green">
+  <span class="badge">Margine eroare pentru m=4 (toate nodurile)</span>
+  <h4>|R₄f(1.25)| ≤ M₅/5! · |u₄(1.25)|</h4>
+  <code class="fm">u₄(1.25) = (1.25-1.0)(1.25-1.1)(1.25-1.2)(1.25-1.3)(1.25-1.4)
+         = (0.25)(0.15)(0.05)(-0.05)(-0.15)
+         = 0.25 · 0.15 · 0.05 · 0.05 · 0.15
+         = 0.000140625  ← produs valori absolute
+
+|u₄(1.25)| = 0.000140625
+
+f^(5)(x) pentru exp(x²-1) → M₅ ≈ calculat numeric ≈ 80 pe [1, 1.4]
+
+|R₄f(1.25)| ≤ 80/120 · 0.000140625 ≈ 9.4·10⁻⁵</code>
+  <p class="note">Eroarea reală cu m=4 este ~10⁻⁷, margine e conservativă. Mai precis: M₅ exact ≈ 31, deci margine ≈ 3.6·10⁻⁵.</p>
+</div>
+
+<div class="tbl">
+  <table>
+    <thead><tr><th>m</th><th>L_mf(1.25)</th><th>f(1.25) exact</th><th>Eroare</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>1.77320935</td><td rowspan="4">1.75505088</td><td>1.8·10⁻²</td></tr>
+      <tr><td>2</td><td>1.75508984</td><td>3.9·10⁻⁵</td></tr>
+      <tr><td>3</td><td>1.75505063</td><td>2.5·10⁻⁷</td></tr>
+      <tr><td>4</td><td>1.75505088</td><td>< 10⁻⁹</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<section id="p4b">
+<h3>4b — Aproxima √115 cu 3 zecimale exacte</h3>
+
+<div class="cd">
+  <span class="badge">Idee</span>
+  <h4>f(x) = √x la x = 115, noduri = pătrate perfecte aproape de 115</h4>
+  <p>Alege noduri: 100=10², 121=11², 144=12², 169=13² → valorile √x = 10, 11, 12, 13</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Rezolvare pe foaie — m=3 (4 noduri)</span>
+  <h4>x₀=100, x₁=121, x₂=144, x₃=169, x=115</h4>
+  <ol class="steps">
+    <li>ℓ₀(115) = (115−121)(115−144)(115−169) / ((100−121)(100−144)(100−169))<br>
+        = (−6)(−29)(−54) / ((−21)(−44)(−69)) = −9396/(−63756) = <strong>0.14737</strong></li>
+    <li>ℓ₁(115) = (115−100)(115−144)(115−169) / ((121−100)(121−144)(121−169))<br>
+        = (15)(−29)(−54) / ((21)(−23)(−48)) = 23490/23184 = <strong>1.01320</strong></li>
+    <li>ℓ₂(115) = (115−100)(115−121)(115−169) / ((144−100)(144−121)(144−169))<br>
+        = (15)(−6)(−54) / ((44)(23)(−25)) = 4860/(−25300) = <strong>−0.19209</strong></li>
+    <li>ℓ₃(115) = (115−100)(115−121)(115−144) / ((169−100)(169−121)(169−144))<br>
+        = (15)(−6)(−29) / ((69)(48)(25)) = 2610/82800 = <strong>0.03152</strong></li>
+    <li>Verificare: 0.14737 + 1.01320 − 0.19209 + 0.03152 = 1.00000 ✓</li>
+  </ol>
+  <code class="fm">L₃f(115) = 10·0.14737 + 11·1.01320 + 12·(−0.19209) + 13·0.03152
+         = 1.4737 + 11.1452 − 2.3051 + 0.4098
+         = 10.7236
+
+√115 exact = 10.72381...
+Eroare = |10.7236 − 10.72381| ≈ 0.0002 < 0.0005
+
+→ 10.724 corect la 3 zecimale ✓</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Margine eroare (m=3)</span>
+  <h4>Confirmare teoretică a preciziei</h4>
+  <code class="fm">f(x)=√x, f^(4)(x) = (15/16)·x^{−7/2}
+M₄ = max_{[100,169]} |f^(4)| = (15/16)·100^{−3.5} = 9.375·10⁻⁸
+
+|u₃(115)| = 15·6·29·54 = 141480
+
+|R₃f(115)| ≤ 9.375·10⁻⁸ / 24 · 141480
+           ≈ 5.5·10⁻⁴ ← < 0.001
+
+→ Cel puțin 2 zecimale garantate teoretic.
+  Eroarea reală e mai mică (≈ 2·10⁻⁴).</code>
+</div>
+</section>
+
+<section id="p4c">
+<h3>4c — sin(5°) și cos(5°)</h3>
+
+<div class="cd">
+  <span class="badge">Date problemă</span>
+  <h4>Tabela din laborator (radiani)</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>x_k</th><th>0</th><th>π/6</th><th>π/4</th><th>π/3</th><th>π/2</th></tr></thead>
+      <tbody>
+        <tr><th>sin(x)</th><td>0</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td></tr>
+        <tr><th>cos(x)</th><td>1</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>x = 5° = π/36 ≈ 0.08727 rad. Cu m=4 (toate 5 nodurile).</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Rezolvare sin(5°) — pe foaie (m=1 liniar, primele 2 noduri)</span>
+  <h4>Exemplu simplificat cu x₀=0, x₁=π/6 pentru intuiție</h4>
+  <ol class="steps">
+    <li>ℓ₀(π/36) = (π/36−π/6)/(0−π/6) = (−5π/36)/(−π/6) = 5/6</li>
+    <li>ℓ₁(π/36) = (π/36−0)/(π/6−0) = (π/36)/(π/6) = 1/6</li>
+    <li>L₁sin(π/36) = sin(0)·5/6 + sin(π/6)·1/6 = 0 + (1/2)·(1/6) = 1/12 ≈ 0.0833</li>
+    <li>sin(5°) ≈ 0.0872 → eroare ≈ 0.004 (așteptată pentru grad 1)</li>
+  </ol>
+  <code class="fm">Cu m=4 (toate 5 nodurile):
+  sin(5°): L₄f(π/36) = 0.08715574...
+  exact:               0.08715574...
+  eroare ≈ 10⁻⁹  ← practic exact!
+
+  cos(5°): L₄f(π/36) = 0.99619469...
+  exact:               0.99619469...
+  eroare ≈ 10⁻⁹</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Margine eroare m=4</span>
+  <code class="fm">f^(5)(sin x) = cos x, M₅ ≤ 1
+
+|u₄(π/36)| = (π/36)·|π/36−π/6|·|π/36−π/4|·|π/36−π/3|·|π/36−π/2|
+           = (π/36)·(5π/36)·(8π/36)·(11π/36)·(17π/36)
+           = π⁵/36⁵ · 7480 ≈ 3.78·10⁻²
+
+|R₄sin(π/36)| ≤ 1/120 · 3.78·10⁻² ≈ 3.15·10⁻⁴
+
+Garantat 3 zecimale. Eroarea reală: ~10⁻⁹ (f=sin e analitică).</code>
+</div>
+</section>
+
+<section id="p4d">
+<h3>4d — Populația SUA: 1975 și 2018</h3>
+
+<div class="cd">
+  <span class="badge">Date problemă</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Anul</th><th>1900</th><th>1910</th><th>...</th><th>2000</th><th>2010</th></tr></thead>
+      <tbody>
+        <tr><td>Pop (mln)</td><td>75.995</td><td>91.972</td><td>...</td><td>281.422</td><td>308.786</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Strategia — care grad să folosim?</span>
+  <h4>Logică de gândire pentru date tabelate</h4>
+  <ol class="steps">
+    <li>1975 e ÎNTRE 1970 și 1980 → preferabil noduri locale (1960, 1970, 1980, 1990)</li>
+    <li>2018 e în EXTRAPOLARE (după 2010) → mai riscant, eroarea crește</li>
+    <li>Grad mic (m=3–5) e mai sigur decât grad mare (oscilații!)</li>
+    <li>Cu toate 12 noduri (m=11), pentru 1975 rezultat bun, pentru 2018 extrapolare riscantă</li>
+  </ol>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Exemplu manual — 1975 cu m=1 (linear, 1970 și 1980)</span>
+  <code class="fm">x₀=1970, f(1970)=203.212
+x₁=1980, f(1980)=226.505
+x=1975
+
+ℓ₀(1975) = (1975-1980)/(1970-1980) = -5/-10 = 0.5
+ℓ₁(1975) = (1975-1970)/(1980-1970) = 5/10 = 0.5
+
+L₁f(1975) = 0.5·203.212 + 0.5·226.505
+           = 101.606 + 113.2525
+           = 214.858 milioane
+
+Valoare reală ~215.5 mln → eroare ~0.6 mln</code>
+</div>
+</section>
+
+<section id="p5">
+<h2>Problema 5 — Metoda Baricentrică</h2>
+
+<section id="p5gen">
+<h3>5a — Caz general: calculul w_j și evaluarea p(x)</h3>
+
+<div class="cd blue">
+  <span class="badge">Algoritm complet</span>
+  <div class="algo">PASUL 1 — Calculul ponderilor (O(m²), o singura dată):
+  Pentru j = 0 până la m:
+    w[j] ← 1
+    Pentru k = 0 până la m (k ≠ j):
+      w[j] ← w[j] · (x[j] - x[k])
+    w[j] ← 1/w[j]
+
+PASUL 2 — Evaluare în x (O(m) per punct):
+  numer ← 0, denom ← 0
+  Pentru j = 0 până la m:
+    dacă x == x[j]: return f[j]  ← exact pe nod
+    tmp   ← w[j] / (x - x[j])
+    numer ← numer + tmp · f[j]
+    denom ← denom + tmp
+  return numer/denom</div>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Exemplu numeric — pe foaie: m=2, x₀=0, x₁=1, x₂=2</span>
+  <h4>Calcul ponderi w_j</h4>
+  <ol class="steps">
+    <li>w₀ = 1/((x₀−x₁)(x₀−x₂)) = 1/((0−1)(0−2)) = 1/(2) = 0.5</li>
+    <li>w₁ = 1/((x₁−x₀)(x₁−x₂)) = 1/((1−0)(1−2)) = 1/(−1) = −1</li>
+    <li>w₂ = 1/((x₂−x₀)(x₂−x₁)) = 1/((2−0)(2−1)) = 1/(2) = 0.5</li>
+  </ol>
+  <code class="fm">Evaluare f(x)=eˣ la x=0.5 (cu y₀=1, y₁=e, y₂=e²):
+
+  diff = [0.5-0, 0.5-1, 0.5-2] = [0.5, -0.5, -1.5]
+  tmp  = [0.5/0.5, -1/-0.5, 0.5/-1.5] = [1, 2, -0.333]
+
+  numer = 1·1 + 2·e + (-0.333)·e² = 1 + 5.436 - 2.463 = 3.973
+  denom = 1 + 2 + (-0.333) = 2.667
+
+  p(0.5) = 3.973/2.667 = 1.4898
+
+  e^0.5 = 1.6487  →  eroare ≈ 0.16 (m=2, echidistant, de așteptat)</code>
+</div>
+</section>
+
+<section id="p5cheb">
+<h3>5b,c — Chebyshev I și II: ponderi explicite</h3>
+
+<div class="g2">
+<div class="cd blue">
+  <span class="badge">Chebyshev I — m=3 pe [-1,1]</span>
+  <h4>Calcul explicit w_k</h4>
+  <code class="fm">k = 0,1,2,3
+x_k = cos((2k+1)π/8)
+x₀=cos(π/8) ≈ 0.924
+x₁=cos(3π/8) ≈ 0.383
+x₂=cos(5π/8) ≈ -0.383
+x₃=cos(7π/8) ≈ -0.924
+
+w_k = (-1)^k·sin((2k+1)π/8):
+w₀ = sin(π/8) ≈ 0.383
+w₁ = -sin(3π/8) ≈ -0.924
+w₂ = sin(5π/8) ≈ 0.924
+w₃ = -sin(7π/8) ≈ -0.383</code>
+</div>
+<div class="cd blue">
+  <span class="badge">Chebyshev II — m=3 pe [-1,1]</span>
+  <h4>Calcul explicit w_k</h4>
+  <code class="fm">k = 0,1,2,3
+x_k = cos(kπ/3):
+x₀=cos(0)=1, x₁=cos(π/3)=0.5
+x₂=cos(2π/3)=-0.5, x₃=cos(π)=-1
+
+δ = [1/2, 1, 1, 1/2]
+
+w_k = (-1)^k · δ_k:
+w₀ = +0.5
+w₁ = -1
+w₂ = +1
+w₃ = -0.5</code>
+</div>
+</div>
+
+<div class="cd green">
+  <span class="badge">De ce Chebyshev II e special</span>
+  <h4>Proprietăți remarcabile</h4>
+  <ol class="steps">
+    <li>Ponderile au formă simplă: {½, −1, +1, −1, ..., ±½} → ușor de calculat</li>
+    <li>Includ capetele intervalului (x₀=b, x_m=a) → interpolare cu valori la capete</li>
+    <li>Compatibil cu FFT → evaluare în O(m·log(m)) cu chebfun</li>
+    <li>Convergent spectral pentru funcții analitice: ‖err‖ = O(C^{−m}), C > 1</li>
+  </ol>
+</div>
+</section>
+</section>
+
+<!-- ===================================================
+     CONTRAEXEMPLE
+     =================================================== -->
+<section id="runge">
+<h2>Contraexemplele Runge și Bernstein</h2>
+
+<div class="g2">
+<div class="cd red">
+  <span class="badge">Contraexemplul Runge (1901)</span>
+  <h4>f(x) = 1/(1+x²) pe [-5,5], noduri uniforme</h4>
+  <code class="fm">lim_{m→∞} |f(x) - p_m(x)| =
+  { 0,   dacă |x| < 3.633...
+  { ∞,   dacă |x| > 3.633...
+
+Cauza: f are poli complecși z = ±i,
+apropiați de intervalul real [-5,5].
+Distribuția uniformă amplifică erorile
+la margine prin oscilații.</code>
+  <p class="note">Soluție: noduri Chebyshev → convergent pretutindeni pe [-5,5].</p>
+</div>
+<div class="cd red">
+  <span class="badge">Contraexemplul Bernstein</span>
+  <h4>f(x) = |x| pe [-1,1], noduri uniforme</h4>
+  <code class="fm">lim_{m→∞} |f(x) - L_m(f;x)| = ∞
+∀x ∈ [-1,1]  (exceptând x=-1,0,1)
+
+Cauza: f nu e derivabilă în x=0
+(colț = derivată discontinuă).
+Noduri uniforme nu ajută.
+
+Cu noduri Chebyshev: convergența
+se îmbunătățește dar rămâne lentă
+(O(1/m) pentru funcții cu colț).</code>
+</div>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Concluzie generală</span>
+  <h4>Când să folosim ce metodă</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Situație</th><th>Metodă recomandată</th><th>Convergență</th></tr></thead>
+      <tbody>
+        <tr><td>f analitică, noduri libere</td><td>Chebyshev II + baricentric</td><td>Geometrică O(C^{-m})</td></tr>
+        <tr><td>f analitică, noduri fixe uniforme</td><td>Spline cubice</td><td>O(h⁴) = O(n⁻⁴)</td></tr>
+        <tr><td>f cu colțuri (f' discontinuă)</td><td>Spline liniar sau cubic C¹</td><td>O(h²) sau O(h⁴)</td></tr>
+        <tr><td>Grad necunoscut</td><td>Aitken/Neville cu criteriu stop</td><td>Adaptivă</td></tr>
+        <tr><td>Date tabelate, evaluare repetată</td><td>Baricentric (precompute w_j)</td><td>O(m) per eval</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links = document.querySelectorAll('.sb-a');
+  const secs = Array.from(document.querySelectorAll('section[id]'));
+  const scrollY = window.scrollY + 80;
+  let active = null;
+  secs.forEach(s => { if(s.offsetTop <= scrollY) active = s.id; });
+  links.forEach(l => {
+    const href = l.getAttribute('href').replace('#','');
+    l.classList.toggle('on', href === active);
+  });
+}
+document.addEventListener('scroll', updateNav, {passive: true});
+window.addEventListener('load', updateNav);
+</script>
+</body>
+</html>

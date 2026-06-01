@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab09 — Interpolare Spline Cubică | Teorie + Rezolvări</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --bd:rgba(0,0,0,0.11);--sb:220px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:3px}#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-hd{padding:1.1rem 1rem .8rem;border-bottom:1px solid var(--bd);margin-bottom:.4rem}
+.sb-hd h1{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-hd p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.85rem 1rem .2rem}
+.sb-a{display:block;padding:.27rem 1rem .27rem 1.35rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:2rem;font-size:12px}
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}
+.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}
+.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}.purple .badge{color:var(--purple)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14.5px;padding:13px 14px}
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:9px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11.5px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.pdiv{border:none;border-top:3px solid var(--bd);margin:2.5rem 0 2rem}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab09 — Spline</h1><p>Teorie + Rezolvări pe Foaie</p></div>
+  <div class="sb-pt">Teorie</div>
+  <a class="sb-a" href="#t-intro">Spline cubic S²₃(Δ)</a>
+  <a class="sb-a" href="#t-coef">Coeficienți Taylor</a>
+  <a class="sb-a" href="#t-sistem">Sistemul tridiagonal</a>
+  <a class="sb-a" href="#t-tipuri">Tipuri de spline</a>
+  <a class="sb-a" href="#t-eval">Evaluare (Horner)</a>
+  <a class="sb-a" href="#t-param">Spline parametric</a>
+  <div class="sb-pt">Probleme</div>
+  <a class="sb-a" href="#p1">Prob 1 — Coef + Evaluare</a>
+  <a class="sb-a sb-a2" href="#p1-hand">→ Rezolvare pe foaie</a>
+  <a class="sb-a" href="#p2">Prob 2 — Parametric</a>
+  <a class="sb-a" href="#p3">Prob 3 — Litera</a>
+</nav>
+
+<main id="main">
+
+<!-- ===== TEORIE ===== -->
+
+<section id="t-intro">
+<h2>Spline Cubic S²₃(Δ)</h2>
+
+<div class="cd blue">
+  <span class="badge">Definiție</span>
+  <h4>Funcție pe porțiuni, C²[a,b], cubică pe fiecare interval</h4>
+  <p>Fie Δ: x₁ &lt; x₂ &lt; … &lt; xₙ. Un <span class="key">spline cubic</span> este s ∈ C²[a,b] cu s|_{[xᵢ,xᵢ₊₁]} ∈ P₃.</p>
+  <p>Condiții de interpolare: s(xᵢ) = f(xᵢ), i=1,…,n. Avem n-1 cubice × 4 coef = 4(n-1) parametri, și (n-2)×3 condiții de continuitate C² + n condiții de interpolare → <span class="key">n+2 grade de libertate</span> → 2 condiții la capete.</p>
+</div>
+</section>
+
+<section id="t-coef">
+<h2>Coeficienții Taylor pe Intervale</h2>
+
+<div class="cd blue">
+  <span class="badge">Forma locală (Taylor în xᵢ)</span>
+  <h4>pe intervalul [xᵢ, xᵢ₊₁], cu hᵢ = xᵢ₊₁ − xᵢ</h4>
+  <code class="fm">s(x) = c₄ + c₃·(x-xᵢ) + c₂·(x-xᵢ)² + c₁·(x-xᵢ)³
+
+Fie mᵢ = s'(xᵢ)  și  f[xᵢ,xᵢ₊₁] = (fᵢ₊₁-fᵢ)/hᵢ
+
+Atunci:
+  c₄ = fᵢ
+  c₃ = mᵢ
+  c₂ = (3·f[xᵢ,xᵢ₊₁] - 2mᵢ - mᵢ₊₁) / hᵢ
+  c₁ = (mᵢ + mᵢ₊₁ - 2·f[xᵢ,xᵢ₊₁]) / hᵢ²</code>
+  <p class="note">Odată rezolvat sistemul pentru m₁,…,mₙ, coeficienții se calculează direct.</p>
+</div>
+</section>
+
+<section id="t-sistem">
+<h2>Sistemul Tridiagonal pentru mᵢ</h2>
+
+<div class="cd blue">
+  <span class="badge">Ecuațiile interioare (continuitatea s'')</span>
+  <h4>Condiția p''ᵢ₋₁(xᵢ) = p''ᵢ(xᵢ) pentru i=2,…,n-1:</h4>
+  <code class="fm">hᵢ·mᵢ₋₁ + 2(hᵢ₋₁+hᵢ)·mᵢ + hᵢ₋₁·mᵢ₊₁ = bᵢ
+
+bᵢ = 3·(hᵢ·f[xᵢ₋₁,xᵢ] + hᵢ₋₁·f[xᵢ,xᵢ₊₁])
+hᵢ = xᵢ₊₁ - xᵢ</code>
+  <p>Sistemul complet este <span class="key">tridiagonal</span> → rezolvare eficientă O(n) cu algoritmul Thomas.</p>
+</div>
+</section>
+
+<section id="t-tipuri">
+<h2>Tipuri de Spline — Condiții la Capete</h2>
+
+<div class="g2">
+<div class="cd amber">
+  <span class="badge">Tip 0 — Complet (Clamped)</span>
+  <h4>s'(a) = f'(a), s'(b) = f'(b)</h4>
+  <code class="fm">Prima ecuatie:  m₁ = f'(a)
+Ultima ecuatie: mₙ = f'(b)</code>
+  <p class="note">Cel mai precis: O(h⁴). Necesită f'(a) și f'(b).</p>
+</div>
+<div class="cd amber">
+  <span class="badge">Tip 1 — Derivate secunde</span>
+  <h4>s''(a) = f''(a), s''(b) = f''(b)</h4>
+  <code class="fm">Prima:  2m₁ + m₂ = 3f[x₁,x₂] - h₁/2·f''(a)
+Ultima: mₙ₋₁ + 2mₙ = 3f[xₙ₋₁,xₙ] + hₙ/2·f''(b)</code>
+  <p class="note">Precizie O(h⁴). Necesită f''(a) și f''(b).</p>
+</div>
+<div class="cd amber">
+  <span class="badge">Tip 2 — Natural</span>
+  <h4>s''(a) = s''(b) = 0</h4>
+  <code class="fm">Tip 1 cu f''(a) = f''(b) = 0:
+Prima:  2m₁ + m₂ = 3f[x₁,x₂]
+Ultima: mₙ₋₁ + 2mₙ = 3f[xₙ₋₁,xₙ]</code>
+  <p class="note">Cel mai neted (∫s''²dx minimal). Precizie O(h²) la capete. Nu necesită derivate.</p>
+</div>
+<div class="cd amber">
+  <span class="badge">Tip 3 — Not-a-Knot (deBoor)</span>
+  <h4>s'''continuă în x₂ și xₙ₋₁</h4>
+  <code class="fm">Impune p₁ ≡ p₂ și pₙ₋₂ ≡ pₙ₋₁
+(primele două cubice identice, ultimele două identice)
+Precizie O(h⁴). Nu necesită derivate.
+Folosit implicit în MATLAB spline().</code>
+</div>
+</div>
+
+<div class="cd">
+  <span class="badge">Comparatie rapida</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Tip</th><th>Condiții la capete</th><th>Date extra</th><th>Precizie</th></tr></thead>
+      <tbody>
+        <tr><td class="hi">Complet</td><td>s'=f'(a,b)</td><td>f'(a), f'(b)</td><td class="hi2">O(h⁴)</td></tr>
+        <tr><td>D2</td><td>s''=f''(a,b)</td><td>f''(a), f''(b)</td><td>O(h⁴)</td></tr>
+        <tr><td>Natural</td><td>s''=0 la capete</td><td>nimic</td><td>O(h²) capete</td></tr>
+        <tr><td class="hi">deBoor</td><td>s''' cont. în x₂,xₙ₋₁</td><td>nimic</td><td class="hi2">O(h⁴)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<section id="t-eval">
+<h2>Evaluarea Spline-ului (Schema Horner)</h2>
+
+<div class="cd green">
+  <span class="badge">Pe intervalul [xₖ, xₖ₊₁]</span>
+  <h4>Schema Horner pentru evaluare eficientă O(n)</h4>
+  <code class="fm">s = t - xₖ                        (distanta pana la nodul stang)
+z = c₄ + s*(c₃ + s*(c₂ + s*c₁))  (Horner: 3 inmultiri, 3 adunari)</code>
+  <p>Localizarea intervalului: binar search sau scanare liniară.</p>
+</div>
+</section>
+
+<section id="t-param">
+<h2>Spline Parametric (Prob 2 și 3)</h2>
+
+<div class="cd purple">
+  <span class="badge">Idee — două spline independente</span>
+  <h4>Curba (x(t), y(t)) parametrizată cu t = 0, 1, ..., N-1</h4>
+  <ol class="steps">
+    <li>Date: puncte (x₁,y₁), ..., (xₙ,yₙ) în plan</li>
+    <li>Parametru: t = 0, 1, ..., N-1 (index simplu)</li>
+    <li>Calculează coeficienți pentru x(t): <code>cx = my_cubic_spline(t, x, 2)</code></li>
+    <li>Calculează coeficienți pentru y(t): <code>cy = my_cubic_spline(t, y, 2)</code></li>
+    <li>Evaluează pe grilă fină tt: <code>xx=my_eval_spline(t,cx,tt); yy=my_eval_spline(t,cy,tt)</code></li>
+    <li>Plot (xx, yy) → curba netedă prin toate punctele</li>
+  </ol>
+  <p class="note">Funcționează pentru orice curbă plană, inclusiv curbe închise (dacă primul și ultimul punct coincid).</p>
+</div>
+</section>
+
+<!-- ===== PROBLEME ===== -->
+<hr class="pdiv">
+
+<section id="p1">
+<h2>Problema 1 — Coeficienți + Evaluare</h2>
+
+<div class="cd">
+  <span class="badge">Funcții MATLAB</span>
+  <code class="fm">c = my_cubic_spline(x, f, type, der)   % coeficienti
+z = my_eval_spline(x, c, t)           % evaluare</code>
+</div>
+
+<section id="p1-hand">
+<h3>Rezolvare pe foaie — exemplu simplu</h3>
+
+<div class="cd amber">
+  <span class="badge">Date: n=3 noduri, spline natural</span>
+  <h4>x = [0, 1, 2], f = [0, 1, 0] → s''(0)=s''(2)=0</h4>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 1 — Diferente dividate și pași</span>
+  <code class="fm">h₁ = x₂-x₁ = 1,  h₂ = x₃-x₂ = 1
+f[x₁,x₂] = (1-0)/1 = 1
+f[x₂,x₃] = (0-1)/1 = -1</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 2 — Sistemul 3×3 (natural: s''=0 la capete)</span>
+  <code class="fm">Ecuatia 1 (cap. stang, natural):  2m₁ + m₂ = 3·f[x₁,x₂] = 3
+Ecuatia 2 (interioara):
+  h₂·m₁ + 2(h₁+h₂)·m₂ + h₁·m₃ = 3(h₂·f[x₁,x₂] + h₁·f[x₂,x₃])
+  1·m₁ + 4·m₂ + 1·m₃ = 3(1·1 + 1·(-1)) = 0
+Ecuatia 3 (cap. drept, natural):  m₂ + 2m₃ = 3·f[x₂,x₃] = -3
+
+Sistemul:
+  [2  1  0] [m₁]   [3 ]
+  [1  4  1] [m₂] = [0 ]
+  [0  1  2] [m₃]   [-3]
+
+Solutie: m₁ = 3/2, m₂ = 0, m₃ = -3/2</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Pasul 3 — Coeficienții pe [x₁,x₂]=[0,1]</span>
+  <code class="fm">c₄ = f(0) = 0
+c₃ = m₁ = 3/2
+c₂ = (3·f[0,1] - 2m₁ - m₂)/h₁ = (3·1 - 3 - 0)/1 = 0
+c₁ = (m₁ + m₂ - 2·f[0,1])/h₁² = (3/2 + 0 - 2)/1 = -1/2
+
+s(x) = 0 + (3/2)x + 0·x² + (-1/2)x³ = 3x/2 - x³/2  pe [0,1]
+
+Verificare: s(0)=0 ✓, s(1)=3/2-1/2=1 ✓, s'(0)=3/2=m₁ ✓</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Pasul 3b — Coeficienții pe [x₂,x₃]=[1,2]</span>
+  <code class="fm">c₄ = f(1) = 1
+c₃ = m₂ = 0
+c₂ = (3·f[1,2] - 2m₂ - m₃)/h₂ = (3·(-1) - 0 + 3/2)/1 = -3/2
+c₁ = (m₂ + m₃ - 2·f[1,2])/h₂² = (0 - 3/2 + 2)/1 = 1/2
+
+s(x) = 1 + 0·(x-1) - (3/2)(x-1)² + (1/2)(x-1)³  pe [1,2]
+
+Verificare: s(1)=1 ✓, s(2)=1-3/2+1/2=0 ✓</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Evaluare în t=0.5 (Horner)</span>
+  <code class="fm">Intervalul k=1 (t=0.5 ∈ [0,1]):
+  s = 0.5 - 0 = 0.5
+  z = 0 + 0.5*(3/2 + 0.5*(0 + 0.5*(-1/2)))
+    = 0 + 0.5*(1.5 + 0.5*(-0.25))
+    = 0 + 0.5*(1.5 - 0.125)
+    = 0 + 0.5*1.375 = 0.6875</code>
+</div>
+</section>
+</section>
+
+<section id="p2">
+<h2>Problema 2 — Spline Cubic Parametric</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Desenați o curbă spline cubică parametrică printr-o mulțime de puncte</h4>
+  <p>Funcție: <code>my_spline_param(pts, type)</code> — returnează (xx, yy) pe grilă fină.</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Algoritm</span>
+  <ol class="steps">
+    <li>Parametru t = [0, 1, 2, ..., N-1]</li>
+    <li>cx = my_cubic_spline(t, pts(:,1), 2) → coeficienți pentru x(t)</li>
+    <li>cy = my_cubic_spline(t, pts(:,2), 2) → coeficienți pentru y(t)</li>
+    <li>tt = linspace(0, N-1, 500) → grilă fină de evaluare</li>
+    <li>xx = my_eval_spline(t, cx, tt), yy = my_eval_spline(t, cy, tt)</li>
+    <li>plot(xx, yy) → curba netedă</li>
+  </ol>
+</div>
+
+<div class="cd amber">
+  <span class="badge">De ce funcționează parametrizarea cu index?</span>
+  <p>Fiecare nod k are parametrul t=k. Spline-ul pe t garantează că curba trece exact prin punctele (x(k), y(k)) și este netedă (C² în parametru t). Alternativă mai bună: parametrizare prin lungime de arc, dar mai complexă.</p>
+</div>
+</section>
+
+<section id="p3">
+<h2>Problema 3 — Literele PostScript/TrueType</h2>
+
+<div class="cd amber">
+  <span class="badge">Date problemă — litera de mână</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>t</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr></thead>
+      <tbody>
+        <tr><th>x</th><td>3</td><td>1.75</td><td>0.90</td><td>0</td><td>0.50</td><td>1.50</td><td>3.25</td><td>4.25</td><td>4.25</td><td>3</td><td>3.75</td><td>6.00</td></tr>
+        <tr><th>y</th><td>4</td><td>1.60</td><td>0.50</td><td>0</td><td>1.00</td><td>0.50</td><td>0.50</td><td>2.25</td><td>4.00</td><td>4</td><td>4.25</td><td>4.25</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">3a — Litera normală</span>
+  <code class="fm">pts = [x_lit(:), y_lit(:)];
+[xx, yy] = my_spline_param(pts, 2);
+plot(xx, yy, 'b-', 'LineWidth', 2);</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">3b — Litera dublă în x</span>
+  <code class="fm">Dublarea fontului in directia x: inlocuieste x cu 2*x
+[xx2, yy2] = my_spline_param([2*x_lit(:), y_lit(:)], 2);
+hold on; plot(xx2, yy2, 'r--');</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">3c — Animație comet</span>
+  <code class="fm">figure; comet(xx, yy);
+% comet deseneaza progresiv, simuland scrierea literei</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">3d — Altă literă</span>
+  <p>Orice altă literă poate fi definită prin 8-15 puncte de control. Recomandare: literele simple (I, L, T) pentru început, litere curbate (S, C, O) pentru demo mai vizual.</p>
+</div>
+
+<div class="cd purple">
+  <span class="badge">Conexiunea cu fonturile reale</span>
+  <p>Fonturile PostScript și TrueType folosesc <span class="key">curbe Bézier cubice</span> (înrudite cu spline Hermite) pentru a stoca literele cu câțiva parametri. Un font complet poate fi stocat în câțiva KB, redabil la orice rezoluție. De aceea fonturile vectoriale arată bine la orice dimensiune.</p>
+</div>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links = document.querySelectorAll('.sb-a');
+  const secs  = Array.from(document.querySelectorAll('section[id]'));
+  const scrollY = window.scrollY + 80;
+  let active = null;
+  secs.forEach(s => { if(s.offsetTop <= scrollY) active = s.id; });
+  links.forEach(l => {
+    const href = l.getAttribute('href').replace('#','');
+    l.classList.toggle('on', href === active);
+  });
+}
+document.addEventListener('scroll', updateNav, {passive:true});
+window.addEventListener('load', updateNav);
+</script>
+</body>
+</html>

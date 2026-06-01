@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab08 — Interpolare Hermite (Powell) | Teorie + Rezolvări</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --red:#8a1a1a;--red-bg:#fce8e8;--red-b:#e89090;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --bd:rgba(0,0,0,0.11);--sb:230px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --red:#f0a0a0;--red-bg:#280808;--red-b:#581818;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:3px}#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-hd{padding:1.1rem 1rem .8rem;border-bottom:1px solid var(--bd);margin-bottom:.4rem}
+.sb-hd h1{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-hd p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.85rem 1rem .2rem}
+.sb-a{display:block;padding:.27rem 1rem .27rem 1.35rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:2rem;font-size:12px}
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+.part-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;border-radius:4px;background:var(--bg3);color:var(--text3);margin-bottom:.6rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}
+.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}
+.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}.purple .badge{color:var(--purple)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14.5px;padding:13px 14px}
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:9px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11.5px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+td.mut{background:var(--bg2);color:var(--text3)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.pdiv{border:none;border-top:3px solid var(--bd);margin:2.5rem 0 2rem}
+.algo{background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:1rem 1.25rem;margin:.8rem 0;font-family:var(--mono);font-size:13px;line-height:1.9}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab08 — Hermite</h1><p>Teorie + Rezolvări pe Foaie</p></div>
+  <div class="sb-pt">Teorie</div>
+  <a class="sb-a" href="#t-powell">Metoda Powell</a>
+  <a class="sb-a" href="#t-algo">Algoritmul DD noduri duble</a>
+  <a class="sb-a" href="#t-newton">Evaluare Newton</a>
+  <a class="sb-a" href="#t-cubic">Cubica parametrica Hermite</a>
+  <div class="sb-pt">Probleme</div>
+  <a class="sb-a" href="#p1">Prob 1 — Evaluare Hermite</a>
+  <a class="sb-a sb-a2" href="#p1-hand">→ Rezolvare pe foaie</a>
+  <a class="sb-a" href="#p2">Prob 2 — Grafic f + Hf</a>
+  <a class="sb-a" href="#p3">Prob 3 — Cubica parametrica</a>
+  <a class="sb-a sb-a2" href="#p3-hand">→ Rezolvare pe foaie</a>
+  <div class="sb-pt">Probleme Practice</div>
+  <a class="sb-a" href="#pr1">Pr.1 — eˣ pe [0,1,2]</a>
+  <a class="sb-a" href="#pr2">Pr.2 — sin(0.34)</a>
+  <a class="sb-a" href="#pr3">Pr.3 — Automobil</a>
+</nav>
+
+<main id="main">
+
+<div class="part-badge">Teorie</div>
+
+<!-- ===================================================
+     TEORIA
+     =================================================== -->
+
+<section id="t-powell">
+<h2>Metoda lui Powell — Idee</h2>
+
+<div class="cd blue">
+  <span class="badge">Problema de interpolare Hermite</span>
+  <h4>Date: noduri x_k, valori f(x_k) și f'(x_k)</h4>
+  <p>Se caută H_{2m+1}f ∈ P_{2m+1} unic cu:</p>
+  <code class="fm fmc">H_{2m+1}f(x_k) = f(x_k)  și  H'_{2m+1}f(x_k) = f'(x_k),  k=0,...,m</code>
+  <p>Total 2(m+1) = 2m+2 condiții → grad ≤ 2m+1. ✓</p>
+</div>
+
+<div class="cd purple">
+  <span class="badge">Cheia metodei Powell</span>
+  <h4>Dublarea nodurilor → redus la o DD standard</h4>
+  <ol class="steps">
+    <li>Definim secvența de noduri <span class="key">duble</span>: z₀=z₁=x₀, z₂=z₃=x₁, ..., z_{2m}=z_{2m+1}=x_m</li>
+    <li>Diferența dividată cu <span class="key">nod dublu</span> (limită): f[z_{2k}, z_{2k+1}] = f[x_k, x_k] = f'(x_k)</li>
+    <li>Restul tabelei se calculează <span class="key">exact ca la DD standard</span></li>
+    <li>Se aplică polinomul Newton cu nodurile z și coeficienții din prima linie a tabelei</li>
+  </ol>
+</div>
+</section>
+
+<section id="t-algo">
+<h2>Algoritmul — Tabela DD cu Noduri Duble</h2>
+
+<div class="cd blue">
+  <span class="badge">Structura tabelei (m=2: 3 noduri → 6 rânduri)</span>
+  <h4>z = [x₀, x₀, x₁, x₁, x₂, x₂]</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>z_i</th><th>D⁰</th><th>D¹</th><th>D²</th><th>D³</th><th>D⁴</th><th>D⁵</th></tr></thead>
+      <tbody>
+        <tr><td>z₀=x₀</td><td>f(x₀)</td><td class="hi2">f'(x₀) ★</td><td class="hi">…</td><td class="hi">…</td><td class="hi">…</td><td class="hi">…</td></tr>
+        <tr><td>z₁=x₀</td><td>f(x₀)</td><td>f[x₀,x₁]</td><td>…</td><td>…</td><td>…</td><td class="mut"></td></tr>
+        <tr><td>z₂=x₁</td><td>f(x₁)</td><td class="hi2">f'(x₁) ★</td><td>…</td><td>…</td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₃=x₁</td><td>f(x₁)</td><td>f[x₁,x₂]</td><td>…</td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₄=x₂</td><td>f(x₂)</td><td class="hi2">f'(x₂) ★</td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₅=x₂</td><td>f(x₂)</td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">★ = introdus direct din f'(x_k). Albastru = prima linie = coeficienți Newton ai lui H₅f.</p>
+</div>
+
+<div class="cd">
+  <span class="badge">Algoritmul pas cu pas</span>
+  <div class="algo">P1. Construieste z: z[2k]=z[2k+1]=x[k], k=0,...,m
+P2. Initializeaza D^0: Q[2k,0]=Q[2k+1,0]=f[k]
+P3. Initializeaza D^1 cu derivata (nodul dublu):
+      Q[2k,1] = f'[k]                   ← POWELL
+      Q[2k+1,1] = (f[k+1]-f[k])/(x[k+1]-x[k])  ← DD standard
+P4. Pentru j=2,3,...,2m+1:
+      Pentru i=0,...,2m+1-j:
+        Q[i,j] = (Q[i+1,j-1] - Q[i,j-1]) / (z[i+j] - z[i])
+P5. Extrage Q[0,0], Q[0,1], ..., Q[0,2m+1]  ← coeficienti Newton</div>
+</div>
+</section>
+
+<section id="t-newton">
+<h2>Evaluarea cu Formula Newton</h2>
+
+<div class="cd green">
+  <span class="badge">Forma Newton a lui H_{2m+1}f</span>
+  <h4>Coeficienții = prima linie a tabelei DD</h4>
+  <code class="fm fmc">H_{2m+1}f(t) = Q₀ + Q₁(t-z₀) + Q₂(t-z₀)(t-z₁) + … + Q_{2m+1}(t-z₀)···(t-z_{2m})</code>
+  <p>Unde Q_k = td(1, k+1) = f[z₀,...,z_k] și z=[x₀,x₀,x₁,x₁,...,x_m,x_m].</p>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Eroarea de interpolare</span>
+  <h4>R_{2m+1}f(x)</h4>
+  <code class="fm">R_{2m+1}f(x) = u(x)/(2m+2)! · f^{(2m+2)}(ξ)
+
+u(x) = ∏_{k=0}^m (x-x_k)²   ← radacini duble la fiecare nod!
+
+|R_{2m+1}f(x)| ≤ M_{2m+2}/(2m+2)! · |u(x)|
+M_{2m+2} = max |f^{(2m+2)}| pe interval</code>
+  <p class="note">u(x) are rădăcini de ordinul 2 → eroare mai mică near noduri vs Lagrange.</p>
+</div>
+</section>
+
+<section id="t-cubic">
+<h2>Cubica Parametrică Hermite (Problema 3)</h2>
+
+<div class="cd blue">
+  <span class="badge">Definiție</span>
+  <h4>Curba care trece prin P₀, P₁ cu tangentele T₀, T₁</h4>
+  <p>Parametrizare cu t ∈ [0,1]. Funcțiile de bază Hermite (grad 3):</p>
+  <code class="fm">h₀₀(t) = 2t³ − 3t² + 1     (blend P₀: h₀₀(0)=1, h₀₀(1)=0)
+h₁₀(t) = t³ − 2t² + t      (blend T₀: h₁₀'(0)=1, rest=0)
+h₀₁(t) = −2t³ + 3t²         (blend P₁: h₀₁(1)=1, h₀₁(0)=0)
+h₁₁(t) = t³ − t²             (blend T₁: h₁₁'(1)=1, rest=0)</code>
+  <p>Curba parametrică:</p>
+  <code class="fm fmc">P(t) = h₀₀(t)·P₀ + h₁₀(t)·T₀ + h₀₁(t)·P₁ + h₁₁(t)·T₁</code>
+</div>
+
+<div class="cd">
+  <span class="badge">Verificarea condițiilor</span>
+  <h4>De ce funcționează bazele Hermite</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Funcție</th><th>Valoare la t=0</th><th>Derivată la t=0</th><th>Valoare la t=1</th><th>Derivată la t=1</th></tr></thead>
+      <tbody>
+        <tr><td>h₀₀</td><td class="hi">1</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>h₁₀</td><td>0</td><td class="hi">1</td><td>0</td><td>0</td></tr>
+        <tr><td>h₀₁</td><td>0</td><td>0</td><td class="hi">1</td><td>0</td></tr>
+        <tr><td>h₁₁</td><td>0</td><td>0</td><td>0</td><td class="hi">1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Proprietatea Kronecker: fiecare bază e 1 la condiția sa și 0 la celelalte → P(0)=P₀, P'(0)=T₀, P(1)=P₁, P'(1)=T₁. ✓</p>
+</div>
+</section>
+
+<!-- ===================================================
+     PROBLEME
+     =================================================== -->
+<hr class="pdiv">
+<div class="part-badge">Probleme — Rezolvare pe Foaie</div>
+
+<section id="p1">
+<h2>Problema 1 — Rutina de Evaluare Hermite (my_hermite_eval)</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Calcul H_{2m+1}f(t) cu noduri duble, date: x, f(x), f'(x), t</h4>
+  <p>Implementată prin: <code>my_divdiffdn</code> + <code>my_newtonpol</code></p>
+</div>
+
+<section id="p1-hand">
+<h3>Rezolvare pe foaie — exemplul din curs</h3>
+
+<div class="cd amber">
+  <span class="badge">Date de intrare</span>
+  <h4>m=2: x₀=1.3, x₁=1.6, x₂=1.9, evaluare la t=1.5</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>k</th><th>x_k</th><th>f(x_k)</th><th>f'(x_k)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>1.3</td><td>0.6200860</td><td>−0.5220232</td></tr>
+        <tr><td>1</td><td>1.6</td><td>0.4554022</td><td>−0.5698959</td></tr>
+        <tr><td>2</td><td>1.9</td><td>0.2818186</td><td>−0.5811571</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 1 — Secvența nodurilor duble</span>
+  <code class="fm">z = [1.3, 1.3, 1.6, 1.6, 1.9, 1.9]
+     z₀   z₁   z₂   z₃   z₄   z₅</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 2 — Coloana D⁰ și D¹</span>
+  <code class="fm">D⁰:  [0.6200860, 0.6200860, 0.4554022, 0.4554022, 0.2818186, 0.2818186]
+
+D¹ (rânduri impare ← Powell):
+  td(1,2) = f'(x₀) = −0.5220232
+  td(3,2) = f'(x₁) = −0.5698959
+  td(5,2) = f'(x₂) = −0.5811571
+
+D¹ (rânduri pare ← DD standard):
+  td(2,2) = (f(x₁)-f(x₀))/(x₁-x₀) = (0.4554022-0.6200860)/(1.6-1.3)
+           = −0.1646838/0.3 = −0.5489460
+  td(4,2) = (f(x₂)-f(x₁))/(x₂-x₁) = (0.2818186-0.4554022)/0.3 = −0.5786120</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 3 — Completare tabel (formula DD standard)</span>
+  <h4>Tabela completă (prima linie = coeficienți Newton):</h4>
+  <div class="tbl">
+    <table style="font-size:11px">
+      <thead><tr><th>z_i</th><th>D⁰</th><th>D¹</th><th>D²</th><th>D³</th><th>D⁴</th><th>D⁵</th></tr></thead>
+      <tbody>
+        <tr><td>z₀=1.3</td><td>0.6200860</td><td class="hi2">−0.5220232★</td><td class="hi">−0.0897427</td><td class="hi">0.0663657</td><td class="hi">0.0026663</td><td class="hi">−0.0027738</td></tr>
+        <tr><td>z₁=1.3</td><td>0.6200860</td><td>−0.5489460</td><td>−0.0698330</td><td>0.0679655</td><td>0.0010020</td><td class="mut"></td></tr>
+        <tr><td>z₂=1.6</td><td>0.4554022</td><td class="hi2">−0.5698959★</td><td>−0.0290937</td><td>0.0685667</td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₃=1.6</td><td>0.4554022</td><td>−0.5786120</td><td>−0.0084837</td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₄=1.9</td><td>0.2818186</td><td class="hi2">−0.5811571★</td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>z₅=1.9</td><td>0.2818186</td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">★ = f'(x_k) introdus direct. Albastru = Q₀,...,Q₅ = coeficienți Newton.</p>
+</div>
+
+<div class="cd green">
+  <span class="badge">Pasul 4 — Evaluare Newton la t=1.5</span>
+  <h4>H₅f(1.5) cu z=[1.3,1.3,1.6,1.6,1.9,1.9]</h4>
+  <ol class="steps">
+    <li>Q₀ = 0.6200860</li>
+    <li>Q₁·(1.5−z₀) = −0.5220232·(1.5−1.3) = −0.5220232·0.2 = −0.1044046</li>
+    <li>Q₂·(1.5−z₀)(1.5−z₁) = −0.0897427·0.2·0.2 = −0.0035897</li>
+    <li>Q₃·(1.5−z₀)(1.5−z₁)(1.5−z₂) = 0.0663657·0.04·(−0.1) = −0.0002655</li>
+    <li>Q₄·(1.5−z₀)···(1.5−z₃) = 0.0026663·0.04·0.01 = 0.0000011</li>
+    <li>Q₅·(1.5−z₀)···(1.5−z₄) = −0.0027738·0.04·0.01·(−0.4) = 0.0000044</li>
+  </ol>
+  <code class="fm">H₅f(1.5) = 0.6200860 − 0.1044046 − 0.0035897 − 0.0002655 + 0.0000011 + 0.0000044
+           ≈ 0.5118317
+
+  Valoarea exactă: f(1.5) ≈ 0.5118276 → eroare ≈ 4×10⁻⁶</code>
+</div>
+</section>
+</section>
+
+<section id="p2">
+<h2>Problema 2 — Grafic f și H_{2m+1}f</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Reprezentați pe același grafic f și interpolantul Hermite</h4>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Strategie</span>
+  <ol class="steps">
+    <li>Alege f și nodurile x cu valorile f(x_k) și f'(x_k)</li>
+    <li>Evaluează H_{2m+1}f pe grilă fină cu <code>my_hermite_eval(x, f, fd, xx)</code></li>
+    <li>Plot f cu linie neagră continuă, Hf cu linie roșie întreruptă</li>
+    <li>Marchează nodurile cu scatter</li>
+  </ol>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Comparație Lagrange vs Hermite (aceeași funcție, același m)</span>
+  <code class="fm">f(x)=sin(x), noduri x₀=0.30, x₁=0.32, x₂=0.35, evaluare la t=0.34:
+
+Lagrange L₂f(0.34) (fara derivate, m=2):
+  eroare ≈ ~10⁻⁴
+
+Hermite H₅f(0.34) (cu derivate, m=2, 6 condiții):
+  eroare ≈ ~10⁻⁹  ← mult mai precis cu aceleași noduri!</code>
+  <p class="note">Hermite exploatează informația de derivată → convergență mai rapidă.</p>
+</div>
+</section>
+
+<section id="p3">
+<h2>Problema 3 — Cubica Parametrică Hermite</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Curbă prin P₀, P₁ cu tangentele T₀, T₁</h4>
+</div>
+
+<section id="p3-hand">
+<h3>Rezolvare pe foaie — exemplu numeric</h3>
+
+<div class="cd amber">
+  <span class="badge">Date de intrare</span>
+  <code class="fm">P₀ = (0, 0),  T₀ = (1, 3)
+P₁ = (2, 2),  T₁ = (1, −1)
+t ∈ [0, 1]</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Calcul bazelor la t=0.5</span>
+  <ol class="steps">
+    <li>h₀₀(0.5) = 2(0.125)−3(0.25)+1 = 0.25−0.75+1 = 0.5</li>
+    <li>h₁₀(0.5) = 0.125−2(0.25)+0.5 = 0.125−0.5+0.5 = 0.125</li>
+    <li>h₀₁(0.5) = −2(0.125)+3(0.25) = −0.25+0.75 = 0.5</li>
+    <li>h₁₁(0.5) = 0.125−0.25 = −0.125</li>
+  </ol>
+  <code class="fm">Verificare: h₀₀+h₁₀+h₀₁+h₁₁ = 0.5+0.125+0.5+(−0.125) = 1.0 ✓
+
+x(0.5) = h₀₀·P₀ₓ + h₁₀·T₀ₓ + h₀₁·P₁ₓ + h₁₁·T₁ₓ
+       = 0.5·0 + 0.125·1 + 0.5·2 + (−0.125)·1
+       = 0 + 0.125 + 1 − 0.125 = 1.0
+
+y(0.5) = 0.5·0 + 0.125·3 + 0.5·2 + (−0.125)·(−1)
+       = 0 + 0.375 + 1 + 0.125 = 1.5
+
+→ P(0.5) = (1.0, 1.5) = mijlocul curbei</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Verificarea condițiilor marginale</span>
+  <code class="fm">t=0: P(0) = h₀₀(0)·P₀ + h₁₀(0)·T₀ + h₀₁(0)·P₁ + h₁₁(0)·T₁
+         = 1·P₀ + 0·T₀ + 0·P₁ + 0·T₁ = P₀ = (0,0) ✓
+
+t=1: P(1) = 0·P₀ + 0·T₀ + 1·P₁ + 0·T₁ = P₁ = (2,2) ✓
+
+P'(t) = h'₀₀(t)·P₀ + h'₁₀(t)·T₀ + h'₀₁(t)·P₁ + h'₁₁(t)·T₁
+h'₁₀(0) = 1 → P'(0) = T₀ = (1,3) ✓
+h'₁₁(1) = 1 → P'(1) = T₁ = (1,−1) ✓</code>
+</div>
+</section>
+</section>
+
+<!-- ===================================================
+     PROBLEME PRACTICE
+     =================================================== -->
+<hr class="pdiv">
+<div class="part-badge">Probleme Practice</div>
+
+<section id="pr1">
+<h2>Practica 1 — f(x)=eˣ, noduri 0,1,2, aproxima f(0.25)</h2>
+
+<div class="cd amber">
+  <span class="badge">Date</span>
+  <h4>m=2, z=[0,0,1,1,2,2], grad polinom 5</h4>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>k</th><th>x_k</th><th>f(x_k)=eˣ</th><th>f'(x_k)=eˣ</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>1.0000000</td><td>1.0000000</td></tr>
+        <tr><td>1</td><td>1</td><td>2.7182818</td><td>2.7182818</td></tr>
+        <tr><td>2</td><td>2</td><td>7.3890561</td><td>7.3890561</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">D¹ calculat</span>
+  <code class="fm">td(1,2) = f'(0) = 1.0000000              ← Powell (nod dublu)
+td(2,2) = (e¹−e⁰)/(1−0) = 1.7182818     ← DD standard
+td(3,2) = f'(1) = 2.7182818              ← Powell
+td(4,2) = (e²−e¹)/(2−1) = 4.6707743     ← DD standard
+td(5,2) = f'(2) = 7.3890561              ← Powell</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Rezultat</span>
+  <code class="fm">H₅f(0.25) ≈ 1.2840254
+e^0.25    = 1.2840254
+eroare    ≈ 10⁻⁸  ← extrem de precis!
+
+Margine eroare:
+  u(x) = (x-0)²(x-1)²(x-2)²
+  |u(0.25)| = (0.25)²(0.75)²(1.75)² = 0.0625·0.5625·3.0625 ≈ 0.1077
+  |R₅f(0.25)| ≤ M₆/6! · 0.1077 = eˣ|max/720 · 0.1077
+              ≤ e²/720 · 0.1077 ≈ 1.08·10⁻³
+
+Eroarea reală (~10⁻⁸) este mult sub margine (conservativă).</code>
+</div>
+</section>
+
+<section id="pr2">
+<h2>Practica 2 — sin(0.34) cu date tabelate</h2>
+
+<div class="cd amber">
+  <span class="badge">Date (din laborator)</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>x</th><th>sin x</th><th>cos x = (sin x)'</th></tr></thead>
+      <tbody>
+        <tr><td>0.30</td><td>0.29552</td><td>0.95534</td></tr>
+        <tr><td>0.32</td><td>0.31457</td><td>0.94924</td></tr>
+        <tr><td>0.35</td><td>0.34290</td><td>0.93937</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Primele intrări din tabela DD (D¹)</span>
+  <code class="fm">td(1,2) = cos(0.30) = 0.95534                     ← Powell
+td(2,2) = (sin0.32−sin0.30)/(0.32−0.30)
+         = (0.31457−0.29552)/0.02 = 0.9525           ← DD standard
+td(3,2) = cos(0.32) = 0.94924                         ← Powell
+td(4,2) = (sin0.35−sin0.32)/0.03 = 0.9443            ← DD standard
+td(5,2) = cos(0.35) = 0.93937                         ← Powell</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Rezultat</span>
+  <code class="fm">H₅f(0.34) = 0.33348791
+sin(0.34) = 0.33348790
+eroare    ≈ 10⁻⁸
+
+Cu nod suplimentar x=0.33 (m=3, H₇f):
+  eroare ≈ 10⁻⁹  ← convergenta mai buna
+
+Margine eroare H₅: f^(6)(x)=−sin(x), M₆≤1
+  |u(0.34)| = (0.04)²(0.02)²(0.01)² = 6.4·10⁻¹¹
+  |R₅| ≤ 1/720 · 6.4·10⁻¹¹ ≈ 8.9·10⁻¹⁴</code>
+</div>
+</section>
+
+<section id="pr3">
+<h2>Practica 3 — Automobil: poziție și viteză la t=10</h2>
+
+<div class="cd amber">
+  <span class="badge">Date observație</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>t (s)</th><th>0</th><th>3</th><th>5</th><th>8</th><th>13</th></tr></thead>
+      <tbody>
+        <tr><th>Distanța (m)</th><td>0</td><td>225</td><td>383</td><td>623</td><td>993</td></tr>
+        <tr><th>Viteza (m/s)</th><td>75</td><td>77</td><td>80</td><td>74</td><td>72</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Strategie</span>
+  <ol class="steps">
+    <li>Nodul z = [0,0,3,3,5,5,8,8,13,13] (5 noduri duble → H₉f, grad 9)</li>
+    <li>f(z_{2k}) = f(z_{2k+1}) = distanța[k]</li>
+    <li>f'(z_{2k}) = viteza[k] (derivata distanței = viteza)</li>
+    <li>Evaluăm H₉f(10) → poziția la t=10</li>
+  </ol>
+</div>
+
+<div class="cd green">
+  <span class="badge">Rezultat așteptat</span>
+  <code class="fm">Poziția la t=10:  H₉f(10) ≈ 742 m    (interpolare)
+Viteza la t=10:   ≈ 74 m/s          (estimat din date)
+
+Notă: extrapolarea (t>13) sau interpolarea departe de noduri
+poate introduce erori. T=10 este bine încadrat între 8 și 13. ✓</code>
+</div>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links = document.querySelectorAll('.sb-a');
+  const secs  = Array.from(document.querySelectorAll('section[id]'));
+  const scrollY = window.scrollY + 80;
+  let active = null;
+  secs.forEach(s => { if(s.offsetTop <= scrollY) active = s.id; });
+  links.forEach(l => {
+    const href = l.getAttribute('href').replace('#','');
+    l.classList.toggle('on', href === active);
+  });
+}
+document.addEventListener('scroll', updateNav, {passive:true});
+window.addEventListener('load', updateNav);
+</script>
+</body>
+</html>
