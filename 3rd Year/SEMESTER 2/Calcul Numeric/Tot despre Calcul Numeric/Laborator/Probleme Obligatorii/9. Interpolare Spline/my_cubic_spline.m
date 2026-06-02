@@ -1,14 +1,14 @@
 function c = my_cubic_spline(x, f, type, der)
 if nargin < 4 || type == 2, der = [0, 0]; end
 
-n  = length(x);
-x  = x(:); f  = f(:);
-dx   = diff(x);
+n = length(x);
+x = x(:); f  = f(:);
+dx = diff(x);
 ddiv = diff(f) ./ dx;        
-ds   = dx(1:end-1);
-dd   = dx(2:end);
-dp   = 2*(ds + dd);           
-md   = 3*(dd.*ddiv(1:end-1) + ds.*ddiv(2:end)); 
+ds = dx(1:end-1);
+dd = dx(2:end);
+dp = 2*(ds + dd);           
+md = 3*(dd.*ddiv(1:end-1) + ds.*ddiv(2:end)); 
 
 switch type
     case 0  % complet: m1=f'(a), mn=f'(b)
@@ -26,10 +26,10 @@ switch type
         mdn = (dx(end)^2*ddiv(end-1)+(2*xn+dx(end))*dx(end-1)*ddiv(end))/xn;
 end
 
-% sistem tridiagonal
+
 dp_full = [dp1; dp;  dpn];
-sup     = [0;  vd1; dd ];
-sub     = [ds; vdn; 0  ];
+sup = [0;  vd1; dd ];
+sub = [ds; vdn; 0  ];
 md_full = [md1; md; mdn];
 A = spdiags([sub, dp_full, sup], -1:1, n, n);
 m = A \ md_full;              

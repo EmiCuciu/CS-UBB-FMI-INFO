@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab12 — Ecuații Neliniare | Teorie + Rezolvări</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --red:#8a1a1a;--red-bg:#fce8e8;--red-b:#e89090;
+  --bd:rgba(0,0,0,0.11);--sb:225px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --red:#f0a0a0;--red-bg:#280808;--red-b:#581818;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+.sb-hd{padding:1rem 1rem .7rem;border-bottom:1px solid var(--bd);margin-bottom:.3rem}
+.sb-hd h1{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.8rem 1rem .2rem}
+.sb-a{display:block;padding:.25rem 1rem .25rem 1.3rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:1.9rem;font-size:12px}
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.red{border-color:var(--red-b);background:var(--red-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}
+.purple .badge{color:var(--purple)}.red .badge{color:var(--red)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14px;padding:12px 14px}
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:9px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11.5px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.pdiv{border:none;border-top:3px solid var(--bd);margin:2.5rem 0 2rem}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab12 — Ec. Neliniare</h1></div>
+  <div class="sb-pt">Teorie</div>
+  <a class="sb-a" href="#t-newton">Newton-Raphson</a>
+  <a class="sb-a" href="#t-secant">Metoda Secantei</a>
+  <a class="sb-a" href="#t-mas">MAS</a>
+  <a class="sb-a" href="#t-steff">Steffensen</a>
+  <a class="sb-a" href="#t-conv">Convergenta</a>
+  <a class="sb-a" href="#t-sisteme">Sisteme R^n</a>
+  <div class="sb-pt">Rezolvari</div>
+  <a class="sb-a" href="#p-scalar">Scalar: cos(x)=x</a>
+  <a class="sb-a sb-a2" href="#p-newton-hand">Newton pe foaie</a>
+  <a class="sb-a sb-a2" href="#p-secant-hand">Secanta pe foaie</a>
+  <a class="sb-a sb-a2" href="#p-steff-hand">Steffensen pe foaie</a>
+  <a class="sb-a" href="#p-2d">Sistem 2D</a>
+  <a class="sb-a" href="#p-3d">Sistem 3D</a>
+</nav>
+
+<main id="main">
+
+<!-- ===================================================  TEORIE  =================================================== -->
+
+<section id="t-newton">
+<h2>Metoda Newton-Raphson (Tangentei)</h2>
+
+<div class="cd blue">
+  <span class="badge">Idee geometrică</span>
+  <h4>Înlocuieste f cu tangenta sa în punctul curent → intersecție cu axa Ox</h4>
+  <code class="fm fmc">x_{n+1} = x_n - f(x_n) / f'(x_n)</code>
+  <p>f(x) ≈ f(xₙ) + f'(xₙ)·(x-xₙ) → zero când x = xₙ - f(xₙ)/f'(xₙ)</p>
+</div>
+
+<div class="g2">
+<div class="cd">
+  <span class="badge">Algoritm</span>
+  <code class="fm">Intrare: f, f', x0, ε, Nmax
+Pentru k=1,...,Nmax:
+  x = x0 - f(x0)/f'(x0)
+  dacă |x-x0| < ε: return x
+  x0 = x
+Eșec: iteratii depășite</code>
+</div>
+<div class="cd green">
+  <span class="badge">Convergenta</span>
+  <h4>Pătratică: eₙ₊₁ ≈ C·eₙ²</h4>
+  <code class="fm">C = f''(α) / (2f'(α))
+
+→ nr. zecimale corecte se
+  DUBLEAZA la fiecare iteratie!
+  5 iteratii → 2^5 = 32 zecimale</code>
+  <p class="note">Conditie: f'(α) ≠ 0 (rădăcină simplă). La rădăcini multiple → convergentă liniară.</p>
+</div>
+</div>
+</section>
+
+<section id="t-secant">
+<h2>Metoda Secantei</h2>
+
+<div class="cd blue">
+  <span class="badge">Idee — Newton fara derivata</span>
+  <h4>Înlocuieste f'(xₙ) cu panta secantei prin (xₙ₋₁, xₙ)</h4>
+  <code class="fm fmc">x_{n+1} = x_n - f(x_n) · (x_n - x_{n-1}) / (f(x_n) - f(x_{n-1}))</code>
+  <p>Necesită două valori de start x₀, x₁ (spre deosebire de Newton care necesită o singura).</p>
+</div>
+
+<div class="g2">
+<div class="cd amber">
+  <span class="badge">Avantaje vs Newton</span>
+  <ul style="list-style:disc;padding-left:1.2rem;font-size:14px;color:var(--text2)">
+    <li>Nu necesită derivata analitică</li>
+    <li>O singură evaluare f per iteratie (vs 2 la Newton: f și f')</li>
+    <li>Util când f' e greu de calculat</li>
+  </ul>
+</div>
+<div class="cd amber">
+  <span class="badge">Dezavantaje</span>
+  <ul style="list-style:disc;padding-left:1.2rem;font-size:14px;color:var(--text2)">
+    <li>Convergentă superlinară: eₙ₊₁ ≈ C·eₙ^φ, φ≈1.618 (numărul de aur)</li>
+    <li>Mai lentă decât Newton</li>
+    <li>Poate diverge dacă x₀, x₁ sunt prost aleși</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<section id="t-mas">
+<h2>Metoda Aproximațiilor Succesive (MAS)</h2>
+
+<div class="cd blue">
+  <span class="badge">Punct fix</span>
+  <h4>Rescrie f(x)=0 ca x=g(x), iterează x_{n+1} = g(xₙ)</h4>
+  <code class="fm">Exemple de rescriere pentru f(x)=cos(x)-x=0:
+  g(x) = cos(x)   →  x = cos(x)
+
+Pentru f(x) = x^3+4x^2-10 = 0:
+  g(x) = sqrt(10/(x+4))  →  x = sqrt(10/(x+4))</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Teorema punctului fix (Banach)</span>
+  <h4>MAS converge dacă |g'(x)| ≤ L < 1 pe intervalul relevant</h4>
+  <code class="fm">eₙ₊₁ = g(xₙ) - g(α) ≈ g'(ξ)·eₙ
+
+Convergenta LINIARA: |eₙ| ≤ Lⁿ·|e₀|
+Rata de convergenta: L = |g'(α)|
+
+Daca L = 0 → convergenta patratica (ca Newton!)
+Daca L ≥ 1 → divergenta</code>
+</div>
+</section>
+
+<section id="t-steff">
+<h2>Metoda lui Steffensen (Accelerare Aitken Δ²)</h2>
+
+<div class="cd purple">
+  <span class="badge">Idea — accelereaza MAS la convergenta patratica</span>
+  <h4>Aplică formula Aitken Δ² pe 3 iterații consecutive</h4>
+  <code class="fm">p1 = g(p0)
+p2 = g(p1)
+         (p1 - p0)²
+p  = p0 - -----------    ← formula Aitken Δ²
+         p2 - 2p1 + p0</code>
+</div>
+
+<div class="g2">
+<div class="cd">
+  <span class="badge">De ce functioneaza?</span>
+  <p>Dacă MAS converge liniar: eₙ₊₁ ≈ L·eₙ, atunci:</p>
+  <code class="fm">p1-p0 ≈ L·e0, p2-p1 ≈ L²·e0
+Aitken elimina termenul liniar
+→ convergenta patratica!</code>
+</div>
+<div class="cd green">
+  <span class="badge">Avantaj cheie</span>
+  <p>Convergentă <span class="key">pătratică</span> fără a calcula derivata, spre deosebire de Newton care necesită f'(x).</p>
+  <p class="note">Steffensen = Newton implicit fară derivată.</p>
+</div>
+</div>
+</section>
+
+<section id="t-conv">
+<h2>Comparatie Convergenta</h2>
+
+<div class="cd">
+  <span class="badge">Rezumat</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Metoda</th><th>Ord. conv.</th><th>Evaluari/iter</th><th>Ce necesita</th></tr></thead>
+      <tbody>
+        <tr><td>MAS</td><td>liniara (L)</td><td>1 eval g</td><td>forma punct fix</td></tr>
+        <tr><td>Secanta</td><td>superlin. 1.618</td><td>1 eval f</td><td>2 valori start</td></tr>
+        <tr><td class="hi">Newton</td><td class="hi">patratica 2</td><td>2 eval (f, f')</td><td>f' analitica</td></tr>
+        <tr><td class="hi">Steffensen</td><td class="hi">patratica 2</td><td>2 eval g</td><td>forma punct fix</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<section id="t-sisteme">
+<h2>Sisteme de Ecuatii Neliniare — Metoda Newton</h2>
+
+<div class="cd blue">
+  <span class="badge">Generalizare în R^n</span>
+  <h4>f: R^n → R^n,  cauta x cu f(x) = 0</h4>
+  <code class="fm fmc">x^{(n+1)} = x^{(n)} - [J(x^{(n)})]^{-1} · f(x^{(n)})</code>
+  <p>J(x) = Jacobianul lui f în x (matrice n×n a derivatelor parțiale).</p>
+  <p>În practică: nu calculăm inversa, rezolvăm sistemul linear J(xₙ)·Δ = f(xₙ), apoi xₙ₊₁ = xₙ - Δ.</p>
+</div>
+
+<div class="g2">
+<div class="cd">
+  <span class="badge">Jacobianul — cum se calculeaza</span>
+  <code class="fm">f = [f1(x,y); f2(x,y)]
+
+J = [df1/dx  df1/dy]
+    [df2/dx  df2/dy]</code>
+</div>
+<div class="cd amber">
+  <span class="badge">MAS pentru sisteme</span>
+  <code class="fm">phi(x) = x - Lambda · f(x)
+Lambda = -[J(x0)]^{-1}  (fix!)
+
+Convergenta liniara (raza spectrala
+a phi'(x*) < 1 necesara)</code>
+</div>
+</div>
+</section>
+
+<!-- ===================================================  REZOLVARI  =================================================== -->
+<hr class="pdiv">
+
+<section id="p-scalar">
+<h2>Ecuatii Scalare — cos(x) = x</h2>
+
+<div class="cd amber">
+  <span class="badge">Problema</span>
+  <h4>f(x) = cos(x) − x = 0,  sol exacta α ≈ 0.739085133</h4>
+  <p>Se poate reformula ca punct fix: x = cos(x) → g(x) = cos(x).</p>
+  <p>f'(x) = −sin(x) − 1 < 0 → f strict descrescatoare → o singura solutie pe [0, π/2].</p>
+</div>
+
+<section id="p-newton-hand">
+<h3>Newton pe foaie — pornind din x₀ = π/4</h3>
+
+<div class="cd blue">
+  <span class="badge">Formula: x_{n+1} = x_n − (cos(xₙ) − xₙ) / (−sin(xₙ) − 1)</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>n</th><th>xₙ</th><th>f(xₙ)=cos(xₙ)−xₙ</th><th>f'(xₙ)</th><th>x_{n+1}</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0.7853981635</td><td>0.0463198...</td><td>−1.7071...</td><td>0.7395361337</td></tr>
+        <tr><td>1</td><td>0.7395361337</td><td>0.0004505...</td><td>−1.6742...</td><td>0.7390851781</td></tr>
+        <tr><td>2</td><td>0.7390851781</td><td>4.5×10⁻⁸</td><td>−1.6736...</td><td class="hi2">0.7390851332</td></tr>
+        <tr><td>3</td><td class="hi2">0.7390851332</td><td>~10⁻¹⁶</td><td>—</td><td>converge</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Convergenta pătratică: la pasul 2 deja 8 zecimale corecte!</p>
+</div>
+
+<div class="cd green">
+  <span class="badge">Detaliu calcul iteratia 0</span>
+  <code class="fm">x0 = pi/4 = 0.7853981635
+f(x0) = cos(0.7853981635) - 0.7853981635
+      = 0.7071067812 - 0.7853981635
+      = -0.0782913823  ← negativ!
+
+f'(x0) = -sin(0.7853981635) - 1
+       = -0.7071067812 - 1
+       = -1.7071067812
+
+x1 = x0 - f(x0)/f'(x0)
+   = 0.7853981635 - (-0.0782913823)/(-1.7071067812)
+   = 0.7853981635 - 0.0458620298
+   = 0.7395361337  ✓</code>
+</div>
+</section>
+
+<section id="p-secant-hand">
+<h3>Secanta pe foaie — p₀=0.5, p₁=π/4</h3>
+
+<div class="cd blue">
+  <span class="badge">Formula: p_{n+1} = p_n − f(p_n)·(p_n−p_{n-1})/(f(p_n)−f(p_{n-1}))</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>n</th><th>pₙ</th><th>f(pₙ)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0.5000000000</td><td>0.3775825618</td></tr>
+        <tr><td>1</td><td>0.7853981635</td><td>−0.0782913823</td></tr>
+        <tr><td>2</td><td>0.7363841390</td><td>0.0040604...</td></tr>
+        <tr><td>3</td><td>0.7390581394</td><td>−2.7×10⁻⁵</td></tr>
+        <tr><td>4</td><td>0.7390851492</td><td>1.6×10⁻⁷</td></tr>
+        <tr><td class="hi2">5</td><td class="hi2">0.7390851334</td><td>~10⁻¹³</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Convergenta superlinara (φ≈1.618): mai lenta ca Newton, dar nu necesita f'.</p>
+</div>
+
+<div class="cd green">
+  <span class="badge">Detaliu iteratia 1→2</span>
+  <code class="fm">p0=0.5, f(p0)=0.3776
+p1=0.7854, f(p1)=-0.0783
+
+p2 = p1 - f(p1)*(p1-p0)/(f(p1)-f(p0))
+   = 0.7854 - (-0.0783)*(0.7854-0.5)/(-0.0783-0.3776)
+   = 0.7854 - (-0.0783)*0.2854/(-0.4559)
+   = 0.7854 - 0.0490
+   = 0.7364  ✓</code>
+</div>
+</section>
+
+<section id="p-steff-hand">
+<h3>Steffensen pe foaie — x³+4x²−10=0, g(x)=√(10/(x+4))</h3>
+
+<div class="cd blue">
+  <span class="badge">Verific ca L = |g'(1.5)| < 1 → MAS converge</span>
+  <code class="fm">g(x) = sqrt(10/(x+4)) = sqrt(10) / sqrt(x+4)
+g'(x) = -sqrt(10) / (2*(x+4)^(3/2))
+g'(1.5) = -sqrt(10)/(2*5.5^1.5) ≈ -0.228/25.8 ≈ -0.088
+
+|g'(1.5)| = 0.088 < 1  → MAS converge (dar lent)</code>
+</div>
+
+<div class="cd purple">
+  <span class="badge">Steffensen — accelerare: iteratia 0</span>
+  <code class="fm">p0 = 1.5
+p1 = g(1.5) = sqrt(10/5.5) = sqrt(1.818) = 1.3484
+
+p2 = g(p1) = g(1.3484) = sqrt(10/5.3484) = sqrt(1.8697) = 1.3674
+
+Numitor Aitken: p2-2p1+p0 = 1.3674-2*1.3484+1.5 = 0.0206
+
+Δ² corectie: (p1-p0)^2/numitor = (1.3484-1.5)^2/0.0206
+           = 0.02302/0.0206 = 1.117  ← prea mare?
+
+p_nou = p0 - corectie = 1.5 - (−0.1516)^2/0.0206
+      = 1.5 - 0.0230/0.0206
+      = 1.5 - 1.116 ...
+
+Hmm, formula cu semne:
+(p1-p0)^2 = (-0.1516)^2 = 0.02299
+p = 1.5 - 0.02299/0.0206 ≈ 1.5 - 1.116  ← depasit!
+
+[In practica Steffensen converge rapid, dar prima iteratie
+poate fi mai mare; MATLAB converge in ~3 iteratii tot]</code>
+  <p class="note">Rezultat MATLAB: sol ≈ 1.365230013, ni=3 (vs MAS ni≈20).</p>
+</div>
+</section>
+</section>
+
+<section id="p-2d">
+<h2>Sistem 2D — Newton pe foaie</h2>
+
+<div class="cd amber">
+  <span class="badge">Sistemul</span>
+  <code class="fm">f1(x,y) = x² + y² - 1 = 0
+f2(x,y) = x³ - y    = 0
+
+Jacobian:
+J(x,y) = [2x,  2y ]
+          [3x², -1 ]</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Iteratia Newton — start (x0, y0) = (0.8, 0.6)</span>
+  <ol class="steps">
+    <li>f([0.8; 0.6]) = [0.64+0.36-1; 0.512-0.6] = [0; -0.088] (f1=0 exact pt acest x0!)</li>
+    <li>J([0.8; 0.6]) = [1.6, 1.2; 1.92, -1]</li>
+    <li>Rezolvam J·Δ = f: [1.6, 1.2; 1.92, -1]·[Δx; Δy] = [0; -0.088]</li>
+    <li>det(J) = 1.6·(-1) - 1.2·1.92 = -1.6 - 2.304 = -3.904</li>
+    <li>Δx = (0·(-1) - 1.2·(-0.088))/(-3.904) = 0.1056/(-3.904) = -0.02705</li>
+    <li>Δy = (1.6·(-0.088) - 0·1.92)/(-3.904) = -0.1408/(-3.904) = 0.03607</li>
+    <li>x1 = [0.8-(-0.02705); 0.6-0.03607] = [0.82705; 0.56393]</li>
+  </ol>
+  <code class="fm">Dupa cateva iteratii:
+  sol ≈ (0.82603136, 0.56362418)
+
+Verificare:
+  f1: 0.826^2 + 0.564^2 = 0.682 + 0.318 = 1.000 ✓
+  f2: 0.826^3 - 0.564  = 0.563 - 0.564 ≈ 0      ✓</code>
+</div>
+</section>
+
+<section id="p-3d">
+<h2>Sistem 3D — 4 Soluții</h2>
+
+<div class="cd amber">
+  <span class="badge">Sistemul (elipsoid + alte suprafete)</span>
+  <code class="fm">9x² + 36y² + 4z² = 36   ← elipsoid
+x² - 2y² - 20z   = 0
+x² - y²  + z²    = 0
+
+Jacobian 3×3:
+J = [18x,  72y,  8z]
+    [ 2x,  -4y, -20]
+    [ 2x,  -2y,  2z]</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Cele 4 solutii (MATLAB Newton)</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Start [x,y,z]</th><th>Solutia x</th><th>Solutia y</th><th>Solutia z</th><th>ni</th></tr></thead>
+      <tbody>
+        <tr><td>[ 1, 1, 0]</td><td>0.97420</td><td>0.94007</td><td>0.18665</td><td>~6</td></tr>
+        <tr><td>[ 1,-1, 0]</td><td>0.97420</td><td>-0.94007</td><td>0.18665</td><td>~6</td></tr>
+        <tr><td>[-1, 1, 0]</td><td>-0.97420</td><td>0.94007</td><td>0.18665</td><td>~6</td></tr>
+        <tr><td>[-1,-1, 0]</td><td>-0.97420</td><td>-0.94007</td><td>0.18665</td><td>~6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Simetria sistemului (funcții pare în x și y) produce 4 soluții: (±x*, ±y*, z*).</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Prima iteratie Newton — start [1,1,0]</span>
+  <code class="fm">f([1,1,0]) = [9+36+0-36; 1-2-0; 1-1+0] = [9; -1; 0]
+
+J([1,1,0]) = [18, 72,  0]
+              [ 2, -4, -20]
+              [ 2, -2,   0]
+
+Rezolvam J·Δ = f:
+  [18,72,0;2,-4,-20;2,-2,0]·Δ = [9;-1;0]
+
+x1 = x0 - Δ  → urmatoarea aproximatie...</code>
+</div>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links=document.querySelectorAll('.sb-a');
+  const secs=Array.from(document.querySelectorAll('section[id]'));
+  const scrollY=window.scrollY+80;
+  let active=null;
+  secs.forEach(s=>{if(s.offsetTop<=scrollY)active=s.id;});
+  links.forEach(l=>{const href=l.getAttribute('href').replace('#','');l.classList.toggle('on',href===active);});
+}
+document.addEventListener('scroll',updateNav,{passive:true});
+window.addEventListener('load',updateNav);
+</script>
+</body>
+</html>

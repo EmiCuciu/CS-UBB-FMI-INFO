@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab10+11 — Integrare Numerică & Cuadraturi Gauss | Teorie + Rezolvări</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --red:#8a1a1a;--red-bg:#fce8e8;--red-b:#e89090;
+  --bd:rgba(0,0,0,0.11);--sb:230px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --red:#f0a0a0;--red-bg:#280808;--red-b:#581818;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:3px}#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-hd{padding:1rem 1rem .7rem;border-bottom:1px solid var(--bd);margin-bottom:.3rem}
+.sb-hd h1{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-hd p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.8rem 1rem .2rem}
+.sb-a{display:block;padding:.24rem 1rem .24rem 1.3rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:1.9rem;font-size:12px}
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.red{border-color:var(--red-b);background:var(--red-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}.purple .badge{color:var(--purple)}.red .badge{color:var(--red)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14px;padding:12px 14px}
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:9px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11.5px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.pdiv{border:none;border-top:3px solid var(--bd);margin:2.5rem 0 2rem}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab10+11 — Integrare</h1><p>Teorie + Rezolvări</p></div>
+  <div class="sb-pt">Lab 10 — Integrare Numerică</div>
+  <a class="sb-a" href="#t-formule">Formule Repetate</a>
+  <a class="sb-a" href="#t-erori">Erori (Peano)</a>
+  <a class="sb-a" href="#t-adaptive">Cuadraturi Adaptive</a>
+  <a class="sb-a" href="#t-romberg">Metoda Romberg</a>
+  <a class="sb-a" href="#t-adquad">adquad (Alg. 1)</a>
+  <a class="sb-a" href="#p10">Rezolvări Lab 10</a>
+  <div class="sb-pt">Lab 11 — Cuadraturi Gauss</div>
+  <a class="sb-a" href="#t-gauss">Principiul Gauss</a>
+  <a class="sb-a" href="#t-jacobi">Matricea Jacobi</a>
+  <a class="sb-a" href="#t-tipuri">Tipuri de Formule</a>
+  <a class="sb-a" href="#t-eroare-gauss">Eroarea Gauss</a>
+  <a class="sb-a" href="#p11-2">Prob 2 — Legendre</a>
+  <a class="sb-a" href="#p11-3">Prob 3 — Cheb I</a>
+  <a class="sb-a" href="#p11-4">Prob 4 — Cheb II</a>
+  <a class="sb-a" href="#p11-5">Prob 5 — Laguerre</a>
+  <a class="sb-a" href="#p11-6">Prob 6 — Hermite</a>
+  <a class="sb-a" href="#p11-7">Prob 7 — Jacobi</a>
+</nav>
+
+<main id="main">
+
+<!-- ===================================================
+     LAB 10: INTEGRARE NUMERICA
+     =================================================== -->
+<h2 style="font-size:18px;color:var(--blue);border-color:var(--blue-b)">LAB 10 — Integrare Numerică</h2>
+
+<section id="t-formule">
+<h2>Formule Repetate (Prob 1)</h2>
+
+<div class="cd blue">
+  <span class="badge">Formula repetată a trapezului</span>
+  <h4>O(h²), h = (b-a)/n</h4>
+  <code class="fm fmc">∫_a^b f(x)dx ≈ h/2 [f(a)+f(b) + 2Σ_{k=1}^{n-1} f(xₖ)]</code>
+  <code class="fm">R₁(f) = −(b−a)³/(12n²) · f″(ξ)   ←  eroarea scade cu h²</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Formula repetată a dreptunghiurilor (mijloc)</span>
+  <h4>O(h²), mai precis decât trapezul cu același h</h4>
+  <code class="fm fmc">∫_a^b f(x)dx ≈ h Σ_{k=1}^n f((x_{k-1}+xₖ)/2)</code>
+  <code class="fm">R₁(f) = +(b−a)³/(24n²) · f″(ξ)   ← eroare opusă față de trapez!</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Formula repetată a lui Simpson</span>
+  <h4>O(h⁴) — mult mai precisă, n par!</h4>
+  <code class="fm fmc">∫_a^b f(x)dx ≈ h/6 [f(a)+f(b) + 2Σ f(x_{2k}) + 4Σ f(x_{2k-1})]</code>
+  <code class="fm">R₂(f) = −(b−a)⁵/(2880m⁴) · f⁽⁴⁾(ξ)   (n=2m)</code>
+  <p class="note">Simpson = combinația ponderată (trapez + dreptunghi) care anulează termenul de eroare O(h²).</p>
+</div>
+</section>
+
+<section id="t-erori">
+<h2>Erori prin Teorema lui Peano</h2>
+
+<div class="cd purple">
+  <span class="badge">Formula restului prin Peano</span>
+  <h4>Rₙ(f) = ∫_a^b Kₙ(t) · f⁽ⁿ⁾(t) dt</h4>
+  <p>Nucleul Peano: Kₙ(t) = 1/(n-1)! · Lₓ[(x-t)₊ⁿ⁻¹]</p>
+  <p>Dacă Kₙ(t) ≥ 0 → ∃ ξ: Rₙ(f) = f⁽ⁿ⁾(ξ)/n! · Lₓ(eₙ)</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Formula</th><th>Ordin</th><th>Eroare</th><th>Kₙ constant în semn</th></tr></thead>
+      <tbody>
+        <tr><td>Trapez (h)</td><td>2</td><td>−h³/12 · f″(ξ)</td><td class="hi2">✓</td></tr>
+        <tr><td>Dreptunghi (h)</td><td>2</td><td>+h³/24 · f″(ξ)</td><td class="hi2">✓</td></tr>
+        <tr><td>Simpson (h)</td><td>4</td><td>−h⁵/90 · f⁽⁴⁾(ξ)</td><td class="hi2">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<section id="t-adaptive">
+<h2>Cuadraturi Adaptive (Prob 3)</h2>
+
+<div class="cd amber">
+  <span class="badge">Idea de bază — Divide and Conquer</span>
+  <h4>Rafinare locală unde funcția oscilează rapid</h4>
+  <ol class="steps">
+    <li>Aplică formula pe [a,b]: Q₁</li>
+    <li>Aplică formula pe 2 subintervale: Q₂</li>
+    <li>Dacă |Q₂-Q₁| &lt; tol → returnează Q₂</li>
+    <li>Altfel → recursiv pe [a,c] și [c,b] cu tol/2</li>
+  </ol>
+  <p class="note">Toleranța se reduce cu 2 la fiecare nivel pentru că intervalul se înjumătățește.</p>
+</div>
+
+<div class="g2">
+<div class="cd">
+  <span class="badge">Adaptive trapez</span>
+  <code class="fm">Q1 = h/2*(f(a)+f(b))
+Q2 = h/4*(f(a)+2f(c)+f(b))
+if |Q2-Q1| < tol → Q2
+else → recurse</code>
+</div>
+<div class="cd">
+  <span class="badge">Adaptive Simpson (simplu)</span>
+  <code class="fm">S1 = h/6*(f(a)+4f(c)+f(b))
+S2 = h/12*(f(a)+4f(d)+2f(c)
+         +4f(e)+f(b))
+if |S2-S1| < tol → S2
+else → recurse</code>
+</div>
+</div>
+</section>
+
+<section id="t-romberg">
+<h2>Metoda lui Romberg (Prob 4)</h2>
+
+<div class="cd blue">
+  <span class="badge">Trapeze + Extrapolare Richardson</span>
+  <h4>Tabloul Romberg R_{k,j}</h4>
+  <code class="fm">R_{1,1} = h₁/2*(f(a)+f(b))
+R_{k,1} = ½*(R_{k-1,1} + h_{k-1}*Σ f(puncte_noi))   ← trapez injumatatit
+R_{k,j} = (4^{j-1}*R_{k,j-1} - R_{k-1,j-1}) / (4^{j-1}-1)  ← extrapolare
+
+Criteriu oprire: |R_{k,k} - R_{k-1,k-1}| < ε</code>
+  <p>Coloana j corespunde la O(h^{2j}) — eroarea scade spectral!</p>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Exemplu — ∫₀^π sin(x)dx = 2, ε=0.1</span>
+  <code class="fm">R₁,₁ = π/2*(0+0) = 0
+R₂,₁ = ½*(0 + π*sin(π/2)) = 1.5708
+R₂,₂ = 1.5708 + (1.5708-0)/3 = 2.0944
+R₃,₁ = ½*(1.5708 + π/2*(sin(π/4)+sin(3π/4))) = 1.8961
+R₃,₂ = 1.8961 + (1.8961-1.5708)/3 = 2.0045
+R₃,₃ = 2.0045 + (2.0045-2.0944)/15 = 1.9985
+|R₃,₃ - R₂,₂| = |1.9985-2.0944| = 0.096 < 0.1  ✓</code>
+</div>
+</section>
+
+<section id="t-adquad">
+<h2>adquad — Algoritmul 1 (Prob 5)</h2>
+
+<div class="cd green">
+  <span class="badge">Simpson adaptiv CU extrapolare Richardson</span>
+  <h4>Diferența față de adaptive simplu: extrapolare la final</h4>
+  <code class="fm">Q1 = h/6*(fa + 4fc + fb)               ← Simpson simplu
+Q2 = h/12*(fa + 4fd + 2fc + 4fe + fb)  ← Simpson compus pe 2 panele
+if |Q2-Q1| < tol:
+    return Q2 + (Q2-Q1)/15              ← extrapolare: anuleaza eroarea O(h^4)!
+else:
+    recurse pe [a,c] si [c,b]</code>
+  <p>Extrapolarea (Q2-Q1)/15 este analogul Richardson — reduce eroarea cu un ordin. Aceasta este baza funcției MATLAB <code>quadl</code>.</p>
+</div>
+</section>
+
+<section id="p10">
+<h2>Rezolvări Numerice Lab 10</h2>
+
+<div class="cd amber">
+  <span class="badge">∫₀^π sin(x)dx = 2 — comparatie formule</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>n</th><th>Trapez</th><th>Dreptunghi</th><th>Simpson</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>1.89612</td><td>2.05234</td><td class="hi2">2.00456</td></tr>
+        <tr><td>8</td><td>1.97423</td><td>2.01308</td><td class="hi2">2.00028</td></tr>
+        <tr><td>16</td><td>1.99356</td><td>2.00327</td><td class="hi2">2.000017</td></tr>
+        <tr><td>64</td><td>1.99977</td><td>2.00021</td><td class="hi2">2.00000007</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Trapez: eroare O(h²). Simpson: eroare O(h⁴) — de 2⁴=16 ori mai mică la fiecare halvening.</p>
+</div>
+</section>
+
+<!-- ===================================================
+     LAB 11: CUADRATURI GAUSS
+     =================================================== -->
+<hr class="pdiv">
+<h2 style="font-size:18px;color:var(--green);border-color:var(--green-b)">LAB 11 — Cuadraturi de Tip Gauss</h2>
+
+<section id="t-gauss">
+<h2>Principiul Cuadraturilor Gauss</h2>
+
+<div class="cd green">
+  <span class="badge">Formula Gauss — grad maxim de exactitate</span>
+  <h4>∫_a^b w(x)f(x)dx ≈ Σ_{k=1}^n Aₖ f(xₖ) + Rₙ(f)</h4>
+  <p>Nodurile xₖ și coeficienții Aₖ sunt alesi ca formula să fie exactă pentru polinoame de grad ≤ <span class="key">2n-1</span> (față de n-1 la Newton-Cotes)!</p>
+  <code class="fm">Cheia: xₖ = rădăcinile πₙ(x) ortogonal față de w pe [a,b]
+      Aₖ = (πₙ, πₙ) / (πₙ'(xₖ) * πₙ₋₁(xₖ)) — coeficienți pozitivi</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">De ce graduri mai mari = mai puține noduri</span>
+  <p>Newton-Cotes cu n noduri: exact pe P_{n-1}. Gauss cu n noduri: exact pe P_{2n-1}.</p>
+  <code class="fm">Exemplu: int(-1,1) sin(x^2) dx cu toleranta 1e-7
+  Trapez n=1000  → ~10^-6 eroare
+  Gauss-Legendre n=8  → ~10^-8 eroare   ← de 125x mai puțini!
+</code>
+</div>
+</section>
+
+<section id="t-jacobi">
+<h2>Generare Noduri prin Matricea Jacobi</h2>
+
+<div class="cd blue">
+  <span class="badge">Recurenta polinoamelor ortogonale</span>
+  <code class="fm">π_{k+1}(x) = (x - αₖ)πₖ(x) - βₖπₖ₋₁(x)
+π₀ = 1, π₋₁ = 0
+
+αₖ = (xπₖ, πₖ) / (πₖ, πₖ)
+βₖ = (πₖ, πₖ) / (πₖ₋₁, πₖ₋₁)</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Matricea Jacobi Jₙ(w)</span>
+  <h4>Tridiagonala simetrica n×n</h4>
+  <code class="fm">      ⎡ α₀  √β₁             ⎤
+Jₙ = ⎢ √β₁  α₁  √β₂         ⎥
+      ⎢      √β₂  α₂  √β₃    ⎥
+      ⎣              …  αₙ₋₁  ⎦
+
+Noduri: valorile proprii ale Jₙ   (xₖ = λₖ)
+Coeficienti: Aₖ = β₀ · vₖ₁²       (prima componentă a vectorului propriu)</code>
+</div>
+</section>
+
+<section id="t-tipuri">
+<h2>Tipuri de Formule Gauss</h2>
+
+<div class="cd">
+  <span class="badge">Tabel sumar</span>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Tip</th><th>Pondere w(x)</th><th>Interval</th><th>αₖ</th><th>β₀, βₖ</th></tr></thead>
+      <tbody>
+        <tr><td class="hi">Legendre</td><td>1</td><td>[-1,1]</td><td>0</td><td>2; (4k²-1)⁻¹</td></tr>
+        <tr><td class="hi">Cheb I</td><td>1/√(1-x²)</td><td>[-1,1]</td><td>0</td><td>π; ½(k=1); ¼(k&gt;1)</td></tr>
+        <tr><td class="hi">Cheb II</td><td>√(1-x²)</td><td>[-1,1]</td><td>0</td><td>π/2; ¼</td></tr>
+        <tr><td>Laguerre</td><td>xᵃe⁻ˣ</td><td>[0,∞)</td><td>2k+a+1</td><td>Γ(1+a); k(k+a)</td></tr>
+        <tr><td>Hermite</td><td>e⁻ˣ²</td><td>(-∞,∞)</td><td>0</td><td>√π; k/2</td></tr>
+        <tr><td>Jacobi</td><td>(1-x)ᵃ(1+x)ᵇ</td><td>[-1,1]</td><td>formule</td><td>formule</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Chebyshev I: nodurile cos((2k-1)π/(2n)) și ponderi π/n → calcul explicit, fără matrice Jacobi!</p>
+</div>
+</section>
+
+<section id="t-eroare-gauss">
+<h2>Eroarea Formulei Gauss</h2>
+
+<div class="cd green">
+  <span class="badge">Formula restului (dacă f ∈ C²ⁿ)</span>
+  <code class="fm fmc">Rₙ(f) = f⁽²ⁿ⁾(ξ)/(2n)! · ∫_a^b w(x)πₙ²(x)dx</code>
+  <p>Strategia pentru a determina n necesar:</p>
+  <ol class="steps">
+    <li>Majorează |f⁽²ⁿ⁾| ≤ M pe intervalul</li>
+    <li>Calculează ∫w·πₙ² dx (din coeficienții de recurență)</li>
+    <li>Crește n până când M/(2n)! · ∫w·πₙ² &lt; ε</li>
+  </ol>
+</div>
+</section>
+
+<!-- ===================================================
+     PROBLEME LAB 11
+     =================================================== -->
+<hr class="pdiv">
+
+<section id="p11-2">
+<h2>Prob 2 — Gauss-Legendre: ∫₋₁¹ sin(x²)dx și cos(x²)dx</h2>
+
+<div class="cd amber">
+  <span class="badge">Algoritm — creste n pana la convergenta</span>
+  <ol class="steps">
+    <li>Start cu n₀=5 noduri Legendre</li>
+    <li>Calculează I_{n₀} = Σ wₖ f(xₖ)</li>
+    <li>Crește n cu 1, calculează Iₙ</li>
+    <li>Dacă |Iₙ - Iₙ₋₁| &lt; 10⁻⁷ → stop</li>
+  </ol>
+</div>
+
+<div class="cd green">
+  <span class="badge">Rezultat</span>
+  <code class="fm">n=8 noduri suficiente:
+  ∫sin(x²)dx = 0.6205366034...  (exact: 0.620536603...)
+  ∫cos(x²)dx = 1.8090484758...  (exact: 1.809048475...)
+
+Verificare eroare (Peano):
+  f=sin(x²): |f^(16)(ξ)| ≤ max pe [-1,1]
+  Restul ≤ 2.22×10⁻¹⁵ (sub precizia double!)</code>
+</div>
+</section>
+
+<section id="p11-3">
+<h2>Prob 3 — Gauss-Chebyshev I: ∫₋₁¹ f(x)/√(1-x²)dx</h2>
+
+<div class="cd blue">
+  <span class="badge">Formula cu 10 noduri</span>
+  <code class="fm">Noduri: xₖ = cos((2k-1)π/20),  k=1,...,10
+Ponderi: Aₖ = π/10  (toate egale!)
+
+∫₋₁¹ cos(x)/√(1-x²) dx = π·J₀(1) = π·0.7651977...
+                          = 2.40393943...
+
+Calculat: vquad(nodes, w, @cos) = 2.40393943...
+Eroare: ~4×10⁻¹⁶  (precizie maximă!)</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">De ce eroarea e atât de mică?</span>
+  <p>cos(x) este analitică pe toată axa reală. Formula Chebyshev I cu 10 noduri este exactă pe P₁₉ și converge spectral pentru funcții analitice.</p>
+</div>
+</section>
+
+<section id="p11-4">
+<h2>Prob 4 — Gauss-Chebyshev II: ∫₋₁¹ √(1-x²)f(x)dx</h2>
+
+<div class="cd blue">
+  <span class="badge">Formula cu 5 și 10 noduri</span>
+  <code class="fm">∫₋₁¹ √(1-x²)·cos(x) dx = π·J₁(1) = 1.382459...
+
+Cu 5 noduri (n=5):
+  Noduri Cheb II: cos(kπ/5), k=1,...,5
+  Ponderi: π·sin²(kπ/5)/... (din matricea Jacobi cu α=0, β=π/2, 1/4,...)
+  Eroare ≈ 4.1×10⁻¹⁰
+
+Cu 10 noduri: eroare ~10⁻²⁰ (sub precizia double)</code>
+</div>
+</section>
+
+<section id="p11-5">
+<h2>Prob 5 — Gauss-Laguerre: ∫₀∞ e⁻ˣ sin/cos(x)dx</h2>
+
+<div class="cd blue">
+  <span class="badge">Formula și valori exacte</span>
+  <code class="fm">∫₀∞ e⁻ˣ sin(x)dx = Im{1/(1-i)} = 1/2  ← exact!
+∫₀∞ e⁻ˣ cos(x)dx = Re{1/(1-i)} = 1/2  ← exact!
+
+Noduri Laguerre L₆: rădăcinile lui L₆(x), ortogonal pe (0,∞) față de e⁻ˣ
+Coeficienți: calculați via matricea Jacobi (α=2k+1, β=k)
+
+Cu n=6: err sin ≈ 4.9×10⁻⁵  (insuficient)
+Cu n≈12: 8 zecimale exacte</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Câte noduri sunt necesare?</span>
+  <code class="fm">|sin^(12)(x)| ≤ 1
+∫₀∞ π₁₂²(x)e⁻ˣdx → calculat din coeficienti
+→ Rₙ = M/(2n)! * ∫ < 5×10⁻⁹ pentru n ≈ 12-15</code>
+</div>
+</section>
+
+<section id="p11-6">
+<h2>Prob 6 — Gauss-Hermite: ∫_ℝ e⁻ˣ² sin/cos(x)dx</h2>
+
+<div class="cd blue">
+  <span class="badge">Valori exacte (transformata Fourier a gaussianei)</span>
+  <code class="fm">∫_ℝ e⁻ˣ² cos(x)dx = √π · e⁻¹/⁴ ≈ 1.380388...
+∫_ℝ e⁻ˣ² sin(x)dx = √π · e⁻¹/⁴ · sin(1/2) ≈ ...
+
+(Din formula: ∫_ℝ e⁻ˣ² e^{itx}dx = √π·e^{-t²/4})
+
+Cu n=7 noduri Hermite: eroare ~7×10⁻¹⁰  ← 8 zecimale corecte!</code>
+</div>
+</section>
+
+<section id="p11-7">
+<h2>Prob 7 — Gauss-Jacobi: ∫₀^(π/2) 1/√(sin x) dx</h2>
+
+<div class="cd amber">
+  <span class="badge">Problema — singularitate la x=0</span>
+  <p>sin(x) ≈ x la x=0 → 1/√(sin x) ≈ x^{-1/2} → integrabilă dar singulară. Gauss-Legendre ar converge lent. Soluție: Gauss-Jacobi cu ponderea corespunzătoare.</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Substituția și alegerea formulei</span>
+  <ol class="steps">
+    <li>Substituție: x = π/4·(1+t), t ∈ [-1,1], dx = π/4·dt</li>
+    <li>Integrala devine: π/4 · ∫₋₁¹ (sin(π(1+t)/4))^{-1/2} dt</li>
+    <li>Singularitate la t=-1: sin(π(1+t)/4) ~ π(1+t)/4 → (1+t)^{-1/2}</li>
+    <li>Alegem Gauss-Jacobi cu α=0, β=-1/2 (ponderea (1+t)^{-1/2})</li>
+    <li>Integrandul: g(t) = π/4 · √((1+t)/sin(π(1+t)/4)) — MĂRGINIT la t=-1!</li>
+  </ol>
+  <code class="fm">g(-1) → π/4·√(4/π) = √π/2 ≈ 0.886  (fara singularitate!)
+
+∫₀^(π/2) 1/√(sin x) dx = Γ(1/4)·√π / (2·Γ(3/4)) ≈ 2.622...
+
+Cu ~15-20 noduri Jacobi(α=0, β=-1/2): 9 zecimale exacte</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Valoarea exactă</span>
+  <code class="fm">∫₀^(π/2) sin(x)^(-1/2)dx = B(1/4, 1/2)/2 = Γ(1/4)·Γ(1/2)/(2·Γ(3/4))
+                          = 2.622057554292119...</code>
+</div>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links=document.querySelectorAll('.sb-a');
+  const secs=Array.from(document.querySelectorAll('section[id]'));
+  const scrollY=window.scrollY+80;
+  let active=null;
+  secs.forEach(s=>{if(s.offsetTop<=scrollY)active=s.id;});
+  links.forEach(l=>{const href=l.getAttribute('href').replace('#','');l.classList.toggle('on',href===active);});
+}
+document.addEventListener('scroll',updateNav,{passive:true});
+window.addEventListener('load',updateNav);
+</script>
+</body>
+</html>

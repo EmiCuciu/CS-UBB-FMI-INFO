@@ -1,12 +1,21 @@
 EXAMEN: 4 probleme
 
-Sisteme Liniare
+Sisteme Liniare      LUP / Cholesky
 Sisteme Neliniare
 Integrare Numerica	(Quadruaturi)
 Interpolare		
+Ecuatii Neliniare
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1. LUP / Cholesky
+2. Intepolari
+3. Cuadruaturi
+4. Ecuatii Neliniare
+
+
+posibil un subiect interpolari si cuad impreuna
 
 (adica cam toata materia)
 
-Flux de invatare:
-
-Citit slides -> Citit Laboratoare + demos -> Probleme obligatorii

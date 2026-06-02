@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab06 — CMMP | Teorie + Rezolvări</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f2efea;--bg3:#e8e4dc;
+  --text:#1a1918;--text2:#5a5855;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeef8;--blue-b:#90c0e8;
+  --green:#0f6e56;--green-bg:#daf5ec;--green-b:#7ad4bc;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#e8c060;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b090e0;
+  --red:#8a1a1a;--red-bg:#fce8e8;--red-b:#e89090;
+  --bd:rgba(0,0,0,0.11);--sb:225px;
+  --mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+  --text:#e8e5df;--text2:#9a9890;--text3:#60605a;
+  --blue:#80b0e8;--blue-bg:#0a2540;--blue-b:#1a4880;
+  --green:#90d8c0;--green-bg:#042e20;--green-b:#185840;
+  --amber:#f0c070;--amber-bg:#2a1600;--amber-b:#583800;
+  --purple:#b890f0;--purple-bg:#180a30;--purple-b:#381870;
+  --red:#f0a0a0;--red-bg:#280808;--red-b:#581818;
+  --bd:rgba(255,255,255,0.09);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.68;font-size:15px}
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:3px}#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-hd{padding:1.1rem 1rem .8rem;border-bottom:1px solid var(--bd);margin-bottom:.4rem}
+.sb-hd h1{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.sb-hd p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-pt{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:.85rem 1rem .2rem}
+.sb-a{display:block;padding:.27rem 1rem .27rem 1.35rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .13s}
+.sb-a:hover,.sb-a.on{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+.sb-a2{padding-left:2rem;font-size:12px}
+#main{margin-left:var(--sb);flex:1;max-width:830px;padding:2.5rem 2.5rem 5rem}
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+h2{font-size:20px;font-weight:700;border-bottom:2px solid var(--bd);padding-bottom:.45rem;margin-bottom:1.1rem}
+h3{font-size:15.5px;font-weight:600;margin:1.2rem 0 .4rem}
+p{color:var(--text2);margin-bottom:.65rem;font-size:14.5px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:13px;color:var(--text3);font-style:italic;margin-top:6px}
+.cd{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:.9rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}
+.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}
+.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.red{border-color:var(--red-b);background:var(--red-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:5px}
+.blue .badge{color:var(--blue)}.green .badge{color:var(--green)}.amber .badge{color:var(--amber)}
+.purple .badge{color:var(--purple)}.red .badge{color:var(--red)}
+h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.95;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14.5px;padding:13px 14px}
+.steps{counter-reset:step;list-style:none;margin:8px 0}
+.steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:9px;font-size:14px;color:var(--text2);align-items:flex-start}
+.steps li::before{content:counter(step);background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11.5px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:600}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.pdiv{border:none;border-top:3px solid var(--bd);margin:2.5rem 0 2rem}
+</style>
+</head>
+<body>
+
+<nav id="sb">
+  <div class="sb-hd"><h1>Lab06 — CMMP</h1><p>Teorie + Rezolvări pe Foaie</p></div>
+  <div class="sb-pt">Teorie</div>
+  <a class="sb-a" href="#t-intro">Ce e CMMP?</a>
+  <a class="sb-a" href="#t-discret">6a — Aproximare Discretă</a>
+  <a class="sb-a" href="#t-normal">Ecuațiile Normale</a>
+  <a class="sb-a" href="#t-continuu">6b — Aproximare Continuă</a>
+  <a class="sb-a" href="#t-cheb">Chebyshev Continuu</a>
+  <a class="sb-a" href="#t-r2">Calitatea Fitului (R²)</a>
+  <div class="sb-pt">Probleme</div>
+  <a class="sb-a" href="#p1">Prob 1 — Aproximare Discretă</a>
+  <a class="sb-a sb-a2" href="#p1-hand">→ Rezolvare pe foaie</a>
+  <a class="sb-a" href="#p2">Prob 2 — Asteroid</a>
+  <a class="sb-a sb-a2" href="#p2-hand">→ Rezolvare pe foaie</a>
+  <a class="sb-a" href="#p4">Prob 4 — Populația SUA</a>
+  <a class="sb-a sb-a2" href="#p4-hand">→ Rezolvare pe foaie</a>
+</nav>
+
+<main id="main">
+
+<!-- ===== TEORIE ===== -->
+
+<section id="t-intro">
+<h2>Ce este CMMP?</h2>
+
+<div class="cd blue">
+  <span class="badge">Problema generală</span>
+  <h4>Minimizarea erorii în normă L²</h4>
+  <p>Dat f ∈ L²_w[a,b] și Φ ≤ L²_w[a,b] subspațiu de dimensiune n+1, găsim φ* ∈ Φ cu:</p>
+  <code class="fm fmc">‖φ* − f‖₂ ≤ ‖φ − f‖₂,  ∀φ ∈ Φ</code>
+  <p>φ* = a₀φ₀ + a₁φ₁ + … + aₙφₙ unde {φₖ} este o bază a lui Φ.</p>
+</div>
+
+<div class="g2">
+<div class="cd amber">
+  <span class="badge">6a — Caz discret</span>
+  <h4>Produsul scalar discret</h4>
+  <code class="fm">(g, h) = Σₖ wₖ · g(xₖ) · h(xₖ)
+
+Minimizăm: Σₖ wₖ(f(xₖ) − φ*(xₖ))²</code>
+  <p class="note">N date (xₖ, fₖ), N &gt; n+1 → sistem supradeterminat.</p>
+</div>
+<div class="cd amber">
+  <span class="badge">6b — Caz continuu</span>
+  <h4>Produsul scalar integral</h4>
+  <code class="fm">(g, h) = ∫_a^b w(x)·g(x)·h(x)dx
+
+Minimizăm: ∫w(x)(f(x)-φ*(x))²dx</code>
+  <p class="note">Pondere w(x) ≥ 0 dată.</p>
+</div>
+</div>
+</section>
+
+<section id="t-discret">
+<h2>6a — Aproximarea Discretă (baza 1, x, ..., xⁿ)</h2>
+
+<div class="cd blue">
+  <span class="badge">Matricea de design A (Vandermonde)</span>
+  <h4>Coloanele = valorile bazei în noduri</h4>
+  <code class="fm">A ∈ ℝ^{N×(n+1)},   A_{ij} = φ_{j-1}(xᵢ) = xᵢ^{j-1}
+
+⎡ 1   x₁   x₁²  … x₁ⁿ ⎤   ⎡ f₁ ⎤
+⎢ 1   x₂   x₂²  … x₂ⁿ ⎥ · ⎢ c  ⎥ ≈ ⎢ f₂ ⎥
+⎢ …   …    …    … …    ⎥   ⎢ …  ⎥   ⎢ …  ⎥
+⎣ 1   xN   xN²  … xNⁿ ⎦   ⎣ cₙ ⎦   ⎣ fN ⎦</code>
+  <p>Dacă N &gt; n+1 → sistem supradeterminat → rezolvat în sensul CMMP.</p>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Coeficienții — soluția CMMP</span>
+  <code class="fm fmc">c = A \ f   ← MATLAB rezolvă intern cu QR decomposition</code>
+  <p class="note">Echivalent cu ecuațiile normale AᵀAc = Aᵀf, dar numeric mai stabil prin QR.</p>
+</div>
+</section>
+
+<section id="t-normal">
+<h2>Ecuațiile Normale</h2>
+
+<div class="cd purple">
+  <span class="badge">Derivarea ecuațiilor normale</span>
+  <h4>Minimizăm E(c) = ‖Ac − f‖² → ∂E/∂cₖ = 0</h4>
+  <code class="fm fmc">AᵀA · c = Aᵀf   ← Ecuațiile normale</code>
+  <p>Matricea AᵀA este simetrică pozitiv definită (dacă A are rang maxim).</p>
+  <code class="fm">Elementele: (AᵀA)_{ij} = Σₖ xₖ^{i+j-2}  = (φᵢ₋₁, φⱼ₋₁)
+             (Aᵀf)_i    = Σₖ xₖ^{i-1}·fₖ      = (f, φᵢ₋₁)</code>
+  <p class="note">AᵀA poate fi prost condiționată pentru n mare (Vandermonde e notorie!). MATLAB's `\` folosește QR — mai stabil.</p>
+</div>
+</section>
+
+<section id="t-continuu">
+<h2>6b — Aproximarea Continuă</h2>
+
+<div class="cd green">
+  <span class="badge">Ecuațiile normale (continuu)</span>
+  <h4>Dacă baza {φₖ} e generică:</h4>
+  <code class="fm">Σⱼ aⱼ(φⱼ, φₖ) = (f, φₖ),  k = 0, …, n
+
+Gram · a = b,  Gram_{kj} = (φₖ, φⱼ) = ∫w·φₖ·φⱼdx
+                            bₖ = (f, φₖ) = ∫w·f·φₖdx</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Dacă baza e ORTOGONALĂ → simplificare</span>
+  <h4>(φⱼ, φₖ) = 0 pentru j≠k → Gram e diagonală!</h4>
+  <code class="fm fmc">aₖ = (f, φₖ) / (φₖ, φₖ)   ← formule explicite!</code>
+  <p>Nu trebuie rezolvat niciun sistem! Acesta este marele avantaj al bazelor ortogonale.</p>
+</div>
+</section>
+
+<section id="t-cheb">
+<h2>Aproximarea Continuă cu Polinoame Chebyshev</h2>
+
+<div class="cd blue">
+  <span class="badge">Produsul scalar Chebyshev</span>
+  <h4>Pondere w(t) = 1/√(1-t²) pe [-1,1]</h4>
+  <code class="fm">(g, h) = ∫₋₁¹ g(t)h(t) / √(1-t²) dt
+
+Ortogonalitate: (Tₖ, Tⱼ) = { 0,     k≠j
+                             { π,     k=j=0
+                             { π/2,   k=j>0</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Coeficienții Chebyshev</span>
+  <code class="fm">φ*(x) = a₀T₀(x) + a₁T₁(x) + … + aₙTₙ(x)
+
+a₀ = (1/π) ∫₋₁¹ f(t)/√(1-t²) dt
+aₖ = (2/π) ∫₋₁¹ f(t)Tₖ(t)/√(1-t²) dt,  k≥1</code>
+  <p>Schimbare variabilă t=cos(θ): integrala devine ∫₀^π f(cos θ)cos(kθ)dθ — transformată cosinus!</p>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Implementare discreta (N+1 puncte Chebyshev)</span>
+  <code class="fm">ξₖ = cos((2k-1)π/(2N+2)),  k=1,…,N+1  (radacinile T_{N+1})
+
+a₀ ≈ (1/(N+1)) Σₖ f(ξₖ)
+aⱼ ≈ (2/(N+1)) Σₖ f(ξₖ)·Tⱼ(ξₖ),  j≥1
+
+Tₖ(x) calculat din recurenta: T₀=1, T₁=x, Tₙ₊₁=2x·Tₙ-Tₙ₋₁</code>
+  <p class="note">Converge spectral pentru funcții analitice: ‖f-φ*‖ = O(C^{-n}), C&gt;1.</p>
+</div>
+</section>
+
+<section id="t-r2">
+<h2>Calitatea Fitului — R² și Reziduu</h2>
+
+<div class="g2">
+<div class="cd green">
+  <span class="badge">Norma reziduului</span>
+  <code class="fm">‖r‖ = ‖Ac - f‖₂ = √(Σᵢ(Acᵢ-fᵢ)²)
+
+Mic = fit bun
+Compara modele: mai mic → mai precis</code>
+</div>
+<div class="cd green">
+  <span class="badge">Coeficientul R²</span>
+  <code class="fm">SS_res = ‖Ac - f‖²  (eroare model)
+SS_tot = ‖f - f̄‖²   (varianță totală)
+
+R² = 1 - SS_res/SS_tot ∈ [0, 1]
+
+R²→1: model excelent
+R²→0: model slab</code>
+</div>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Compararea modelelor</span>
+  <p>Model cu mai mulți parametri → R² mai mare, dar poate fi overfitting. Criteriu mai bun: <span class="key">R² ajustat</span> sau criteriul AIC/BIC, care penalizează complexitatea modelului.</p>
+  <code class="fm">R²_adj = 1 - (1-R²)(N-1)/(N-p-1)
+N = nr. date,  p = nr. parametri</code>
+</div>
+</section>
+
+<!-- ===== PROBLEME ===== -->
+<hr class="pdiv">
+
+<section id="p1">
+<h2>Problema 1 — Aproximare Discretă, w=1, baza 1,x,...,xⁿ</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>Date (xₖ, fₖ), k=1,…,N. Găsește p*(x) = Σⱼ cⱼxʲ cu ‖Ac-f‖₂ minimă.</h4>
+</div>
+
+<section id="p1-hand">
+<h3>Rezolvare pe foaie — exemplu mic</h3>
+
+<div class="cd amber">
+  <span class="badge">Date: N=4 puncte, grad n=1 (dreaptă CMMP)</span>
+  <code class="fm">x = [0, 1, 2, 3]',  f = [1, 2, 2, 4]'</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 1 — Matricea de design A</span>
+  <code class="fm">A = [1  0]     Coloana 1: φ₀(x) = 1
+    [1  1]     Coloana 2: φ₁(x) = x
+    [1  2]
+    [1  3]</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Pasul 2 — Ecuațiile normale AᵀAc = Aᵀf</span>
+  <code class="fm">AᵀA = [4   6 ]    Aᵀf = [9 ]
+       [6  14 ]           [17]
+
+Sistem: 4c₀ + 6c₁ = 9
+        6c₀ + 14c₁ = 17
+
+Din prima: c₀ = (9 - 6c₁)/4
+Substituind: 6(9-6c₁)/4 + 14c₁ = 17
+→ 13.5 - 9c₁ + 14c₁ = 17
+→ 5c₁ = 3.5  → c₁ = 0.7
+
+c₀ = (9 - 6·0.7)/4 = (9-4.2)/4 = 4.8/4 = 1.2</code>
+</div>
+
+<div class="cd green">
+  <span class="badge">Pasul 3 — Rezultat</span>
+  <code class="fm">p*(x) = 1.2 + 0.7x
+
+Verificare reziduu:
+  p*(0)=1.2, p*(1)=1.9, p*(2)=2.6, p*(3)=3.3
+  r = [1-1.2, 2-1.9, 2-2.6, 4-3.3] = [-0.2, 0.1, -0.6, 0.7]
+  ‖r‖ = √(0.04+0.01+0.36+0.49) = √0.9 ≈ 0.949</code>
+</div>
+</section>
+</section>
+
+<section id="p2">
+<h2>Problema 2 — Asteroidul</h2>
+
+<div class="cd">
+  <span class="badge">Cerință</span>
+  <h4>10 observații (xₖ, yₖ). Fit elipsoidal: x²=ay²+bxy+cx+dy+e. Fit parabolic: x²=ay+e.</h4>
+</div>
+
+<section id="p2-hand">
+<h3>Rezolvare pe foaie — logică</h3>
+
+<div class="cd blue">
+  <span class="badge">Model elipsoidal — setup matrice</span>
+  <ol class="steps">
+    <li>Necunoscute: a, b, c, d, e → 5 parametri</li>
+    <li>Ecuația x² = ay²+bxy+cx+dy+e → pentru fiecare observație k: xₖ² = ayₖ²+bxₖyₖ+cxₖ+dyₖ+e</li>
+    <li>Matricea design: A ∈ ℝ^{10×5} cu coloanele [y², xy, x, y, 1]</li>
+    <li>Membrul drept: b = [x₁², x₂², ..., x₁₀²]ᵀ</li>
+    <li>Soluție CMMP: [a,b,c,d,e]ᵀ = A\b</li>
+  </ol>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Model parabolic — setup (mai simplu)</span>
+  <ol class="steps">
+    <li>x² = ay + e → 2 parametri: a, e</li>
+    <li>A ∈ ℝ^{10×2} cu coloanele [y, 1]</li>
+    <li>Același b = x²</li>
+  </ol>
+</div>
+
+<div class="cd green">
+  <span class="badge">Comparare modele</span>
+  <code class="fm">Rezultate numerice:
+  Elipsoidal: ‖reziduu‖ ≈ 0.0033,  R² ≈ 0.9997
+  Parabolic:  ‖reziduu‖ ≈ 0.0218,  R² ≈ 0.9768
+
+Concluzie: R²_elipsoidal >> R²_parabolic
+→ Modelul elipsoidal descrie mult mai bine orbita.
+→ Orbita este elipsă (consistent cu prima lege a lui Kepler!)
+
+Elipsa are 5 grade de libertate, parabola 2 → mai mulți parametri
+dar R² mult mai bun → nu e overfitting, modelul e corect fizic.</code>
+</div>
+</section>
+</section>
+
+<section id="p4">
+<h2>Problema 4 — Populația SUA</h2>
+
+<div class="cd">
+  <span class="badge">Date</span>
+  <h4>13 recensăminte (1900-2020). Fit polinomial gr.3 și exponențial.</h4>
+</div>
+
+<section id="p4-hand">
+<h3>Rezolvare pe foaie</h3>
+
+<div class="cd blue">
+  <span class="badge">Model polinomial grad 3</span>
+  <ol class="steps">
+    <li>Normalizare timp: t = (an - 1900)/10  → t ∈ [0, 12] evită probleme numerice</li>
+    <li>Necunoscute: c₀, c₁, c₂, c₃ → y = c₀ + c₁t + c₂t² + c₃t³</li>
+    <li>Matrice A ∈ ℝ^{13×4}: coloanele [1, t, t², t³]</li>
+    <li>Soluție: c = A\pop</li>
+  </ol>
+  <code class="fm">c_pol ≈ [74.7, 8.1, 0.7, -0.02]  (ordine crescătoare)
+
+Predictii:
+  1975 (t=7.5): y ≈ 213 mln
+  2015 (t=11.5): y ≈ 320 mln</code>
+</div>
+
+<div class="cd blue">
+  <span class="badge">Model exponențial — liniarizare</span>
+  <ol class="steps">
+    <li>y = K·e^{λt} → log(y) = log(K) + λt</li>
+    <li>Definim z = log(y), A = [1, t], necunoscute [log(K), λ]</li>
+    <li>Sistem liniar: z = A·[log(K); λ] → soluție CMMP</li>
+    <li>Recuperare: K = e^{c₁}, λ = c₂</li>
+  </ol>
+  <code class="fm">K ≈ 80.0,  λ ≈ 0.131 per deceniu
+→ rata de crestere ≈ 1.31% per an
+
+Predictii:
+  1975 (t=7.5): y ≈ 216 mln
+  2015 (t=11.5): y ≈ 332 mln</code>
+</div>
+
+<div class="cd amber">
+  <span class="badge">Comparare modele</span>
+  <code class="fm">Model polinomial: ‖reziduu‖ ≈ 3.5 mln  (fit mai bun 1900-2010)
+Model exponential: ‖reziduu‖ ≈ 8.2 mln (mai slab la extremitati)
+
+Observatie: populatia SUA a incetinit cresterea dupa 1950
+(efectul World War II, baby boom, etc.) — modelul exponential
+supraestimeaza in zona 1930-1950.</code>
+</div>
+</section>
+</section>
+
+</main>
+
+<script>
+function updateNav(){
+  const links = document.querySelectorAll('.sb-a');
+  const secs  = Array.from(document.querySelectorAll('section[id]'));
+  const scrollY = window.scrollY + 80;
+  let active = null;
+  secs.forEach(s => { if(s.offsetTop <= scrollY) active = s.id; });
+  links.forEach(l => {
+    const href = l.getAttribute('href').replace('#','');
+    l.classList.toggle('on', href === active);
+  });
+}
+document.addEventListener('scroll', updateNav, {passive:true});
+window.addEventListener('load', updateNav);
+</script>
+</body>
+</html>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C6 – Interpolare & Spline Cubice | Analiză Numerică</title>
+<style>
+:root{
+  --bg:#fafaf8;--bg2:#f0ede8;--bg3:#e8e4de;
+  --text:#1a1918;--text2:#5c5a54;--text3:#8a8880;
+  --blue:#185fa5;--blue-bg:#ddeeff;--blue-b:#a8c8f0;
+  --green:#0f6e56;--green-bg:#ddf5ec;--green-b:#8adac4;
+  --amber:#7a4500;--amber-bg:#fef0d8;--amber-b:#f0c070;
+  --red:#8b1a1a;--red-bg:#fde8e8;--red-b:#f0a0a0;
+  --purple:#4a1a8a;--purple-bg:#ede8fc;--purple-b:#b8a0e8;
+  --bd:rgba(0,0,0,0.12);--bd2:rgba(0,0,0,0.06);
+  --sb:220px;--font:"Segoe UI",system-ui,sans-serif;--mono:"Consolas","Courier New",monospace;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#16151a;--bg2:#1e1d22;--bg3:#28272e;
+    --text:#e8e6e0;--text2:#9c9a92;--text3:#66645e;
+    --blue:#85b7eb;--blue-bg:#0a2540;--blue-b:#1e4a80;
+    --green:#9fe1cb;--green-bg:#043020;--green-b:#1a6040;
+    --amber:#fac775;--amber-bg:#301800;--amber-b:#604010;
+    --red:#f0a0a0;--red-bg:#2a0808;--red-b:#601010;
+    --purple:#c0a8f8;--purple-bg:#1a0a30;--purple-b:#401870;
+    --bd:rgba(255,255,255,0.1);--bd2:rgba(255,255,255,0.05);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;min-height:100vh;line-height:1.65;font-size:15px}
+/* SIDEBAR */
+#sb{width:var(--sb);flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;padding:0 0 2rem}
+#sb::-webkit-scrollbar{width:4px}
+#sb::-webkit-scrollbar-thumb{background:var(--bd)}
+.sb-header{padding:1.2rem 1rem 0.8rem;border-bottom:1px solid var(--bd);margin-bottom:0.5rem}
+.sb-header h1{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text2)}
+.sb-header p{font-size:11px;color:var(--text3);margin-top:2px}
+.sb-part{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:0.9rem 1rem 0.25rem}
+.sb-link{display:block;padding:0.28rem 1rem 0.28rem 1.4rem;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all 0.13s}
+.sb-link:hover,.sb-link.active{color:var(--blue);border-left-color:var(--blue);background:var(--blue-bg)}
+/* MAIN */
+#main{margin-left:var(--sb);flex:1;max-width:820px;padding:2.5rem 2.5rem 5rem}
+/* SECTION */
+section{margin-bottom:3rem;scroll-margin-top:1rem}
+.part-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:4px;background:var(--bg3);color:var(--text3);margin-bottom:0.6rem}
+h2.stitle{font-size:21px;font-weight:700;color:var(--text);border-bottom:2px solid var(--bd);padding-bottom:0.5rem;margin-bottom:1.2rem}
+h3.sub{font-size:15px;font-weight:600;color:var(--text);margin:1.2rem 0 0.4rem}
+p.lead{color:var(--text2);margin-bottom:0.7rem;font-size:14.5px}
+/* CARDS */
+.card{border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;background:var(--bg2)}
+.blue{border-color:var(--blue-b);background:var(--blue-bg)}
+.green{border-color:var(--green-b);background:var(--green-bg)}
+.amber{border-color:var(--amber-b);background:var(--amber-bg)}
+.red{border-color:var(--red-b);background:var(--red-bg)}
+.purple{border-color:var(--purple-b);background:var(--purple-bg)}
+.badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:5px;display:block}
+.blue .badge{color:var(--blue)}
+.green .badge{color:var(--green)}
+.amber .badge{color:var(--amber)}
+.red .badge{color:var(--red)}
+.purple .badge{color:var(--purple)}
+h4.ctitle{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:6px}
+/* FORMULA */
+.fm{font-family:var(--mono);font-size:13px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;margin:7px 0;display:block;line-height:1.9;overflow-x:auto;white-space:pre}
+.fmc{text-align:center;font-size:14.5px;padding:13px 14px}
+.key{font-weight:600;color:var(--text)}
+.note{font-size:12.5px;color:var(--text2);font-style:italic;margin-top:6px}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:12px;min-width:100%}
+th{background:var(--bg3);padding:5px 10px;border:1px solid var(--bd);font-weight:600;text-align:center;font-size:11px}
+td{padding:5px 10px;border:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:11px}
+td.hi{background:var(--blue-bg);color:var(--blue);font-weight:700}
+td.hi2{background:var(--green-bg);color:var(--green);font-weight:700}
+td.mut{background:var(--bg2);color:var(--text3)}
+/* DEMO */
+.demo{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:1.1rem;margin:1rem 0}
+.demo-title{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:0.7rem}
+.ctrls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:0.7rem;font-size:13px;color:var(--text2)}
+.ctrls label{white-space:nowrap}
+.ctrls select,.ctrls input[type=number]{font-size:12px;padding:3px 6px;border:1px solid var(--bd);border-radius:5px;background:var(--bg);color:var(--text)}
+canvas.cv{width:100%;height:260px;border:1px solid var(--bd);border-radius:6px;display:block;background:var(--bg)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-top:7px;font-size:12px;color:var(--text2)}
+.li{display:flex;align-items:center;gap:5px}
+.ll{width:20px;height:2.5px;border-radius:1px;flex-shrink:0;display:inline-block}
+.ld{width:20px;display:inline-block;border-top:2px dashed;flex-shrink:0}
+.info{font-size:11.5px;color:var(--text3);margin-top:5px;font-family:var(--mono)}
+/* PART DIVIDER */
+.pdiv{border:none;border-top:3px solid var(--bd);margin:3rem 0 2.5rem}
+/* GRID 2col */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+/* FORMULA GRID */
+.frow{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;font-size:13px;margin:4px 0}
+.frow .fl{color:var(--text3);font-size:12px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sb">
+  <div class="sb-header">
+    <h1>C6 — Analiză Numerică</h1>
+    <p>UBB · R. Trîmbițaș</p>
+  </div>
+  <div class="sb-part">Interpolare Polinomială</div>
+  <a class="sb-link" href="#peano">Teorema Peano</a>
+  <a class="sb-link" href="#lagrange">Interpolare Lagrange</a>
+  <a class="sb-link" href="#neville">Aitken / Neville</a>
+  <a class="sb-link" href="#newton">Diferențe Divizate</a>
+  <a class="sb-link" href="#baric">Metoda Baricentrică</a>
+  <a class="sb-link" href="#hermite">Interpolare Hermite</a>
+  <a class="sb-link" href="#powell" style="padding-left:2rem;font-size:12px">↳ Metoda lui Powell</a>
+  <div class="sb-part">Interpolare Spline</div>
+  <a class="sb-link" href="#runge">Fenomenul Runge</a>
+  <a class="sb-link" href="#spdef">Spații Spline S<sup>k</sup><sub>m</sub>(Δ)</a>
+  <a class="sb-link" href="#splin">Spline Liniare + B-Spline</a>
+  <a class="sb-link" href="#spc1">Spline Cubice C¹</a>
+  <a class="sb-link" href="#spc2">Spline Cubice C² + Tipuri</a>
+  <a class="sb-link" href="#spmin">Proprietatea de Minimalitate</a>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- =========================================================
+     PART I : INTERPOLARE POLINOMIALĂ
+     ========================================================= -->
+
+<div class="part-badge">Partea I · C6-interpolf.pdf</div>
+
+<!-- ==================== PEANO ==================== -->
+<section id="peano">
+<h2 class="stitle">Teorema lui Peano</h2>
+
+<div class="g2">
+<div class="card blue">
+  <span class="badge">Definiție — Spațiul H_n[a,b]</span>
+  <h4 class="ctitle">Funcții suficient de regulate</h4>
+  <p class="lead">Condiția: f ∈ C<sup>n-1</sup>[a,b] și f<sup>(n-1)</sup> absolut continuă.</p>
+  <code class="fm">H_n[a,b] = { f : [a,b]→ℝ |
+  f ∈ C^{n-1}[a,b],
+  f^{(n-1)} absolut continuă }</code>
+  <p class="lead">Admite reprezentare Taylor cu rest integral:</p>
+  <code class="fm">f(x) = Σ_{k=0}^{n-1} f^(k)(a)·(x-a)^k/k!
+  + ∫_a^x (x-t)^{n-1}/(n-1)! · f^(n)(t) dt</code>
+</div>
+<div class="card">
+  <span class="badge">Puterea trunchiată</span>
+  <h4 class="ctitle">z₊ și extensia integralei la b</h4>
+  <code class="fm">z₊ = { z,  dacă z ≥ 0
+       { 0,  dacă z &lt; 0</code>
+  <p class="lead">Restul Taylor cu limita <strong>b</strong> (nu x):</p>
+  <code class="fm">R_{n-1}f(x) = 1/(n-1)!
+  · ∫_a^b (x-t)₊^{n-1} · f^(n)(t) dt</code>
+  <p class="note">Deoarece (x-t)₊=0 pentru t &gt; x, limita se poate extinde la b.</p>
+</div>
+</div>
+
+<div class="card blue">
+  <span class="badge">Teorema 1 — Peano</span>
+  <h4 class="ctitle">Reprezentarea funcționalelor liniare</h4>
+  <p class="lead">Fie L funcțională reală, continuă pe H_n[a,b], cu <span class="key">Ker L ⊇ P_{n-1}</span>. Atunci:</p>
+  <code class="fm fmc">Lf = ∫_a^b K(t) · f^(n)(t) dt</code>
+  <p class="lead">Nucleul Peano K:</p>
+  <code class="fm">K(t) = 1/(n-1)! · L[ (· - t)₊^{n-1} ]</code>
+  <p class="note">L acționează în variabila x, cu t fix ca parametru. Demonstrație: L(T_{n-1}f)=0 deoarece T_{n-1}f ∈ P_{n-1} ⊆ Ker L; apoi continuitatea lui L permite comutarea cu integrala.</p>
+</div>
+
+<div class="g2">
+<div class="card green">
+  <span class="badge">Corolarul 3</span>
+  <h4 class="ctitle">Când K(t) are semn constant</h4>
+  <p class="lead">Dacă K(t) ≥ 0 (sau ≤ 0) pe [a,b] și f<sup>(n)</sup> continuă → ∃ ξ ∈ [a,b]:</p>
+  <code class="fm fmc">Lf = 1/n! · f^(n)(ξ) · L(e_n)</code>
+  <p class="lead">e_n(x) = x<sup>n</sup>. Se aplică teorema de medie pentru integrale.</p>
+</div>
+<div class="card amber">
+  <span class="badge">Exemplu 4 — Formula dreptunghiului</span>
+  <h4 class="ctitle">R(f) = ∫_a^b f dx − (b-a)·f((a+b)/2)</h4>
+  <p class="lead">R se anulează pe P₁ → Ker(R)=P₁, n=2. Nucleul K(t) ≥ 0:</p>
+  <code class="fm">K(t) = { (t-a)²/2,  t ≤ (a+b)/2
+       { (b-t)²/2,  t > (a+b)/2</code>
+  <p class="lead">Aplicând corolarul (K ≥ 0 pe [a,b]):</p>
+  <code class="fm fmc">R(f) = (b-a)³/24 · f″(ξ),  ξ ∈ (a,b)</code>
+</div>
+</div>
+</section>
+
+<!-- ==================== LAGRANGE ==================== -->
+<section id="lagrange">
+<h2 class="stitle">Interpolarea Lagrange</h2>
+<p class="lead">Problema: date noduri distincte {x₀,…,x_m} ⊂ [a,b] și valorile f(xₖ), găsiți unicul polinom P ∈ P_m cu P(xₖ)=f(xₖ).</p>
+
+<div class="card">
+  <span class="badge">Polinoamele fundamentale Lagrange</span>
+  <h4 class="ctitle">Baza ℓᵢ(x) — proprietatea Kronecker</h4>
+  <code class="fm fmc">ℓᵢ(x) = ∏_{j=0,j≠i}^m (x-xⱼ)/(xᵢ-xⱼ)</code>
+  <code class="fm">ℓᵢ(xⱼ) = δᵢⱼ = { 1, dacă i=j   ← valoarea 1 la nodul propriu
+                  { 0, dacă i≠j   ← zero la celelalte noduri</code>
+  <p class="note">ℓᵢ joacă același rol ca polinoamele fundamentale B-spline în spline liniare.</p>
+</div>
+
+<div class="card blue">
+  <span class="badge">Teorema 5 — Existență și unicitate</span>
+  <h4 class="ctitle">Polinomul de interpolare Lagrange</h4>
+  <code class="fm fmc">(Lₘf)(x) = Σᵢ₌₀ᵐ f(xᵢ) · ℓᵢ(x)</code>
+  <p class="lead">Unicitate: dacă p* ∈ P_m cu p*(xᵢ)=f(xᵢ), atunci Lₘf-p* are m+1 rădăcini distincte → ≡ 0.</p>
+  <p class="lead">Matricea sistemului echivalent este <span class="key">Vandermonde</span> (inversabilă).</p>
+</div>
+
+<div class="card green">
+  <span class="badge">Teorema 11 — Eroarea de interpolare</span>
+  <h4 class="ctitle">Expresia restului Rₘf(x)</h4>
+  <p class="lead">Dacă f ∈ C<sup>m+1</sup>[a,b], există ξ_x ∈ (α,β):</p>
+  <code class="fm fmc">Rₘf(x) = uₘ(x)/(m+1)! · f^{(m+1)}(ξ_x)</code>
+  <code class="fm">uₘ(x) = ∏ᵢ₌₀ᵐ (x-xᵢ)
+Marginea: |Rₘf(x)| ≤ Mₘ₊₁/(m+1)! · |uₘ(x)|
+Mₘ₊₁ = max |f^{(m+1)}|  pe [a,b]
+Nucleul Peano: Kₘ(x;t) = 1/m! [(x-t)₊ᵐ - Σ ℓₖ(x)(xₖ-t)₊ᵐ]</code>
+</div>
+
+<div class="card amber">
+  <span class="badge">Noduri Chebyshev — minimizarea erorii</span>
+  <h4 class="ctitle">Alegerea optimă a nodurilor</h4>
+  <p class="lead">uₘ trebuie să fie polinomul monic Chebyshev de speta I de grad m+1. Nodurile Chebyshev pe [-1,1]:</p>
+  <code class="fm">xₖ = cos((2k+1)π/(2m+2)),  k=0,…,m</code>
+  <code class="fm">‖Rₘf‖∞ ≤ ‖f^{(m+1)}‖∞ / (2ᵐ·(m+1)!)  ← margine optimă</code>
+  <p class="lead">Nodurile uniforme pot produce <span class="key">fenomenul Runge</span> pentru funcții ca 1/(1+x²) — divergență la marginile intervalului!</p>
+</div>
+
+<!-- Demo Lagrange -->
+<div class="demo">
+  <div class="demo-title">Demo interactiv — Lagrange: noduri uniforme vs Chebyshev</div>
+  <div class="ctrls">
+    <label>Funcție:</label>
+    <select id="lg-fn">
+      <option value="runge">1/(1+x²) pe [-5,5] — Runge</option>
+      <option value="sin">sin(x) pe [-π,π]</option>
+      <option value="abs">|x| pe [-1,1] — Bernstein</option>
+      <option value="exp">eˣ pe [0,2]</option>
+    </select>
+    <label>n noduri:</label>
+    <input type="range" id="lg-n" min="3" max="16" value="8" style="width:120px" oninput="lgDraw();document.getElementById('lg-nv').textContent=this.value">
+    <span id="lg-nv" style="font-weight:600;min-width:18px">8</span>
+  </div>
+  <canvas id="cv-lg" class="cv"></canvas>
+  <div class="leg">
+    <div class="li"><span class="ll" style="background:#185fa5"></span>f(x) originală</div>
+    <div class="li"><span class="ll" style="background:#c04020"></span>Lagrange uniform</div>
+    <div class="li"><span class="ll" style="background:#0f6e56"></span>Lagrange Chebyshev</div>
+  </div>
+  <div class="info" id="lg-info"></div>
+</div>
+</section>
+
+<!-- ==================== NEVILLE ==================== -->
+<section id="neville">
+<h2 class="stitle">Metodele Aitken și Neville</h2>
+<p class="lead">Construiesc PIL incremental, prin relații de recurență, fără baza Lagrange explicită. Util când gradul necesar este necunoscut.</p>
+
+<div class="card blue">
+  <span class="badge">Propoziția 15 — Recurența Aitken</span>
+  <h4 class="ctitle">Formulă de recurență pentru PIL</h4>
+  <code class="fm fmc">P_{0,…,k}(x) = [(x-xⱼ)P_{0,…,ĵ,…,k} - (x-xᵢ)P_{0,…,î,…,k}] / (xᵢ-xⱼ)</code>
+  <p class="lead">Polinomul prin k+1 noduri se obține din doi polinoame prin k noduri.</p>
+</div>
+
+<div class="card">
+  <span class="badge">Metoda Neville — notația Qᵢ,ⱼ</span>
+  <h4 class="ctitle">Tabelul triunghiular de interpolare</h4>
+  <code class="fm">Qᵢ,₀ = f(xᵢ)
+Qᵢ,ⱼ = [(x-xᵢ₋ⱼ)·Qᵢ,ⱼ₋₁ - (x-xᵢ)·Qᵢ₋₁,ⱼ₋₁] / (xᵢ - xᵢ₋ⱼ)</code>
+  <p class="lead">Qᵢ,ⱼ = PIL prin nodurile x_{i-j},…,x_i evaluat în x. Diagonala Q_{i,i} convergentă!</p>
+  <p class="note"><strong>Criteriu de oprire:</strong> |Q_{i,i} − Q_{i-1,i-1}| &lt; ε. Nodurile se ordonează după |xᵢ-x|.</p>
+</div>
+
+<div class="card">
+  <span class="badge">Comparație Aitken vs Neville</span>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>x₀</th><th>Col 0 (grad 0)</th><th>Col 1 (grad 1)</th><th>Col 2 (grad 2)</th><th>Col 3 (grad 3)</th></tr></thead>
+      <tbody>
+        <tr><td>x₀</td><td class="hi">Q₀,₀=f(x₀)</td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>x₁</td><td>Q₁,₀=f(x₁)</td><td class="hi">Q₁,₁</td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>x₂</td><td>Q₂,₀=f(x₂)</td><td>Q₂,₁</td><td class="hi">Q₂,₂</td><td class="mut"></td></tr>
+        <tr><td>x₃</td><td>Q₃,₀=f(x₃)</td><td>Q₃,₁</td><td>Q₃,₂</td><td class="hi">Q₃,₃→f(x)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Diagonala (albastru) Q_{i,i} dă aproximații succesiv mai bune ale lui f(x).</p>
+</div>
+</section>
+
+<!-- ==================== NEWTON ==================== -->
+<section id="newton">
+<h2 class="stitle">Diferențe Divizate + Forma Newton</h2>
+
+<div class="g2">
+<div class="card blue">
+  <span class="badge">Definiție 17 — Diferența dividată</span>
+  <h4 class="ctitle">f[x₀,…,xₖ] — coeficientul lui xᵏ în Lₖf</h4>
+  <code class="fm">f[xᵢ] = f(xᵢ)
+f[x₀,…,xₖ] = (f[x₁,…,xₖ] - f[x₀,…,xₖ₋₁])
+              / (xₖ - x₀)</code>
+  <p class="note">Independentă de ordinea nodurilor. Calculabilă din tabel.</p>
+</div>
+<div class="card blue">
+  <span class="badge">Forma Newton a PIL (Teorema)</span>
+  <h4 class="ctitle">Polinomul de interpolare prin recurență</h4>
+  <code class="fm">(Lₘf)(x) = f[x₀]
+  + Σₖ₌₁ᵐ f[x₀,…,xₖ]·(x-x₀)·…·(x-xₖ₋₁)</code>
+  <p class="lead">Coeficienții Newton = prima linie din tabelul DD!</p>
+</div>
+</div>
+
+<div class="card amber">
+  <span class="badge">Exemplu din curs — f(x)=x³ la noduri 0,1,2,3</span>
+  <h4 class="ctitle">Tabelul diferențelor dividate</h4>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>xᵢ</th><th>D⁰=f[xᵢ]</th><th>D¹=f[·,·]</th><th>D²=f[·,·,·]</th><th>D³=f[·,·,·,·]</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="hi2">0</td><td class="hi2">1</td><td class="hi2">3</td><td class="hi2">1</td></tr>
+        <tr><td>1</td><td>1</td><td>7</td><td>6</td><td class="mut"></td></tr>
+        <tr><td>2</td><td>8</td><td>19</td><td class="mut"></td><td class="mut"></td></tr>
+        <tr><td>3</td><td>27</td><td class="mut"></td><td class="mut"></td><td class="mut"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <code class="fm">L₃f(x) = 0 + x·1 + x(x-1)·3 + x(x-1)(x-2)·1
+        = x + 3x(x-1) + x(x-1)(x-2)  ≡  x³  ✓</code>
+</div>
+
+<div class="g2">
+<div class="card green">
+  <span class="badge">Teorema 19 — Eroarea prin DD</span>
+  <h4 class="ctitle">Expresia exactă a erorii</h4>
+  <code class="fm">f(x) - Lₘf(x) = uₘ(x) · f[x₀,…,xₘ,x]</code>
+</div>
+<div class="card green">
+  <span class="badge">Teorema 20 — Formula de medie</span>
+  <h4 class="ctitle">DD ↔ derivate</h4>
+  <code class="fm">f[x₀,…,xₘ] = f^(m)(ξ)/m!,  ξ ∈ (a,b)
+DD ordin m ≈ derivata de ordin m / m!</code>
+</div>
+</div>
+</section>
+
+<!-- ==================== BARICENTRIC ==================== -->
+<section id="baric">
+<h2 class="stitle">Metoda Baricentrică</h2>
+
+<div class="card blue">
+  <span class="badge">Ponderi baricentrice wⱼ</span>
+  <h4 class="ctitle">Evaluare PIL în O(m) operații</h4>
+  <code class="fm fmc">wⱼ = 1 / ∏_{k≠j}(xⱼ-xₖ) = 1/u'ₘ(xⱼ)</code>
+  <code class="fm">ℓⱼ(x) = uₘ(x) · wⱼ/(x-xⱼ)</code>
+</div>
+
+<div class="card blue">
+  <span class="badge">Formula baricentrică (Eq. 28)</span>
+  <h4 class="ctitle">uₘ(x) se elimină → O(m) per evaluare</h4>
+  <code class="fm fmc">p(x) = [Σⱼ wⱼ/(x-xⱼ)·f(xⱼ)] / [Σⱼ wⱼ/(x-xⱼ)]</code>
+  <p class="lead">Ponderi precompute O(m²), evaluare O(m), actualizare nod nou O(m). Ideal pentru interpolare adaptivă.</p>
+</div>
+
+<div class="card">
+  <span class="badge">Ponderi pentru distribuții speciale</span>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Distribuție</th><th>Formula wⱼ</th><th>Avantaj</th></tr></thead>
+      <tbody>
+        <tr><td>Uniforme</td><td>(-1)ʲ·C(m,j)</td><td>Simplu, instabil pt m mare</td></tr>
+        <tr><td>Chebyshev I: cos((2j+1)π/(2m+2))</td><td>(-1)ʲ·sin((2j+1)π/(2m+2))</td><td>Stabile</td></tr>
+        <tr><td>Chebyshev II: cos(jπ/m)</td><td>(-1)ʲ·δⱼ, δ₀=δₘ=½, rest 1</td><td>Optime (FFT)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card green">
+  <span class="badge">Teorema 22 — Convergență Chebyshev II</span>
+  <h4 class="ctitle">Proprietăți de convergență</h4>
+  <code class="fm">‖f - pₙ‖ ≤ (2 + 2/π·log n)·‖f - p*ₙ‖  [vs cea mai bună aproximare]
+Dacă f^(k) cu variație mărginită: ‖f-pₙ‖ = O(n⁻ᵏ)
+Dacă f analitică complex:       ‖f-pₙ‖ = O(Cⁿ),  C &lt; 1  ← spectral!</code>
+  <p class="note">Baza pachetului MATLAB chebfun (Oxford, L. N. Trefethen).</p>
+</div>
+</section>
+
+<!-- ==================== HERMITE ==================== -->
+<section id="hermite">
+<h2 class="stitle">Interpolarea Hermite</h2>
+
+<div class="card blue">
+  <span class="badge">Teorema 23 — Existență și unicitate</span>
+  <h4 class="ctitle">Coincidența derivatelor până la ordinul rᵢ</h4>
+  <p class="lead">Date m+1 noduri și ordine r₀,…,rₘ. Fie n = m + Σrᵢ. Există unic H_nf ∈ Pₙ:</p>
+  <code class="fm fmc">(H_nf)^(ℓ)(xᵢ) = f^(ℓ)(xᵢ),  0≤ℓ≤rᵢ, 0≤i≤m</code>
+  <p class="note">Unicitate: fiecare xᵢ e rădăcină de ordin rᵢ+1 → Σ(rᵢ+1) = n+1 &gt; grad H_n → H_n≡0.</p>
+</div>
+
+<h3 class="sub" id="powell">Metoda lui Powell</h3>
+
+<div class="card purple">
+  <span class="badge">Ideea centrală — atribuire lui Powell</span>
+  <h4 class="ctitle">Dublarea nodurilor în secvența z</h4>
+  <p class="lead">Date m+1 noduri distincte x₀,…,xₘ și valorile f(xᵢ), f'(xᵢ). Se construiește o secvență cu noduri <span class="key">duble</span>:</p>
+  <code class="fm">z₀ = z₁ = x₀
+z₂ = z₃ = x₁
+  ⋮
+z₂ᵢ = z₂ᵢ₊₁ = xᵢ,  i = 0, 1, …, m   →   2(m+1) noduri total</code>
+  <p class="lead">Cheia: diferența dividată cu <span class="key">nod dublu</span> este derivata (ca limită):</p>
+  <code class="fm fmc">f[xᵢ, xᵢ] = lim_{t→xᵢ} [f(t)−f(xᵢ)]/(t−xᵢ) = f'(xᵢ)</code>
+  <p class="note">Restul tabelei se calculează exact ca la DD standard — niciun caz special suplimentar! Metoda funcționează și pentru ordine de multiplicitate rᵢ ≥ 2 (triplu, etc.).</p>
+</div>
+
+<div class="card blue">
+  <span class="badge">Tabela DD generală — noduri duble (m=2, grad 5)</span>
+  <h4 class="ctitle">Structura pentru z₀=z₁=x₀, z₂=z₃=x₁, z₄=z₅=x₂</h4>
+  <div class="tbl-wrap">
+    <table style="font-size:11px">
+      <thead>
+        <tr><th>zᵢ</th><th>D⁰ = f[·]</th><th>D¹ = f[·,·]</th><th>D² = f[·,·,·]</th><th>D³</th><th>D⁴</th><th>D⁵</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>z₀=x₀</td>
+          <td>f(x₀)</td>
+          <td class="hi2">f'(x₀) ★</td>
+          <td class="hi">[f[z₁,z₂]−f'(x₀)]/(x₁−x₀)</td>
+          <td class="hi">…</td>
+          <td class="hi">…</td>
+          <td class="hi">…</td>
+        </tr>
+        <tr>
+          <td>z₁=x₀</td>
+          <td>f(x₀)</td>
+          <td>[f(x₁)−f(x₀)]/(x₁−x₀)</td>
+          <td>[f'(x₁)−f[x₀,x₁]]/(x₁−x₀)</td>
+          <td>…</td>
+          <td>…</td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₂=x₁</td>
+          <td>f(x₁)</td>
+          <td class="hi2">f'(x₁) ★</td>
+          <td>[f[z₃,z₄]−f'(x₁)]/(x₂−x₁)</td>
+          <td>…</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₃=x₁</td>
+          <td>f(x₁)</td>
+          <td>[f(x₂)−f(x₁)]/(x₂−x₁)</td>
+          <td>[f'(x₂)−f[x₁,x₂]]/(x₂−x₁)</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₄=x₂</td>
+          <td>f(x₂)</td>
+          <td class="hi2">f'(x₂) ★</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₅=x₂</td>
+          <td>f(x₂)</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">★ = introdus direct din datele de intrare. <span style="color:var(--blue)">Prima linie (albastru)</span> = coeficienții Newton ai lui H₅f. <span style="color:var(--green)">Verde</span> = f'(xᵢ) introduse.</p>
+</div>
+
+<div class="card blue">
+  <span class="badge">Forma Newton a lui H_{2m+1}f</span>
+  <h4 class="ctitle">Coeficienții = prima linie din tabela DD</h4>
+  <code class="fm">H_{2m+1}f(x) = f[z₀]
+  + (x−z₀)·f[z₀,z₁]
+  + (x−z₀)(x−z₁)·f[z₀,z₁,z₂]
+  + (x−z₀)(x−z₁)(x−z₂)·f[z₀,z₁,z₂,z₃]
+  + …
+  + (x−z₀)·…·(x−z_{2m})·f[z₀,…,z_{2m+1}]</code>
+  <p class="lead">Gradul: 2m+1 &nbsp;|&nbsp; Condiții satisfăcute: f(xᵢ) și f'(xᵢ) pentru i=0,…,m → 2(m+1) condiții = 2m+2 = grad+1 ✓</p>
+</div>
+
+<div class="card amber">
+  <span class="badge">Exemplu numeric pas cu pas — f(x) = eˣ pe [0, 1]</span>
+  <h4 class="ctitle">m=1: z₀=z₁=0, z₂=z₃=1 → H₃eˣ de grad 3</h4>
+  <p class="lead">Date: f(0)=1, f'(0)=1, f(1)=e≈2.7183, f'(1)=e≈2.7183.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>zᵢ</th><th>D⁰</th><th>D¹</th><th>D²</th><th>D³</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>z₀ = 0</td>
+          <td>1</td>
+          <td class="hi2">f'(0) = <strong>1</strong> ★</td>
+          <td class="hi">(e−1−1)/(1−0) = <strong>e−2 ≈ 0.7183</strong></td>
+          <td class="hi">(1−(e−2))/(1−0) = <strong>3−e ≈ 0.2817</strong></td>
+        </tr>
+        <tr>
+          <td>z₁ = 0</td>
+          <td>1</td>
+          <td>(e−1)/(1−0) = e−1 ≈ 1.7183</td>
+          <td>(e−(e−1))/(1−0) = 1</td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₂ = 1</td>
+          <td>e ≈ 2.7183</td>
+          <td class="hi2">f'(1) = <strong>e ≈ 2.7183</strong> ★</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+        <tr>
+          <td>z₃ = 1</td>
+          <td>e ≈ 2.7183</td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+          <td class="mut"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lead" style="margin-top:10px">Coeficienții Newton (prima linie): <strong>1, 1, e−2, 3−e</strong>. Polinomul:</p>
+  <code class="fm">H₃eˣ(x) = 1 + x·1 + x(x−0)·(e−2) + x(x−0)(x−1)·(3−e)
+         = 1 + x + x²(e−2) + x²(x−1)(3−e)
+         = 1 + x + x²(2e−5) + x³(3−e)   [formă expandată]
+
+Verificare:
+  H₃eˣ(0) = 1 = e⁰ ✓
+  H₃eˣ'(0) = 1 = (eˣ)'|₀ ✓
+  H₃eˣ(1) = 1+1+(2e−5)+(3−e) = e ✓
+  H₃eˣ'(1) = 1+2(2e−5)+3(3−e) = e ✓
+
+Eroare la x=0.5: eˣ=1.6487, H₃eˣ=1.6484 → |err|≈0.0003 ← excelent!</code>
+  <p class="note">Același rezultat se obține aplicând direct formula H₃f din curs (exemplul 26 cu a=0, b=1). Metoda Powell e algoritmul care produce aceeași formulă sistematic.</p>
+</div>
+
+<div class="card amber">
+  <span class="badge">Exemplul 26 — H₃f cu noduri duble la a și b</span>
+  <h4 class="ctitle">f ∈ C⁴[a,b], r₀=r₁=1, grad n=3</h4>
+  <code class="fm">H₃f(x) = f(a) + (x-a)f'(a)
+        + (x-a)² · [f(b)-f(a)-(b-a)f'(a)] / (b-a)²
+        + (x-a)²(x-b) · [(b-a)(f'(b)+f'(a))-2(f(b)-f(a))] / (b-a)³
+
+Eroarea:  R₃f(x) = (x-a)²(x-b)² / 4! · f⁽⁴⁾(ξ)</code>
+  <p class="note">u(x) = (x-a)²(x-b)² → zero de ordinul 2 la capete → eroare mică near a și b!</p>
+</div>
+
+<div class="card green">
+  <span class="badge">Eroarea generală</span>
+  <h4 class="ctitle">Propoziția 25</h4>
+  <code class="fm fmc">Rₙf(x) = u(x)/(n+1)! · f^{(n+1)}(ξ),  u(x)=∏(x-xₖ)^{rₖ+1}</code>
+  <p class="lead">Față de Lagrange, u(x) are rădăcini de multiplicitate rₖ+1 → <span class="key">eroare mai mică near noduri</span>.</p>
+</div>
+</section>
+
+<!-- =========================================================
+     PART II : SPLINE
+     ========================================================= -->
+<hr class="pdiv">
+<div class="part-badge">Partea II · C6-splineint.pdf</div>
+
+<!-- ==================== RUNGE ==================== -->
+<section id="runge">
+<h2 class="stitle">Convergența Interpolării + Fenomenul Runge</h2>
+<p class="lead">Interpolarea Lagrange de grad înalt cu noduri uniforme <strong>nu convergează</strong> în general. Există funcții continue pentru care eroarea → ∞ oriunde.</p>
+
+<div class="g2">
+<div class="card red">
+  <span class="badge">Exemplul 1 — Contraexemplul lui Runge (1901)</span>
+  <h4 class="ctitle">f(x)=1/(1+x²) pe [-5,5], noduri uniforme</h4>
+  <code class="fm">lim_{m→∞} |f(x)-pₘ(x)| = { 0,   dacă |x| &lt; 3.633…
+                              { ∞,   dacă |x| > 3.633…</code>
+  <p class="note">f are poli complecși la z=±i. Oscilații violente la capete, chiar dacă f este analitică.</p>
+</div>
+<div class="card red">
+  <span class="badge">Exemplul 2 — Contraexemplul Bernstein</span>
+  <h4 class="ctitle">f(x)=|x| pe [-1,1], noduri uniforme</h4>
+  <code class="fm">lim_{m→∞} |f(x)-Lₘ(f;x)| = ∞,
+    ∀x ∈ [-1,1]  (exceptând x=-1,0,1)</code>
+  <p class="note">f NU este derivabilă în x=0. Și distribuția uniformă e de vină — noduri Chebyshev converge!</p>
+</div>
+</div>
+
+<div class="card amber">
+  <span class="badge">Soluție 1 — Noduri Chebyshev</span>
+  <h4 class="ctitle">Minimizează ‖uₘ‖∞ → eroare minimă</h4>
+  <code class="fm">‖Rₘf‖ ≤ ‖f^{(m+1)}‖∞ / (2ᵐ·(m+1)!)  ← față de 1/(m+1)! cu uniforme</code>
+</div>
+
+<div class="card amber">
+  <span class="badge">Soluție 2 — Interpolare pe porțiuni (SPLINE)</span>
+  <h4 class="ctitle">Polinoame de grad MIC pe subintervale MICI</h4>
+  <p class="lead">Pe intervale suficient de mici, orice funcție poate fi aproximată arbitrar de bine prin polinoame de grad mic (chiar 0 sau 1). Converge sigur cu |Δ|→0.</p>
+</div>
+
+<!-- Demo Runge -->
+<div class="demo">
+  <div class="demo-title">Demo — Fenomenul Runge: uniform vs Chebyshev</div>
+  <div class="ctrls">
+    <label>Funcție:</label>
+    <select id="rg-fn">
+      <option value="runge">1/(1+x²) pe [-5,5]</option>
+      <option value="abs">|x| pe [-1,1]</option>
+      <option value="sin">sin(x) pe [-π,π]</option>
+    </select>
+    <label>n noduri:</label>
+    <input type="range" id="rg-n" min="4" max="18" value="10" style="width:120px" oninput="rgDraw();document.getElementById('rg-nv').textContent=this.value">
+    <span id="rg-nv" style="font-weight:600;min-width:18px">10</span>
+  </div>
+  <canvas id="cv-rg" class="cv"></canvas>
+  <div class="leg">
+    <div class="li"><span class="ll" style="background:#185fa5"></span>f(x) originală</div>
+    <div class="li"><span class="ll" style="background:#c04020"></span>Lagrange uniform</div>
+    <div class="li"><span class="ll" style="background:#0f6e56"></span>Lagrange Chebyshev</div>
+  </div>
+  <div class="info" id="rg-info"></div>
+</div>
+</section>
+
+<!-- ==================== SPLINE DEF ==================== -->
+<section id="spdef">
+<h2 class="stitle">Spații Spline S<sup>k</sup><sub>m</sub>(Δ)</h2>
+
+<div class="card blue">
+  <span class="badge">Definiție — Spline polinomial</span>
+  <h4 class="ctitle">Funcții pe porțiuni cu regularitate impusă</h4>
+  <p class="lead">Fie Δ: a=x₁ &lt; x₂ &lt; … &lt; xₙ=b o subdiviziune a lui [a,b].</p>
+  <code class="fm fmc">S^k_m(Δ) = { s : s ∈ C^k[a,b],  s|_{[xᵢ,xᵢ₊₁]} ∈ Pₘ,  i=1,…,n-1 }</code>
+  <p class="lead">m = gradul polinomului pe fiecare porțiune &nbsp;|&nbsp; k = clasa de netezime (k=-1 permite discontinuități).</p>
+</div>
+
+<div class="card">
+  <span class="badge">Cazuri particulare importante</span>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Spațiu</th><th>m</th><th>k</th><th>Descriere</th><th>dim S^k_m(Δ)</th></tr></thead>
+      <tbody>
+        <tr><td>S⁰₁(Δ)</td><td>1</td><td>0</td><td>Spline liniare (continui)</td><td>n</td></tr>
+        <tr><td>S¹₃(Δ)</td><td>3</td><td>1</td><td>Spline cubice C¹ (Hermite)</td><td>2n</td></tr>
+        <tr><td>S²₃(Δ)</td><td>3</td><td>2</td><td>Spline cubice C² (clasice)</td><td>n+2</td></tr>
+        <tr><td>S^m_m(Δ)</td><td>m</td><td>m</td><td>Polinoame de grad m (trivial)</td><td>m+1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">dim S^k_m(Δ) = (n-1)(m-k) + k + 1 în general. Fiecare condiție de continuitate reduce dimensiunea cu 1.</p>
+</div>
+</section>
+
+<!-- ==================== SPLINE LINIARE ==================== -->
+<section id="splin">
+<h2 class="stitle">Spline Liniare + Funcții B-Spline</h2>
+
+<div class="g2">
+<div class="card">
+  <span class="badge">Spline liniare de interpolare</span>
+  <h4 class="ctitle">s ∈ S⁰₁(Δ) cu s(xᵢ)=f(xᵢ)</h4>
+  <p class="lead">Pe fiecare interval [xᵢ,xᵢ₊₁]:</p>
+  <code class="fm">s(f;x) = fᵢ + (x-xᵢ)·f[xᵢ,xᵢ₊₁]</code>
+  <p class="lead">Eroarea locală:</p>
+  <code class="fm">|f(x)-s(f;x)| ≤ (Δxᵢ)²/8 · max|f''|</code>
+  <p class="lead">Eroarea globală:</p>
+  <code class="fm fmc">‖f-s‖∞ ≤ 1/8 · |Δ|² · ‖f''‖∞</code>
+</div>
+<div class="card blue">
+  <span class="badge">Funcțiile B-Spline de grad 1 — "Pălăria chinezească"</span>
+  <h4 class="ctitle">Baza lui S⁰₁(Δ)</h4>
+  <p class="lead">Cu x₀=x₁, xₙ₊₁=xₙ (noduri fictive la capete):</p>
+  <code class="fm">Bᵢ(x) =
+  { (x-xᵢ₋₁)/(xᵢ-xᵢ₋₁),  xᵢ₋₁≤x≤xᵢ
+  { (xᵢ₊₁-x)/(xᵢ₊₁-xᵢ),  xᵢ≤x≤xᵢ₊₁
+  { 0,                      altfel</code>
+  <code class="fm">Bᵢ(xⱼ) = δᵢⱼ  ←  proprietatea Kronecker!
+dim S⁰₁(Δ) = n  ←  n funcții de bază</code>
+</div>
+</div>
+
+<!-- B-Spline Demo -->
+<div class="demo">
+  <div class="demo-title">Demo — Funcțiile B-Spline de grad 1 (Pălăria chinezească)</div>
+  <div class="ctrls">
+    <label>Număr noduri:</label>
+    <input type="range" id="bs-n" min="3" max="10" value="6" style="width:120px" oninput="bsDraw();document.getElementById('bs-nv').textContent=this.value">
+    <span id="bs-nv" style="font-weight:600;min-width:18px">6</span>
+  </div>
+  <canvas id="cv-bs" class="cv"></canvas>
+  <p class="note" style="margin-top:6px">Fiecare B_i are suport pe [x_{i-1}, x_{i+1}] — suport compact! Suma lor = 1 oriunde (partiție a unității).</p>
+</div>
+</section>
+
+<!-- ==================== SPLINE CUBICE C1 ==================== -->
+<section id="spc1">
+<h2 class="stitle">Spline Cubice C¹ — Interpolarea Hermite pe Porțiuni</h2>
+<p class="lead">Vrem s ∈ S¹₃(Δ) cu s(xᵢ)=fᵢ și s'(xᵢ)=mᵢ. Alegem mᵢ = f'(xᵢ) (derivatele cunoscute).</p>
+
+<div class="card blue">
+  <span class="badge">Forma Newton a lui pᵢ(x) pe [xᵢ,xᵢ₊₁]</span>
+  <h4 class="ctitle">Cubicul Hermite local</h4>
+  <code class="fm">pᵢ(x) = cᵢ,₀ + cᵢ,₁(x-xᵢ) + cᵢ,₂(x-xᵢ)² + cᵢ,₃(x-xᵢ)³
+
+cᵢ,₀ = fᵢ
+cᵢ,₁ = mᵢ
+cᵢ,₂ = [3f[xᵢ,xᵢ₊₁] - 2mᵢ - mᵢ₊₁] / hᵢ       (hᵢ = xᵢ₊₁-xᵢ)
+cᵢ,₃ = [mᵢ + mᵢ₊₁ - 2f[xᵢ,xᵢ₊₁]] / hᵢ²</code>
+</div>
+
+<div class="g2">
+<div class="card green">
+  <span class="badge">Eroarea locală</span>
+  <h4 class="ctitle">Precizie O(|Δ|⁴)</h4>
+  <code class="fm">|f(x)-pᵢ(x)| ≤ hᵢ⁴/2 · max|f⁽⁴⁾| / 4!
+              = hᵢ⁴/48 · max|f⁽⁴⁾|</code>
+</div>
+<div class="card green">
+  <span class="badge">Eroarea globală (Eq. 18)</span>
+  <h4 class="ctitle">Convergență de ordin 4</h4>
+  <code class="fm">‖f-s₃‖∞ ≤ 1/384 · |Δ|⁴·‖f⁽⁴⁾‖∞
+‖f-s₃‖∞ = O(n⁻⁴),  n→∞
+(față de O(n⁻²) pentru spline liniare!)</code>
+</div>
+</div>
+
+<p class="lead">Avantaj: <span class="key">schemă strict locală</span> — fiecare porțiune se determină independent. Dezavantaj: necesită valorile derivatei f'(xᵢ).</p>
+</section>
+
+<!-- ==================== SPLINE CUBICE C2 ==================== -->
+<section id="spc2">
+<h2 class="stitle">Spline Cubice C² — Sistemul Tridiagonal</h2>
+<p class="lead">Cerem s₃ ∈ S²₃(Δ): continuitatea derivatei de ordin II. Condițiile p''ᵢ₋₁(xᵢ)=p''ᵢ(xᵢ) generează un sistem liniar.</p>
+
+<div class="card blue">
+  <span class="badge">Sistemul tridiagonal pentru m₁,…,mₙ (Eq. 21-22)</span>
+  <h4 class="ctitle">n-2 ecuații interioare</h4>
+  <code class="fm">Δxᵢ·mᵢ₋₁ + 2(Δxᵢ₋₁+Δxᵢ)·mᵢ + Δxᵢ₋₁·mᵢ₊₁ = bᵢ,  i=2,…,n-1
+
+bᵢ = 3{ Δxᵢ·f[xᵢ₋₁,xᵢ] + Δxᵢ₋₁·f[xᵢ,xᵢ₊₁] }
+Δxᵢ = xᵢ₊₁ - xᵢ  (pasul local)</code>
+  <p class="note">n-2 ecuații, n necunoscute → 2 ecuații suplimentare la capete. Sistemul complet este tridiagonal → rezolvare eficientă prin eliminare Gauss (Thomas algorithm).</p>
+</div>
+
+<div class="g2">
+<div class="card">
+  <span class="badge">Spline Complete (Racordate)</span>
+  <h4 class="ctitle">m₁=f'(a), mₙ=f'(b)</h4>
+  <p class="lead">Derivatele la capete sunt prescrise. Cel mai precis.</p>
+  <code class="fm">‖f^(r) - s^(r)‖∞ ≤ cᵣ·|Δ|^{4-r}·‖f⁽⁴⁾‖∞
+c₀=5/384, c₁=1/24, c₂=3/8</code>
+</div>
+<div class="card">
+  <span class="badge">Spline Naturale</span>
+  <h4 class="ctitle">s''(a)=s''(b)=0</h4>
+  <p class="lead">Fără informație despre derivate. Ecuații adiționale:</p>
+  <code class="fm">2m₁ + m₂ = 3f[x₁,x₂]
+mₙ₋₁ + 2mₙ = 3f[xₙ₋₁,xₙ]</code>
+  <p class="note">Atenție: precizie O(|Δ|²) near capete (dacă f''(a)≠0)!</p>
+</div>
+</div>
+
+<div class="card">
+  <span class="badge">Spline Naturale — ecuații adiționale cu f'' (Eq. 24)</span>
+  <h4 class="ctitle">s''(a)=f''(a), s''(b)=f''(b)</h4>
+  <code class="fm">2m₁ + m₂ = 3f[x₁,x₂] - ½f''(a)·Δx₁
+mₙ₋₁ + 2mₙ = 3f[xₙ₋₁,xₙ] + ½f''(b)·Δxₙ₋₁</code>
+  <p class="lead">Păstrează structura tridiagonală. Precizie O(|Δ|⁴) pretutindeni.</p>
+</div>
+
+<div class="card purple">
+  <span class="badge">Not-a-Knot Spline (C. de Boor)</span>
+  <h4 class="ctitle">p₁≡p₂ și pₙ₋₂≡pₙ₋₁ → x₂ și xₙ₋₁ inactive</h4>
+  <p class="lead">Impunem continuitatea lui s'''₃ în x₂ și xₙ₋₁ → c₁,₃=c₂,₃ și cₙ₋₂,₃=cₙ₋₁,₃. Ecuații:</p>
+  <code class="fm">Δx₂·m₁ + (Δx₂+Δx₁)·m₂ = γ₁
+(Δxₙ₋₁+Δxₙ₋₂)·mₙ₋₁ + Δxₙ₋₂·mₙ = γ₂</code>
+  <p class="note">Sistemul devine tridiagonal după transformări. Implicit în MATLAB spline(). Nu necesită derivate la capete dar menține precizie O(|Δ|⁴).</p>
+</div>
+
+<!-- Spline Demo -->
+<div class="demo">
+  <div class="demo-title">Demo interactiv — Compararea tipurilor de spline cubic</div>
+  <div class="ctrls">
+    <label>Funcție:</label>
+    <select id="sp-fn">
+      <option value="sin">sin(2πx) pe [0,1]</option>
+      <option value="exp">eˣ pe [0,2]</option>
+      <option value="runge">1/(1+x²) pe [-3,3]</option>
+      <option value="humps">f cu cocoașe pe [0,1]</option>
+    </select>
+    <label>Noduri:</label>
+    <input type="range" id="sp-n" min="4" max="12" value="6" style="width:100px" oninput="spDraw();document.getElementById('sp-nv').textContent=this.value">
+    <span id="sp-nv" style="font-weight:600;min-width:18px">6</span>
+  </div>
+  <canvas id="cv-sp" class="cv"></canvas>
+  <div class="leg">
+    <div class="li"><span class="ll" style="background:#185fa5"></span>f(x) originală</div>
+    <div class="li"><span class="ll" style="background:#0f6e56"></span>Spline natural (s''=0)</div>
+    <div class="li"><span class="ll" style="background:#c04020"></span>Spline complet (s'=f')</div>
+    <div class="li"><span class="ld" style="border-color:#7a4500"></span>noduri xᵢ</div>
+  </div>
+  <div class="info" id="sp-info"></div>
+</div>
+</section>
+
+<!-- ==================== MINIMALITATE ==================== -->
+<section id="spmin">
+<h2 class="stitle">Proprietatea de Minimalitate a Spline Cubice</h2>
+<p class="lead">Spline-ul cubic complete și natural minimizează <em>curbura totală</em> ∫[g''(x)]² dx — analogia cu o vergea fizică flexibilă.</p>
+
+<div class="card blue">
+  <span class="badge">Teorema 3 — Spline complete (pe Δ')</span>
+  <h4 class="ctitle">Norma minimă a derivatei II</h4>
+  <p class="lead">Δ': capetele sunt noduri duble (se interpolează și valorile și derivatele la a, b). Pentru orice g ∈ C²[a,b] care interpolează f pe Δ':</p>
+  <code class="fm fmc">∫_a^b [g''(x)]² dx  ≥  ∫_a^b [s''_compl(f;x)]² dx</code>
+  <p class="lead">Cu egalitate dacă și numai dacă g = s_compl. Demonstrație: se arată că ∫s''(g''-s'')dx = 0 (integrare prin părți + s''' constantă pe porțiuni).</p>
+</div>
+
+<div class="card green">
+  <span class="badge">Teorema 5 — Spline naturale (pe Δ)</span>
+  <h4 class="ctitle">Cel mai neted interpolant (fără derivate la capete)</h4>
+  <p class="lead">Pentru orice g ∈ C²[a,b] ce interpolează f pe Δ:</p>
+  <code class="fm fmc">∫_a^b [g''(x)]² dx  ≥  ∫_a^b [s''_nat(f;x)]² dx</code>
+  <p class="lead">Consecință: comparând cele două teoreme:</p>
+  <code class="fm">∫[s''_compl]² dx  ≥  ∫[s''_nat]² dx</code>
+  <p class="note">Spline-ul cubic natural este <em>cel mai neted</em> interpolant (în sensul că ‖s''‖_{L²} este minimă). Spline-ul complet e mai precis numeric dar mai puțin "neted".</p>
+</div>
+
+<div class="card amber">
+  <span class="badge">Motivul numelui "spline"</span>
+  <h4 class="ctitle">Vergeaua de desen — analogia fizică</h4>
+  <p class="lead">Un spline fizic (vergea flexibilă de lemn sau metal trecută prin puncte fixe cu "raci") ia forma ce minimizează energia potențială:</p>
+  <code class="fm">E = ∫_a^b [g''(x)]² / (1+[g'(x)]²)^{3/2} dx  ←  curbura exactă</code>
+  <p class="lead">Pentru variații lente (‖g'‖∞ ≪ 1), aceasta aproximează ∫[g'']² dx — exact proprietatea din Teorema 5.</p>
+  <p class="note">Termenul "spline" vine din scandinavă: "spon" = pană de lemn. Folosit în naval design și aeronautică înainte de era computerelor.</p>
+</div>
+
+<div class="card purple">
+  <span class="badge">Rezumat comparativ — Tipuri de spline cubic</span>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Tip</th><th>Condiții capete</th><th>Precizie</th><th>Date necesare</th><th>Caracter</th></tr></thead>
+      <tbody>
+        <tr><td>Natural</td><td>s''(a)=s''(b)=0</td><td>O(|Δ|²) near capete</td><td>doar f(xᵢ)</td><td>Cel mai neted</td></tr>
+        <tr><td>Complet</td><td>s'(a)=f'(a), s'(b)=f'(b)</td><td>O(|Δ|⁴)</td><td>f(xᵢ)+f'(a,b)</td><td>Cel mai precis</td></tr>
+        <tr><td>Cu s''</td><td>s''(a)=f''(a), s''(b)=f''(b)</td><td>O(|Δ|⁴)</td><td>f(xᵢ)+f''(a,b)</td><td>Bun pretutindeni</td></tr>
+        <tr><td>Not-a-knot</td><td>s'''₃ continuu în x₂,xₙ₋₁</td><td>O(|Δ|⁴)</td><td>doar f(xᵢ)</td><td>Implicit MATLAB</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+</main>
+
+<script>
+// =============================================
+// UTILITIES
+// =============================================
+function lagEval(xs,ys,x){
+  let r=0,n=xs.length;
+  for(let i=0;i<n;i++){
+    let b=ys[i];
+    for(let j=0;j<n;j++)if(j!==i)b*=(x-xs[j])/(xs[i]-xs[j]);
+    r+=b;
+  }
+  return r;
+}
+function chebNodes(a,b,m){
+  return Array.from({length:m+1},(_,k)=>(a+b)/2+(b-a)/2*Math.cos((2*k+1)*Math.PI/(2*(m+1)))).sort((x,y)=>x-y);
+}
+function uniNodes(a,b,m){
+  if(m===0)return[(a+b)/2];
+  return Array.from({length:m+1},(_,k)=>a+k*(b-a)/m);
+}
+
+// Tridiagonal Thomas algorithm
+function tdSolve(lo,diag,hi,rhs){
+  const n=diag.length;
+  const d=[...rhs],b=[...diag];
+  for(let i=1;i<n;i++){if(b[i-1]===0)continue;const f=lo[i]/b[i-1];b[i]-=f*hi[i-1];d[i]-=f*d[i-1];}
+  const x=new Array(n);
+  x[n-1]=d[n-1]/b[n-1];
+  for(let i=n-2;i>=0;i--)x[i]=(d[i]-hi[i]*x[i+1])/b[i];
+  return x;
+}
+
+// Natural cubic spline: s''(a)=s''(b)=0
+function natSpline(xs,ys){
+  const n=xs.length;
+  const h=[],df=[];
+  for(let i=0;i<n-1;i++){h.push(xs[i+1]-xs[i]);df.push((ys[i+1]-ys[i])/h[i]);}
+  const lo=new Array(n).fill(0),di=new Array(n).fill(0),hi2=new Array(n).fill(0),rhs=new Array(n).fill(0);
+  di[0]=2;hi2[0]=1;rhs[0]=3*df[0];
+  for(let j=1;j<n-1;j++){lo[j]=h[j];di[j]=2*(h[j-1]+h[j]);hi2[j]=h[j-1];rhs[j]=3*(h[j]*df[j-1]+h[j-1]*df[j]);}
+  lo[n-1]=1;di[n-1]=2;rhs[n-1]=3*df[n-2];
+  return tdSolve(lo,di,hi2,rhs);
+}
+
+// Complete cubic spline: m[0]=dfa, m[n-1]=dfb
+function complSpline(xs,ys,dfa,dfb){
+  const n=xs.length;
+  const h=[],df=[];
+  for(let i=0;i<n-1;i++){h.push(xs[i+1]-xs[i]);df.push((ys[i+1]-ys[i])/h[i]);}
+  const m=new Array(n);m[0]=dfa;m[n-1]=dfb;
+  if(n<=2)return m;
+  const sz=n-2;
+  const lo=new Array(sz).fill(0),di=new Array(sz).fill(0),hi2=new Array(sz).fill(0),rhs=new Array(sz).fill(0);
+  for(let k=0;k<sz;k++){
+    const j=k+1;
+    lo[k]=(k>0)?h[j]:0;di[k]=2*(h[j-1]+h[j]);hi2[k]=(k<sz-1)?h[j-1]:0;
+    rhs[k]=3*(h[j]*df[j-1]+h[j-1]*df[j]);
+    if(k===0)rhs[k]-=h[j]*m[0];
+    if(k===sz-1)rhs[k]-=h[j-1]*m[n-1];
+  }
+  const interior=tdSolve(lo,di,hi2,rhs);
+  for(let k=0;k<sz;k++)m[k+1]=interior[k];
+  return m;
+}
+
+// Evaluate cubic spline at x
+function evalSpline(xs,ys,ms,x){
+  const n=xs.length;
+  if(x<=xs[0])x=xs[0];if(x>=xs[n-1])x=xs[n-1];
+  let lo=0,hi=n-2;
+  while(lo<hi){const mid=(lo+hi)>>1;if(xs[mid+1]<x)lo=mid+1;else hi=mid;}
+  const i=lo;
+  const h=xs[i+1]-xs[i],t=x-xs[i];
+  const d=(ys[i+1]-ys[i])/h;
+  const c2=(3*d-2*ms[i]-ms[i+1])/h;
+  const c3=(ms[i]+ms[i+1]-2*d)/(h*h);
+  return ys[i]+ms[i]*t+c2*t*t+c3*t*t*t;
+}
+
+// Canvas drawing utilities
+function initCanvas(id){
+  const cv=document.getElementById(id);
+  if(!cv)return null;
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.offsetWidth,H=cv.offsetHeight;
+  cv.width=W*dpr;cv.height=H*dpr;
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+  return{ctx,W,H};
+}
+function drawAxes(ctx,W,H,pad,a,b,yr,dark){
+  const fg=dark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.06)';
+  const ax=dark?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.2)';
+  const tx=x=>pad.l+(x-a)/(b-a)*(W-pad.l-pad.r);
+  const ty=y=>pad.t+(H-pad.t-pad.b)-(y-yr[0])/(yr[1]-yr[0])*(H-pad.t-pad.b);
+  ctx.strokeStyle=fg;ctx.lineWidth=0.5;
+  for(let i=0;i<=4;i++){const yv=yr[0]+i*(yr[1]-yr[0])/4;ctx.beginPath();ctx.moveTo(pad.l,ty(yv));ctx.lineTo(W-pad.r,ty(yv));ctx.stroke();}
+  const y0=ty(0);
+  if(y0>pad.t&&y0<H-pad.b){ctx.strokeStyle=ax;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,y0);ctx.lineTo(W-pad.r,y0);ctx.stroke();}
+  return{tx,ty};
+}
+function drawLine(ctx,xs2,tx,ty,yrclamp,color,lw,dash){
+  ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);
+  const [ymin,ymax]=yrclamp;
+  xs2.forEach((x,i)=>{
+    const y=Math.min(Math.max(x[1],ymin),ymax);
+    const cx=tx(x[0]),cy=ty(y);
+    i===0?ctx.moveTo(cx,cy):ctx.lineTo(cx,cy);
+  });
+  ctx.stroke();ctx.setLineDash([]);
+}
+function drawDots(ctx,xs,ys,tx,ty,color,r){
+  ctx.fillStyle=color;
+  xs.forEach((x,i)=>{ctx.beginPath();ctx.arc(tx(x),ty(ys[i]),r,0,2*Math.PI);ctx.fill();});
+}
+function bgColor(){return matchMedia('(prefers-color-scheme:dark)').matches?'#16151a':'#fafaf8';}
+function isDark(){return matchMedia('(prefers-color-scheme:dark)').matches;}
+
+// =============================================
+// DEMO 1: Lagrange interpolation comparison
+// =============================================
+const LG_FNS={
+  runge:{f:x=>1/(1+x*x),a:-5,b:5,yr:[-0.7,1.6]},
+  sin:{f:x=>Math.sin(x),a:-Math.PI,b:Math.PI,yr:[-1.7,1.7]},
+  abs:{f:x=>Math.abs(x),a:-1,b:1,yr:[-0.2,1.3]},
+  exp:{f:x=>Math.exp(x),a:0,b:2,yr:[-0.5,8.5]}
+};
+function lgDraw(){
+  const d=initCanvas('cv-lg');if(!d)return;
+  const{ctx,W,H}=d;
+  const fnk=document.getElementById('lg-fn').value;
+  const fn=LG_FNS[fnk];
+  const n=parseInt(document.getElementById('lg-n').value);
+  const{f,a,b,yr}=fn;
+  const xsU=uniNodes(a,b,n-1),ysU=xsU.map(f);
+  const xsC=chebNodes(a,b,n-1),ysC=xsC.map(f);
+  const pad={t:16,r:12,b:24,l:44};
+  ctx.fillStyle=bgColor();ctx.fillRect(0,0,W,H);
+  const{tx,ty}=drawAxes(ctx,W,H,pad,a,b,yr,isDark());
+  const N=500,xs2=Array.from({length:N},(_,i)=>a+i*(b-a)/(N-1));
+  drawLine(ctx,xs2.map(x=>[x,f(x)]),tx,ty,yr,'#185fa5',2.5);
+  drawLine(ctx,xs2.map(x=>[x,lagEval(xsU,ysU,x)]),tx,ty,yr,'#c04020',2);
+  drawLine(ctx,xs2.map(x=>[x,lagEval(xsC,ysC,x)]),tx,ty,yr,'#0f6e56',2);
+  drawDots(ctx,xsU,ysU,tx,ty,'#c04020',4);
+  drawDots(ctx,xsC,ysC,tx,ty,'#0f6e56',4);
+  let maxU=0,maxC=0;
+  xs2.forEach(x=>{maxU=Math.max(maxU,Math.abs(f(x)-lagEval(xsU,ysU,x)));maxC=Math.max(maxC,Math.abs(f(x)-lagEval(xsC,ysC,x)));});
+  document.getElementById('lg-info').textContent=`Eroare max: uniform=${maxU.toExponential(2)}  |  Chebyshev=${maxC.toExponential(2)}  |  Raport: ${(maxU/maxC).toFixed(1)}×`;
+}
+
+// =============================================
+// DEMO 2: Runge phenomenon
+// =============================================
+const RG_FNS={
+  runge:{f:x=>1/(1+x*x),a:-5,b:5,yr:[-0.7,1.6]},
+  abs:{f:x=>Math.abs(x),a:-1,b:1,yr:[-0.2,1.3]},
+  sin:{f:x=>Math.sin(x),a:-Math.PI,b:Math.PI,yr:[-1.7,1.7]}
+};
+function rgDraw(){
+  const d=initCanvas('cv-rg');if(!d)return;
+  const{ctx,W,H}=d;
+  const fnk=document.getElementById('rg-fn').value;
+  const fn=RG_FNS[fnk];
+  const n=parseInt(document.getElementById('rg-n').value);
+  const{f,a,b,yr}=fn;
+  const xsU=uniNodes(a,b,n-1),ysU=xsU.map(f);
+  const xsC=chebNodes(a,b,n-1),ysC=xsC.map(f);
+  const pad={t:16,r:12,b:24,l:44};
+  ctx.fillStyle=bgColor();ctx.fillRect(0,0,W,H);
+  const{tx,ty}=drawAxes(ctx,W,H,pad,a,b,yr,isDark());
+  const N=500,xs2=Array.from({length:N},(_,i)=>a+i*(b-a)/(N-1));
+  drawLine(ctx,xs2.map(x=>[x,f(x)]),tx,ty,yr,'#185fa5',2.5);
+  drawLine(ctx,xs2.map(x=>[x,lagEval(xsU,ysU,x)]),tx,ty,yr,'#c04020',2);
+  drawLine(ctx,xs2.map(x=>[x,lagEval(xsC,ysC,x)]),tx,ty,yr,'#0f6e56',2);
+  drawDots(ctx,xsU,ysU,tx,ty,'rgba(192,64,32,0.6)',3.5);
+  drawDots(ctx,xsC,ysC,tx,ty,'rgba(15,110,86,0.6)',3.5);
+  let maxU=0,maxC=0;
+  xs2.forEach(x=>{maxU=Math.max(maxU,Math.abs(f(x)-lagEval(xsU,ysU,x)));maxC=Math.max(maxC,Math.abs(f(x)-lagEval(xsC,ysC,x)));});
+  const el=document.getElementById('rg-info');
+  el.textContent=`n=${n}  |  ‖err‖∞ uniform=${maxU.toExponential(2)}  |  Chebyshev=${maxC.toExponential(2)}`;
+}
+
+// =============================================
+// DEMO 3: B-Spline basis
+// =============================================
+function bsDraw(){
+  const d=initCanvas('cv-bs');if(!d)return;
+  const{ctx,W,H}=d;
+  const n=parseInt(document.getElementById('bs-n').value);
+  const xs=uniNodes(0,1,n-1);// n uniform nodes on [0,1]
+  const pad={t:14,r:12,b:24,l:30};
+  ctx.fillStyle=bgColor();ctx.fillRect(0,0,W,H);
+  const yr=[-0.05,1.15];
+  const{tx,ty}=drawAxes(ctx,W,H,pad,0,1,yr,isDark());
+  const colors=['#185fa5','#c04020','#0f6e56','#7a4500','#4a1a8a','#6a2a00','#1a4a80','#604010','#104a40','#504080'];
+  const N=400;
+  for(let i=0;i<n;i++){
+    const xi_m1=xs[Math.max(0,i-1)];
+    const xi=xs[i];
+    const xi_p1=xs[Math.min(n-1,i+1)];
+    ctx.beginPath();ctx.strokeStyle=colors[i%colors.length];ctx.lineWidth=2;
+    for(let k=0;k<=N;k++){
+      const x=0+k/N;
+      let y=0;
+      if(i>0&&x>=xi_m1&&x<=xi)y=(x-xi_m1)/(xi-xi_m1);
+      else if(i<n-1&&x>xi&&x<=xi_p1)y=(xi_p1-x)/(xi_p1-xi);
+      else if(i===0&&x<=xi)y=(xi_p1-x)/(xi_p1-xi);
+      else if(i===n-1&&x>=xi_m1)y=(x-xi_m1)/(xi-xi_m1);
+      const cx=tx(x),cy=ty(Math.min(Math.max(y,yr[0]),yr[1]));
+      k===0?ctx.moveTo(cx,cy):ctx.lineTo(cx,cy);
+    }
+    ctx.stroke();
+    // peak dot
+    ctx.beginPath();ctx.arc(tx(xi),ty(1),5,0,2*Math.PI);
+    ctx.fillStyle=colors[i%colors.length];ctx.fill();
+    // node label
+    const fg=isDark()?'rgba(255,255,255,0.6)':'rgba(0,0,0,0.5)';
+    ctx.fillStyle=fg;ctx.font='10px system-ui';ctx.textAlign='center';
+    ctx.fillText('x'+(i+1),tx(xi),H-pad.b+14);
+  }
+}
+
+// =============================================
+// DEMO 4: Cubic spline comparison
+// =============================================
+const SP_FNS={
+  sin:{f:x=>Math.sin(2*Math.PI*x),df:x=>2*Math.PI*Math.cos(2*Math.PI*x),a:0,b:1,yr:[-1.4,1.4]},
+  exp:{f:x=>Math.exp(x),df:x=>Math.exp(x),a:0,b:2,yr:[-0.5,8.5]},
+  runge:{f:x=>1/(1+x*x),df:x=>-2*x/Math.pow(1+x*x,2),a:-3,b:3,yr:[-0.2,1.2]},
+  humps:{f:x=>1/((x-0.3)*(x-0.3)+0.01)+1/((x-0.9)*(x-0.9)+0.04)-6,
+         df:x=>-2*(x-0.3)/Math.pow((x-0.3)*(x-0.3)+0.01,2)-2*(x-0.9)/Math.pow((x-0.9)*(x-0.9)+0.04,2),
+         a:0,b:1,yr:[-10,90]}
+};
+function spDraw(){
+  const d=initCanvas('cv-sp');if(!d)return;
+  const{ctx,W,H}=d;
+  const fnk=document.getElementById('sp-fn').value;
+  const fn=SP_FNS[fnk];
+  const n=parseInt(document.getElementById('sp-n').value);
+  const{f,df,a,b,yr}=fn;
+  const xs=uniNodes(a,b,n-1),ys=xs.map(f);
+  const msN=natSpline(xs,ys);
+  const msC=complSpline(xs,ys,df(a),df(b));
+  const pad={t:16,r:12,b:24,l:44};
+  ctx.fillStyle=bgColor();ctx.fillRect(0,0,W,H);
+  const{tx,ty}=drawAxes(ctx,W,H,pad,a,b,yr,isDark());
+  const N=500,xs2=Array.from({length:N},(_,i)=>a+i*(b-a)/(N-1));
+  drawLine(ctx,xs2.map(x=>[x,f(x)]),tx,ty,yr,'#185fa5',2.5);
+  drawLine(ctx,xs2.map(x=>[x,evalSpline(xs,ys,msN,x)]),tx,ty,yr,'#0f6e56',2);
+  drawLine(ctx,xs2.map(x=>[x,evalSpline(xs,ys,msC,x)]),tx,ty,yr,'#c04020',2);
+  // knot vertical lines
+  ctx.strokeStyle=isDark()?'rgba(180,120,40,0.3)':'rgba(120,80,0,0.2)';ctx.lineWidth=0.8;ctx.setLineDash([3,3]);
+  xs.forEach(x=>{ctx.beginPath();ctx.moveTo(tx(x),pad.t);ctx.lineTo(tx(x),H-pad.b);ctx.stroke();});
+  ctx.setLineDash([]);
+  drawDots(ctx,xs,ys,tx,ty,'#333',4);
+  let maxN=0,maxC=0;
+  xs2.forEach(x=>{maxN=Math.max(maxN,Math.abs(f(x)-evalSpline(xs,ys,msN,x)));maxC=Math.max(maxC,Math.abs(f(x)-evalSpline(xs,ys,msC,x)));});
+  document.getElementById('sp-info').textContent=`‖f-s_nat‖∞=${maxN.toExponential(2)}  |  ‖f-s_compl‖∞=${maxC.toExponential(2)}  |  Noduri: ${n}`;
+}
+
+// =============================================
+// NAVIGATION: active link on scroll
+// =============================================
+function updateNav(){
+  const links=document.querySelectorAll('.sb-link');
+  const sections=Array.from(document.querySelectorAll('section[id]'));
+  const scrollY=window.scrollY+80;
+  let active=null;
+  sections.forEach(s=>{if(s.offsetTop<=scrollY)active=s.id;});
+  links.forEach(l=>{
+    const href=l.getAttribute('href').replace('#','');
+    l.classList.toggle('active',href===active);
+  });
+}
+document.addEventListener('scroll',updateNav,{passive:true});
+
+// =============================================
+// INIT
+// =============================================
+window.addEventListener('load',()=>{
+  setTimeout(()=>{lgDraw();rgDraw();bsDraw();spDraw();},100);
+});
+window.addEventListener('resize',()=>{lgDraw();rgDraw();bsDraw();spDraw();});
+document.getElementById('lg-fn').onchange=lgDraw;
+document.getElementById('rg-fn').onchange=rgDraw;
+document.getElementById('sp-fn').onchange=spDraw;
+</script>
+</body>
+</html>
