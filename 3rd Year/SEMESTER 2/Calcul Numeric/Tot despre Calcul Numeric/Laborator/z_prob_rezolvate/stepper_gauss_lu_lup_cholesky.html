@@ -1,0 +1,214 @@
+
+<h2 class="sr-only">Vizualizare interactivă pas cu pas: Gauss, LU, LUP, Cholesky</h2>
+<style>
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.tb{padding:5px 11px;border:0.5px solid var(--color-border-secondary);border-radius:20px;background:transparent;color:var(--color-text-secondary);cursor:pointer;font-size:12px;font-weight:400;transition:.15s}
+.tb.on{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.mn{font-size:15px;font-weight:500;margin:0 0 4px;color:var(--color-text-primary)}
+.bdg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;margin-bottom:8px;font-weight:500}
+.bg{background:#E1F5EE;color:#085041}.bs{background:#EEEDFE;color:#26215C}.bp{background:#FAEEDA;color:#633806}
+@media(prefers-color-scheme:dark){.bg{background:#04342C;color:#9FE1CB}.bs{background:#26215C;color:#CECBF6}.bp{background:#412402;color:#FAC775}}
+.idea{font-size:12.5px;color:var(--color-text-secondary);margin:0 0 12px;border-left:2px solid var(--color-border-secondary);padding-left:8px;line-height:1.5}
+.sd{font-size:13.5px;margin:0 0 6px;min-height:36px;color:var(--color-text-primary);line-height:1.5}
+.fb{font-family:var(--font-mono);font-size:12px;color:var(--color-text-secondary);background:var(--color-background-secondary);border-radius:8px;padding:8px 12px;margin:0 0 12px;min-height:24px;white-space:pre-line;line-height:1.8}
+.mr{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 12px;align-items:flex-start}
+.mw{display:flex;flex-direction:column}
+.ml{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;font-family:var(--font-mono);font-weight:500}
+table.m{border-collapse:collapse}
+.c{width:38px;height:30px;text-align:center;font-family:var(--font-mono);font-size:12px;border:0.5px solid var(--color-border-tertiary);padding:0;transition:background .25s,color .25s}
+.c.pr{background:#FAEEDA;color:#633806}
+.c.pe{background:#EF9F27;color:#fff;font-weight:500}
+.c.tr{background:#FAECE7;color:#4A1B0C}
+.c.mo{background:#EEEDFE;color:#26215C}
+.c.fr{background:#E1F5EE;color:#085041}
+.c.sol{background:#1D9E75;color:#fff;font-weight:500}
+.c.sp{width:6px;border:none;background:transparent}
+@media(prefers-color-scheme:dark){
+.c.pr{background:#412402;color:#FAC775}.c.pe{background:#BA7517;color:#FAEEDA}
+.c.tr{background:#4A1B0C;color:#F5C4B3}.c.mo{background:#26215C;color:#CECBF6}
+.c.fr{background:#04342C;color:#9FE1CB}.c.sol{background:#0F6E56;color:#E1F5EE}}
+.nav{display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--color-border-tertiary);padding-top:10px;margin-top:4px}
+.nb{padding:6px 16px;border:0.5px solid var(--color-border-secondary);border-radius:8px;background:transparent;color:var(--color-text-primary);cursor:pointer;font-size:12.5px}
+.nb:disabled{opacity:.3;cursor:default}
+.sc{font-size:12px;color:var(--color-text-secondary)}
+.leg{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 10px}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.lc{width:12px;height:12px;border-radius:2px;flex-shrink:0}
+</style>
+<div class="tabs" id="T"></div>
+<div id="H"></div>
+<div class="leg">
+<div class="li"><div class="lc" style="background:#FAC775"></div>rând pivot</div>
+<div class="li"><div class="lc" style="background:#EF9F27"></div>element pivot</div>
+<div class="li"><div class="lc" style="background:#F5C4B3"></div>rând eliminat</div>
+<div class="li"><div class="lc" style="background:#CECBF6"></div>valoare modificată</div>
+<div class="li"><div class="lc" style="background:#9FE1CB"></div>finalizat</div>
+<div class="li"><div class="lc" style="background:#1D9E75"></div>soluție ✓</div>
+</div>
+<div class="sd" id="SD"></div>
+<div class="fb" id="FB"></div>
+<div class="mr" id="MR"></div>
+<div class="nav">
+<button class="nb" id="PB" onclick="go(-1)">← Înapoi</button>
+<span class="sc" id="SC"></span>
+<button class="nb" id="NB" onclick="go(1)">Înainte →</button>
+</div>
+<script>
+const D='',PR='pr',PE='pe',TR='tr',MO='mo',FR='fr',SOL='sol';
+function r(vs,dc,ov){ov=ov||{};return vs.map(function(v,i){return{v:String(v),c:ov[i]!==undefined?ov[i]:dc};});}
+function mak(lbl,rows,sep){return{lbl:lbl,rows:rows,sep:sep};}
+var M=[
+{name:"Gauss — fără pivotare",badge:"Orice A nesingulară",bc:"bg",
+idea:"Lucrăm direct pe [A|b]. La fiecare pas k eliminăm sub diagonală pe coloana k. Multiplicatorii ℓ NU se salvează.",
+steps:[
+{d:"Matricea augmentată inițială [A|b]. Vom reduce A la formă triunghiulară superioară.",
+f:"A = [2, 1, −1 ;  −3, −1, 2 ;  −2, 1, 2]   b = [8, −11, −3]ᵀ",
+ms:[mak("[A|b]",[r([2,1,-1,8],D),r([-3,-1,2,-11],D),r([-2,1,2,-3],D)],3)]},
+{d:"k=1: Pivotul este a₁₁=2. Calculăm multiplicatorii ℓ pentru liniile 2 și 3.",
+f:"ℓ₂₁ = a₂₁/a₁₁ = −3/2\nℓ₃₁ = a₃₁/a₁₁ = −2/2 = −1",
+ms:[mak("[A|b]",[r([2,1,-1,8],PR,{0:PE}),r([-3,-1,2,-11],TR),r([-2,1,2,-3],TR)],3)]},
+{d:"Eliminăm: R₂ ← R₂ − ℓ₂₁·R₁  și  R₃ ← R₃ − ℓ₃₁·R₁. Coloana 1 sub diagonală = 0.",
+f:"R₂: [−3−(−3/2)·2, −1−(−3/2)·1, 2−(−3/2)·(−1), −11−(−3/2)·8] = [0, 1/2, 1/2, 1]\nR₃: [−2−(−1)·2, 1−(−1)·1, 2−(−1)·(−1), −3−(−1)·8] = [0, 2, 1, 5]",
+ms:[mak("[A|b]",[r([2,1,-1,8],FR),r([0,'1/2','1/2',1],MO),r([0,2,1,5],MO)],3)]},
+{d:"k=2: Pivotul este a₂₂=1/2. Calculăm ℓ₃₂.",
+f:"ℓ₃₂ = a₃₂/a₂₂ = 2 / (1/2) = 4",
+ms:[mak("[A|b]",[r([2,1,-1,8],FR),r([0,'1/2','1/2',1],PR,{1:PE}),r([0,2,1,5],TR)],3)]},
+{d:"Eliminăm: R₃ ← R₃ − 4·R₂. Sistem triunghiular superior Ux=b̃ obținut!",
+f:"R₃: [0,  2−4·(1/2),  1−4·(1/2),  5−4·1] = [0, 0, −1, 1]",
+ms:[mak("Ux = b̃",[r([2,1,-1,8],FR),r([0,'1/2','1/2',1],FR),r([0,0,-1,1],MO)],3)]},
+{d:"Substituție inversă (backward substitution) — rezolvăm de jos în sus.",
+f:"x₃ = b̃₃/u₃₃ = 1/(−1) = −1\nx₂ = (1 − (1/2)·(−1)) / (1/2) = (3/2) / (1/2) = 3\nx₁ = (8 − 1·3 − (−1)·(−1)) / 2 = 4/2 = 2\n\n✓  x = [2,  3,  −1]ᵀ",
+ms:[mak("Ux = b̃",[r([2,1,-1,8],FR),r([0,'1/2','1/2',1],FR),r([0,0,-1,1],SOL)],3)]}
+]},
+{name:"Gauss — cu pivotare parțială",badge:"Orice A nesingulară · stabil!",bc:"bg",
+idea:"Înainte de pasul k interschimbăm linia k cu linia care are cel mai mare |element| pe coloana k. Pivot niciodată mic → calcule stabile.",
+steps:[
+{d:"Matricea augmentată inițială [A|b].",
+f:"A = [1, 1, 1 ;  1, 1, 2 ;  2, 4, 2]   b = [3, 4, 8]ᵀ",
+ms:[mak("[A|b]",[r([1,1,1,3],D),r([1,1,2,4],D),r([2,4,2,8],D)],3)]},
+{d:"k=1: Căutăm max|col₁| pe liniile 1..3: |1|=1, |1|=1, |2|=2. Maximul este la linia 3!",
+f:"→  Interschimbăm R₁ ↔ R₃",
+ms:[mak("[A|b]",[r([1,1,1,3],TR),r([1,1,2,4],D),r([2,4,2,8],PR,{0:PE})],3)]},
+{d:"Swap R₁↔R₃ executat. Acum a₁₁=2 este maximul pe coloana 1. Pivot mare = stabil!",
+f:"",
+ms:[mak("[A|b] după R₁↔R₃",[r([2,4,2,8],MO,{0:PE}),r([1,1,2,4],D),r([1,1,1,3],MO)],3)]},
+{d:"Eliminăm sub a₁₁=2: ℓ₂₁=1/2, ℓ₃₁=1/2. Rândurile 2 și 3 se modifică.",
+f:"R₂ ← R₂ − (1/2)·R₁ = [0, −1, 1, 0]\nR₃ ← R₃ − (1/2)·R₁ = [0, −1, 0, −1]",
+ms:[mak("[A|b]",[r([2,4,2,8],FR),r([0,-1,1,0],MO),r([0,-1,0,-1],MO)],3)]},
+{d:"k=2: max|col₂, linii 2..3| = |−1|=|−1|=1. Egale → niciun swap necesar.",
+f:"Pivotul rămâne a₂₂ = −1",
+ms:[mak("[A|b]",[r([2,4,2,8],FR),r([0,-1,1,0],PR,{1:PE}),r([0,-1,0,-1],TR)],3)]},
+{d:"Eliminăm: ℓ₃₂=(−1)/(−1)=1. R₃ ← R₃ − 1·R₂. Sistem triunghiular!",
+f:"R₃: [0, −1−1·(−1), 0−1·1, −1−1·0] = [0, 0, −1, −1]",
+ms:[mak("[A|b]",[r([2,4,2,8],FR),r([0,-1,1,0],FR),r([0,0,-1,-1],MO)],3)]},
+{d:"Substituție inversă.",
+f:"x₃ = (−1)/(−1) = 1\nx₂ = (0 − 1·1)/(−1) = 1\nx₁ = (8 − 4·1 − 2·1)/2 = 1\n\n✓  x = [1,  1,  1]ᵀ",
+ms:[mak("Ux = b̃",[r([2,4,2,8],FR),r([0,-1,1,0],FR),r([0,0,-1,-1],SOL)],3)]}
+]},
+{name:"Descompunere LU",badge:"Orice A nesingulară · fără pivot",bc:"bg",
+idea:"A = L·U — multiplicatorii Gauss se salvează în L. Avantaj: factorizăm A o singură dată și rezolvăm rapid Ax=b pentru orice număr de vectori b.",
+steps:[
+{d:"Inițializăm L=I (identitate), U=A. La final vom obține A = L·U.",
+f:"",
+ms:[mak("L",[r([1,0,0],D),r([0,1,0],D),r([0,0,1],D)]),mak("U = A",[r([2,1,-1],D),r([-3,-1,2],D),r([-2,1,2],D)])]},
+{d:"k=1: Calculăm multiplicatorii și îi stocăm în coloana 1 a lui L (sub diagonală).",
+f:"ℓ₂₁ = u₂₁/u₁₁ = −3/2   →   L[2,1] = −3/2\nℓ₃₁ = u₃₁/u₁₁ = −2/2 = −1   →   L[3,1] = −1",
+ms:[mak("L (actualizat)",[r([1,0,0],D),r(['-3/2',1,0],D,{0:MO}),r([-1,0,1],D,{0:MO})]),mak("U",[r([2,1,-1],PR,{0:PE}),r([-3,-1,2],TR),r([-2,1,2],TR)])]},
+{d:"Actualizăm U (aceleași operații ca la Gauss, dar salvăm multiplicatorii în L).",
+f:"R₂(U) ← R₂ − (−3/2)·R₁ = [0, 1/2, 1/2]\nR₃(U) ← R₃ − (−1)·R₁  = [0, 2, 1]",
+ms:[mak("L",[r([1,0,0],FR),r(['-3/2',1,0],FR),r([-1,0,1],FR)]),mak("U (actualizat)",[r([2,1,-1],FR),r([0,'1/2','1/2'],MO),r([0,2,1],MO)])]},
+{d:"k=2: ℓ₃₂ = u₃₂/u₂₂ = 2/(1/2) = 4 → stocat în L[3,2].",
+f:"L[3,2] = 4",
+ms:[mak("L (actualizat)",[r([1,0,0],FR),r(['-3/2',1,0],FR),r([-1,4,1],FR,{1:MO})]),mak("U",[r([2,1,-1],FR),r([0,'1/2','1/2'],PR,{1:PE}),r([0,2,1],TR)])]},
+{d:"Actualizăm U. Factorizare completă: A = L·U!",
+f:"R₃(U) ← R₃ − 4·R₂ = [0, 0, −1]",
+ms:[mak("L (final)",[r([1,0,0],FR),r(['-3/2',1,0],FR),r([-1,4,1],FR)]),mak("U (final)",[r([2,1,-1],FR),r([0,'1/2','1/2'],FR),r([0,0,-1],MO)])]},
+{d:"Rezolvăm Ly=b (forward substitution) — L triunghiulară inferior, b=[8,−11,−3].",
+f:"y₁ = 8\ny₂ = −11 − (−3/2)·8 = −11 + 12 = 1\ny₃ = −3 − (−1)·8 − 4·1 = −3 + 8 − 4 = 1\n\ny = [8, 1, 1]ᵀ",
+ms:[mak("L (Ly=b)",[r([1,0,0],PR),r(['-3/2',1,0],PR),r([-1,4,1],PR)]),mak("U",[r([2,1,-1],D),r([0,'1/2','1/2'],D),r([0,0,-1],D)])]},
+{d:"Rezolvăm Ux=y (backward substitution). y=[8,1,1].",
+f:"x₃ = 1/(−1) = −1\nx₂ = (1 − (1/2)·(−1)) / (1/2) = 3\nx₁ = (8 − 1·3 − (−1)·(−1)) / 2 = 2\n\n✓  x = [2,  3,  −1]ᵀ",
+ms:[mak("L ✓",[r([1,0,0],SOL),r(['-3/2',1,0],SOL),r([-1,4,1],SOL)]),mak("U ✓",[r([2,1,-1],SOL),r([0,'1/2','1/2'],SOL),r([0,0,-1],SOL)])]}
+]},
+{name:"Descompunere LUP",badge:"Orice A nesingulară · recomandat!",bc:"bp",
+idea:"PA = L·U. Combină avantajele LU (reutilizare factorizare) cu pivotarea parțială (stabilitate). Vectorul p memorează permutările de linii. Cel mai bun algoritm general!",
+steps:[
+{d:"Inițializăm L=I, U=A, vectorul de permutare p=[1,2,3].",
+f:"",
+ms:[mak("L",[r([1,0,0],D),r([0,1,0],D),r([0,0,1],D)]),mak("U = A",[r([1,1,1],D),r([1,1,2],D),r([2,4,2],D)]),mak("p",[r([1],D),r([2],D),r([3],D)])]},
+{d:"k=1: max|col₁|=|2| la linia 3. Interschimbăm R₁↔R₃ în U, actualizăm p.",
+f:"R₁↔R₃ în U  →  p devine [3, 2, 1]\n(linia 3 originală ajunge în poziția 1)",
+ms:[mak("L",[r([1,0,0],D),r([0,1,0],D),r([0,0,1],D)]),mak("U după R₁↔R₃",[r([2,4,2],MO,{0:PE}),r([1,1,2],D),r([1,1,1],MO)]),mak("p",[r([3],MO),r([2],D),r([1],MO)])]},
+{d:"Eliminăm sub u₁₁=2: ℓ₂₁=1/2, ℓ₃₁=1/2 → stocate în L.",
+f:"L[2,1]=1/2, L[3,1]=1/2\nR₂(U) = [0,−1,1],   R₃(U) = [0,−1,0]",
+ms:[mak("L",[r([1,0,0],FR),r(['1/2',1,0],D,{0:MO}),r(['1/2',0,1],D,{0:MO})]),mak("U",[r([2,4,2],FR),r([0,-1,1],MO),r([0,-1,0],MO)]),mak("p",[r([3],FR),r([2],D),r([1],D)])]},
+{d:"k=2: max|col₂, linii 2..3|=|−1|=|−1|. Egale → nicio interschimbare.",
+f:"Pivotul u₂₂=−1. p rămâne [3, 2, 1].",
+ms:[mak("L",[r([1,0,0],FR),r(['1/2',1,0],FR),r(['1/2',0,1],FR)]),mak("U",[r([2,4,2],FR),r([0,-1,1],PR,{1:PE}),r([0,-1,0],TR)]),mak("p",[r([3],FR),r([2],D),r([1],D)])]},
+{d:"Eliminăm sub u₂₂=−1: ℓ₃₂=1 → stocat în L. Factorizare completă!",
+f:"L[3,2] = 1\nR₃(U) ← R₃ − 1·R₂ = [0, 0, −1]",
+ms:[mak("L (final)",[r([1,0,0],FR),r(['1/2',1,0],FR),r(['1/2',1,1],FR,{1:MO})]),mak("U (final)",[r([2,4,2],FR),r([0,-1,1],FR),r([0,0,-1],MO)]),mak("p (final)",[r([3],FR),r([2],FR),r([1],FR)])]},
+{d:"Rezolvăm Ly=Pb (forward). b=[3,4,8], p=[3,2,1] → Pb=[b₃,b₂,b₁]=[8,4,3].",
+f:"y₁ = 8\ny₂ = 4 − (1/2)·8 = 0\ny₃ = 3 − (1/2)·8 − 1·0 = −1\n\ny = [8, 0, −1]ᵀ",
+ms:[mak("L (Ly=Pb)",[r([1,0,0],PR),r(['1/2',1,0],PR),r(['1/2',1,1],PR)]),mak("U",[r([2,4,2],D),r([0,-1,1],D),r([0,0,-1],D)])]},
+{d:"Rezolvăm Ux=y (backward substitution). y=[8,0,−1].",
+f:"x₃ = (−1)/(−1) = 1\nx₂ = (0 − 1·1)/(−1) = 1\nx₁ = (8 − 4·1 − 2·1)/2 = 1\n\n✓  x = [1,  1,  1]ᵀ",
+ms:[mak("L ✓",[r([1,0,0],SOL),r(['1/2',1,0],SOL),r(['1/2',1,1],SOL)]),mak("U ✓",[r([2,4,2],SOL),r([0,-1,1],SOL),r([0,0,-1],SOL)])]}
+]},
+{name:"Descompunere Cholesky",badge:"Doar matrice SPD",bc:"bs",
+idea:"A = Rᵀ·R (R triunghiulară superior). Exploatează simetria: cost ≈ m³/3 (jumătate față de LU). Garantat stabil numeric, nu are nevoie de pivotare.",
+steps:[
+{d:"A=[1,2,1;2,5,3;1,3,3] este SPD. Verificăm condițiile și copiem R:=A (lucrăm doar cu triunghiul superior).",
+f:"Simetrie: A=Aᵀ ✓\nMinori principali: Δ₁=1>0,  Δ₂=5−4=1>0,  Δ₃=det(A)=1>0  ✓ SPD",
+ms:[mak("R := A (upper tri)",[r([1,2,1],D),r([0,5,3],D),r([0,0,3],D)])]},
+{d:"k=1, j=2: Actualizăm R[2,2:3] ← R[2,2:3] − R[1,2:3]·R[1,2]/R[1,1]",
+f:"[5, 3] − [2, 1]·(2/1) = [5,3] − [4,2] = [1, 1]",
+ms:[mak("R",[r([1,2,1],FR),r([0,1,1],D,{1:MO,2:MO}),r([0,0,3],D)])]},
+{d:"k=1, j=3: Actualizăm R[3,3] ← R[3,3] − R[1,3]·R[1,3]/R[1,1]",
+f:"3 − 1·1/1 = 2",
+ms:[mak("R",[r([1,2,1],FR),r([0,1,1],D,{1:FR,2:FR}),r([0,0,2],D,{2:MO})])]},
+{d:"k=1: R[1,1:3] /= √R[1,1] = √1 = 1. Rândul 1 al lui R este finalizat!",
+f:"R[1,:] /= 1   →   [1, 2, 1]  (neschimbat, √1=1)\nRândul 1 gata ✓",
+ms:[mak("R (rând 1 gata)",[r([1,2,1],SOL),r([0,1,1],D),r([0,0,2],D)])]},
+{d:"k=2, j=3: R[3,3] ← R[3,3] − R[2,3]·R[2,3]/R[2,2]. Apoi R[2,2:3] /= √R[2,2]=√1=1.",
+f:"R[3,3]: 2 − 1·1/1 = 1\nR[2,2:3]: [1,1] /= √1 = [1,1]  (neschimbat)\nRândul 2 gata ✓",
+ms:[mak("R (rând 2 gata)",[r([1,2,1],SOL),r([0,1,1],SOL),r([0,0,1],D,{2:MO})])]},
+{d:"k=3: R[3,3] /= √R[3,3] = √1 = 1. Factorizare Cholesky completă: A = Rᵀ·R!",
+f:"R final:\n[1  2  1]\n[0  1  1]\n[0  0  1]",
+ms:[mak("R (final)",[r([1,2,1],SOL),r([0,1,1],SOL),r([0,0,1],SOL)])]},
+{d:"Rezolvăm Rᵀy=b (forward substitution). Rᵀ=L=[1,0,0;2,1,0;1,1,1], b=[4,10,7].",
+f:"y₁ = 4\ny₂ = 10 − 2·4 = 2\ny₃ = 7 − 1·4 − 1·2 = 1\n\ny = [4, 2, 1]ᵀ",
+ms:[mak("Rᵀ = L",[r([1,0,0],PR),r([2,1,0],PR),r([1,1,1],PR)]),mak("R = U",[r([1,2,1],D),r([0,1,1],D),r([0,0,1],D)])]},
+{d:"Rezolvăm Rx=y (backward substitution). y=[4,2,1].",
+f:"x₃ = 1/1 = 1\nx₂ = (2 − 1·1)/1 = 1\nx₁ = (4 − 2·1 − 1·1)/1 = 1\n\n✓  x = [1,  1,  1]ᵀ",
+ms:[mak("Rᵀ ✓",[r([1,0,0],SOL),r([2,1,0],SOL),r([1,1,1],SOL)]),mak("R ✓",[r([1,2,1],SOL),r([0,1,1],SOL),r([0,0,1],SOL)])]}
+]}
+];
+var cM=0,cS=0;
+function renderMat(m){
+var h='<div class="mw"><div class="ml">'+m.lbl+'</div><table class="m">';
+m.rows.forEach(function(row){
+h+='<tr>';
+row.forEach(function(cell,j){
+if(m.sep!==undefined&&j===m.sep)h+='<td class="c sp"></td>';
+h+='<td class="c '+cell.c+'">'+cell.v+'</td>';
+});
+h+='</tr>';
+});
+return h+'</table></div>';
+}
+function render(){
+var m=M[cM],s=m.steps[cS];
+document.getElementById('T').innerHTML=M.map(function(mm,i){return'<button class="tb'+(i===cM?' on':'')+'" onclick="setTab('+i+')">'+mm.name+'</button>';}).join('');
+document.getElementById('H').innerHTML='<div class="mn">'+m.name+'</div><span class="bdg '+m.bc+'">'+m.badge+'</span><div class="idea">'+m.idea+'</div>';
+document.getElementById('SD').textContent=s.d;
+document.getElementById('FB').textContent=s.f||'';
+document.getElementById('MR').innerHTML=s.ms.map(renderMat).join('');
+document.getElementById('SC').textContent='Pas '+(cS+1)+' / '+m.steps.length;
+document.getElementById('PB').disabled=(cS===0);
+document.getElementById('NB').disabled=(cS===m.steps.length-1);
+}
+function go(d){cS=Math.max(0,Math.min(M[cM].steps.length-1,cS+d));render();}
+function setTab(i){cM=i;cS=0;render();}
+render();
+</script>
